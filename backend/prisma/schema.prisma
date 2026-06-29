@@ -1,0 +1,121 @@
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id Int @id @default (autoincrement())
+  name String 
+  email String
+  password String
+  EDV Int @unique
+  role Role
+
+  class Class @relation("StudentClass",fields: [idClass], references: id)
+  idClass Int
+
+  userAnswer Answers @relation(fields: [idAnswer], references: id)
+  idAnswer Int
+
+  PICs Class[] @relation("PicClass")
+
+
+  Evaluated User_Test[] @relation("Evaluated")
+
+  Evaluator User_Test[] @relation("Evaluator")
+}
+
+
+model User_Test{
+  id Int @id @default(autoincrement())
+  
+  Evaluated User @relation("Evaluated",fields: [idEvaluated], references: [id])
+  idEvaluated Int
+
+  Evaluator User @relation("Evaluator",fields: [idEvaluator], references: [id])
+  idEvaluator Int
+
+  Tests Test @relation(fields: [idTest], references: id)
+  idTest Int
+
+}
+
+
+model Test{
+  id Int @id @default(autoincrement())
+  Content String
+  Date DateTime
+  Grade Int
+  Type String
+
+  questions Questions @relation(fields: [idQuestion], references: [id])
+  idQuestion Int
+
+  user User_Test[]
+}
+
+
+
+model Class {
+  id Int @id @default (autoincrement())
+  Course String
+  period String
+  avarageScore Int
+
+  PIC User @relation("PicClass",fields: [idPIC], references: id)
+  idPIC Int 
+
+  students User[] @relation("StudentClass")
+}
+
+model Answers {
+  id Int @id @default(autoincrement())
+  value String
+  scale Scale
+
+  userAnswer User[]
+  questions Questions[]
+  
+}
+
+model Questions{
+  id Int @id @default(autoincrement())
+  Sten String
+
+  answers Answers @relation(fields: [idAnswer], references: id)
+  idAnswer Int
+
+  Skills Skill[]
+  Tests Test[]
+}
+
+model Skill{
+  id Int @id @default(autoincrement())
+  Name String 
+
+  question Questions @relation(fields: [idQuestion], references: id)
+  idQuestion Int
+}
+
+
+
+enum Scale {
+  BLUE
+  GREEN
+  GREY
+  YELLOW
+  RED
+}
+
+enum Role {
+  Student
+  Leader
+  ADM
+  Manager
+}
