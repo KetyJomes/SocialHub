@@ -9,7 +9,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<UserMain />} />
+          <Route path="/user-main" element={<UserMain />} />
         </Routes>
       </BrowserRouter>
     </>
