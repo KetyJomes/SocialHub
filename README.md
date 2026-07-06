@@ -64,7 +64,7 @@ http://localhost:5173
 
 - React
 - TypeScript
-- Tailwind CSS
+- CSS
 - Node.js
 - Prisma ORM
 - MySQL
