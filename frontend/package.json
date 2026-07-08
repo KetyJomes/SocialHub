@@ -12,7 +12,11 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.3.2",
     "chart.js": "^4.5.1",
+<<<<<<< HEAD
     "lucide-react": "^1.23.0",
+=======
+    "chartjs-plugin-datalabels": "^2.2.0",
+>>>>>>> f74a868ba6245b0ed6749a8a68b84bb4e6e7e548
     "react": "^18.3.1",
     "react-chartjs-2": "^5.3.1",
     "react-dom": "^18.3.1",
