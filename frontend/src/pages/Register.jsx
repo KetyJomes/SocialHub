@@ -20,9 +20,9 @@ export const Register = () => {
 
         <div className="w-1/2 flex flex-col justify-center px-16">
 
-          <h2 className="text-5xl font-bold mb-10">
-            Cadastre-se
-          </h2>
+            <h2 className="text-5xl font-bold text-center mb-10">
+                Cadastre-se
+            </h2>
 
           <div className="mb-5">
             <label className="block mb-2 text-lg">

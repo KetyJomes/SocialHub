@@ -19,7 +19,7 @@ export const Login = () => {
 
         <div className="w-1/2 flex flex-col justify-center px-16">
 
-          <h2 className="text-5xl font-bold mb-12">
+          <h2 className="text-5xl font-bold text-center mb-10">
             Bem-Vindo!
           </h2>
 
