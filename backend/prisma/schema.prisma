@@ -52,7 +52,7 @@ model Test{
   Content String
   Date DateTime
   Grade Int
-  Type String
+  Type TestType
 
   Skills Skill @relation(fields: [idSkill], references: [id])
   idSkill Int
@@ -100,6 +100,7 @@ model Skill{
 model Alternatives {
   id Int @id @default(autoincrement())
   Content String
+  Scale Int
 
   Skills Skill[]
 
@@ -107,14 +108,12 @@ model Alternatives {
 
 
 
-
-enum Scale {
-  BLUE
-  GREEN
-  GREY
-  YELLOW
-  RED
+enum TestType {
+  Self
+  Instructor
+  Group
 }
+
 
 enum Role {
   Student
@@ -122,3 +121,4 @@ enum Role {
   ADM
   Manager
 }
+

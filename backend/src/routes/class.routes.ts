@@ -9,4 +9,8 @@ route
     .put('/update/:id')
     .delete('/delete/:id')
 
+    //class user
+
+    
+
 export default route;
