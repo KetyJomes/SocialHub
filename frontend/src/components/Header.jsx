@@ -15,7 +15,7 @@ export const Header = () => {
 
       </div>
 
-      <div className="h-[2vh]">
+      <div className="h-[1.5vh]">
         <img
           src={supergraphic}
           alt=""
