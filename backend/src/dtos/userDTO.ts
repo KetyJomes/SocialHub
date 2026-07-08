@@ -6,3 +6,8 @@ export interface createUserDTO{
     EDV: number,
     classId: number
 }
+
+export interface authUserDTO{
+    EDV: number,
+    password: string
+}
