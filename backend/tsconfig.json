@@ -15,13 +15,9 @@
     "target": "es2024",
 
     "strict": true,
-<<<<<<< HEAD
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
-=======
+
     "allowImportingTsExtensions": true,
     "noEmit": true,
->>>>>>> a91f09571bcdc4ce010a5591246d227b182acb3e
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "node16"
