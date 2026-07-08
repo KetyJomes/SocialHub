@@ -1,4 +1,8 @@
+import { useState } from "react";
+
 import { Header } from "../components/Header";
+import { Sidebar } from "../components/Sidebar";
+
 import { CardNotificacaoAvaliacao } from "../components/CardNotificacaoAvaliacao";
 import { GraficoPessoal } from "../components/GraficoPessoal";
 
@@ -13,9 +17,24 @@ import green from "../assets/green arrow.png";
 import purple from "../assets/purple arrow.png";
 
 export const UserMain = () => {
+
+    const [isOpen, setIsOpen] = useState(true);
+
     return (
+        <>
+        <div className="flex h-screen">
+
+        <Sidebar
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+        />
         <main className="user-main">
-            <Header />
+
+            <Header
+                isOpen={isOpen}
+                setIsOpen={setIsOpen}
+            />
+
 
             {/* Conteudo tela */}
             <div className="user-container p-10">
@@ -24,9 +43,9 @@ export const UserMain = () => {
                     Bem-Vindo, Usuário!
                 </h1>
 
-                <div className="flex justify-center">
+                {/* <div className="flex justify-center">
                     <CardNotificacaoAvaliacao />
-                </div>
+                </div> */}
                 
                 {/* === Section de "Meu Desempenho" === */}
                 <div className="mt-15 flex items-center gap-4 mb-8">
@@ -274,5 +293,7 @@ export const UserMain = () => {
             </div>
 
         </main>
+        </div>
+        </>
     );
 };
