@@ -5,7 +5,7 @@ export const Login = () => {
   const navigateLogin = useNavigate();
 
   function handleLogin() {
-    navigateLogin("/user-main");
+    navigateLogin("/register");
   }
   return (
     <div
