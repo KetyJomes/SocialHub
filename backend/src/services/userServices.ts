@@ -46,4 +46,4 @@ export const getUser = async(id:number)=>{
             id:id
         }
     });
-};
+ };
