@@ -3,7 +3,7 @@ import express from 'express';
 const route = express.Router();
 
 route
-    .post('/createUser')
+    .post('/create')
     .get('/findById/:id')
     .get('/findAll')
     .put('/update/:id')

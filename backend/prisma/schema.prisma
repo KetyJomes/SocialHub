@@ -54,12 +54,11 @@ model Test{
   Grade Int
   Type String
 
-  questions Questions @relation(fields: [idQuestion], references: [id])
+  Skills Skill @relation(fields: [idQuestion], references: [id]) @map("questions")
   idQuestion Int
 
   user User_Test[]
 }
-
 
 
 model Class {
@@ -80,28 +79,20 @@ model Answers {
   scale Scale
 
   userAnswer User[]
-  questions Questions[]
+  Skills Skill[]
   
 }
 
-model Questions{
+model Skill{
   id Int @id @default(autoincrement())
   Sten String
 
   answers Answers @relation(fields: [idAnswer], references: id)
   idAnswer Int
 
-  Skills Skill[]
   Tests Test[]
 }
 
-model Skill{
-  id Int @id @default(autoincrement())
-  Name String 
-
-  question Questions @relation(fields: [idQuestion], references: id)
-  idQuestion Int
-}
 
 
 
