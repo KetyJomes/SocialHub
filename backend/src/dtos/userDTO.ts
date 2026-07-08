@@ -1,6 +1,8 @@
-export interface createUser{
+export interface createUserDTO{
     name: string,
     email: string,
     password: string,
-    idClass: number, 
+    role: "Student" | "ADM" | "Leader" | "Manager"
+    EDV: number,
+    classId: number
 }
