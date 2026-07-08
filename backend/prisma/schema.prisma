@@ -20,11 +20,8 @@ model User {
   class Class @relation("StudentClass",fields: [idClass], references: id)
   idClass Int
 
-  // userAnswer Answers @relation(fields: [idAnswer], references: id)
-  // idAnswer Int
 
   PICs Class[] @relation("PicClass")
-
 
   Evaluated User_Test[] @relation("Evaluated")
 
@@ -44,6 +41,9 @@ model User_Test{
   Tests Test @relation(fields: [idTest], references: id)
   idTest Int
 
+  userTestAnswer Answers @relation(fields: [idAnswer], references: id)
+  idAnswer Int
+
 }
 
 
@@ -54,8 +54,8 @@ model Test{
   Grade Int
   Type String
 
-  Skills Skill @relation(fields: [idQuestion], references: [id]) @map("questions")
-  idQuestion Int
+  Skills Skill @relation(fields: [idSkill], references: [id])
+  idSkill Int
 
   user User_Test[]
 }
@@ -78,19 +78,31 @@ model Answers {
   value String
   scale Scale
 
-  // userAnswer User[]
+  userTestAnswer User_Test[]
   Skills Skill[]
   
 }
 
 model Skill{
   id Int @id @default(autoincrement())
-  Sten String
+  Title String
+  Description String
 
   answers Answers @relation(fields: [idAnswer], references: id)
   idAnswer Int
 
+  Alternative Alternatives @relation(fields: [idAlternative], references: id)
+  idAlternative Int
+
   Tests Test[]
+}
+
+model Alternatives {
+  id Int @id @default(autoincrement())
+  Content String
+
+  Skills Skill[]
+
 }
 
 
