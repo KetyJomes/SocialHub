@@ -1,6 +1,12 @@
 import background from "../assets/supergraphic.svg";
+import { Link, useNavigate } from "react-router-dom";
 
 export const Login = () => {
+  const navigateLogin = useNavigate();
+
+  function handleLogin() {
+    navigateLogin("/user-main");
+  }
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-center bg-cover"
@@ -41,13 +47,17 @@ export const Login = () => {
               />
           </div>
 
-          <div className="flex justify-center mb-10">
-            <a href="#" className="underline">
-              Se Cadastrar
-            </a>
-          </div>
+          <Link
+            to="/register"
+            className="block text-center underline mb-10"
+          >
+            Se Cadastrar
+          </Link>
 
-          <button className="bg-gray-300 hover:bg-gray-400 text-white font-bold py-3 rounded-xl transition">
+          <button
+            onClick={handleLogin}
+            className="bg-gray-300 hover:bg-gray-400 text-white font-bold py-3 rounded-xl transition"
+          >
             Entrar
           </button>
 

@@ -1,6 +1,12 @@
 import background from "../assets/supergraphic.svg";
+import {Link, useNavigate } from "react-router-dom";
 
 export const Register = () => {
+  const navigateRegister = useNavigate();
+
+  function handleRegister() {
+    navigateRegister("/login");
+  }
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-center bg-cover"
@@ -72,14 +78,18 @@ export const Register = () => {
             />
           </div>
 
-          <a
-            href="/login-page"
-            className="block text-center underline mb-8"
+          <Link
+            to="/login"
+            className="block text-center underline mb-10"
           >
-            Já possui uma conta?
-          </a>
+            Já possui conta?
+          </Link>
 
-          <button className="bg-gray-300 hover:bg-gray-400 text-white font-bold py-3 rounded-xl transition">
+
+          <button
+            onClick={handleRegister}
+            className="bg-gray-300 hover:bg-gray-400 text-white font-bold py-3 rounded-xl transition"
+          >
             Cadastrar
           </button>
 
