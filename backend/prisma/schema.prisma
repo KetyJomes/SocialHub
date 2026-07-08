@@ -20,8 +20,8 @@ model User {
   class Class @relation("StudentClass",fields: [idClass], references: id)
   idClass Int
 
-  userAnswer Answers @relation(fields: [idAnswer], references: id)
-  idAnswer Int
+  // userAnswer Answers @relation(fields: [idAnswer], references: id)
+  // idAnswer Int
 
   PICs Class[] @relation("PicClass")
 
@@ -78,7 +78,7 @@ model Answers {
   value String
   scale Scale
 
-  userAnswer User[]
+  // userAnswer User[]
   Skills Skill[]
   
 }
