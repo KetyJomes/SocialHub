@@ -194,15 +194,14 @@ export const ManagementMain = () => {
                     onClick={() => setIsOpen(false)}
                 />
             )}
-                <main>
+                <main className="mt-[10vh]">
                         <Header
                             isOpen={isOpen}
                             setIsOpen={setIsOpen}
                         />
 
-                        <div className="pt-28 px-10 pb-10">
                     <div className="p-10">
-                        <h1 className="text-3xl font-bold">
+                        <h1 className="font-bold text-3xl">
                             Bem-vindo(a), Gestor!
                         </h1>
                         <p className="text-gray-500">
@@ -424,7 +423,6 @@ export const ManagementMain = () => {
                                     </span>
                                 </div>
                             </div>
-                    </div>
                     </div>
                 </main>
         </div>

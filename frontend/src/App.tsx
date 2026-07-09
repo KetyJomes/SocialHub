@@ -5,6 +5,7 @@ import {Login} from "./pages/Login.jsx"
 import {Register} from "./pages/Register.jsx"
 import {UserMain} from "./pages/UserMain.jsx"
 import {ManagementMain} from "./pages/ManagementMain.jsx"
+import {ManagementClasses} from "./pages/ManagementClasses.jsx"
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/user-main" element={<UserMain />} />
           <Route path="/management-main" element={<ManagementMain />} />
+          <Route path="/management-classes" element={<ManagementClasses />} />
         </Routes>
       </BrowserRouter>
     </>
