@@ -24,12 +24,12 @@ export const ManagementClasses = () => {
 
         {
             nome: "Turma 2EM",
-            nota: 94
+            nota: 59
         },
 
         {
             nome: "Turma 3EM",
-            nota: 92
+            nota: 70
         },
 
         {
@@ -39,22 +39,22 @@ export const ManagementClasses = () => {
 
         {
             nome: "Turma 8A",
-            nota: 88
+            nota: 68
         },
 
         {
             nome: "Turma 7B",
-            nota: 86
+            nota: 50
         },
 
         {
             nome: "Turma 6A",
-            nota: 84
+            nota: 14
         },
 
         {
             nome: "Turma 5A",
-            nota: 82
+            nota: 86
         },
 
         {

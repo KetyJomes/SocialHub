@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
-import { Info } from "lucide-react";
-import { House } from "lucide-react";
+import { Info, ClipboardCheck, RotateCcw } from "lucide-react";
+
 
 import { Header } from "../components/Header";
 import { CardTurma } from "../components/CardTurma";
@@ -13,54 +13,67 @@ export const ManagementMain = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [turmaSelecionada, setTurmaSelecionada] = useState(null);
     const listaTurmas = useRef();
+
     const turmas = [
+
+        {
+            nome:"Turma 1EM",
+            alunos:35,
+            nota:98
+        },
 
         {
             nome:"Turma 9A",
             alunos:32,
-            nota:90
+            nota:96
         },
 
         {
             nome:"Turma 9B",
             alunos:28,
-            nota:85
+            nota:90
         },
 
         {
-            nome:"Turma 1EM",
-            alunos:35,
-            nota:95
+            nome:"Turma 5A",
+            alunos:29,
+            nota:86
         },
 
         {
-            nome:"Turma 2EM",
+            nome:"Turma 4A",
             alunos:30,
-            nota:88
+            nota:80
         },
 
         {
             nome:"Turma 3EM",
             alunos:33,
-            nota:91
+            nota:70
         },
 
         {
             nome:"Turma 8A",
             alunos:27,
-            nota:82
+            nota:68
+        },
+
+        {
+            nome:"Turma 2EM",
+            alunos:30,
+            nota:59
         },
 
         {
             nome:"Turma 7B",
             alunos:31,
-            nota:87
+            nota:50
         },
 
         {
             nome:"Turma 6A",
             alunos:25,
-            nota:79
+            nota:14
         }
 
     ];
@@ -309,10 +322,13 @@ export const ManagementMain = () => {
                                             flex
                                             items-center
                                             justify-center
-                                            text-xl
                                         "
                                     >
-                                        📩
+                                        <ClipboardCheck
+                                            size={20}
+                                            className="text-[#B8A4FF]"
+                                            strokeWidth={2}
+                                        />
                                     </div>
                                     <h2 className="text-xl font-bold">
                                         Avaliações Enviadas
@@ -362,10 +378,13 @@ export const ManagementMain = () => {
                                         flex
                                         items-center
                                         justify-center
-                                        text-xl
                                     "
                                 >
-                                    🔄
+                                    <RotateCcw
+                                        size={20}
+                                        className="text-[#B8A4FF]"
+                                        strokeWidth={2}
+                                    />
                                 </div>
                                 <h2 className="text-xl font-bold">
                                     Avaliações 360

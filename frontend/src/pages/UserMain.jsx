@@ -1,11 +1,15 @@
+// Tools
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+// Componentes
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
 
 import { CardNotificacaoAvaliacao } from "../components/CardNotificacaoAvaliacao";
 import { GraficoPessoal } from "../components/GraficoPessoal";
 
+// Imagens
 import bars from "../assets/bars.png";
 import people from "../assets/people.png";
 import exam from "../assets/exam.png";
@@ -17,8 +21,9 @@ import green from "../assets/green arrow.png";
 import purple from "../assets/purple arrow.png";
 
 export const UserMain = () => {
+    const navigate = useNavigate();
 
-    const [isOpen, setIsOpen] = useState(true);
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <>
@@ -33,7 +38,7 @@ export const UserMain = () => {
             setIsOpen={setIsOpen}
         />
 
-        <main className="user-main mt-[10vh]">
+        <main className="mt-[10vh]">
 
             {/* Conteudo tela */}
             <div className="user-container p-10">
@@ -42,9 +47,9 @@ export const UserMain = () => {
                     Bem-Vindo, Usuário!
                 </h1>
 
-                {/* <div className="flex justify-center">
+                <div className="flex justify-center">
                     <CardNotificacaoAvaliacao />
-                </div> */}
+                </div>
                 
                 {/* === Section de "Meu Desempenho" === */}
                 <div className="mt-15 flex items-center gap-4 mb-8">
@@ -192,13 +197,15 @@ export const UserMain = () => {
                         Acesso Rápido
                     </h1>
                 </div>
-
+                    
                 <section className="w-full p-2">
                     
                     {/* cards */}
+
                     <div className="flex flex-row gap-50 justify-center">
 
-                        <section className="flex items-center w-[20%] gap-4">
+                        {/* Avaliacao */}
+                        <section className="flex items-center w-[20%] gap-4" onClick={() => navigate("/avaliacoes")}>
 
                             <div className="w-30 h-20 bg-[#2563EB]/20 rounded-2xl flex items-center justify-center">
 
@@ -226,7 +233,8 @@ export const UserMain = () => {
 
                         </section>
 
-                        <section className="flex items-center w-[20%] gap-4">
+                        {/* Resultados */}
+                        <section className="flex items-center w-[20%] gap-4" onClick={() => navigate("/resultados")}>
 
                             <div className="w-30 h-20 bg-[#31A74E]/20 rounded-2xl flex items-center justify-center">
 
@@ -254,7 +262,8 @@ export const UserMain = () => {
 
                         </section>
 
-                        <section className="flex items-center w-[20%] gap-4">
+                        {/* Avaliacao 360 */}
+                        <section className="flex items-center w-[20%] gap-4"  onClick={() => navigate("/360")}>
 
                             <div className="w-20 h-20 bg-[#6e12c3]/20 rounded-2xl flex items-center justify-center">
 

@@ -2,7 +2,39 @@ import { useState } from "react";
 import { GraduationCap } from "lucide-react";
 
 export const CardTurmaRanking = ({ turma, nota }) => {
+
     const [clicado, setClicado] = useState(false);
+
+    function corChapeu(nota) {
+
+        if (nota >= 90) {
+            return {
+                fundo: "bg-[#EEF4FF]",
+                icone: "text-[#93C5FD]"
+            };
+        }
+
+        if (nota >= 75) {
+            return {
+                fundo: "bg-[#F0FDF4]",
+                icone: "text-[#86EFAC]"
+            };
+        }
+
+        if (nota >= 60) {
+            return {
+                fundo: "bg-[#FFFBEB]",
+                icone: "text-[#FDE68A]"
+            };
+        }
+
+        return {
+            fundo: "bg-[#FEF2F2]",
+            icone: "text-[#FCA5A5]"
+        };
+    }
+
+    const cores = corChapeu(nota);
 
     return (
         <div
@@ -23,20 +55,23 @@ export const CardTurmaRanking = ({ turma, nota }) => {
             <div className="flex items-center gap-3">
 
                 <div
-                    className="
+                    className={`
                         w-10
                         h-10
                         rounded-full
-                        bg-[#F1EDFF]
                         flex
                         items-center
                         justify-center
-                    "
+                        ${cores.fundo}
+                    `}
                 >
+
                     <GraduationCap
                         size={20}
-                        className="text-[#B8A4FF]"
+                        className={cores.icone}
+                        strokeWidth={2}
                     />
+
                 </div>
 
                 <div>
@@ -45,19 +80,13 @@ export const CardTurmaRanking = ({ turma, nota }) => {
                         {turma}
                     </h3>
 
-                    <span
-                        className="
-                            text-sm
-                            text-gray-500
-                        "
-                    >
+                    <span className="text-sm text-gray-500">
                         Desempenho geral da turma
                     </span>
 
                 </div>
 
             </div>
-
 
             <div className="flex items-center gap-5">
 
@@ -68,29 +97,27 @@ export const CardTurmaRanking = ({ turma, nota }) => {
                         px-3
                         py-1
                         rounded-lg
-                        text-gray-600
-                        font-medium
+                        text-gray-700
+                        font-semibold
                     "
                 >
                     {nota}%
                 </span>
 
                 <button
-
                     onClick={() => setClicado(!clicado)}
-
                     className={`
                         text-2xl
                         font-bold
+                        text-[#B8A4FF]
                         transition
                         duration-200
 
                         ${
                             clicado
-                                ? "text-[#B8A4FF] scale-125"
-                                : "text-[#B8A4FF]"
+                            ? "scale-125"
+                            : ""
                         }
-
                     `}
                 >
                     ›

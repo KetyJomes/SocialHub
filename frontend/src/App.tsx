@@ -6,6 +6,10 @@ import {Register} from "./pages/Register.jsx"
 import {UserMain} from "./pages/UserMain.jsx"
 import {ManagementMain} from "./pages/ManagementMain.jsx"
 import {ManagementClasses} from "./pages/ManagementClasses.jsx"
+import {UserAvaliacoes} from "./pages/UserAvaliacoes"
+import {UserResultados} from "./pages/UserResultados"
+import {User360} from "./pages/User360"
+
 
 function App() {
 
@@ -18,6 +22,9 @@ function App() {
           <Route path="/user-main" element={<UserMain />} />
           <Route path="/management-main" element={<ManagementMain />} />
           <Route path="/management-classes" element={<ManagementClasses />} />
+          <Route path="/avaliacoes" element={<UserAvaliacoes />} />
+          <Route path="/resultados" element={<UserResultados />} />
+          <Route path="/360" element={<User360 />} />
         </Routes>
       </BrowserRouter>
     </>
