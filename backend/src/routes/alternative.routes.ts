@@ -3,10 +3,10 @@ import express from 'express';
 const route = express.Router();
 
 route
-    .post('/create')
-    .get('/findById/:id')
-    .get('/findAll')
-    .put('/update/:id')
-    .delete('/delete/:id')
+    .post('/alternative/create')
+    .get('/alternative/findById/:id')
+    .get('/alternative/findAll')
+    .put('/alternative/update/:id')
+    .delete('/alternative/delete/:id')
 
 export default route;
