@@ -13,5 +13,4 @@ route
     .delete('/class/delete/users/:id')
 
     
-
 export default route;
