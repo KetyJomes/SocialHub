@@ -5,13 +5,18 @@ import {
     GraduationCap,
     ChevronDown,
     ChevronRight,
+    LogOut
 } from "lucide-react";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 export const SidebarManagement = ({ isOpen }) => {
 
+    const navigate = useNavigate();
     const [abrirAvaliacoes, setAbrirAvaliacoes] = useState(false);
+
 
     return (
         <aside
@@ -28,40 +33,72 @@ export const SidebarManagement = ({ isOpen }) => {
                 transition-transform
                 duration-300
                 z-50
+                flex
+                flex-col
                 ${isOpen ? "translate-x-0" : "-translate-x-full"}
             `}
         >
 
-            <nav className="mt-6 px-4">
+            <nav className="mt-6 px-4 flex-1">
 
                 {isOpen && (
-                    <h2 className="text-xl font-bold text-gray-800 text-center mb-2 px-6">
+                    <h2 className="text-xl font-bold text-gray-800 text-center mb-2">
                         Menu
                     </h2>
                 )}
 
-                <button className="flex items-center gap-3 w-full p-3 rounded-lg hover:bg-gray-100">
+
+                {/* HOME */}
+                <button
+                    onClick={() => navigate("/management-main")}
+                    className="
+                        flex
+                        items-center
+                        gap-3
+                        w-full
+                        p-3
+                        rounded-lg
+                        hover:bg-gray-100
+                    "
+                >
                     <House size={20} />
+
                     {isOpen && <span>Home</span>}
+
                 </button>
 
+
+                {/* AVALIAÇÕES */}
                 <button
                     onClick={() => setAbrirAvaliacoes(!abrirAvaliacoes)}
-                    className="flex items-center justify-between w-full p-3 rounded-lg hover:bg-gray-100"
+                    className="
+                        flex
+                        items-center
+                        justify-between
+                        w-full
+                        p-3
+                        rounded-lg
+                        hover:bg-gray-100
+                    "
                 >
 
                     <div className="flex items-center gap-3">
+
                         <ClipboardList size={20} />
+
                         {isOpen && <span>Avaliações</span>}
+
                     </div>
 
-                    {isOpen &&
-                        (abrirAvaliacoes ? (
-                            <ChevronDown size={18} />
-                        ) : (
-                            <ChevronRight size={18} />
-                        ))}
+
+                    {isOpen && (
+                        abrirAvaliacoes
+                            ? <ChevronDown size={18} />
+                            : <ChevronRight size={18} />
+                    )}
+
                 </button>
+
 
                 {isOpen && abrirAvaliacoes && (
                     <div className="ml-8 mt-1 space-y-2">
@@ -77,17 +114,88 @@ export const SidebarManagement = ({ isOpen }) => {
                     </div>
                 )}
 
-                <button className="flex items-center gap-3 w-full p-3 rounded-lg hover:bg-gray-100">
+
+
+                {/* GERENCIAR AVALIAÇÕES */}
+                <button
+                    className="
+                        flex
+                        items-center
+                        gap-3
+                        w-full
+                        p-3
+                        rounded-lg
+                        hover:bg-gray-100
+                    "
+                >
+
                     <ClipboardCheck size={20} />
-                    {isOpen && <span>Gerenciar Avaliações</span>}
+
+                    {isOpen && (
+                        <span>
+                            Gerenciar Avaliações
+                        </span>
+                    )}
+
                 </button>
 
-                <button className="flex items-center gap-3 w-full p-3 rounded-lg hover:bg-gray-100">
+
+
+                {/* TURMAS */}
+                <button
+                    onClick={() => navigate("/management-classes")}
+                    className="
+                        flex
+                        items-center
+                        gap-3
+                        w-full
+                        p-3
+                        rounded-lg
+                        hover:bg-gray-100
+                    "
+                >
+
                     <GraduationCap size={20} />
+
                     {isOpen && <span>Turmas</span>}
+
                 </button>
+
 
             </nav>
+
+
+            {/* SAIR */}
+            <div className="px-4 pb-6">
+
+                <button
+                    onClick={() => navigate("/login")}
+                    className="
+                        flex
+                        items-center
+                        justify-center
+                        gap-3
+                        w-full
+                        p-3
+                        rounded-lg
+                        text-gray-500
+                        hover:bg-gray-100
+                        transition
+                    "
+                >
+
+                    <LogOut size={20} />
+
+                    {isOpen && (
+                        <span>
+                            Sair
+                        </span>
+                    )}
+
+                </button>
+
+            </div>
+
 
         </aside>
     );
