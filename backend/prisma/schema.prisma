@@ -52,15 +52,16 @@ model User_Test{
 model Test{
   id Int @id @default(autoincrement())
   Content String
-  Date DateTime
-  Grade Int
-  Type TestType
+  startDate DateTime
+  finalDate DateTime
+  grade Int
+  type TestType
+  AvaiableResult Boolean
 
   Skills Skill[]
 
   user User_Test[]
 }
-
 
 model Class {
   id Int @id @default (autoincrement())
@@ -126,4 +127,5 @@ enum Role {
   ADM
   Manager
 }
+
 
