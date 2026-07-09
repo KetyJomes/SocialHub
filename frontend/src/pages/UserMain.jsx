@@ -22,19 +22,18 @@ export const UserMain = () => {
 
     return (
         <>
-        <div className="flex h-screen">
 
         <Sidebar
             isOpen={isOpen}
             setIsOpen={setIsOpen}
         />
-        <main className="user-main">
 
-            <Header
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
+        <Header
+            isOpen={isOpen}
+            setIsOpen={setIsOpen}
+        />
 
+        <main className="user-main mt-[10vh]">
 
             {/* Conteudo tela */}
             <div className="user-container p-10">
@@ -293,7 +292,6 @@ export const UserMain = () => {
             </div>
 
         </main>
-        </div>
         </>
     );
 };
