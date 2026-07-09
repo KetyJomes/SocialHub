@@ -26,13 +26,25 @@ export const LinhaAvaliacao = ({
 
     };
 
+
+
+    function abrirAvaliacao(){
+
+        navigate(`/avaliacoes/${avaliacao.id}`);
+
+    }
+
+
+
     return (
 
         <tr className="border-b border-gray-200 hover:bg-gray-50 transition">
 
+
             <td className="px-6 py-5">
 
                 <div className="flex items-center gap-4">
+
 
                     <div className={`w-14 h-14 rounded-full flex items-center justify-center ${avaliacao.bgIcon}`}>
 
@@ -43,6 +55,7 @@ export const LinhaAvaliacao = ({
                         />
 
                     </div>
+
 
                     <div>
 
@@ -57,13 +70,20 @@ export const LinhaAvaliacao = ({
 
                     </div>
 
+
                 </div>
 
             </td>
 
+
+
+
             <td className="text-center">
                 {avaliacao.tipo}
             </td>
+
+
+
 
             <td className="text-center">
 
@@ -86,6 +106,9 @@ export const LinhaAvaliacao = ({
                 </div>
 
             </td>
+
+
+
 
             <td className="text-center">
 
@@ -120,6 +143,9 @@ export const LinhaAvaliacao = ({
 
             </td>
 
+
+
+
             <td className="text-center">
 
                 <span className={`px-4 py-2 rounded-lg text-sm font-medium ${statusClasses[avaliacao.status]}`}>
@@ -129,6 +155,9 @@ export const LinhaAvaliacao = ({
                 </span>
 
             </td>
+
+
+
 
             <td className="text-center">
 

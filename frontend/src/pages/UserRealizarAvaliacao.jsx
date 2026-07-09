@@ -1,35 +1,63 @@
-import { useState } from "react"
+import { useState } from "react";
+import { Header } from "../components/Header";
+import { Sidebar } from "../components/Sidebar";
+import { EvaluationTable } from "../components/EvaluationTable";
 
-import { Header } from "../components/Header"
-import { Sidebar } from "../components/Sidebar"
-
+import { evaluation } from "../data/evaluation";
 
 export const UserRealizarAvaliacao = () => {
 
-    const [isOpen, setIsOpen] = useState(false)
+    const [answers, setAnswers] = useState({});
+    const [isOpen, setIsOpen] = useState(false);
 
-    return(
-        <>  
+    const handleSelect = (topicId, option) => {
+        setAnswers((prev) => ({
+            ...prev,
+            [topicId]: option,
+        }));
+    };
+
+    return (
+        <>
             <Sidebar
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
-
 
             <Header
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
 
-           <main className="mt-[8vh] h-[calc(100vh-11.5vh)]">
+            <main className="p-8 overflow-y-auto mt-[8vh]">
 
-                <div className="p-10 h-full flex flex-col">
+                <div className="w-[80vw] mx-auto">
 
-                    
+                    <h1 className="text-3xl font-bold">
+                        Avaliação 360°
+                    </h1>
+
+                    <p className="text-gray-500 mt-2 mb-8">
+                        Escolha apenas uma alternativa para cada competência.
+                    </p>
+
+                    <EvaluationTable
+                        data={evaluation}
+                        answers={answers}
+                        onSelect={handleSelect}
+                    />
+
+                    <div className="flex justify-center mt-10">
+
+                        <button className="bg-[#21528A] text-white rounded-xl px-12 py-4">
+                            Enviar Avaliação
+                        </button>
+
+                    </div>
 
                 </div>
 
             </main>
         </>
-    )
-}
+    );
+};

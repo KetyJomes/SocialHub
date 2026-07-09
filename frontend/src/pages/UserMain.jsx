@@ -38,7 +38,7 @@ export const UserMain = () => {
             setIsOpen={setIsOpen}
         />
 
-        <main className="mt-[10vh]">
+        <main className="mt-[8vh]">
 
             {/* Conteudo tela */}
             <div className="user-container p-10">
