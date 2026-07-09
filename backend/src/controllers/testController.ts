@@ -16,12 +16,23 @@ export default class TestController {
         }
     }
 
-    static async show(req: Request, res: Response){
+    static async showTest(req: Request, res: Response){
         const id = parseInt(req.params[0],10);
         try{
             const user = await showTest(id);
             return res.status(200).send(test)
 
+        }
+        catch(e){
+            return res.status(500).send({ response: 'Ocorreu algum erro no servidor'})
+        }
+    }
+
+    static async showTests(req: Request, res:Response){
+        try{
+            const tests = await showTests();
+
+            return res.status(200).send(tests)
         }
         catch(e){
             return res.status(500).send({ response: 'Ocorreu algum erro no servidor'})

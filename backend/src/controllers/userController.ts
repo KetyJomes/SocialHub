@@ -8,7 +8,7 @@ export default class UserController {
         try{
             await createUser(data);
 
-            return res.status(200).send({ response: "User cadastrado"});
+            return res.status(201).send({ response: "User cadastrado"});
         }
         catch (e) {
             return res.status(500).send({ response: "Ocorreu algum erro no servidor."})
@@ -16,11 +16,30 @@ export default class UserController {
 
     }
 
-    // static async show(req: Response, res: Response){
-    //     const id = parseInt(req.params[0],10);
-    //     try{
-    //         const user = await getUser();
-    //         return res.status(200).send(user);
-    //     }
-    // }
+    static async login(req: Request, res: Response){
+        const data: authUserDTO = req.body
+        try{
+            const user = await authUser(data);
+
+            return res.status(200).send({ response: "Bem vindo!"});
+        }
+        catch(e){
+            return res.status(500).send({ response: "Ocorreu algum erro no servidor."})
+        }
+    }
+
+    static async show(req: Request, res: Response){
+        const id = parseInt(req.params[0],10);
+        try{
+            const user = await getUser(id);
+            if (!user){
+                return res.status(404).send({ response: "usuario não encontrado"});
+            }
+            return res.status(200).send(user);
+        }
+        catch(e){
+            return res.status(500).send({ response: 'Ocorreu algum erro no servidor'});
+        }
+    }
+
 }

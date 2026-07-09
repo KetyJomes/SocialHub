@@ -6,6 +6,14 @@ import * as bcrypt from "bcryptjs";
 export const  createUser = async(data: createUserDTO)=>{
     const {name, email, password, EDV, classId, role} = data
     
+    const userExists = await prisma.user.findUnique({
+        where: {EDV:EDV}
+    });
+
+    if (userExists){
+        throw new Error ("Este EDV já está cadastrado!")
+    }
+
     return await prisma.user.create({
         data:{
             name:name,
