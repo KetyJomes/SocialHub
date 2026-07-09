@@ -1,94 +1,126 @@
 import {
-    ResponsiveContainer,
     BarChart,
     Bar,
     XAxis,
     YAxis,
-    CartesianGrid,
     Tooltip,
-    Cell,
+    ResponsiveContainer,
+    CartesianGrid,
+    Cell
 } from "recharts";
+
 
 export const GraficoTurmas = ({ dados }) => {
 
-    function corBarra(nota) {
+    function corDesempenho(nota) {
 
-    if (nota >= 90) {
-        return "#93C5FD"; 
+        if (nota >= 90) {
+            return "#93C5FD";
+        }
+
+        if (nota >= 75) {
+            return "#86EFAC";
+        }
+
+        if (nota >= 60) {
+            return "#FDE68A";
+        }
+
+        return "#FCA5A5";
     }
 
-    if (nota >= 75) {
-        return "#86EFAC"; 
-    }
 
-    if (nota >= 60) {
-        return "#FDE68A"; 
-    }
+    const dadosOrdenados = [...dados].sort(
+        (a, b) => b.nota - a.nota
+    );
 
-    return "#FCA5A5"; 
-    }
 
     return (
 
-        <ResponsiveContainer width="100%" height={520}>
+        <div
+            className="
+                h-[520px]
+                overflow-y-auto
+                pr-2
+            "
+        >
 
-            <BarChart
-                data={dados}
-                layout="vertical"
-                margin={{
-                    top: 10,
-                    right: 20,
-                    left: 10,
-                    bottom: 10,
+            <div
+                style={{
+                    height: `${dadosOrdenados.length * 55}px`
                 }}
             >
 
-                <CartesianGrid
-                    strokeDasharray="3 3"
-                    stroke="#E5E7EB"
-                />
-
-                <XAxis
-                    type="number"
-                    domain={[0, 100]}
-                    ticks={[0, 20, 40, 60, 80, 100]}
-                    tick={{ fontSize: 12 }}
-                />
-
-                <YAxis
-                    type="category"
-                    dataKey="nome"
-                    width={80}
-                    tick={{ fontSize: 13 }}
-                />
-
-                <Tooltip
-                    formatter={(value) => [`${value}%`, "Desempenho"]}
-                />
-
-                <Bar
-                    dataKey="nota"
-                    radius={[0, 8, 8, 0]}
+                <ResponsiveContainer
+                    width="100%"
+                    height="100%"
                 >
 
-                    {
+                    <BarChart
+                        data={dadosOrdenados}
+                        layout="vertical"
+                        margin={{
+                            top: 10,
+                            right: 30,
+                            left: 20,
+                            bottom: 10
+                        }}
+                    >
 
-                        dados.map((turma, index) => (
+                        <CartesianGrid
+                            strokeDasharray="3 3"
+                        />
 
-                            <Cell
-                                key={index}
-                                fill={corBarra(turma.nota)}
-                            />
+                        <XAxis
+                            type="number"
+                            domain={[0,100]}
+                            tickFormatter={(value)=>`${value}%`}
+                        />
 
-                        ))
+                        <YAxis
+                            type="category"
+                            dataKey="nome"
+                            width={70}
+                        />
 
-                    }
+                        <Tooltip
+                            formatter={(value)=>[
+                                `${value}%`,
+                                "Desempenho"
+                            ]}
+                        />
 
-                </Bar>
+                        <Bar
+                            dataKey="nota"
+                            radius={[
+                                0,
+                                8,
+                                8,
+                                0
+                            ]}
+                        >
 
-            </BarChart>
+                            {
+                                dadosOrdenados.map((item,index)=>(
 
-        </ResponsiveContainer>
+                                    <Cell
+                                        key={index}
+                                        fill={corDesempenho(item.nota)}
+                                    />
+
+                                ))
+                            }
+
+                        </Bar>
+
+                    </BarChart>
+
+                </ResponsiveContainer>
+
+            </div>
+
+        </div>
 
     );
+
 };
