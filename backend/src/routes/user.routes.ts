@@ -3,12 +3,12 @@ import express from 'express';
 const route = express.Router();
 
 route
-    .post('/create')
-    .get('/findAll')
-    .put('/update/:id')
-    .delete('/delete/:id')
-    .get('/findById/:id')
-    .get('/:id/perfomance')
-    .get('/:id/tests')
+    .post('/user/create')
+    .get('/user/findAll')
+    .put('/user/update/:id')
+    .delete('/user/delete/:id')
+    .get('/user/findById/:id')
+    .get('/user/:id/perfomance')
+    .get('/user/:id/tests')
 
 export default route;

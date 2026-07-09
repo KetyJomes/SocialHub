@@ -8,9 +8,9 @@ route
     .put('/class/update/:id')
     .delete('/class/delete/:id')
     .get('/class/findById/:id')
-    .post('/class/add/:id/users')
-    .post('/class/add/:id/users')
-    .delete('/class/delete/:id/users')
+    .post('/class/add/users/:id')
+    .post('/class/add/users/:id')
+    .delete('/class/delete/users/:id')
 
     
 
