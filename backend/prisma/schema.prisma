@@ -12,7 +12,7 @@ datasource db {
 model User {
   id Int @id @default (autoincrement())
   name String 
-  email String
+  email String @unique
   password String
   EDV Int @unique
   role Role
@@ -41,8 +41,10 @@ model User_Test{
   Tests Test @relation(fields: [idTest], references: id)
   idTest Int
 
-  userTestAnswer Answers @relation(fields: [idAnswer], references: id)
-  idAnswer Int
+  
+
+  userTestAnswer Answers[]
+
 
 }
 
@@ -54,8 +56,7 @@ model Test{
   Grade Int
   Type TestType
 
-  Skills Skill @relation(fields: [idSkill], references: [id])
-  idSkill Int
+  Skills Skill[]
 
   user User_Test[]
 }
@@ -76,10 +77,14 @@ model Class {
 model Answers {
   id Int @id @default(autoincrement())
   value String
-  scale Scale
+  scale Int
 
-  userTestAnswer User_Test[]
-  Skills Skill[]
+  userTestAnswer User_Test @relation(fields: [idUserTest], references: id)
+  idUserTest Int
+
+  skill Skill @relation(fields: [idSkill], references: [id])
+  idSkill Int
+
   
 }
 
@@ -88,13 +93,12 @@ model Skill{
   Title String
   Description String
 
-  answers Answers @relation(fields: [idAnswer], references: id)
-  idAnswer Int
 
-  Alternative Alternatives @relation(fields: [idAlternative], references: id)
-  idAlternative Int
+  Tests Test @relation(fields: [idTest], references: id)
+  idTest Int
 
-  Tests Test[]
+  Alternative Alternatives[]
+  Answer Answers[]
 }
 
 model Alternatives {
@@ -102,7 +106,8 @@ model Alternatives {
   Content String
   Scale Int
 
-  Skills Skill[]
+  Skills Skill @relation(fields: [idSkill], references: [id])
+  idSkill Int
 
 }
 
