@@ -10,7 +10,15 @@ export const Header = ({ isOpen, setIsOpen }) => {
 
                 <button
                     onClick={() => setIsOpen(!isOpen)}
-                    className="cursor-pointer"
+                    className="
+                        cursor-pointer
+                        p-2
+                        rounded-lg
+                        transition-all
+                        duration-200
+                        hover:bg-gray-100
+                        active:scale-95
+                    "
                 >
                     <img
                         src={menu}
