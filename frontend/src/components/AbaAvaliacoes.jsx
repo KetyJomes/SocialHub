@@ -67,8 +67,6 @@ export const AbaAvaliacoes = ({
 
                                 avaliacao={avaliacao}
 
-                                responderAvaliacao={responderAvaliacao}
-
                             />
 
                         )

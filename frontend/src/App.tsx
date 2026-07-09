@@ -9,6 +9,8 @@ import {ManagementClasses} from "./pages/ManagementClasses.jsx"
 import {UserAvaliacoes} from "./pages/UserAvaliacoes"
 import {UserResultados} from "./pages/UserResultados"
 import {User360} from "./pages/User360"
+import {UserRealizarAvaliacao} from "./pages/UserRealizarAvaliacao"
+
 
 
 function App() {
@@ -25,6 +27,7 @@ function App() {
           <Route path="/avaliacoes" element={<UserAvaliacoes />} />
           <Route path="/resultados" element={<UserResultados />} />
           <Route path="/360" element={<User360 />} />
+          <Route path="/realizar-avaliacao" element={<UserRealizarAvaliacao />} />
         </Routes>
       </BrowserRouter>
     </>
