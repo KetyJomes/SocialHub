@@ -1,4 +1,5 @@
 import { GraduationCap } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 export const CardTurma = ({
     turma,
@@ -7,6 +8,7 @@ export const CardTurma = ({
     selecionado,
     onClick
 }) => {
+    const navigate = useNavigate();
 
     function corChapeu(nota) {
 
@@ -42,7 +44,10 @@ export const CardTurma = ({
     return (
 
         <div
-            onClick={onClick}
+            onClick={() => {
+                onClick();
+                navigate(`/management-class/${encodeURIComponent(turma)}`);
+            }}
             className={`
                 min-w-[280px]
                 h-[150px]
