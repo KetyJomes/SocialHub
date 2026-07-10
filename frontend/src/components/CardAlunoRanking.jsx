@@ -1,13 +1,11 @@
 import { useState } from "react";
-import { GraduationCap } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { UserRound } from "lucide-react";
 
-export const CardTurmaRanking = ({ turma, nota }) => {
+export const CardAlunoRanking = ({ aluno, posicao }) => {
 
-    const navigate = useNavigate();
     const [clicado, setClicado] = useState(false);
 
-    function corChapeu(nota) {
+    function corPessoa(nota) {
 
         if (nota >= 90) {
             return {
@@ -36,18 +34,11 @@ export const CardTurmaRanking = ({ turma, nota }) => {
         };
     }
 
-    const cores = corChapeu(nota);
-
-    function abrirTurma() {
-        console.log("Abrindo turma:", turma);
-
-        navigate(`/management-class/${encodeURIComponent(turma)}`);
-    }
+    const cores = corPessoa(aluno.nota);
 
     return (
 
         <div
-            onClick={abrirTurma}
             className="
                 flex
                 items-center
@@ -64,12 +55,12 @@ export const CardTurmaRanking = ({ turma, nota }) => {
             "
         >
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
 
                 <div
                     className={`
-                        w-10
-                        h-10
+                        w-12
+                        h-12
                         rounded-full
                         flex
                         items-center
@@ -78,8 +69,8 @@ export const CardTurmaRanking = ({ turma, nota }) => {
                     `}
                 >
 
-                    <GraduationCap
-                        size={20}
+                    <UserRound
+                        size={22}
                         className={cores.icone}
                         strokeWidth={2}
                     />
@@ -89,11 +80,11 @@ export const CardTurmaRanking = ({ turma, nota }) => {
                 <div>
 
                     <h3 className="font-semibold text-gray-800">
-                        {turma}
+                        {posicao}º {aluno.nome}
                     </h3>
 
                     <span className="text-sm text-gray-500">
-                        Desempenho geral da turma
+                        Desempenho geral do aluno
                     </span>
 
                 </div>
@@ -113,14 +104,11 @@ export const CardTurmaRanking = ({ turma, nota }) => {
                         font-semibold
                     "
                 >
-                    {nota}%
+                    {aluno.nota}%
                 </span>
 
                 <button
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        setClicado(!clicado);
-                    }}
+                    onClick={() => setClicado(!clicado)}
                     className={`
                         text-2xl
                         font-bold
