@@ -48,32 +48,15 @@ export const CardTurmaRanking = ({ turma, nota }) => {
 
         <div
             onClick={abrirTurma}
-            className="
-                flex
-                items-center
-                justify-between
-                p-4
-                bg-white
-                rounded-xl
-                border
-                border-gray-200
-                transition
-                hover:shadow-sm
-                hover:-translate-y-1
-                cursor-pointer
-            "
+            className="flex items-center justify-between p-4bg-white rounded-xl border border-gray-200
+                transition hover:shadow-sm hover:-translate-y-1 cursor-pointer"
         >
 
             <div className="flex items-center gap-3">
 
                 <div
                     className={`
-                        w-10
-                        h-10
-                        rounded-full
-                        flex
-                        items-center
-                        justify-center
+                        w-10 h-10 rounded-full flex items-center justify-center
                         ${cores.fundo}
                     `}
                 >

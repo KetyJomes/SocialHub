@@ -1,85 +1,95 @@
-import { useState } from "react"
+import { Header } from "../components/Header";
+import { DashboardCard } from "../components/DashboardCard";
+import { TabelaAvaliacoes } from "../components/TabelaAvaliacoes";
 
-import { Header } from "../components/Header"
-import { Sidebar } from "../components/Sidebar"
+import { avaliacoes } from "../data/avaliacoes";
 
+import {
+    TrendingUp,
+    Users,
+    UserCog
+} from "lucide-react";
 
 export const UserResultados = () => {
 
-    const [isOpen, setIsOpen] = useState(false);
+    return (
 
-    return(
-        <>
-            <Sidebar
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
+        <main className="min-h-screen bg-[#F7F8FC] p-10">
 
-            <Header
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
+            <Header />
 
-            <main className="mt-[8vh]">
-                 <div className="mb-8">
+            <div className="mx-auto pt-28 pb-12">
 
-                    <h1 className="text-4xl font-bold text-gray-900">
-                    Olá, Fulano! 👋
+                {/* Saudação */}
+
+                <div>
+
+                    <h1 className="text-4xl font-bold text-gray-800">
+
+                        Olá, Usuário!
+
                     </h1>
 
-                    <p className="text-gray-500 text-lg mt-2">
-                    Acompanhe seu desempenho nas avaliações e continue evoluindo.
+                    <p className="text-gray-500 mt-2">
+
+                        Acompanhe seu desempenho nas avaliações e continue evoluindo.
+
                     </p>
 
                 </div>
 
                 {/* Cards */}
 
-                <div className="grid grid-cols-4 gap-6 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 justify-items-center mt-10">
 
-                    <SummaryCard
-                    icon={<TrendingUp size={26} />}
-                    title="Meu Desempenho Geral"
-                    color="#2563EB"
-                    value={75}
-                    label="Muito bom"
-                    variation="+10 p.p."
-                    positive
+                    <DashboardCard
+                        titulo="Meu Desempenho Geral"
+                        valor={75}
+                        descricao="Muito bom"
+                        cor="#2563EB"
+                        variacao="+10 p.p."
+                        positiva={true}
+                        Icone={TrendingUp}
                     />
 
-                    <SummaryCard
-                    icon={<Users size={26} />}
-                    title="Desempenho 360°"
-                    color="#7C3AED"
-                    value={55}
-                    label="Bom"
-                    variation="-5 p.p."
+                    <DashboardCard
+                        titulo="Desempenho 360°"
+                        valor={55}
+                        descricao="Bom"
+                        cor="#7C3AED"
+                        variacao="-5 p.p."
+                        positiva={false}
+                        Icone={Users}
                     />
 
-                    <SummaryCard
-                    icon={<UserCheck size={26} />}
-                    title="Avaliação Gestão"
-                    color="#10B981"
-                    value={68}
-                    label="Bom"
-                    variation="+8 p.p."
-                    positive
+                    <DashboardCard
+                        titulo="Avaliação Gestão"
+                        valor={68}
+                        descricao="Bom"
+                        cor="#10B981"
+                        variacao="+8 p.p."
+                        positiva={true}
+                        Icone={UserCog}
                     />
 
-                    <RankingCard />
                 </div>
 
                 {/* Tabela */}
 
-                <EvaluationTable evaluations={evaluations} />
+                <section className="mt-10 flex justify-center">
 
-                {/* Card inferior */}
+                    <TabelaAvaliacoes
+                        avaliacoes={avaliacoes}
+                    />
 
-                <div className="mt-8">
-                    <ImprovementCard />
-                </div>
+                </section>
 
-            </main>
-        </>
-    )
-}
+                {/* Card Final */}
+
+            </div>
+
+        </main>
+
+    );
+
+};
