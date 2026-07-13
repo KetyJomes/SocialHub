@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import { createTestDTO } from '../dtos/testDTO.ts';
-import { createTest, showTest, showTests } from '../services/testServices.ts';
+import { createTest, deleteTest, showTest, showTests } from '../services/testServices.ts';
 import test from 'node:test';
 
 export default class TestController {
@@ -36,6 +36,17 @@ export default class TestController {
         }
         catch(e){
             return res.status(500).send({ response: 'Ocorreu algum erro no servidor'})
+        }
+    }
+
+    static async deleteTest(req: Request, res: Response){
+        const id = parseInt(req.params[0],10);
+        try{
+            await deleteTest(id);
+            return res.status(200).send({ response: 'Prova exluida com sucesso'})
+        }
+        catch (e) {
+            return res.status(500).send({ repsponse: "A prova não pode ser deletada"})
         }
     }
 }

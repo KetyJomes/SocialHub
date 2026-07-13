@@ -58,7 +58,7 @@ export default class ClassController {
             return res.status(200).send({ response: 'Turma exluida com sucesso'})
         }
         catch (e) {
-            return res.status(500).send({ repsponse: "Aturma não pode ser deletada"})
+            return res.status(500).send({ repsponse: "A turma não pode ser deletada"})
         }
     }
 }

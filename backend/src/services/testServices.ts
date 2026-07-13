@@ -5,16 +5,18 @@ import { prisma } from "../lib/prisma.ts"
 export const createTest = async(data: createTestDTO)=>{
     const {  title, date, grade, type, skill, questions} = data;
 
-    return await prisma.Test({
+    return await prisma.test.create({
         data:{
             title:title,
             date: date,
             grade: grade,
             type: type,
             skill: skill,
-            questions: questions
+            questions: {
+                create: questions
         }
-    })
+    }
+    });
 }
 
 export const showTests = async()=>{
@@ -22,7 +24,7 @@ export const showTests = async()=>{
 }
 
 export const showTest = async(id: number)=>{
-    return await prisma.ticket.findUnique({
+    return await prisma.test.findUnique({
         where: {id},
         include: {
             questions: {
