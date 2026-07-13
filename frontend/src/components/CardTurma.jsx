@@ -109,19 +109,22 @@ export const CardTurma = ({
 
             <div className="flex justify-between items-center mt-5">
 
-                <a
-                    href="#"
-                    onClick={(e) => e.stopPropagation()}
+               <button
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        navigate(`/management-class/${encodeURIComponent(turma)}`);
+                    }}
                     className="
                         text-[#B8A4FF]
                         font-semibold
                         text-sm
                         hover:underline
                         transition
+                        cursor-pointer
                     "
                 >
                     Ver resultados &gt;
-                </a>
+                </button>
 
                 <span className="font-bold text-gray-700">
                     {nota}%

@@ -84,49 +84,49 @@ export const GraficoCompetencias = () => {
 
                         ))}
 
-                        <Label
-                            content={({ viewBox }) => {
+                       <Label
+                        content={({ viewBox }) => {
 
-                                const { cx, cy } = viewBox;
+                            const { cx, cy } = viewBox;
 
-                                return (
+                            return (
 
-                                    <text
+                                <text
+                                    x={cx}
+                                    y={cy}
+                                    textAnchor="middle"
+                                    dominantBaseline="middle"
+                                >
+
+                                    <tspan
                                         x={cx}
-                                        y={cy}
-                                        textAnchor="middle"
-                                        dominantBaseline="middle"
+                                        y={cy - 13}
+                                        fill="#1F2937"
+                                        style={{
+                                            fontSize: "28px",
+                                            fontWeight: 700
+                                        }}
                                     >
+                                        {media}%
+                                    </tspan>
 
-                                        <tspan
-                                            x={cx}
-                                            dy="-6"
-                                            fill="#1F2937"
-                                            style={{
-                                                fontSize: "28px",
-                                                fontWeight: 700
-                                            }}
-                                        >
-                                            {media}%
-                                        </tspan>
+                                    <tspan
+                                        x={cx}
+                                        y={cy + 8}
+                                        fill="#6B7280"
+                                        style={{
+                                            fontSize: "12px"
+                                        }}
+                                    >
+                                        Média
+                                    </tspan>
 
-                                        <tspan
-                                            x={cx}
-                                            dy="18"
-                                            fill="#6B7280"
-                                            style={{
-                                                fontSize: "12px"
-                                            }}
-                                        >
-                                            Média
-                                        </tspan>
+                                </text>
 
-                                    </text>
+                            );
 
-                                );
-
-                            }}
-                        />
+                        }}
+                    />
 
                     </Pie>
 
