@@ -1,11 +1,17 @@
 import { useState } from "react";
 import { UserRound } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-export const CardAlunoRanking = ({ aluno, posicao }) => {
+export const CardAlunoRanking = ({
+    aluno,
+    posicao,
+    turma
+}) => {
 
+    const navigate = useNavigate();
     const [clicado, setClicado] = useState(false);
 
-    function corPessoa(nota) {
+    function corIcone(nota) {
 
         if (nota >= 90) {
             return {
@@ -32,13 +38,19 @@ export const CardAlunoRanking = ({ aluno, posicao }) => {
             fundo: "bg-[#FEF2F2]",
             icone: "text-[#FCA5A5]"
         };
+
     }
 
-    const cores = corPessoa(aluno.nota);
+    const cores = corIcone(aluno.nota);
 
     return (
 
         <div
+            onClick={() =>
+                navigate(
+                    `/management-student/${encodeURIComponent(turma)}/${encodeURIComponent(aluno.nome)}`
+                )
+            }
             className="
                 flex
                 items-center
@@ -55,12 +67,12 @@ export const CardAlunoRanking = ({ aluno, posicao }) => {
             "
         >
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
 
                 <div
                     className={`
-                        w-12
-                        h-12
+                        w-10
+                        h-10
                         rounded-full
                         flex
                         items-center
@@ -70,7 +82,7 @@ export const CardAlunoRanking = ({ aluno, posicao }) => {
                 >
 
                     <UserRound
-                        size={22}
+                        size={20}
                         className={cores.icone}
                         strokeWidth={2}
                     />
@@ -108,19 +120,17 @@ export const CardAlunoRanking = ({ aluno, posicao }) => {
                 </span>
 
                 <button
-                    onClick={() => setClicado(!clicado)}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        setClicado(!clicado);
+                    }}
                     className={`
                         text-2xl
                         font-bold
                         text-[#B8A4FF]
                         transition
                         duration-200
-
-                        ${
-                            clicado
-                                ? "scale-125"
-                                : ""
-                        }
+                        ${clicado ? "scale-125" : ""}
                     `}
                 >
                     ›

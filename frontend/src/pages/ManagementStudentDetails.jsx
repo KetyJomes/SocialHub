@@ -1,66 +1,55 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { GraduationCap,Info,PieChart,BarChart3} from "lucide-react";
+import {
+    ClipboardList,
+    Info,
+    LineChart,
+    PieChart
+} from "lucide-react";
 
 import { Header } from "../components/Header";
 import { SidebarManagement } from "../components/SidebarManagement";
-import { CardAlunoRanking } from "../components/CardAlunoRanking";
-import { GraficoCompetencias } from "../components/GraficoCompetencias";
-import { GraficoAluno } from "../components/GraficoAluno";
+import { CardAvaliacaoAluno } from "../components/CardAvaliacaoAluno";
+import { GraficoEvolucaoAluno } from "../components/GraficoEvolucaoAluno";
+import { GraficoCompetenciasAluno } from "../components/GraficoCompetenciasAluno";
 
-export const ManagementClassDetails = () => {
+export const ManagementStudentDetails = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
-    const { turma } = useParams();
+    const { turma, aluno } = useParams();
 
-    const alunos = [
+    const avaliacoes = [
 
         {
-            nome: "Ana Souza",
-            nota: 98
+            titulo: "Gestor → Aluno",
+            quantidade: 4,
+            ultima: "12/07/2026",
+            tipo: "gestor"
         },
 
         {
-            nome: "João Silva",
-            nota: 95
+            titulo: "Aluno → Gestor",
+            quantidade: 4,
+            ultima: "12/07/2026",
+            tipo: "aluno"
         },
 
         {
-            nome: "Maria Oliveira",
-            nota: 90
+            titulo: "Autoavaliação",
+            quantidade: 4,
+            ultima: "12/07/2026",
+            tipo: "auto"
         },
 
         {
-            nome: "Pedro Santos",
-            nota: 82
-        },
-
-        {
-            nome: "Lucas Mendes",
-            nota: 76
-        },
-
-        {
-            nome: "Beatriz Costa",
-            nota: 68
-        },
-
-        {
-            nome: "Carlos Lima",
-            nota: 55
-        },
-
-        {
-            nome: "Julia Rocha",
-            nota: 45
+            titulo: "Avaliação 360°",
+            quantidade: 8,
+            ultima: "12/07/2026",
+            tipo: "360"
         }
 
     ];
-
-    const rankingAlunos = [...alunos].sort(
-        (a, b) => b.nota - a.nota
-    );
 
     return (
 
@@ -90,11 +79,15 @@ export const ManagementClassDetails = () => {
                 <div className="p-10">
 
                     <h1 className="text-3xl font-bold">
-                        {turma}
+                        {aluno}
                     </h1>
 
+                    <p className="text-lg text-black-1000 font-semibold mt2">
+                        {turma}
+                    </p>
+
                     <p className="text-gray-500">
-                        Visualize o desempenho dos alunos desta turma.
+                        Visualize o desempenho individual do aluno.
                     </p>
 
                     <section
@@ -106,7 +99,7 @@ export const ManagementClassDetails = () => {
                         "
                     >
 
-                        {/* CARD DOS ALUNOS */}
+                        {/* CARD DAS AVALIAÇÕES */}
 
                         <div
                             className="
@@ -116,9 +109,6 @@ export const ManagementClassDetails = () => {
                                 border-gray-100
                                 shadow-sm
                                 p-5
-                                flex
-                                flex-col
-                                h-full
                             "
                         >
 
@@ -136,7 +126,7 @@ export const ManagementClassDetails = () => {
                                     "
                                 >
 
-                                    <GraduationCap
+                                    <ClipboardList
                                         size={20}
                                         className="text-[#B8A4FF]"
                                     />
@@ -144,14 +134,14 @@ export const ManagementClassDetails = () => {
                                 </div>
 
                                 <h2 className="text-xl font-bold">
-                                    Alunos
+                                    Avaliações
                                 </h2>
 
                             </div>
 
                             <div
                                 className="
-                                    flex-1
+                                    h-[620px]
                                     space-y-3
                                     overflow-y-auto
                                     pr-2
@@ -159,16 +149,19 @@ export const ManagementClassDetails = () => {
                             >
 
                                 {
-                                    rankingAlunos.map((aluno, index) => (
 
-                                        <CardAlunoRanking
+                                    avaliacoes.map((avaliacao, index) => (
+
+                                        <CardAvaliacaoAluno
                                             key={index}
-                                            aluno={aluno}
-                                            posicao={index + 1}
-                                            turma={turma}
+                                            titulo={avaliacao.titulo}
+                                            quantidade={avaliacao.quantidade}
+                                            ultima={avaliacao.ultima}
+                                            tipo={avaliacao.tipo}
                                         />
 
                                     ))
+
                                 }
 
                             </div>
@@ -179,7 +172,51 @@ export const ManagementClassDetails = () => {
 
                         <div className="flex flex-col gap-8">
 
-                            {/* PIZZA */}
+                            {/* EVOLUÇÃO */}
+
+                            <div
+                                className="
+                                    bg-white
+                                    rounded-xl
+                                    border
+                                    border-gray-100
+                                    shadow-sm
+                                    p-5
+                                "
+                            >
+
+                                <div className="flex items-center gap-3 mb-5">
+
+                                    <div
+                                        className="
+                                            w-10
+                                            h-10
+                                            rounded-full
+                                            bg-[#F1EDFF]
+                                            flex
+                                            items-center
+                                            justify-center
+                                        "
+                                    >
+
+                                        <LineChart
+                                            size={20}
+                                            className="text-[#B8A4FF]"
+                                        />
+
+                                    </div>
+
+                                    <h2 className="text-xl font-bold">
+                                        Evolução Trimestral
+                                    </h2>
+
+                                </div>
+
+                                <GraficoEvolucaoAluno />
+
+                            </div>
+
+                            {/* COMPETÊNCIAS */}
 
                             <div
                                 className="
@@ -214,58 +251,12 @@ export const ManagementClassDetails = () => {
                                     </div>
 
                                     <h2 className="text-xl font-bold">
-                                        Competências da Turma
+                                        Competências do Aluno
                                     </h2>
 
                                 </div>
 
-                                <GraficoCompetencias />
-
-                            </div>
-
-                            {/* BARRAS */}
-
-                            <div
-                                className="
-                                    bg-white
-                                    rounded-xl
-                                    border
-                                    border-gray-100
-                                    shadow-sm
-                                    p-5
-                                "
-                            >
-
-                                <div className="flex items-center gap-3 mb-5">
-
-                                    <div
-                                        className="
-                                            w-10
-                                            h-10
-                                            rounded-full
-                                            bg-[#F1EDFF]
-                                            flex
-                                            items-center
-                                            justify-center
-                                        "
-                                    >
-
-                                        <BarChart3
-                                            size={20}
-                                            className="text-[#B8A4FF]"
-                                        />
-
-                                    </div>
-
-                                    <h2 className="text-xl font-bold">
-                                        Desempenho dos Alunos
-                                    </h2>
-
-                                </div>
-
-                                <GraficoAluno
-                                    dados={rankingAlunos}
-                                />
+                                <GraficoCompetenciasAluno />
 
                             </div>
 
@@ -301,7 +292,7 @@ export const ManagementClassDetails = () => {
                             />
 
                             <span className="text-sm text-gray-600">
-                                Clique em um aluno para visualizar informações detalhadas.
+                                Visualize a evolução do aluno e compare os resultados das avaliações realizadas.
                             </span>
 
                         </div>
