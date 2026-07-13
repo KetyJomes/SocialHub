@@ -82,7 +82,7 @@ export const ManagementStudentDetails = () => {
                         {aluno}
                     </h1>
 
-                    <p className="text-lg text-black-1000 font-semibold mt2">
+                    <p className="text-lg font-semibold mt-1">
                         {turma}
                     </p>
 
@@ -158,6 +158,8 @@ export const ManagementStudentDetails = () => {
                                             quantidade={avaliacao.quantidade}
                                             ultima={avaliacao.ultima}
                                             tipo={avaliacao.tipo}
+                                            turma={turma}
+                                            aluno={aluno}
                                         />
 
                                     ))

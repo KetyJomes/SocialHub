@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import {
     UserCog,
     User,
@@ -5,61 +6,126 @@ import {
     Users
 } from "lucide-react";
 
+function configuracao(tipo) {
+
+    switch(tipo) {
+
+        case "gestor":
+
+            return {
+                Icone: UserCog,
+                fundo: "bg-[#F1EDFF]",
+                icone: "text-[#B8A4FF]"
+            };
+
+
+        case "aluno":
+
+            return {
+                Icone: User,
+                fundo: "bg-blue-100",
+                icone: "text-blue-500"
+            };
+
+
+        case "auto":
+
+            return {
+                Icone: UserRound,
+                fundo: "bg-green-100",
+                icone: "text-green-500"
+            };
+
+
+        case "360":
+
+            return {
+                Icone: Users,
+                fundo: "bg-yellow-100",
+                icone: "text-yellow-500"
+            };
+
+
+        default:
+
+            return {
+                Icone: User,
+                fundo: "bg-gray-100",
+                icone: "text-gray-500"
+            };
+
+    }
+
+}
+
 export const CardAvaliacaoAluno = ({
     titulo,
     quantidade,
     ultima,
-    tipo
+    tipo,
+    turma,
+    aluno
 }) => {
 
-    function configuracao(tipo) {
+    const navigate = useNavigate();
+
+
+    function abrirTela() {
 
         switch (tipo) {
 
             case "gestor":
-                return {
-                    Icone: UserCog,
-                    fundo: "bg-[#EEF4FF]",
-                    icone: "text-[#93C5FD]"
-                };
+
+                navigate(
+                    `/management-student/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/gestor`
+                );
+
+                break;
+
 
             case "aluno":
-                return {
-                    Icone: User,
-                    fundo: "bg-[#F0FDF4]",
-                    icone: "text-[#86EFAC]"
-                };
+
+                navigate(
+                    `/management-student-to-manager/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}`
+                );
+
+                break;
+
 
             case "auto":
-                return {
-                    Icone: UserRound,
-                    fundo: "bg-[#FFFBEB]",
-                    icone: "text-[#FDE68A]"
-                };
+
+                navigate(
+                    `/management-self-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}`
+                );
+
+                break;
+
 
             case "360":
-                return {
-                    Icone: Users,
-                    fundo: "bg-[#F3E8FF]",
-                    icone: "text-[#B8A4FF]"
-                };
+
+                navigate(
+                    `/management-360-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}`
+                );
+
+                break;
+
 
             default:
-                return {
-                    Icone: User,
-                    fundo: "bg-gray-100",
-                    icone: "text-gray-500"
-                };
+
+                break;
 
         }
 
     }
 
+
     const { Icone, fundo, icone } = configuracao(tipo);
+
 
     return (
 
         <div
+            onClick={abrirTela}
             className="
                 flex
                 items-center
@@ -98,15 +164,18 @@ export const CardAvaliacaoAluno = ({
 
                 </div>
 
+
                 <div>
 
                     <h3 className="font-semibold text-gray-800">
                         {titulo}
                     </h3>
 
+
                     <span className="text-sm text-gray-500">
                         {quantidade} avaliações
                     </span>
+
 
                     <p className="text-xs text-gray-400 mt-1">
                         Última: {ultima}
@@ -115,6 +184,7 @@ export const CardAvaliacaoAluno = ({
                 </div>
 
             </div>
+
 
             <button
                 className="
@@ -125,8 +195,11 @@ export const CardAvaliacaoAluno = ({
                     hover:scale-125
                 "
             >
+
                 ›
+
             </button>
+
 
         </div>
 
