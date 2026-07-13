@@ -18,6 +18,7 @@ import {UserAvaliacoes} from "./pages/UserAvaliacoes"
 import {UserResultados} from "./pages/UserResultados"
 import {User360} from "./pages/User360"
 import {UserRealizarAvaliacao} from "./pages/UserRealizarAvaliacao"
+import {UserComparacao} from "./pages/UserComparacao"
 
 
 
@@ -44,6 +45,7 @@ function App() {
           <Route path="/resultados" element={<UserResultados />} />
           <Route path="/360" element={<User360 />} />
           <Route path="/realizar-avaliacao" element={<UserRealizarAvaliacao />} />
+          <Route path="/comparacao" element={<UserComparacao />} />
         </Routes>
       </BrowserRouter>
     </>

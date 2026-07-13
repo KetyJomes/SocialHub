@@ -1,48 +1,52 @@
 export const avaliacoes = [
-
     {
         id: 1,
-        nome: "Comunicação",
-        descricao: "Avalie a comunicação da equipe e clareza das informações.",
-        tipo: "Trimestral",
-        disponibilizada: "01/05/2025",
-        infoDisponibilizada: "2 dias atrás",
-        prazo: "10/05/2025",
-        infoPrazo: "7 dias restantes",
-        status: "Pendente",
-        respondida: false,
-        acao: "Responder",
-        bgIcon: "bg-[#EEE8FF]"
+        nome: "Avaliação 360° - 1º Semestre 2024",
+        subtitulo: "Ciclo Semestral",
+        tipo: "360°",
+        data: "20/06/2024",
+        situacao: "Concluída",
+        desempenho: 55,
+        conceito: "Bom"
     },
-
     {
         id: 2,
-        nome: "Trabalho em Equipe",
-        descricao: "Avalie a colaboração, apoio e sinergia entre as pessoas.",
-        tipo: "Semestral",
-        disponibilizada: "15/04/2025",
-        infoDisponibilizada: "18 dias atrás",
-        prazo: "22/05/2025",
-        infoPrazo: "19 dias restantes",
-        status: "Em andamento",
-        respondida: false,
-        acao: "Continuar",
-        bgIcon: "bg-[#FFF4DD]"
+        nome: "Avaliação Gestão - 1º Semestre 2024",
+        subtitulo: "Ciclo Semestral",
+        tipo: "Gestão",
+        data: "18/06/2024",
+        situacao: "Concluída",
+        desempenho: 68,
+        conceito: "Bom"
     },
-
     {
         id: 3,
-        nome: "Proatividade",
-        descricao: "Avalie a iniciativa e busca por melhorias no dia a dia.",
-        tipo: "Trimestral",
-        disponibilizada: "20/04/2025",
-        infoDisponibilizada: "13 dias atrás",
-        prazo: "25/04/2025",
-        infoPrazo: "Vencido",
-        status: "Respondida",
-        respondida: true,
-        acao: "Visualizar",
-        bgIcon: "bg-[#FFEAEA]"
+        nome: "Autoavaliação - 1º Semestre 2024",
+        subtitulo: "Ciclo Semestral",
+        tipo: "Autoavaliação",
+        data: "15/06/2024",
+        situacao: "Concluída",
+        desempenho: 72,
+        conceito: "Muito bom"
+    },
+    {
+        id: 4,
+        nome: "Avaliação 360° - 2º Semestre 2023",
+        subtitulo: "Ciclo Semestral",
+        tipo: "360°",
+        data: "05/12/2023",
+        situacao: "Concluída",
+        desempenho: 48,
+        conceito: "Regular"
+    },
+    {
+        id: 5,
+        nome: "Avaliação Gestão - 2º Semestre 2023",
+        subtitulo: "Ciclo Semestral",
+        tipo: "Gestão",
+        data: "01/12/2023",
+        situacao: "Concluída",
+        desempenho: 62,
+        conceito: "Bom"
     }
-
 ];
