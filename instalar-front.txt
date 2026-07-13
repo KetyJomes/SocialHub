@@ -1,0 +1,4 @@
+npm install chart.js react-chartjs-2
+npm install chartjs-plugin-datalabels
+npm install lucide-react
+npm run dev -- --force
