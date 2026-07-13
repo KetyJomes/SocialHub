@@ -109,6 +109,23 @@ export const CardAvaliacaoAluno = ({
 
                 break;
 
+            case "lider-aluno":
+
+                navigate(
+                    `/management-student-to-leader/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}`
+                );
+
+                break;
+
+
+            case "lider-turma":
+
+                navigate(
+                    `/management-leader-to-class/${encodeURIComponent(turma)}`
+                );
+
+                break;
+
 
             default:
 

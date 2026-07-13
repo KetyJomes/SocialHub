@@ -9,6 +9,11 @@ import {ManagementClasses} from "./pages/ManagementClasses.jsx"
 import {ManagementClassDetails} from "./pages/ManagementClassDetails.jsx"
 import {ManagementStudentDetails} from "./pages/ManagementStudentDetails.jsx"
 import {ManagementManagerToStudent} from "./pages/ManagementManagerToStudent.jsx"
+import {ManagementStudentToManager } from "./pages/ManagementStudentToManager.jsx"
+import {ManagementSelfEvaluation} from "./pages/ManagementSelfEvaluation.jsx"
+import {Management360Evaluation } from "./pages/Management360Evaluation.jsx";
+import {ManagementStudentToLeader } from "./pages/ManagementStudentToLeader.jsx";
+import {ManagementLeaderToClass } from "./pages/ManagementLeaderToClass.jsx";
 import {UserAvaliacoes} from "./pages/UserAvaliacoes"
 import {UserResultados} from "./pages/UserResultados"
 import {User360} from "./pages/User360"
@@ -30,6 +35,11 @@ function App() {
           <Route path="/management-class/:turma" element={<ManagementClassDetails />} />
           <Route path="/management-student/:turma/:aluno" element={<ManagementStudentDetails />} />
           <Route path="/management-student/:turma/:aluno/gestor" element={<ManagementManagerToStudent />} />
+          <Route path="/management-student-to-manager/:turma/:aluno" element={<ManagementStudentToManager />} />
+          <Route path="/management-self-evaluation/:turma/:aluno" element={<ManagementSelfEvaluation />} />
+          <Route path="/management-360-evaluation/:turma/:aluno" element={<Management360Evaluation />} />
+          <Route path="/management-student-to-leader/:turma/:aluno" element={<ManagementStudentToLeader />} />
+          <Route path="//management-leader-to-class/:turma" element={<ManagementLeaderToClass />} />
           <Route path="/avaliacoes" element={<UserAvaliacoes />} />
           <Route path="/resultados" element={<UserResultados />} />
           <Route path="/360" element={<User360 />} />

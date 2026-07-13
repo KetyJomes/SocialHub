@@ -47,6 +47,20 @@ export const ManagementStudentDetails = () => {
             quantidade: 8,
             ultima: "12/07/2026",
             tipo: "360"
+        },
+
+        {
+            titulo: "Aluno → Líder de Turma",
+            quantidade: 4,
+            ultima: "12/07/2026",
+            tipo: "lider-aluno"
+        },
+
+        {
+            titulo: "Líder de Turma → Turma",
+            quantidade: 4,
+            ultima: "12/07/2026",
+            tipo: "lider-turma"
         }
 
     ];
