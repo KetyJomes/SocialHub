@@ -14,7 +14,7 @@ export const createClass = async(data: createClassDTO)=>{
     })
 }
 
-export const updateClass = async(data: updateClassDTO)=>{
+export const updateClass = async(id: number, data: updateClassDTO)=>{
     const { period, avarageScore, students} = data;
     return await prisma.ticket.update({
         where: {id: id},
@@ -22,4 +22,20 @@ export const updateClass = async(data: updateClassDTO)=>{
 
     })
 
+}
+
+export const showClasses = async()=>{
+    return await prisma.class.findmany();
+}
+
+export const showClass = async(id:number)=>{
+    return await prisma.class.findUnique({
+        where: {id: id}
+    })
+}
+
+export const deleteClass = async(id: number)=>{
+    return await prisma.class.delete({
+        where: {id:id}
+    })
 }
