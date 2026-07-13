@@ -1,5 +1,5 @@
 
 export interface createSkillDTO{
-    title: string,
-    description: string 
+    Title: string,
+    Description: string 
 }

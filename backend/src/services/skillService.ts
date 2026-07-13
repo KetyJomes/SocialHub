@@ -2,9 +2,11 @@
 // import {prisma} from "../lib/prisma.ts"
 
 // export const createSkill = async(data: createSkillDTO)=>{
-//     const { title, description } = data
+//     const { Title, Description } = data
 
-//     return await prisma.skill.
+//     return await prisma.skill.create({
+//         data: { Title, Description}
+//     })
 // }
 
 
