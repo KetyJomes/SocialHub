@@ -31,3 +31,9 @@ export const showTest = async(id: number)=>{
         }
     });
 }
+
+export const deleteTest = async(id: number)=>{
+    return await prisma.test.delete({
+        where: {id:id}
+    })
+}
