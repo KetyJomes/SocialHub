@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { Header } from "../components/Header";
 import { SidebarManagement } from "../components/SidebarManagement";
-import { AbaManagementEvaluation } from "../components/AbaManagementEvaluation";
+import { AbaManagementView } from "../components/AbaManagementView";
 
 
 export const ManagementStudentToManager = () => {
@@ -19,47 +19,27 @@ export const ManagementStudentToManager = () => {
 
         {
             id: 1,
-
             nome: "1º Trimestre",
-
             descricao: "Avaliação do gestor realizada pelo aluno",
-
             tipo: "Trimestral",
-
             disponibilizada: "01/07/2026",
-
             infoDisponibilizada: "Disponível",
-
             prazo: "20/07/2026",
-
             infoPrazo: "10 dias restantes",
-
             status: "Pendente",
-
-            acao: "Avaliar"
         },
 
 
         {
             id: 2,
-
             nome: "2º Trimestre",
-
             descricao: "Avaliação do gestor realizada pelo aluno",
-
             tipo: "Trimestral",
-
             disponibilizada: "01/04/2026",
-
             infoDisponibilizada: "Finalizada",
-
             prazo: "20/04/2026",
-
             infoPrazo: "Concluída",
-
             status: "Respondida",
-
-            acao: "Visualizar"
         },
 
 
@@ -285,9 +265,9 @@ export const ManagementStudentToManager = () => {
 
                             (
 
-                                <AbaManagementEvaluation
+                                <AbaManagementView
                                     avaliacoes={disponiveis}
-                                    podeAvaliar={false}
+                                    tipoAba="disponiveis"
                                 />
 
                             )
@@ -300,9 +280,9 @@ export const ManagementStudentToManager = () => {
 
                             (
 
-                                <AbaManagementEvaluation
+                                <AbaManagementView
                                     avaliacoes={feitas}
-                                    podeAvaliar={false}
+                                    tipoAba="feitas"
                                 />
 
                             )

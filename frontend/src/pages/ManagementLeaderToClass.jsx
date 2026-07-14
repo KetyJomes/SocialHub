@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { Header } from "../components/Header";
 import { SidebarManagement } from "../components/SidebarManagement";
-import { AbaManagementEvaluation } from "../components/AbaManagementEvaluation";
-
+import { AbaManagementView } from "../components/AbaManagementView";
 
 export const ManagementLeaderToClass = () => {
 
@@ -20,48 +19,28 @@ export const ManagementLeaderToClass = () => {
 
         {
             id: 1,
-
             nome: "Avaliação Geral da Turma",
-
             descricao: "Avaliação realizada pelo líder sobre o desempenho da turma",
-
             tipo: "Turma",
-
             disponibilizada: "01/07/2026",
-
             infoDisponibilizada: "Disponível",
-
             prazo: "20/07/2026",
-
             infoPrazo: "10 dias restantes",
-
             status: "Pendente",
-
-            acao: "Avaliar"
         },
 
 
-        {
+       {
             id: 2,
-
-            nome: "Avaliação Geral da Turma - 2º Ciclo",
-
-            descricao: "Avaliação realizada pelo líder sobre o desempenho da turma",
-
-            tipo: "Turma",
-
-            disponibilizada: "01/04/2026",
-
-            infoDisponibilizada: "Finalizada",
-
-            prazo: "20/04/2026",
-
-            infoPrazo: "Concluída",
-
-            status: "Respondida",
-
-            acao: "Visualizar"
-        }
+            nome: "Avaliação Técnica",
+            descricao: "Avaliação das competências técnicas",
+            tipo: "Gestor → Aluno",
+            disponibilizada: "20/06/2026",
+            infoDisponibilizada: "há 22 dias",
+            prazo: "30/06/2026",
+            infoPrazo: "prazo encerrado",
+            status: "Em atraso",
+        },
 
     ]);
 
@@ -98,15 +77,19 @@ export const ManagementLeaderToClass = () => {
 
     const disponiveis = avaliacoes.filter(
 
-        avaliacao => avaliacao.status === "Pendente"
+        avaliacao =>
+
+            avaliacao.status === "Pendente" ||
+
+            avaliacao.status === "Em atraso"
 
     );
 
-
-
     const feitas = avaliacoes.filter(
 
-        avaliacao => avaliacao.status === "Respondida"
+        avaliacao =>
+
+            avaliacao.status === "Respondida"
 
     );
 
@@ -219,10 +202,14 @@ export const ManagementLeaderToClass = () => {
                         {
                             abaAtiva === "disponiveis" &&
 
-                            <AbaManagementEvaluation
-                                avaliacoes={disponiveis}
-                                podeAvaliar={false}
-                            />
+                            (
+
+                                <AbaManagementView
+                                    avaliacoes={disponiveis}
+                                    tipoAba="disponiveis"
+                                />
+
+                            )
                         }
 
 
@@ -230,10 +217,14 @@ export const ManagementLeaderToClass = () => {
                         {
                             abaAtiva === "feitas" &&
 
-                            <AbaManagementEvaluation
-                                avaliacoes={feitas}
-                                podeAvaliar={false}
-                            />
+                            (
+
+                                <AbaManagementView
+                                    avaliacoes={feitas}
+                                    tipoAba="feitas"
+                                />
+
+                            )
                         }
 
 

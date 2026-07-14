@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { Header } from "../components/Header";
 import { SidebarManagement } from "../components/SidebarManagement";
-import { AbaManagementEvaluation } from "../components/AbaManagementEvaluation";
+import { AbaManagementView } from "../components/AbaManagementView";
 
 
 export const ManagementStudentToLeader = () => {
@@ -20,47 +20,27 @@ export const ManagementStudentToLeader = () => {
 
         {
             id: 1,
-
             nome: "Avaliação do Líder - 1º Trimestre",
-
             descricao: "Avaliação do líder de turma realizada pelos alunos",
-
             tipo: "Liderança",
-
             disponibilizada: "01/07/2026",
-
             infoDisponibilizada: "Disponível",
-
             prazo: "20/07/2026",
-
             infoPrazo: "10 dias restantes",
-
             status: "Pendente",
-
-            acao: "Avaliar"
         },
 
 
         {
             id: 2,
-
             nome: "Avaliação do Líder - 2º Trimestre",
-
             descricao: "Avaliação do líder de turma realizada pelos alunos",
-
             tipo: "Liderança",
-
             disponibilizada: "01/04/2026",
-
             infoDisponibilizada: "Finalizada",
-
             prazo: "20/04/2026",
-
             infoPrazo: "Concluída",
-
             status: "Respondida",
-
-            acao: "Visualizar"
         }
 
     ]);
@@ -226,13 +206,17 @@ export const ManagementStudentToLeader = () => {
                     <section className="mt-8">
 
 
-                        {
+                       {
                             abaAtiva === "disponiveis" &&
 
-                            <AbaManagementEvaluation
-                                avaliacoes={disponiveis}
-                                podeAvaliar={false}
-                            />
+                            (
+
+                                <AbaManagementView
+                                    avaliacoes={disponiveis}
+                                    tipoAba="disponiveis"
+                                />
+
+                            )
                         }
 
 
@@ -240,10 +224,14 @@ export const ManagementStudentToLeader = () => {
                         {
                             abaAtiva === "feitas" &&
 
-                            <AbaManagementEvaluation
-                                avaliacoes={feitas}
-                                podeAvaliar={false}
-                            />
+                            (
+
+                                <AbaManagementView
+                                    avaliacoes={feitas}
+                                    tipoAba="feitas"
+                                />
+
+                            )
                         }
 
 
