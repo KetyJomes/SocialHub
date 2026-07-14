@@ -41,10 +41,7 @@ model User_Test{
   Tests Test @relation(fields: [idTest], references: id)
   idTest Int
 
-  
-
   userTestAnswer Answers[]
-
 
 }
 
@@ -93,7 +90,6 @@ model Skill{
   id Int @id @default(autoincrement())
   Title String
   Description String
-
 
   Tests Test @relation(fields: [idTest], references: id)
   idTest Int

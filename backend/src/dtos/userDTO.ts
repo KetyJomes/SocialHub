@@ -7,6 +7,11 @@ export interface createUserDTO{
     classId: number
 }
 
+export interface updateUserDTO{
+    name: string,
+    role: "Student" | "ADM" | "Leader" | "Manager"
+}
+
 export interface authUserDTO{
     EDV: number,
     password: string
