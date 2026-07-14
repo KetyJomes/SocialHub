@@ -12,7 +12,7 @@ datasource db {
 model User {
   id Int @id @default (autoincrement())
   name String 
-  email String
+  email String @unique
   password String
   EDV Int @unique
   role Role
@@ -20,11 +20,8 @@ model User {
   class Class @relation("StudentClass",fields: [idClass], references: id)
   idClass Int
 
-  userAnswer Answers @relation(fields: [idAnswer], references: id)
-  idAnswer Int
 
   PICs Class[] @relation("PicClass")
-
 
   Evaluated User_Test[] @relation("Evaluated")
 
@@ -44,23 +41,27 @@ model User_Test{
   Tests Test @relation(fields: [idTest], references: id)
   idTest Int
 
+  
+
+  userTestAnswer Answers[]
+
+
 }
 
 
 model Test{
   id Int @id @default(autoincrement())
   Content String
-  Date DateTime
-  Grade Int
-  Type String
+  startDate DateTime
+  finalDate DateTime
+  grade Int
+  type TestType
+  AvaiableResult Boolean
 
-  questions Questions @relation(fields: [idQuestion], references: [id])
-  idQuestion Int
+  Skills Skill[]
 
   user User_Test[]
 }
-
-
 
 model Class {
   id Int @id @default (autoincrement())
@@ -77,41 +78,48 @@ model Class {
 model Answers {
   id Int @id @default(autoincrement())
   value String
-  scale Scale
+  scale Int
 
-  userAnswer User[]
-  questions Questions[]
+  userTestAnswer User_Test @relation(fields: [idUserTest], references: id)
+  idUserTest Int
+
+  skill Skill @relation(fields: [idSkill], references: [id])
+  idSkill Int
+
   
-}
-
-model Questions{
-  id Int @id @default(autoincrement())
-  Sten String
-
-  answers Answers @relation(fields: [idAnswer], references: id)
-  idAnswer Int
-
-  Skills Skill[]
-  Tests Test[]
 }
 
 model Skill{
   id Int @id @default(autoincrement())
-  Name String 
+  Title String
+  Description String
 
-  question Questions @relation(fields: [idQuestion], references: id)
-  idQuestion Int
+
+  Tests Test @relation(fields: [idTest], references: id)
+  idTest Int
+
+  Alternative Alternatives[]
+  Answer Answers[]
+}
+
+model Alternatives {
+  id Int @id @default(autoincrement())
+  Content String
+  Scale Int
+
+  Skills Skill @relation(fields: [idSkill], references: [id])
+  idSkill Int
+
 }
 
 
 
-enum Scale {
-  BLUE
-  GREEN
-  GREY
-  YELLOW
-  RED
+enum TestType {
+  Self
+  Instructor
+  Group
 }
+
 
 enum Role {
   Student
@@ -119,3 +127,5 @@ enum Role {
   ADM
   Manager
 }
+
+
