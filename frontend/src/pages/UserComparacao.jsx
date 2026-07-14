@@ -145,7 +145,7 @@ export const UserComparacao = () => {
 
   return (
 
-    <div className="flex min-h-screen bg-[#F7F8FC]">
+    <div className="flex min-h-screen bg-[#F7F8FC] p-8">
 
 
       <Sidebar
@@ -196,11 +196,14 @@ export const UserComparacao = () => {
               <div
                 className="
                   flex
-                  gap-6
                   flex-1
-                  max-h-[820px]
+                  gap-6
+                  max-h-[70vh]
                   overflow-y-auto
-                  pr-3
+                  pr-2
+                  scrollbar-thin
+                  scrollbar-thumb-gray-300
+                  scrollbar-track-transparent
                 "
               >
 

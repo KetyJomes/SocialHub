@@ -30,9 +30,9 @@ export const UserResultados = () => {
                 setIsOpen={setIsOpen}
             />
 
-            <main className="min-h-screen bg-[#F7F8FC] p-10">
+            <main className="min-h-screen bg-[#F7F8FC] p-10 mt-[8vh]">
 
-                <div className="mx-auto pt-28 pb-12">
+                <div className="mx-auto pb-12">
 
                     {/* Saudação */}
 

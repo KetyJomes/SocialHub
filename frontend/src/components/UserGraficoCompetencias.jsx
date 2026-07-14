@@ -1,3 +1,5 @@
+// usado no UserResultados
+
 import {
     PieChart,
     Pie,

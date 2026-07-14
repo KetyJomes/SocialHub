@@ -1,3 +1,5 @@
+// usado no UserResultados
+
 import { ProgressCircle } from "./ProgressCircle";
 
 export const DashboardCard = ({titulo,

@@ -1,3 +1,5 @@
+// usado no UserComparacao
+
 import {
   Chart as ChartJS,
   ArcElement,

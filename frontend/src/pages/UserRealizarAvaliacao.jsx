@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
@@ -8,6 +9,12 @@ import { EvaluationTable } from "../components/EvaluationTable";
 import { evaluation } from "../data/evaluation";
 
 export const UserRealizarAvaliacao = () => {
+
+    const location = useLocation();
+
+    const params = new URLSearchParams(location.search);
+
+    const alunoAvaliado = params.get("avaliado");
 
     const navigate = useNavigate();
 
@@ -77,6 +84,31 @@ export const UserRealizarAvaliacao = () => {
                     <h1 className="text-3xl font-bold">
                         Avaliação 360°
                     </h1>
+
+                    {alunoAvaliado && (
+
+                        <div className="
+                            mt-5
+                            mb-8
+                            rounded-2xl
+                            border
+                            border-blue-200
+                            bg-blue-50
+                            px-6
+                            py-5
+                        ">
+
+                            <p className="text-sm text-gray-500">
+                                Você está avaliando
+                            </p>
+
+                            <h2 className="text-2xl font-semibold text-[#21528A]">
+                                {alunoAvaliado}
+                            </h2>
+
+                        </div>
+
+                    )}
 
                     <div className="flex justify-between items-center mt-2 mb-8">
 

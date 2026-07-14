@@ -1,14 +1,16 @@
-import { CalendarDays, Eye } from "lucide-react";
+import React, { useState } from "react";
+import { CalendarDays, Eye, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+import { SeletorAvaliacao360 } from "./SeletorAvaliacao360";
 
 export const LinhaAvaliacao = ({
     avaliacao
 }) => {
 
-
     const navigate = useNavigate();
 
+    const [mostrarAlunos, setMostrarAlunos] = useState(false);
 
     const statusClasses = {
 
@@ -22,165 +24,215 @@ export const LinhaAvaliacao = ({
             "bg-red-100 text-red-600",
 
         "Respondida":
+            "bg-green-100 text-green-700",
+
+        "Concluída":
             "bg-green-100 text-green-700"
 
     };
 
+    function abrirAvaliacao() {
 
+        if (avaliacao.nome.includes("360")) {
 
-    function abrirAvaliacao(){
+            setMostrarAlunos(true);
 
-        navigate(`/avaliacoes/${avaliacao.id}`);
+        } else {
+
+            navigate("/realizar-avaliacao");
+
+        }
 
     }
 
+    function selecionarAluno(aluno) {
 
+        setMostrarAlunos(false);
+
+        navigate(
+            `/realizar-avaliacao?avaliado=${encodeURIComponent(aluno.nome)}`
+        );
+
+    }
 
     return (
 
-        <tr className="border-b border-gray-200 hover:bg-gray-50 transition">
+        <React.Fragment>
 
+            <tr
+                className="
+                    border-b
+                    border-gray-200
+                    hover:bg-gray-50
+                    transition
+                "
+            >
 
-            <td className="px-6 py-5">
+                <td className="px-6 py-5">
 
-                <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-4">
 
+                        <div
+                            className="
+                                w-14
+                                h-14
+                                rounded-full
+                                bg-blue-100
+                                flex
+                                items-center
+                                justify-center
+                            "
+                        >
 
-                    <div className={`w-14 h-14 rounded-full flex items-center justify-center ${avaliacao.bgIcon}`}>
+                            <Users
+                                size={24}
+                                className="text-blue-600"
+                            />
 
-                        <img
-                            src={avaliacao.icon}
-                            alt=""
-                            className="w-7"
-                        />
+                        </div>
 
-                    </div>
+                        <div>
 
+                            <h1 className="font-semibold text-gray-800">
 
-                    <div>
+                                {avaliacao.nome}
 
-                        <h1 className="font-semibold text-gray-800">
-                            {avaliacao.nome}
-                        </h1>
+                            </h1>
 
+                            <p className="text-sm text-gray-500">
 
-                        <p className="text-sm text-gray-500">
-                            {avaliacao.descricao}
-                        </p>
+                                {avaliacao.descricao}
 
-                    </div>
+                            </p>
 
-
-                </div>
-
-            </td>
-
-
-
-
-            <td className="text-center">
-                {avaliacao.tipo}
-            </td>
-
-
-
-
-            <td className="text-center">
-
-                <div className="flex flex-col items-center">
-
-                    <div className="flex items-center gap-2">
-
-                        <CalendarDays size={15}/>
-
-                        {avaliacao.disponibilizada}
+                        </div>
 
                     </div>
 
+                </td>
 
-                    <span className="text-sm text-gray-500">
-                        {avaliacao.infoDisponibilizada}
-                    </span>
+                <td className="text-center">
 
+                    {avaliacao.tipo}
 
-                </div>
+                </td>
 
-            </td>
+                <td className="text-center">
 
+                    <div className="flex items-center justify-center gap-2">
 
+                        <CalendarDays size={15} />
 
+                        <div className="flex flex-col">
 
-            <td className="text-center">
+                            <span>
 
-                <div className="flex flex-col items-center">
+                                {avaliacao.disponibilizada}
 
+                            </span>
 
-                    <div className="flex items-center gap-2">
+                            <span className="text-xs text-gray-500">
 
-                        <CalendarDays size={15}/>
+                                {avaliacao.infoDisponibilizada}
 
-                        {avaliacao.prazo}
+                            </span>
+
+                        </div>
 
                     </div>
 
+                </td>
 
-                    <span 
-                        className={`text-sm ${
-                            avaliacao.infoPrazo === "Vencido"
-                            ?
-                            "text-red-500"
-                            :
-                            "text-gray-500"
-                        }`}
+                <td className="text-center">
+
+                    <div className="flex flex-col">
+
+                        <span>
+
+                            {avaliacao.prazo}
+
+                        </span>
+
+                        <span className="text-xs text-gray-500">
+
+                            {avaliacao.infoPrazo}
+
+                        </span>
+
+                    </div>
+
+                </td>
+
+                <td className="text-center">
+
+                    <span
+                        className={`
+                            px-4
+                            py-2
+                            rounded-lg
+                            text-sm
+                            font-medium
+                            ${
+                                statusClasses[avaliacao.status] ||
+                                "bg-gray-100 text-gray-600"
+                            }
+                        `}
                     >
 
-                        {avaliacao.infoPrazo}
+                        ● {avaliacao.status}
 
                     </span>
 
+                </td>
 
-                </div>
+                <td className="text-center">
 
-            </td>
+                    <button
 
+                        onClick={abrirAvaliacao}
 
+                        className="
+                            flex
+                            items-center
+                            gap-2
+                            mx-auto
+                            border
+                            border-[#6C63FF]
+                            text-[#6C63FF]
+                            rounded-lg
+                            px-4
+                            py-2
+                            hover:bg-[#6C63FF]
+                            hover:text-white
+                            transition
+                        "
 
+                    >
 
-            <td className="text-center">
+                        <Eye size={16} />
 
-                <span className={`px-4 py-2 rounded-lg text-sm font-medium ${statusClasses[avaliacao.status]}`}>
+                        {
+                            avaliacao.nome.includes("360")
+                                ? "Escolher"
+                                : avaliacao.acao
+                        }
 
-                    ● {avaliacao.status}
+                    </button>
 
-                </span>
+                </td>
 
-            </td>
+            </tr>            
+            
+            {mostrarAlunos && (
 
+                <SeletorAvaliacao360
+                    fechar={() => setMostrarAlunos(false)}
+                    selecionarAluno={selecionarAluno}
+                />
 
+            )}
 
-
-            <td className="text-center">
-
-
-                <button
-
-                    onClick={() => navigate("/realizar-avaliacao")}
-
-                    className="flex items-center gap-2 mx-auto border border-[#6C63FF] text-[#6C63FF] rounded-lg px-4 py-2 hover:bg-[#6C63FF] hover:text-white transition cursor-pointer"
-
-                >
-
-                    <Eye size={16}/>
-
-                    {avaliacao.acao}
-
-                </button>
-
-
-            </td>
-
-
-        </tr>
+        </React.Fragment>
 
     );
 

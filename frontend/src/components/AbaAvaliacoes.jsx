@@ -1,10 +1,15 @@
+// usado na UserAvaliações
+
 import { LinhaAvaliacao } from "./LinhaAvaliacao";
 
 
 export const AbaAvaliacoes = ({
-    avaliacoes,
-    responderAvaliacao
+    avaliacoes
 }) => {
+
+
+    console.log("AVALIACOES NA ABA:", avaliacoes);
+
 
 
     return (
@@ -23,31 +28,25 @@ export const AbaAvaliacoes = ({
                             Avaliação
                         </th>
 
-
                         <th>
                             Tipo
                         </th>
-
 
                         <th>
                             Disponibilizada
                         </th>
 
-
                         <th>
                             Prazo
                         </th>
-
 
                         <th>
                             Status
                         </th>
 
-
                         <th>
                             Ação
                         </th>
-
 
                     </tr>
 
@@ -59,7 +58,7 @@ export const AbaAvaliacoes = ({
 
 
                     {
-                        avaliacoes.map(avaliacao =>
+                        avaliacoes.map(avaliacao => (
 
                             <LinhaAvaliacao
 
@@ -69,7 +68,7 @@ export const AbaAvaliacoes = ({
 
                             />
 
-                        )
+                        ))
                     }
 
 

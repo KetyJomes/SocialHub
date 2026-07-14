@@ -1,3 +1,5 @@
+// usado no UserResultados
+
 import { ClipboardList, CalendarDays, ChevronRight } from "lucide-react";
 import { LinhaAvaliacaoDash } from "./LinhaAvaliacaoDash";
 
