@@ -286,11 +286,8 @@ export const ManagementStudentToManager = () => {
                             (
 
                                 <AbaManagementEvaluation
-
                                     avaliacoes={disponiveis}
-
-                                    responderAvaliacao={responderAvaliacao}
-
+                                    podeAvaliar={false}
                                 />
 
                             )
@@ -304,9 +301,8 @@ export const ManagementStudentToManager = () => {
                             (
 
                                 <AbaManagementEvaluation
-
                                     avaliacoes={feitas}
-
+                                    podeAvaliar={false}
                                 />
 
                             )

@@ -293,11 +293,8 @@ export const ManagementSelfEvaluation = () => {
                             (
 
                                 <AbaManagementEvaluation
-
                                     avaliacoes={disponiveis}
-
-                                    responderAvaliacao={responderAvaliacao}
-
+                                    podeAvaliar={false}
                                 />
 
                             )
@@ -311,9 +308,8 @@ export const ManagementSelfEvaluation = () => {
                             (
 
                                 <AbaManagementEvaluation
-
                                     avaliacoes={feitas}
-
+                                    podeAvaliar={false}
                                 />
 
                             )

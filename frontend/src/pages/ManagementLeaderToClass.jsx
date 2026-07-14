@@ -220,11 +220,8 @@ export const ManagementLeaderToClass = () => {
                             abaAtiva === "disponiveis" &&
 
                             <AbaManagementEvaluation
-
                                 avaliacoes={disponiveis}
-
-                                responderAvaliacao={responderAvaliacao}
-
+                                podeAvaliar={false}
                             />
                         }
 
@@ -234,9 +231,8 @@ export const ManagementLeaderToClass = () => {
                             abaAtiva === "feitas" &&
 
                             <AbaManagementEvaluation
-
                                 avaliacoes={feitas}
-
+                                podeAvaliar={false}
                             />
                         }
 

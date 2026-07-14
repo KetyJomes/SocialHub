@@ -295,11 +295,8 @@ export const Management360Evaluation = () => {
                             (
 
                                 <AbaManagementEvaluation
-
                                     avaliacoes={disponiveis}
-
-                                    responderAvaliacao={responderAvaliacao}
-
+                                    podeAvaliar={false}
                                 />
 
                             )
@@ -312,10 +309,9 @@ export const Management360Evaluation = () => {
 
                             (
 
-                                <AbaManagementEvaluation
-
+                               <AbaManagementEvaluation
                                     avaliacoes={feitas}
-
+                                    podeAvaliar={false}
                                 />
 
                             )
