@@ -31,6 +31,7 @@ export default class ClassController {
     static async showClasses(req: Request, res: Response){
     try{
         const classes = await showClasses();
+        
         return res.status(200).send(classes);
     }
 
