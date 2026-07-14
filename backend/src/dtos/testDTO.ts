@@ -11,11 +11,28 @@ export interface questionInputDTO {
 
 }
 
+export interface skillListDTO {
+    skillId: number
+}
+
 export interface createTestDTO {
-    title:string,
-    date: Date,
+    content:string,
+    startdate: Date,
+    finalDate: Date,
     grade: number,
+    AvailableResult: boolean,
     type: string,
-    skill:string,
+    skill:skillListDTO[],
     questions: questionInputDTO[],
+}
+
+export interface updateTestDTO{
+    content?:string,
+    startdate?: Date,
+    finalDate?: Date,
+    grade?: number,
+    AvailableResult?: boolean,
+    type?: string,
+    skill?:skillListDTO[],
+    questions?: questionInputDTO[]
 }
