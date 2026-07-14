@@ -47,7 +47,7 @@ export const showTests = async()=>{
 
 export const showTest = async(id: number)=>{
     return await prisma.test.findUnique({
-        where: {id},
+        where: {id:id},
         include: {
             questions: {
                 alternatives:true
@@ -121,3 +121,5 @@ export const removeSkil = async (testId: number, skillId: number)=>{
         }
     });
 };
+
+
