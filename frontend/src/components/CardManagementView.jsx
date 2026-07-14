@@ -6,26 +6,30 @@ import {
     FileText
 } from "lucide-react";
 
-export const CardManagementEvaluation = ({ avaliacao }) => {
+export const CardManagementView = ({
+    avaliacao,
+    tipoAba
+}) => {
 
     const navigate = useNavigate();
 
     const { turma, aluno } = useParams();
 
-    function abrirAvaliacao() {
+    function visualizar() {
 
-        if (avaliacao.acao === "Avaliar") {
+        if(tipoAba === "disponiveis") {
 
             navigate(
-                `/management-perform-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
+                `/management-answer-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
             );
 
-            return;
-        }
+        } else {
 
-        navigate(
-            `/management-view-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
-        );
+            navigate(
+                `/management-view-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
+            );
+
+        }
 
     }
 
@@ -131,34 +135,76 @@ export const CardManagementEvaluation = ({ avaliacao }) => {
 
             <td className="text-center">
 
-                <span
-                    className={`
-                        px-3
-                        py-1
-                        rounded-full
-                        text-sm
-                        font-medium
+                {
 
-                        ${
-                            avaliacao.status === "Respondida"
-                                ? "bg-green-100 text-green-700"
-                                : avaliacao.status === "Em atraso"
-                                ? "bg-red-100 text-red-700"
-                                : "bg-yellow-100 text-yellow-700"
-                        }
-                    `}
-                >
+                    tipoAba === "disponiveis"
 
-                    {avaliacao.status}
+                        ? (
 
-                </span>
+                            avaliacao.status === "Em atraso"
+
+                                ? (
+
+                                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-700">
+
+                                        Em atraso
+
+                                    </span>
+
+                                )
+
+                                : (
+
+                                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-700">
+
+                                        Pendente
+
+                                    </span>
+
+                                )
+
+                        )
+
+                        : (
+
+                            <span
+                                className={`
+                                    px-3
+                                    py-1
+                                    rounded-full
+                                    text-sm
+                                    font-medium
+
+                                    ${
+                                        avaliacao.status === "Respondida"
+
+                                            ? "bg-green-100 text-green-700"
+
+                                            : avaliacao.status === "Em atraso"
+
+                                                ? "bg-red-100 text-red-700"
+
+                                                : "bg-yellow-100 text-yellow-700"
+                                    }
+                                `}
+                            >
+
+                                {avaliacao.status}
+
+                            </span>
+
+                        )
+
+                }
 
             </td>
 
             <td className="text-center">
 
                 <button
-                    onClick={abrirAvaliacao}
+
+                    onClick={visualizar}
+
                     className="
                         flex
                         items-center
@@ -172,11 +218,12 @@ export const CardManagementEvaluation = ({ avaliacao }) => {
                         hover:opacity-90
                         transition
                     "
+
                 >
 
                     <Eye size={18} />
 
-                    {avaliacao.acao}
+                    Visualizar
 
                 </button>
 

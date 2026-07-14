@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { Header } from "../components/Header";
 import { SidebarManagement } from "../components/SidebarManagement";
-import { AbaManagementEvaluation } from "../components/AbaManagementEvaluation";
+import { AbaManagementView } from "../components/AbaManagementView";
 
 
 export const Management360Evaluation = () => {
@@ -20,70 +20,39 @@ export const Management360Evaluation = () => {
 
         {
             id: 1,
-
             nome: "Avaliação 360° - 1º Ciclo",
-
             descricao: "Avaliação envolvendo gestor, colegas e autoavaliação",
-
             tipo: "360°",
-
             disponibilizada: "01/07/2026",
-
             infoDisponibilizada: "Disponível",
-
             prazo: "20/07/2026",
-
             infoPrazo: "10 dias restantes",
-
             status: "Pendente",
-
-            acao: "Avaliar"
         },
 
 
         {
             id: 2,
-
-            nome: "Avaliação 360° - 2º Ciclo",
-
-            descricao: "Avaliação envolvendo gestor, colegas e autoavaliação",
-
-            tipo: "360°",
-
-            disponibilizada: "01/04/2026",
-
-            infoDisponibilizada: "Finalizada",
-
-            prazo: "20/04/2026",
-
-            infoPrazo: "Concluída",
-
-            status: "Respondida",
-
-            acao: "Visualizar"
+            nome: "Avaliação Técnica",
+            descricao: "Avaliação das competências técnicas",
+            tipo: "Gestor → Aluno",
+            disponibilizada: "20/06/2026",
+            infoDisponibilizada: "há 22 dias",
+            prazo: "30/06/2026",
+            infoPrazo: "prazo encerrado",
+            status: "Em atraso",
         },
-
 
         {
             id: 3,
-
             nome: "Avaliação 360° - 3º Ciclo",
-
             descricao: "Avaliação envolvendo gestor, colegas e autoavaliação",
-
             tipo: "360°",
-
             disponibilizada: "01/01/2026",
-
             infoDisponibilizada: "Finalizada",
-
             prazo: "20/01/2026",
-
             infoPrazo: "Concluída",
-
             status: "Respondida",
-
-            acao: "Visualizar"
         }
 
     ]);
@@ -294,12 +263,9 @@ export const Management360Evaluation = () => {
 
                             (
 
-                                <AbaManagementEvaluation
-
+                                <AbaManagementView
                                     avaliacoes={disponiveis}
-
-                                    responderAvaliacao={responderAvaliacao}
-
+                                    tipoAba="disponiveis"
                                 />
 
                             )
@@ -312,10 +278,9 @@ export const Management360Evaluation = () => {
 
                             (
 
-                                <AbaManagementEvaluation
-
+                                <AbaManagementView
                                     avaliacoes={feitas}
-
+                                    tipoAba="feitas"
                                 />
 
                             )
