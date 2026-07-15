@@ -19,9 +19,9 @@ import { ManagementViewEvaluation } from "./pages/ManagementViewEvaluation";
 import { ManagementAnswerEvaluation } from "./pages/ManagementAnswerEvaluation";
 import {UserAvaliacoes} from "./pages/UserAvaliacoes"
 import {UserResultados} from "./pages/UserResultados"
-import {User360} from "./pages/User360"
 import {UserRealizarAvaliacao} from "./pages/UserRealizarAvaliacao"
 import {UserComparacao} from "./pages/UserComparacao"
+import {UserAvaliacao360} from "./pages/UserAvaliacao360"
 
 
 
@@ -49,9 +49,9 @@ function App() {
          <Route path="/management-answer-evaluation/:turma/:aluno/:id"element={<ManagementAnswerEvaluation />}/>
           <Route path="/avaliacoes" element={<UserAvaliacoes />} />
           <Route path="/resultados" element={<UserResultados />} />
-          <Route path="/360" element={<User360 />} />
           <Route path="/realizar-avaliacao" element={<UserRealizarAvaliacao />} />
           <Route path="/comparacao" element={<UserComparacao />} />
+          <Route path="/360" element={<UserAvaliacao360 />} />
         </Routes>
       </BrowserRouter>
     </>
