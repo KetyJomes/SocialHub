@@ -24,7 +24,7 @@ export default class ClassController {
             return res.status(200).send({ response: 'Turma atualizada com sucesso'})
         }
         catch (e) {
-            return res.status(500).send({ rewsponse: "Ocorreu algum erro no servidor"})
+            return res.status(500).send({ response: "Ocorreu algum erro no servidor"})
         }
     }
 
