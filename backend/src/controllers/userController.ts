@@ -1,6 +1,6 @@
 import { Request, Response} from "express";
 import { createUserDTO, authUserDTO } from "../dtos/userDTO.ts";
-import { createUser, getUser, authUser } from "../services/userServices.ts";
+import { createUser, getUser, authUser, getUsers, updateUser  } from "../services/userServices.ts";
 
 export default class UserController {
     static async create(req: Request, res: Response){
@@ -28,7 +28,7 @@ export default class UserController {
         }
     }
 
-    static async show(req: Request, res: Response){
+    static async showUser(req: Request, res: Response){
         const id = parseInt(req.params[0],10);
         try{
             const user = await getUser(id);
@@ -41,5 +41,17 @@ export default class UserController {
             return res.status(500).send({ response: 'Ocorreu algum erro no servidor'});
         }
     }
+
+    static async showUsers(req: Request, res: Response){
+        try{
+            const users = await getUsers();
+            return res.status(200).send(users)
+        }
+        catch(e){
+            return res.status(500).send({response: 'Ocorreu algum erro'})
+        }
+    }
+
+    
 
 }

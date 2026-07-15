@@ -1,5 +1,5 @@
 import {Request,Response} from 'express';
-import { createClassDTO,updateClassDTO } from '../dtos/clasDTO.ts';
+import { createClassDTO,updateClassDTO } from '../dtos/classDTO.ts';
 import { createClass, updateClass, deleteClass, showClass, showClasses } from '../services/classServices.ts';
 
 export default class ClassController {
@@ -31,6 +31,7 @@ export default class ClassController {
     static async showClasses(req: Request, res: Response){
     try{
         const classes = await showClasses();
+        
         return res.status(200).send(classes);
     }
 

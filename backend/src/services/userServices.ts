@@ -48,13 +48,16 @@ export const authUser = async(data: authUserDTO)=>{
     return user;
 };
 
-export const getests = async(id:number)=>{
-    return await prisma.user.findUnique({
-        where:{
-            id:id
-        }
-    });
- };
+
+export const getUser = async(id: number) =>{
+    return await prisma.class.findUnique({
+        where: {id: id}
+    })
+}
+
+export const getUsers = async() =>{
+    return await prisma.class.findmany({})
+}
 
 
 

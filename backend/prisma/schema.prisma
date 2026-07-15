@@ -53,7 +53,7 @@ model Test{
   finalDate DateTime
   grade Int
   type TestType
-  AvaiableResult Boolean
+  AvailableResult Boolean
 
   Skills Skill[]
 
