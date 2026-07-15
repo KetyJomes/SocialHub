@@ -92,7 +92,15 @@ export const UserAvaliacao360 = () => {
 
                     <section className="mt-10">
 
-                        <TabelaColaboradores360
+                        <
+                            
+
+
+
+
+
+
+                            
                             colaboradores={colaboradores}
                         />
 
