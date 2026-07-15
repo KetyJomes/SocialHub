@@ -17,7 +17,17 @@ export const CardManagementView = ({
 
     function visualizar() {
 
-        if(tipoAba === "disponiveis") {
+        if (avaliacao.tipo === "360°") {
+
+            navigate(
+                `/management-360-evaluation-people/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}/${tipoAba}`
+            );
+
+            return;
+
+        }
+
+        if (tipoAba === "disponiveis") {
 
             navigate(
                 `/management-answer-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
@@ -36,6 +46,8 @@ export const CardManagementView = ({
     return (
 
         <tr className="border-b hover:bg-gray-50 transition">
+
+            {/* Avaliação */}
 
             <td className="px-6 py-5">
 
@@ -77,6 +89,8 @@ export const CardManagementView = ({
 
             </td>
 
+            {/* Tipo */}
+
             <td className="text-center">
 
                 <div className="flex items-center justify-center gap-2">
@@ -88,6 +102,8 @@ export const CardManagementView = ({
                 </div>
 
             </td>
+
+            {/* Disponibilizada */}
 
             <td className="text-center">
 
@@ -111,6 +127,8 @@ export const CardManagementView = ({
 
             </td>
 
+            {/* Prazo */}
+
             <td className="text-center">
 
                 <div className="flex flex-col items-center">
@@ -133,71 +151,81 @@ export const CardManagementView = ({
 
             </td>
 
-            <td className="text-center">
+            {/* Status - apenas avaliações normais */}
 
-                {
+            {
+                avaliacao.tipo !== "360°" && (
 
-                    tipoAba === "disponiveis"
+                    <td className="text-center">
 
-                        ? (
+                        {
 
-                            avaliacao.status === "Em atraso"
+                            tipoAba === "disponiveis"
 
                                 ? (
 
-                                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-700">
+                                    avaliacao.status === "Em atraso"
 
-                                        Em atraso
+                                        ? (
 
-                                    </span>
+                                            <span className="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-700">
+
+                                                Em atraso
+
+                                            </span>
+
+                                        )
+
+                                        : (
+
+                                            <span className="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-700">
+
+                                                Pendente
+
+                                            </span>
+
+                                        )
 
                                 )
 
                                 : (
 
-                                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-700">
+                                    <span
+                                        className={`
+                                            px-3
+                                            py-1
+                                            rounded-full
+                                            text-sm
+                                            font-medium
 
-                                        Pendente
+                                            ${
+                                                avaliacao.status === "Respondida"
+
+                                                    ? "bg-green-100 text-green-700"
+
+                                                    : avaliacao.status === "Em atraso"
+
+                                                        ? "bg-red-100 text-red-700"
+
+                                                        : "bg-yellow-100 text-yellow-700"
+                                            }
+                                        `}
+                                    >
+
+                                        {avaliacao.status}
 
                                     </span>
 
                                 )
 
-                        )
+                        }
 
-                        : (
+                    </td>
 
-                            <span
-                                className={`
-                                    px-3
-                                    py-1
-                                    rounded-full
-                                    text-sm
-                                    font-medium
+                )
+            }
 
-                                    ${
-                                        avaliacao.status === "Respondida"
-
-                                            ? "bg-green-100 text-green-700"
-
-                                            : avaliacao.status === "Em atraso"
-
-                                                ? "bg-red-100 text-red-700"
-
-                                                : "bg-yellow-100 text-yellow-700"
-                                    }
-                                `}
-                            >
-
-                                {avaliacao.status}
-
-                            </span>
-
-                        )
-
-                }
-
-            </td>
+            {/* Botão */}
 
             <td className="text-center">
 

@@ -31,9 +31,15 @@ export const AbaManagementView = ({
                             Prazo
                         </th>
 
-                        <th className="text-center">
-                            Status
-                        </th>
+                        {
+                            avaliacoes[0]?.tipo !== "360°" && (
+
+                                <th className="text-center">
+                                    Status
+                                </th>
+
+                            )
+                        }
 
                         <th className="text-center">
                             Ação
@@ -50,13 +56,9 @@ export const AbaManagementView = ({
                         avaliacoes.map((avaliacao) => (
 
                             <CardManagementView
-
                                 key={avaliacao.id}
-
                                 avaliacao={avaliacao}
-
                                 tipoAba={tipoAba}
-
                             />
 
                         ))

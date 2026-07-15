@@ -35,7 +35,7 @@ export const Management360Evaluation = () => {
             id: 2,
             nome: "Avaliação Técnica",
             descricao: "Avaliação das competências técnicas",
-            tipo: "Gestor → Aluno",
+            tipo: "360°",
             disponibilizada: "20/06/2026",
             infoDisponibilizada: "há 22 dias",
             prazo: "30/06/2026",

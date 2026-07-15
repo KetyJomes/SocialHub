@@ -5,7 +5,6 @@ import { Header } from "../components/Header";
 import { SidebarManagement } from "../components/SidebarManagement";
 import { AbaManagementView } from "../components/AbaManagementView";
 
-
 export const ManagementStudentToManager = () => {
 
     const [isOpen, setIsOpen] = useState(false);
@@ -152,7 +151,6 @@ export const ManagementStudentToManager = () => {
 
 
             <main className="mt-[8vh] h-[calc(100vh-11.5vh)]">
-
 
                 <div className="p-10 h-full flex flex-col">
 

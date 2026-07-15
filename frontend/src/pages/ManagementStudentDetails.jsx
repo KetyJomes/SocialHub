@@ -115,7 +115,7 @@ export const ManagementStudentDetails = () => {
 
             )}
 
-            <main className="mt-[10vh]">
+            <main className="mt-[8vh]">
 
                 <Header
                     isOpen={isOpen}
@@ -187,7 +187,7 @@ export const ManagementStudentDetails = () => {
 
                             <div
                                 className="
-                                    h-[620px]
+                                    flex-1
                                     space-y-3
                                     overflow-y-auto
                                     pr-2
@@ -230,6 +230,8 @@ export const ManagementStudentDetails = () => {
                                     border-gray-100
                                     shadow-sm
                                     p-5
+                                    flex
+                                    flex-col
                                 "
                             >
 

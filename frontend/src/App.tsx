@@ -16,7 +16,8 @@ import {ManagementStudentToLeader } from "./pages/ManagementStudentToLeader.jsx"
 import {ManagementLeaderToClass } from "./pages/ManagementLeaderToClass.jsx";
 import {ManagementPerformEvaluation} from "./pages/ManagementPerformEvaluation.jsx";
 import { ManagementViewEvaluation } from "./pages/ManagementViewEvaluation";
-import { ManagementAnswerEvaluation } from "./pages/ManagementAnswerEvaluation";
+import {ManagementAnswerEvaluation } from "./pages/ManagementAnswerEvaluation";
+import {Management360EvaluationPeople} from "./pages/Management360EvaluationPeople";
 import {UserAvaliacoes} from "./pages/UserAvaliacoes"
 import {UserResultados} from "./pages/UserResultados"
 import {UserRealizarAvaliacao} from "./pages/UserRealizarAvaliacao"
@@ -46,7 +47,8 @@ function App() {
           <Route path="//management-leader-to-class/:turma" element={<ManagementLeaderToClass />} />
           <Route path="/management-perform-evaluation/:turma/:aluno/:id"element={<ManagementPerformEvaluation />}/>
           <Route path="/management-view-evaluation/:turma/:aluno/:id"element={<ManagementViewEvaluation />}/>
-         <Route path="/management-answer-evaluation/:turma/:aluno/:id"element={<ManagementAnswerEvaluation />}/>
+          <Route path="/management-answer-evaluation/:turma/:aluno/:id"element={<ManagementAnswerEvaluation />}/>
+          <Route path="/management-360-evaluation-people/:turma/:aluno/:avaliacao/:tipoAba" element={<Management360EvaluationPeople />}/>
           <Route path="/avaliacoes" element={<UserAvaliacoes />} />
           <Route path="/resultados" element={<UserResultados />} />
           <Route path="/realizar-avaliacao" element={<UserRealizarAvaliacao />} />
