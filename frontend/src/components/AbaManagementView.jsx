@@ -12,6 +12,7 @@ export const AbaManagementView = ({
             <table className="w-full">
 
                 <thead>
+
                     <tr className="border-b text-gray-500">
 
                         <th className="text-left py-4 px-6">
@@ -30,11 +31,22 @@ export const AbaManagementView = ({
                             Prazo
                         </th>
 
+                        {
+                            avaliacoes[0]?.tipo !== "360°" && (
+
+                                <th className="text-center">
+                                    Status
+                                </th>
+
+                            )
+                        }
+
                         <th className="text-center">
                             Ação
                         </th>
 
                     </tr>
+
                 </thead>
 
                 <tbody>
