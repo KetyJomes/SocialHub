@@ -17,7 +17,16 @@ export const CardManagementView = ({
 
     function visualizar() {
 
-        if(tipoAba === "disponiveis") {
+        if (avaliacao.tipo === "360°") {
+
+            navigate(
+                `/management-360-evaluation-people/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}/${tipoAba}`
+            );
+
+            return;
+        }
+
+        if (tipoAba === "disponiveis") {
 
             navigate(
                 `/management-answer-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
@@ -130,72 +139,6 @@ export const CardManagementView = ({
                     </span>
 
                 </div>
-
-            </td>
-
-            <td className="text-center">
-
-                {
-
-                    tipoAba === "disponiveis"
-
-                        ? (
-
-                            avaliacao.status === "Em atraso"
-
-                                ? (
-
-                                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-700">
-
-                                        Em atraso
-
-                                    </span>
-
-                                )
-
-                                : (
-
-                                    <span className="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-700">
-
-                                        Pendente
-
-                                    </span>
-
-                                )
-
-                        )
-
-                        : (
-
-                            <span
-                                className={`
-                                    px-3
-                                    py-1
-                                    rounded-full
-                                    text-sm
-                                    font-medium
-
-                                    ${
-                                        avaliacao.status === "Respondida"
-
-                                            ? "bg-green-100 text-green-700"
-
-                                            : avaliacao.status === "Em atraso"
-
-                                                ? "bg-red-100 text-red-700"
-
-                                                : "bg-yellow-100 text-yellow-700"
-                                    }
-                                `}
-                            >
-
-                                {avaliacao.status}
-
-                            </span>
-
-                        )
-
-                }
 
             </td>
 

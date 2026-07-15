@@ -12,7 +12,6 @@ export const AbaManagementView = ({
             <table className="w-full">
 
                 <thead>
-
                     <tr className="border-b text-gray-500">
 
                         <th className="text-left py-4 px-6">
@@ -32,15 +31,10 @@ export const AbaManagementView = ({
                         </th>
 
                         <th className="text-center">
-                            Status
-                        </th>
-
-                        <th className="text-center">
                             Ação
                         </th>
 
                     </tr>
-
                 </thead>
 
                 <tbody>
@@ -50,13 +44,9 @@ export const AbaManagementView = ({
                         avaliacoes.map((avaliacao) => (
 
                             <CardManagementView
-
                                 key={avaliacao.id}
-
                                 avaliacao={avaliacao}
-
                                 tipoAba={tipoAba}
-
                             />
 
                         ))
