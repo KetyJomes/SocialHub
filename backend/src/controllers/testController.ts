@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import { createTestDTO } from '../dtos/testDTO.ts';
-import { createTest, deleteTest, showTest, showTests } from '../services/testServices.ts';
+import { createTest, deleteTest, showTest, showTests, updateTest, allowAccess, cancelAcess, publishtest,addSkil,removeSkil} from '../services/testServices.ts';
 import test from 'node:test';
 
 export default class TestController {
@@ -23,6 +23,7 @@ export default class TestController {
             return res.status(200).send(test)
 
         }
+        
         catch(e){
             return res.status(500).send({ response: 'Ocorreu algum erro no servidor'})
         }
