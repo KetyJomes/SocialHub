@@ -55,7 +55,7 @@ export const getUser = async(id: number) =>{
     })
 }
 
-export const getUsers = async(id: number) =>{
+export const getUsers = async() =>{
     return await prisma.class.findmany({})
 }
 

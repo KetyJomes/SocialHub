@@ -44,12 +44,14 @@ export default class UserController {
 
     static async showUsers(req: Request, res: Response){
         try{
-            const users = await this.getUsers();
+            const users = await getUsers();
             return res.status(200).send(users)
         }
         catch(e){
-            return.status(500).send({response: 'Ocorreu algum erro'})
+            return res.status(500).send({response: 'Ocorreu algum erro'})
         }
     }
+
+    
 
 }
