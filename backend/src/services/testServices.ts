@@ -79,7 +79,7 @@ export const allowAccess = async (testeId: number) => {
     });
 };
 
-export const cancelAcess = async (testeId: number) =>{
+export const cancelAccess = async (testeId: number) =>{
     const published = new Date();
 
     return await prisma.test.update({
@@ -100,7 +100,7 @@ export const publishtest = async (testeId: number, startDate: Date, finalDate: D
     });
 };
 
-export const addSkil = async (testId: number, skillId: number)=>{
+export const addSkill = async (testId: number, skillId: number)=>{
     return await prisma.test.update({
         where: {id: testId},
         data:{
@@ -111,7 +111,7 @@ export const addSkil = async (testId: number, skillId: number)=>{
     });
 };
 
-export const removeSkil = async (testId: number, skillId: number)=>{
+export const removeSkill = async (testId: number, skillId: number)=>{
     return await prisma.test.update({
         where: {id: testId},
         data:{
