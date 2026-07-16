@@ -1,8 +1,7 @@
 import {Request, Response} from 'express';
 import { createTestDTO, updateTestDTO } from '../dtos/testDTO.ts';
-import { createTest, deleteTest, showTest, showTests, updateTest, allowAccess, cancelAcess, publishtest,addSkill,removeSkill} from '../services/testServices.ts';
-import { updateUserDTO } from '../dtos/userDTO.ts';
-import { updateUser } from '../services/userServices.ts';
+import { createTest, deleteTest, showTest, showTests, updateTest, allowAccess, cancelAccess, publishtest,addSkill,removeSkill} from '../services/testServices.ts';
+
 // import test from 'node:test';
 
 export default class TestController {
@@ -89,7 +88,7 @@ export default class TestController {
             return res.status(400).send({response: "Teste não encontrado" })
         }
         try{
-            await cancelAcess(id);
+            await cancelAccess(id);
             return res.status(200).send({response: 'Acesso ao teste liberado'})
         } catch (e) {
             return res.status(500).send({ response: "Erro ao liberar acesso do teste"})
