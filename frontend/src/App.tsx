@@ -4,6 +4,11 @@ import './App.css'
 import {Login} from "./pages/Login.jsx"
 import {Register} from "./pages/Register.jsx"
 import {UserMain} from "./pages/UserMain.jsx"
+import {UserAvaliacoes} from "./pages/UserAvaliacoes"
+import {UserResultados} from "./pages/UserResultados"
+import {UserRealizarAvaliacao} from "./pages/UserRealizarAvaliacao"
+import {UserComparacao} from "./pages/UserComparacao"
+import {UserAvaliacao360} from "./pages/UserAvaliacao360"
 import {ManagementMain} from "./pages/ManagementMain.jsx"
 import {ManagementClasses} from "./pages/ManagementClasses.jsx"
 import {ManagementClassDetails} from "./pages/ManagementClassDetails.jsx"
@@ -18,13 +23,8 @@ import {ManagementPerformEvaluation} from "./pages/ManagementPerformEvaluation.j
 import { ManagementViewEvaluation } from "./pages/ManagementViewEvaluation";
 import {ManagementAnswerEvaluation } from "./pages/ManagementAnswerEvaluation";
 import {Management360EvaluationPeople} from "./pages/Management360EvaluationPeople";
-import {UserAvaliacoes} from "./pages/UserAvaliacoes"
-import {UserResultados} from "./pages/UserResultados"
-import {UserRealizarAvaliacao} from "./pages/UserRealizarAvaliacao"
-import {UserComparacao} from "./pages/UserComparacao"
-import {UserAvaliacao360} from "./pages/UserAvaliacao360"
-
-
+import { EvaluationManagement } from "./pages/EvaluationManagement";
+import { CreateEvaluation } from "./pages/CreateEvaluation";
 
 function App() {
 
@@ -35,6 +35,11 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/user-main" element={<UserMain />} />
+          <Route path="/avaliacoes" element={<UserAvaliacoes />} />
+          <Route path="/resultados" element={<UserResultados />} />
+          <Route path="/realizar-avaliacao" element={<UserRealizarAvaliacao />} />
+          <Route path="/comparacao" element={<UserComparacao />} />
+          <Route path="/360" element={<UserAvaliacao360 />} />
           <Route path="/management-main" element={<ManagementMain />} />
           <Route path="/management-classes" element={<ManagementClasses />} />
           <Route path="/management-class/:turma" element={<ManagementClassDetails />} />
@@ -49,11 +54,8 @@ function App() {
           <Route path="/management-view-evaluation/:turma/:aluno/:id"element={<ManagementViewEvaluation />}/>
           <Route path="/management-answer-evaluation/:turma/:aluno/:id"element={<ManagementAnswerEvaluation />}/>
           <Route path="/management-360-evaluation-people/:turma/:aluno/:avaliacao/:tipoAba" element={<Management360EvaluationPeople />}/>
-          <Route path="/avaliacoes" element={<UserAvaliacoes />} />
-          <Route path="/resultados" element={<UserResultados />} />
-          <Route path="/realizar-avaliacao" element={<UserRealizarAvaliacao />} />
-          <Route path="/comparacao" element={<UserComparacao />} />
-          <Route path="/360" element={<UserAvaliacao360 />} />
+          <Route  path="/management-evaluations"  element={<EvaluationManagement />}/>
+          <Route path="/management-evaluations/create" element={<CreateEvaluation />}/>
         </Routes>
       </BrowserRouter>
     </>

@@ -13,7 +13,6 @@ export const ManagementMain = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [turmaSelecionada, setTurmaSelecionada] = useState(null);
     const listaTurmas = useRef();
-
     const turmas = [
 
         {

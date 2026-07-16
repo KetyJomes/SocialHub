@@ -6,9 +6,7 @@ import { SidebarManagement } from "../components/SidebarManagement";
 import { TabelaManagement360People } from "../components/TabelaManagement360People";
 
 export const Management360EvaluationPeople = () => {
-
     const [isOpen, setIsOpen] = useState(false);
-
     const {
         turma,
         aluno,
@@ -63,23 +61,14 @@ export const Management360EvaluationPeople = () => {
             />
 
             <main className="mt-[8vh] p-8">
-
                 <div className="mb-8">
-
                     <h1 className="text-3xl font-bold">
-
                         {aluno}
-
                     </h1>
-
                     <h2 className="text-lg font-semibold text-gray-700 mt-1">
-
                         {turma}
-
                     </h2>
-
                     <p className="text-gray-500 mt-2">
-
                         {
                             tipoAba === "disponiveis"
 

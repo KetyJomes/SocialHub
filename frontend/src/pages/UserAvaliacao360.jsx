@@ -92,17 +92,7 @@ export const UserAvaliacao360 = () => {
 
                     <section className="mt-10">
 
-                        <
-                            
-
-
-
-
-
-
-                            
-                            colaboradores={colaboradores}
-                        />
+                    
 
                     </section>
 

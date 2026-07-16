@@ -1,4 +1,4 @@
-// usado no UserComparacao
+
 
 export const EvaluationCard = ({ title, color, data }) => {
 
@@ -10,7 +10,6 @@ export const EvaluationCard = ({ title, color, data }) => {
   return (
 
     <div className="bg-white rounded-3xl shadow-sm border border-gray-100 flex flex-col h-full">
-
 
       {/* Cabeçalho */}
 
@@ -34,8 +33,6 @@ export const EvaluationCard = ({ title, color, data }) => {
 
       </div>
 
-
-
       {/* Conteúdo */}
 
       <div className="px-8 py-3 flex-1">
@@ -48,7 +45,6 @@ export const EvaluationCard = ({ title, color, data }) => {
             key={index}
           >
 
-
             {/* Competência */}
 
             <h3 className="text-lg font-bold text-gray-800">
@@ -56,8 +52,6 @@ export const EvaluationCard = ({ title, color, data }) => {
               {item.title}
 
             </h3>
-
-
 
             {/* Descrição */}
 
@@ -71,8 +65,6 @@ export const EvaluationCard = ({ title, color, data }) => {
 
             </div>
 
-
-
             {/* Resultado */}
 
             <div className="mt-auto pt-5 flex flex-col gap-3">
@@ -83,8 +75,6 @@ export const EvaluationCard = ({ title, color, data }) => {
                 Resultado da avaliação
 
               </p>
-
-
 
               <div
 

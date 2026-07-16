@@ -6,21 +6,16 @@ import { SidebarManagement } from "../components/SidebarManagement";
 import { AbaManagementView } from "../components/AbaManagementView";
 
 export const ManagementStudentToManager = () => {
-
     const [isOpen, setIsOpen] = useState(false);
-
     const [abaAtiva, setAbaAtiva] = useState("disponiveis");
-
     const { turma, aluno } = useParams();
-
-
     const [avaliacoes, setAvaliacoes] = useState([
 
         {
             id: 1,
             nome: "1º Trimestre",
             descricao: "Avaliação do gestor realizada pelo aluno",
-            tipo: "Trimestral",
+            tipo: "Aluno para instrutor",
             disponibilizada: "01/07/2026",
             infoDisponibilizada: "Disponível",
             prazo: "20/07/2026",
@@ -33,7 +28,7 @@ export const ManagementStudentToManager = () => {
             id: 2,
             nome: "2º Trimestre",
             descricao: "Avaliação do gestor realizada pelo aluno",
-            tipo: "Trimestral",
+            tipo: "Aluno para instrutor",
             disponibilizada: "01/04/2026",
             infoDisponibilizada: "Finalizada",
             prazo: "20/04/2026",
@@ -44,23 +39,14 @@ export const ManagementStudentToManager = () => {
 
         {
             id: 3,
-
             nome: "3º Trimestre",
-
             descricao: "Avaliação do gestor realizada pelo aluno",
-
-            tipo: "Trimestral",
-
+            tipo: "Aluno para instrutor",
             disponibilizada: "01/01/2026",
-
             infoDisponibilizada: "Finalizada",
-
             prazo: "20/01/2026",
-
             infoPrazo: "Concluída",
-
             status: "Respondida",
-
             acao: "Visualizar"
         }
 
@@ -79,11 +65,8 @@ export const ManagementStudentToManager = () => {
 
                     {
                         ...avaliacao,
-
                         status: "Respondida",
-
                         acao: "Visualizar",
-
                         infoPrazo: "Concluída"
                     }
 

@@ -7,15 +7,9 @@ import { AbaManagementView } from "../components/AbaManagementView";
 
 
 export const Management360Evaluation = () => {
-
     const [isOpen, setIsOpen] = useState(false);
-
     const [abaAtiva, setAbaAtiva] = useState("disponiveis");
-
     const { turma, aluno } = useParams();
-
-
-
     const [avaliacoes, setAvaliacoes] = useState([
 
         {
@@ -29,7 +23,6 @@ export const Management360Evaluation = () => {
             infoPrazo: "10 dias restantes",
             status: "Pendente",
         },
-
 
         {
             id: 2,
@@ -57,25 +50,17 @@ export const Management360Evaluation = () => {
 
     ]);
 
-
-
     function responderAvaliacao(id) {
-
         setAvaliacoes(prev =>
-
             prev.map(avaliacao =>
-
                 avaliacao.id === id
 
                     ?
 
                     {
                         ...avaliacao,
-
                         status: "Respondida",
-
                         acao: "Visualizar",
-
                         infoPrazo: "Concluída"
                     }
 
@@ -89,19 +74,14 @@ export const Management360Evaluation = () => {
 
     }
 
-
-
     const disponiveis = avaliacoes.filter(
 
         avaliacao =>
 
             avaliacao.status === "Pendente" ||
-
             avaliacao.status === "Em atraso"
 
     );
-
-
 
     const feitas = avaliacoes.filter(
 
@@ -111,8 +91,6 @@ export const Management360Evaluation = () => {
 
     );
 
-
-
     return (
 
         <>
@@ -121,8 +99,6 @@ export const Management360Evaluation = () => {
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
-
-
 
             {isOpen && (
 
@@ -138,52 +114,28 @@ export const Management360Evaluation = () => {
 
             )}
 
-
-
             <Header
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
 
-
-
             <main className="mt-[8vh] h-[calc(100vh-11.5vh)]">
-
-
                 <div className="p-10 h-full flex flex-col">
-
-
                     <h1 className="text-3xl font-bold">
-
                         {aluno}
-
                     </h1>
 
-
-
                     <h2 className="text-lg font-semibold text-gray-700 mt-1">
-
                         {turma}
-
                     </h2>
 
-
-
                     <p className="text-gray-500 mt-2 mb-6">
-
                         Avaliações 360° realizadas para análise completa de desempenho.
-
                     </p>
 
-
-
                     <section className="flex gap-8 border-b border-gray-300">
-
-
                         <button
-
                             onClick={() => setAbaAtiva("disponiveis")}
-
                             className={`
 
                                 px-2
@@ -212,9 +164,6 @@ export const Management360Evaluation = () => {
                             Disponíveis ({disponiveis.length})
 
                         </button>
-
-
-
 
                         <button
 
@@ -249,14 +198,9 @@ export const Management360Evaluation = () => {
 
                         </button>
 
-
                     </section>
 
-
-
-
                     <section className="mt-8">
-
 
                         {
                             abaAtiva === "disponiveis" &&
@@ -271,8 +215,6 @@ export const Management360Evaluation = () => {
                             )
                         }
 
-
-
                         {
                             abaAtiva === "feitas" &&
 
@@ -286,15 +228,10 @@ export const Management360Evaluation = () => {
                             )
                         }
 
-
                     </section>
-
-
                 </div>
 
-
             </main>
-
 
         </>
 

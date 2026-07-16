@@ -7,9 +7,7 @@ import { CardTurmaRanking } from "../components/CardTurmaRanking";
 import { GraficoTurmas } from "../components/GraficoTurmas";
 
 export const ManagementClasses = () => {
-
     const [isOpen, setIsOpen] = useState(false);
-
     const turmas = [
 
         {
@@ -81,11 +79,9 @@ export const ManagementClasses = () => {
                 />
 
                 <div className="pt-28 px-10 pb-10">
-
                     <h1 className="text-3xl font-bold">
                         Turmas
                     </h1>
-
                     <p className="text-gray-500">
                         Visualize o desempenho geral de todas as turmas.
                     </p>

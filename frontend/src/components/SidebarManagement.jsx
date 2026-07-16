@@ -118,6 +118,7 @@ export const SidebarManagement = ({ isOpen }) => {
 
                 {/* GERENCIAR AVALIAÇÕES */}
                 <button
+                    onClick={() => navigate("/management-evaluations")}
                     className="
                         flex
                         items-center
@@ -128,7 +129,6 @@ export const SidebarManagement = ({ isOpen }) => {
                         hover:bg-gray-100
                     "
                 >
-
                     <ClipboardCheck size={20} />
 
                     {isOpen && (
@@ -136,10 +136,7 @@ export const SidebarManagement = ({ isOpen }) => {
                             Gerenciar Avaliações
                         </span>
                     )}
-
                 </button>
-
-
 
                 {/* TURMAS */}
                 <button
