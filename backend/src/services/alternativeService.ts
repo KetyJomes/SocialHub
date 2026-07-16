@@ -9,11 +9,11 @@ export const createAlternative = async(data: createAlternativeDTO) =>{
     })
 }
 
-export const getAlternatives = async() => {
+export const findAlternatives = async() => {
     return await prisma.alternatives.findMany()
 }
 
-export const getAlternativesById = async(id: number) => {
+export const findAlternativesById = async(id: number) => {
     return await prisma.alternatives.findFirstOrThrow({
         where: {
             id: id
@@ -22,7 +22,7 @@ export const getAlternativesById = async(id: number) => {
 }
 
 export const updateAlternative = async( id: number, data: updateAlternativeDTO ) => {
-    return await prisma.skill.update({
+    return await prisma.alternatives.update({
         where: {
             id: id
         },
@@ -30,19 +30,31 @@ export const updateAlternative = async( id: number, data: updateAlternativeDTO )
     })
 }
 
-export const deleteSkill = async (id: number) => {
-    return await prisma.skill.delete({
+export const deleteAlternatives = async (id: number) => {
+    return await prisma.alternatives.delete({
         where: {
             id: id
         }
     })
 }
 
-export const findByTest = async (idTest: number) => {
-    return await prisma.skill.findMany({
+
+
+export const findByskill = async (idSkill: number) => {
+    return await prisma.alternatives.findMany({
         where:{
-            idTest: idTest
+            idSkill: idSkill
         }
     })
-} 
+}
+
+
+
+
+
+
+
+
+
+
 
