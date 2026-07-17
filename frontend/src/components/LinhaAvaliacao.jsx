@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import { CalendarDays, Eye, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import { SeletorAvaliacao360 } from "./SeletorAvaliacao360";
 
 export const LinhaAvaliacao = ({
     avaliacao
 }) => {
 
     const navigate = useNavigate();
-
-    const [mostrarAlunos, setMostrarAlunos] = useState(false);
 
     const statusClasses = {
 
@@ -34,13 +31,9 @@ export const LinhaAvaliacao = ({
     function abrirAvaliacao() {
 
         if (avaliacao.nome.includes("360")) {
-
-            setMostrarAlunos(true);
-
+            navigate("/360");
         } else {
-
             navigate("/realizar-avaliacao");
-
         }
 
     }
@@ -223,14 +216,6 @@ export const LinhaAvaliacao = ({
 
             </tr>            
             
-            {mostrarAlunos && (
-
-                <SeletorAvaliacao360
-                    fechar={() => setMostrarAlunos(false)}
-                    selecionarAluno={selecionarAluno}
-                />
-
-            )}
 
         </React.Fragment>
 

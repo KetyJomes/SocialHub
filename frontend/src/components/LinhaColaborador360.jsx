@@ -1,43 +1,56 @@
-import {
-    Eye,
-    Pencil,
-    UserRound,
-    CheckCircle2,
-    Clock3
-} from "lucide-react";
-
 import { useNavigate } from "react-router-dom";
+
+import {
+    CheckCircle2,
+    Clock3,
+    Eye,
+    ClipboardPen
+} from "lucide-react";
 
 export const LinhaColaborador360 = ({ colaborador }) => {
 
     const navigate = useNavigate();
 
-    const respondido = colaborador.status === "Avaliado";
+    const avaliado = colaborador.status === "Avaliado";
+
+    const abrirAvaliacao = () => {
+
+        navigate(
+            `/realizar-avaliacao?tipo=360&avaliado=${encodeURIComponent(colaborador.nome)}`
+        );
+
+    };
 
     return (
 
-        <div className="grid grid-cols-12 items-center px-8 py-5 border-b border-gray-100 hover:bg-violet-50 transition-all duration-200">
+        <div className="grid grid-cols-12 items-center px-8 py-5 border-b border-gray-100 hover:bg-gray-50 transition">
 
             {/* Colaborador */}
 
             <div className="col-span-5 flex items-center gap-4">
 
-                <div className="w-12 h-12 rounded-full bg-violet-100 flex items-center justify-center">
+                <div className="w-12 h-12 rounded-2xl bg-violet-100 flex items-center justify-center">
 
-                    <UserRound
-                        size={22}
-                        className="text-violet-600"
-                    />
+                    <span className="text-violet-600 font-bold text-lg">
+
+                        {colaborador.nome
+                            .split(" ")
+                            .map(nome => nome[0])
+                            .slice(0, 2)
+                            .join("")
+                        }
+
+                    </span>
 
                 </div>
 
                 <div>
 
-                    <h3 className="font-semibold text-gray-800">
+                    <p className="font-semibold text-gray-800">
                         {colaborador.nome}
-                    </h3>
+                    </p>
 
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-gray-400">
                         {colaborador.email}
                     </p>
 
@@ -45,24 +58,27 @@ export const LinhaColaborador360 = ({ colaborador }) => {
 
             </div>
 
+
             {/* Cargo */}
 
             <div className="col-span-2">
 
-                <span className="text-gray-700">
+                <p className="text-gray-600">
                     {colaborador.cargo}
-                </span>
+                </p>
 
             </div>
+
 
             {/* Status */}
 
             <div className="col-span-2 flex justify-center">
 
                 {
-                    respondido ?
 
-                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-medium">
+                    avaliado ?
+
+                        <span className="flex items-center gap-2 px-3 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium">
 
                             <CheckCircle2 size={16} />
 
@@ -72,7 +88,7 @@ export const LinhaColaborador360 = ({ colaborador }) => {
 
                         :
 
-                        <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-yellow-100 text-yellow-700 text-sm font-medium">
+                        <span className="flex items-center gap-2 px-3 py-2 rounded-full bg-amber-100 text-amber-700 text-sm font-medium">
 
                             <Clock3 size={16} />
 
@@ -84,19 +100,20 @@ export const LinhaColaborador360 = ({ colaborador }) => {
 
             </div>
 
-            {/* Botão */}
+
+            {/* Ação */}
 
             <div className="col-span-3 flex justify-center">
 
                 {
-                    respondido ?
+
+                    avaliado ?
 
                         <button
-                            onClick={() => navigate(`/avaliacao360/${colaborador.id}`)}
-                            className="flex items-center gap-2 px-5 py-2 rounded-xl border border-violet-600 text-violet-600 font-medium hover:bg-violet-600 hover:text-white transition"
+                            className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-100 transition"
                         >
 
-                            <Eye size={18} />
+                            <Eye size={17} />
 
                             Visualizar
 
@@ -105,13 +122,13 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                         :
 
                         <button
-                            onClick={() => navigate(`/avaliacao360/${colaborador.id}`)}
-                            className="flex items-center gap-2 px-5 py-2 rounded-xl bg-violet-600 text-white font-medium hover:bg-violet-700 transition"
+                            onClick={abrirAvaliacao}
+                            className="flex items-center gap-2 px-5 py-2.5 rounded-xl bg-violet-600 text-white hover:bg-violet-700 transition"
                         >
 
-                            <Pencil size={18} />
+                            <ClipboardPen size={17} />
 
-                            Responder
+                            Avaliar
 
                         </button>
 

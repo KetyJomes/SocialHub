@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { Header } from "../components/Header";
 import { Sidebar } from "../components/Sidebar";
@@ -9,7 +9,26 @@ export const UserAvaliacao360 = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
+
+    /*
+    =====================================================
+    SEMPRE COMEÇAR NO TOPO DA PÁGINA
+    =====================================================
+    */
+
+    useEffect(() => {
+
+        window.scrollTo({
+            top: 0,
+            left: 0,
+            behavior: "instant"
+        });
+
+    }, []);
+
+
     const colaboradores = [
+
         {
             id: 1,
             nome: "João Silva",
@@ -17,6 +36,7 @@ export const UserAvaliacao360 = () => {
             cargo: "Analista de Produção",
             status: "Avaliado"
         },
+
         {
             id: 2,
             nome: "Maria Souza",
@@ -24,6 +44,7 @@ export const UserAvaliacao360 = () => {
             cargo: "Engenharia",
             status: "Pendente"
         },
+
         {
             id: 3,
             nome: "Carlos Oliveira",
@@ -31,6 +52,7 @@ export const UserAvaliacao360 = () => {
             cargo: "Técnico",
             status: "Avaliado"
         },
+
         {
             id: 4,
             nome: "Ana Lima",
@@ -38,6 +60,7 @@ export const UserAvaliacao360 = () => {
             cargo: "Qualidade",
             status: "Pendente"
         },
+
         {
             id: 5,
             nome: "Lucas Santos",
@@ -45,6 +68,7 @@ export const UserAvaliacao360 = () => {
             cargo: "RH",
             status: "Pendente"
         },
+
         {
             id: 6,
             nome: "Fernanda Costa",
@@ -52,54 +76,104 @@ export const UserAvaliacao360 = () => {
             cargo: "Produção",
             status: "Avaliado"
         }
+
     ];
 
+
     return (
+
         <>
+
+            {/* SIDEBAR */}
+
             <Sidebar
+
                 isOpen={isOpen}
+
                 setIsOpen={setIsOpen}
+
             />
 
+
+            {/* HEADER */}
+
             <Header
+
                 isOpen={isOpen}
+
                 setIsOpen={setIsOpen}
+
             />
+
+
+            {/* CONTEÚDO */}
 
             <main className="min-h-screen bg-[#F7F8FC] p-10 mt-[8vh]">
 
+
                 <div className="mx-auto pb-12">
+
+
+                    {/* TÍTULO */}
 
                     <div>
 
+
                         <h1 className="text-4xl font-bold text-gray-800">
+
                             Avaliação 360°
+
                         </h1>
 
+
                         <p className="text-gray-500 mt-2">
+
                             Acompanhe o andamento das avaliações e responda os colaboradores pendentes.
+
                         </p>
 
+
                     </div>
+
+
+                    {/* CARD DE PROGRESSO */}
 
                     <div className="mt-10">
 
+
                         <CardProgresso360
+
                             colaboradores={colaboradores}
+
                         />
+
 
                     </div>
 
+
+                    {/* TABELA */}
+
                     <section className="mt-10">
 
-                    
+
+                        <TabelaColaboradores360
+
+                            colaboradores={colaboradores}
+
+                        />
+
 
                     </section>
 
+
                 </div>
+
 
             </main>
 
+
         </>
+
     );
-};      
+
+};
