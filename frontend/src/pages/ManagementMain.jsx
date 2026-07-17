@@ -241,7 +241,7 @@ export const ManagementMain = () => {
                     {/* TÍTULO */}
 
                     <h1 className="font-bold text-3xl">
-                        Bem-vindo(a), Gestor!
+                        Bem-vindo(a), Instrutor!
                     </h1>
 
 
@@ -426,7 +426,7 @@ export const ManagementMain = () => {
 
 
                                 <button
-                                    onClick={() => navigate('/management-avaliacoes ')}
+                                    onClick={() => navigate('/management-avaliacoes')}
 
                                     className="
                                         text-sm
@@ -496,44 +496,64 @@ export const ManagementMain = () => {
 
                             {/* CABEÇALHO */}
 
-                            <div
-                                className="
-                                    flex
-                                    items-center
-                                    gap-3
-                                    mb-5
-                                "
-                            >
+                           <div
+                                className="
+                                    flex
+                                    items-center
+                                    justify-between
+                                    mb-5
+                                "
+                            >
 
-                                <div
-                                    className="
-                                        w-10
-                                        h-10
-                                        rounded-full
-                                        bg-[#F1EDFF]
-                                        flex
-                                        items-center
-                                        justify-center
-                                    "
-                                >
+                                <div className="flex items-center gap-3">
 
-                                    <RotateCcw
-                                        size={20}
-                                        className="text-[#B8A4FF]"
-                                        strokeWidth={2}
-                                    />
+                                    <div
+                                        className="
+                                            w-10
+                                            h-10
+                                            rounded-full
+                                            bg-[#F1EDFF]
+                                            flex
+                                            items-center
+                                            justify-center
+                                        "
+                                    >
 
-                                </div>
+                                        <RotateCcw
+                                            size={20}
+                                            className="text-[#B8A4FF]"
+                                            strokeWidth={2}
+                                        />
 
-
-                                <h2 className="text-xl font-bold">
-
-                                    Avaliações 360
-
-                                </h2>
+                                    </div>
 
 
-                            </div>
+                                    <h2 className="text-xl font-bold">
+
+                                        Avaliações 360
+
+                                    </h2>
+
+                                </div>
+
+
+                                <button
+                                    onClick={() => navigate('/management-evaluations-pending')}
+                                    className="
+                                        text-sm
+                                        text-[#9B87E8]
+                                        font-medium
+                                        hover:text-[#7F6BD1]
+                                        transition
+                                    "
+                                >
+
+                                    Ver todos
+
+                                </button>
+
+
+                            </div>
 
 
                             {/* LISTA DE AVALIAÇÕES 360 */}
