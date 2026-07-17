@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { Header } from "../components/Header";
 import { SidebarManagement } from "../components/SidebarManagement";
 import { EvaluationManagementView } from "../components/EvaluationManagementView";
 
 export const EvaluationManagement = () => {
+    const location = useLocation();
     const [isOpen, setIsOpen] = useState(false);
-    const [abaAtiva, setAbaAtiva] = useState("avaliacoes");
+    const [abaAtiva, setAbaAtiva] = useState(
+        location.state?.abaInicial || "avaliacoes"
+    );
 
     return (
         <>
