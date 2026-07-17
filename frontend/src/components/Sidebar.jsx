@@ -1,10 +1,29 @@
+import {
+    House,
+    ClipboardList,
+    ChartColumn,
+    MessageSquareQuote,
+    LogOut
+} from "lucide-react";
+
+import { useNavigate } from "react-router-dom";
+
 export const Sidebar = ({ isOpen, setIsOpen }) => {
+
+    const navigate = useNavigate();
+
     return (
         <>
             {isOpen && (
                 <div
-                    className="fixed inset-0 bg-black/40 z-40 top-[8vh]
-                    left-0"
+                    className="
+                        fixed
+                        inset-0
+                        bg-black/40
+                        z-40
+                        top-[72px]
+                        left-0
+                    "
                     onClick={() => setIsOpen(false)}
                 />
             )}
@@ -12,45 +31,130 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
             <aside
                 className={`
                     fixed
-                    top-[8vh]
+                    top-[72px]
                     left-0
-                    h-screen
-                    w-72
+                    h-[calc(100vh-72px)]
+                    w-64
                     bg-white
-                    shadow-2xl
-                    z-50
-                    transform
+                    border-r
+                    border-gray-200
+                    shadow-xl
                     transition-transform
                     duration-300
-                    ease-in-out
+                    z-50
+                    flex
+                    flex-col
                     ${isOpen ? "translate-x-0" : "-translate-x-full"}
                 `}
             >
-                <div className="p-6">
+                <nav className="mt-6 px-4 flex-1">
 
-                    <h1 className="text-2xl font-bold mb-8">
-                        Menu
-                    </h1>
+                    {isOpen && (
+                        <h2 className="text-xl font-bold text-gray-800 text-center mb-2">
+                            Menu
+                        </h2>
+                    )}
 
-                    <div className="flex flex-col gap-4">
+                    {/* HOME */}
+                    <button
+                        onClick={() => navigate("/user-main")}
+                        className="
+                            flex
+                            items-center
+                            gap-3
+                            w-full
+                            p-3
+                            rounded-lg
+                            hover:bg-gray-100
+                            transition
+                        "
+                    >
+                        <House size={20} />
 
-                        <button className="text-left hover:bg-gray-100 rounded-lg p-3">
-                            Início
-                        </button>
+                        {isOpen && <span>Início</span>}
+                    </button>
 
-                        <button className="text-left hover:bg-gray-100 rounded-lg p-3">
-                            Avaliações
-                        </button>
+                    {/* AVALIAÇÕES */}
+                    <button
+                        onClick={() => navigate("/user-avaliacoes")}
+                        className="
+                            flex
+                            items-center
+                            gap-3
+                            w-full
+                            p-3
+                            rounded-lg
+                            hover:bg-gray-100
+                            transition
+                        "
+                    >
+                        <ClipboardList size={20} />
 
-                        <button className="text-left hover:bg-gray-100 rounded-lg p-3">
-                            Resultados
-                        </button>
+                        {isOpen && <span>Avaliações</span>}
+                    </button>
 
-                        <button className="text-left hover:bg-gray-100 rounded-lg p-3">
-                            Feedback 360
-                        </button>
+                    {/* RESULTADOS */}
+                    <button
+                        onClick={() => navigate("/resultados")}
+                        className="
+                            flex
+                            items-center
+                            gap-3
+                            w-full
+                            p-3
+                            rounded-lg
+                            hover:bg-gray-100
+                            transition
+                        "
+                    >
+                        <ChartColumn size={20} />
 
-                    </div>
+                        {isOpen && <span>Resultados</span>}
+                    </button>
+
+                    {/* FEEDBACK 360 */}
+                    <button
+                        onClick={() => navigate("/user-feedback")}
+                        className="
+                            flex
+                            items-center
+                            gap-3
+                            w-full
+                            p-3
+                            rounded-lg
+                            hover:bg-gray-100
+                            transition
+                        "
+                    >
+                        <MessageSquareQuote size={20} />
+
+                        {isOpen && <span>Feedback 360</span>}
+                    </button>
+
+                </nav>
+
+                {/* SAIR */}
+                <div className="px-4 pb-6">
+
+                    <button
+                        onClick={() => navigate("/login")}
+                        className="
+                            flex
+                            items-center
+                            justify-center
+                            gap-3
+                            w-full
+                            p-3
+                            rounded-lg
+                            text-gray-500
+                            hover:bg-gray-100
+                            transition
+                        "
+                    >
+                        <LogOut size={20} />
+
+                        {isOpen && <span>Sair</span>}
+                    </button>
 
                 </div>
             </aside>

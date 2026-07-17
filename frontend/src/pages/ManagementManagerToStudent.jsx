@@ -6,83 +6,55 @@ import { SidebarManagement } from "../components/SidebarManagement";
 import { AbaManagementEvaluation } from "../components/AbaManagementEvaluation";
 
 export const ManagementManagerToStudent = () => {
-
     const [isOpen, setIsOpen] = useState(false);
-
     const [abaAtiva, setAbaAtiva] = useState("disponiveis");
-
     const { turma, aluno } = useParams();
-
     const [avaliacoes, setAvaliacoes] = useState([
 
         {
             id: 1,
-
             nome: "1º Trimestre",
-
             descricao: "Avaliação de desempenho do aluno",
-
-            tipo: "Trimestral",
-
+            tipo: "Instrutor para Aluno",
             disponibilizada: "01/07/2026",
             infoDisponibilizada: "Disponível",
-
             prazo: "20/07/2026",
             infoPrazo: "10 dias restantes",
-
             status: "Pendente",
-
             acao: "Avaliar"
         },
 
         {
             id: 2,
-
             nome: "2º Trimestre",
-
             descricao: "Avaliação de desempenho do aluno",
-
-            tipo: "Trimestral",
-
+            tipo: "Instrutor para Aluno",
             disponibilizada: "01/04/2026",
             infoDisponibilizada: "Finalizada",
-
             prazo: "20/04/2026",
             infoPrazo: "Concluída",
-
             status: "Respondida",
-
             acao: "Visualizar"
         },
 
         {
             id: 3,
-
             nome: "3º Trimestre",
-
             descricao: "Avaliação de desempenho do aluno",
-
-            tipo: "Trimestral",
-
+            tipo: "Instrutor para Aluno",
             disponibilizada: "01/01/2026",
             infoDisponibilizada: "Finalizada",
-
             prazo: "20/01/2026",
             infoPrazo: "Concluída",
-
             status: "Respondida",
-
             acao: "Visualizar"
         }
 
     ]);
 
     function responderAvaliacao(id) {
-
         setAvaliacoes(prev =>
-
             prev.map(avaliacao =>
-
                 avaliacao.id === id
 
                     ?
@@ -107,9 +79,7 @@ export const ManagementManagerToStudent = () => {
     const disponiveis = avaliacoes.filter(
 
         avaliacao =>
-
             avaliacao.status === "Pendente" ||
-
             avaliacao.status === "Em atraso"
 
     );
@@ -117,7 +87,6 @@ export const ManagementManagerToStudent = () => {
     const feitas = avaliacoes.filter(
 
         avaliacao =>
-
             avaliacao.status === "Respondida"
 
     );
@@ -137,25 +106,17 @@ export const ManagementManagerToStudent = () => {
             />
 
             <main className="mt-[8vh] h-[calc(100vh-11.5vh)]">
-
                 <div className="p-10 h-full flex flex-col">
-
                     <h1 className="text-3xl font-bold">
-
                         {aluno}
-
                     </h1>
 
                     <h2 className="text-lg font-semibold text-gray-700 mt-1">
-
                         {turma}
-
                     </h2>
 
                     <p className="text-gray-500 mt-2 mb-6">
-
-                        Avaliações realizadas pelo gestor para este aluno.
-
+                        Avaliações realizadas pelo instrutor para este aluno.
                     </p>
 
                     <section className="flex gap-8 border-b border-gray-300">
@@ -231,9 +192,7 @@ export const ManagementManagerToStudent = () => {
                             (
 
                                 <AbaManagementEvaluation
-
                                     avaliacoes={disponiveis}
-
                                     responderAvaliacao={responderAvaliacao}
 
                                 />
@@ -249,7 +208,6 @@ export const ManagementManagerToStudent = () => {
                             (
 
                                 <AbaManagementEvaluation
-
                                     avaliacoes={feitas}
 
                                 />

@@ -19,34 +19,80 @@ export const ManagementStudentDetails = () => {
 
     const { turma, aluno } = useParams();
 
+    const avaliacoesGestor = [
+        { id: 1, status: "Pendente" },
+        { id: 2, status: "Respondida" },
+        { id: 3, status: "Respondida" },
+        { id: 4, status: "Pendente" }
+    ];
+
+    const avaliacoesAluno = [
+        { id: 1, status: "Respondida" },
+        { id: 2, status: "Respondida" }
+    ];
+
+    const autoAvaliacoes = [
+        { id: 1, status: "Pendente" }
+    ];
+
+    const avaliacoes360 = [
+        { id: 1, status: "Respondida" },
+        { id: 2, status: "Pendente" },
+        { id: 3, status: "Pendente" }
+    ];
+
+    const avaliacoesLider = [
+        { id: 1, status: "Respondida" }
+    ];
+
+    const avaliacoesTurma = [
+        { id: 1, status: "Pendente" },
+        { id: 2, status: "Respondida" }
+    ];
+
+
     const avaliacoes = [
 
         {
             titulo: "Gestor → Aluno",
-            quantidade: 4,
+            quantidade: avaliacoesGestor.length,
             ultima: "12/07/2026",
             tipo: "gestor"
         },
 
         {
             titulo: "Aluno → Gestor",
-            quantidade: 4,
+            quantidade: avaliacoesAluno.length,
             ultima: "12/07/2026",
             tipo: "aluno"
         },
 
         {
             titulo: "Autoavaliação",
-            quantidade: 4,
+            quantidade: autoAvaliacoes.length,
             ultima: "12/07/2026",
             tipo: "auto"
         },
 
         {
             titulo: "Avaliação 360°",
-            quantidade: 8,
+            quantidade: avaliacoes360.length,
             ultima: "12/07/2026",
             tipo: "360"
+        },
+
+        {
+            titulo: "Aluno → Líder de Turma",
+            quantidade: avaliacoesLider.length,
+            ultima: "12/07/2026",
+            tipo: "lider-aluno"
+        },
+
+        {
+            titulo: "Líder de Turma → Turma",
+            quantidade: avaliacoesTurma.length,
+            ultima: "12/07/2026",
+            tipo: "lider-turma"
         }
 
     ];
@@ -69,7 +115,7 @@ export const ManagementStudentDetails = () => {
 
             )}
 
-            <main className="mt-[10vh]">
+            <main className="mt-[8vh]">
 
                 <Header
                     isOpen={isOpen}
@@ -141,7 +187,7 @@ export const ManagementStudentDetails = () => {
 
                             <div
                                 className="
-                                    h-[620px]
+                                    flex-1
                                     space-y-3
                                     overflow-y-auto
                                     pr-2
@@ -184,6 +230,8 @@ export const ManagementStudentDetails = () => {
                                     border-gray-100
                                     shadow-sm
                                     p-5
+                                    flex
+                                    flex-col
                                 "
                             >
 

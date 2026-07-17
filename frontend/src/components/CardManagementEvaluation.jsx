@@ -1,12 +1,33 @@
+import { useNavigate, useParams } from "react-router-dom";
 import {
     Calendar,
     Clock3,
-    CircleAlert,
     Eye,
     FileText
 } from "lucide-react";
 
 export const CardManagementEvaluation = ({ avaliacao }) => {
+
+    const navigate = useNavigate();
+
+    const { turma, aluno } = useParams();
+
+    function abrirAvaliacao() {
+
+        if (avaliacao.acao === "Avaliar") {
+
+            navigate(
+                `/management-perform-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
+            );
+
+            return;
+        }
+
+        navigate(
+            `/management-view-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
+        );
+
+    }
 
     return (
 
@@ -24,7 +45,7 @@ export const CardManagementEvaluation = ({ avaliacao }) => {
                             flex
                             items-center
                             justify-center
-                            ${avaliacao.bgIcon}
+                            ${avaliacao.bgIcon || "bg-[#F1EDFF]"}
                         `}
                     >
 
@@ -111,15 +132,21 @@ export const CardManagementEvaluation = ({ avaliacao }) => {
             <td className="text-center">
 
                 <span
-                    className="
+                    className={`
                         px-3
                         py-1
                         rounded-full
-                        bg-yellow-100
-                        text-yellow-700
                         text-sm
                         font-medium
-                    "
+
+                        ${
+                            avaliacao.status === "Respondida"
+                                ? "bg-green-100 text-green-700"
+                                : avaliacao.status === "Em atraso"
+                                ? "bg-red-100 text-red-700"
+                                : "bg-yellow-100 text-yellow-700"
+                        }
+                    `}
                 >
 
                     {avaliacao.status}
@@ -131,6 +158,7 @@ export const CardManagementEvaluation = ({ avaliacao }) => {
             <td className="text-center">
 
                 <button
+                    onClick={abrirAvaliacao}
                     className="
                         flex
                         items-center

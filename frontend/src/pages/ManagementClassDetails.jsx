@@ -9,11 +9,8 @@ import { GraficoCompetencias } from "../components/GraficoCompetencias";
 import { GraficoAluno } from "../components/GraficoAluno";
 
 export const ManagementClassDetails = () => {
-
     const [isOpen, setIsOpen] = useState(false);
-
     const { turma } = useParams();
-
     const alunos = [
 
         {
@@ -63,14 +60,11 @@ export const ManagementClassDetails = () => {
     );
 
     return (
-
         <>
-
             <SidebarManagement
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
-
             {isOpen && (
 
                 <div
@@ -79,24 +73,18 @@ export const ManagementClassDetails = () => {
                 />
 
             )}
-
             <main className="mt-[10vh]">
-
                 <Header
                     isOpen={isOpen}
                     setIsOpen={setIsOpen}
                 />
-
                 <div className="p-10">
-
                     <h1 className="text-3xl font-bold">
                         {turma}
                     </h1>
-
                     <p className="text-gray-500">
                         Visualize o desempenho dos alunos desta turma.
                     </p>
-
                     <section
                         className="
                             grid
@@ -105,7 +93,6 @@ export const ManagementClassDetails = () => {
                             mt-8
                         "
                     >
-
                         {/* CARD DOS ALUNOS */}
 
                         <div
@@ -142,7 +129,7 @@ export const ManagementClassDetails = () => {
                                     />
 
                                 </div>
-
+                                
                                 <h2 className="text-xl font-bold">
                                     Alunos
                                 </h2>

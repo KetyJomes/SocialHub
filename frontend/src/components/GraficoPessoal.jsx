@@ -1,3 +1,5 @@
+// usado na main
+
 import {
     Chart as ChartJS,
     CategoryScale,

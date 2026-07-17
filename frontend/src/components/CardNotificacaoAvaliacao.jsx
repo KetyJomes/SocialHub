@@ -1,3 +1,5 @@
+// usado na main
+
 import notify_icon from "../assets/notification-icon.png";
 import arrow from "../assets/right-arrow.png";
 

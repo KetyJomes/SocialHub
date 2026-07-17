@@ -1,3 +1,5 @@
+// usado no UserComparacao
+
 import { Download, Info } from "lucide-react";
 
 export const DashboardHeader = () => {
