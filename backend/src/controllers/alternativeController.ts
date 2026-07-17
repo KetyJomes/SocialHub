@@ -1,6 +1,6 @@
 import { Request, Response} from "express";
 import { createAlternativeDTO } from "../dtos/alternativeDTO.ts";
-import { createAlternative, findAlternatives } from "../services/alternativeService.ts";
+import { createAlternative, findAlternatives, findAlternativesById } from "../services/alternativeService.ts";
 
 export default class alternativeController {
     static async create(req: Request, res: Response){
@@ -21,5 +21,17 @@ export default class alternativeController {
             } catch (error) {
                 
             }
+    }
+
+    static async getAlternativeById(req: Request, res: Response){1
+        const {id} = req.params
+        try{
+            await findAlternativesById(Number(id))
+            return res.status(404).send({response:"nenhuma alternativa encontrada!"})
+        }
+        catch(error){
+
+        }
+
     }
 }
