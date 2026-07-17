@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Header } from "../components/Header";
 import { SidebarManagement } from "../components/SidebarManagement";
@@ -9,6 +10,7 @@ import { EvaluationPreview } from "../components/EvaluationPreview";
 
 export const CreateEvaluation = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
     const [dados, setDados] = useState({
 
         titulo: "",
@@ -19,16 +21,28 @@ export const CreateEvaluation = () => {
         recorrencia: "uma-vez"
 
     });
+    const [turma, setTurma] = useState("");
+    const [tipoPublico, setTipoPublico] = useState("todos");
+    const [alunosSelecionados, setAlunosSelecionados] = useState([]);
+    const alunos = [
+        { id: 1, nome: "João Pedro" },
+        { id: 2, nome: "Maria Eduarda" },
+        { id: 3, nome: "Lucas Henrique" },
+        { id: 4, nome: "Ana Clara" },
+        { id: 5, nome: "Gabriel" },
+    ];
 
     const [secoes, setSecoes] = useState([
 
         {
             id: 1,
-            titulo: "Competências",
+            titulo:"",
+            descricao: "",
             perguntas: [
                 {
                     id: 1,
-                    texto: ""
+                    texto: "",
+                    escala: ""
                 }
             ]
         }
@@ -59,13 +73,57 @@ export const CreateEvaluation = () => {
 
                     {
                         id: Date.now() + 1,
-                        texto: ""
+                        texto: "",
+                        escala: ""
                     }
 
                 ]
             }
 
         ]));
+
+    }
+
+    function criarAvaliacao() {
+
+        const novaAvaliacao = {
+
+            id: Date.now(),
+
+            ...dados,
+
+            turma,
+
+            tipoPublico,
+
+            alunosSelecionados,
+
+            secoes
+
+        };
+
+        console.log(novaAvaliacao);
+
+        navigate("/management-evaluations");
+
+    }
+
+    function salvarModelo() {
+
+        const modelo = {
+            id: Date.now(),
+            ...dados,
+            secoes
+        };
+
+        console.log("Modelo salvo:", modelo);
+
+        navigate("/management-evaluations", {
+            state: {
+                abaInicial: "modelos",
+                novoModelo: modelo
+            }
+        });
 
     }
 
@@ -328,12 +386,15 @@ export const CreateEvaluation = () => {
                                         text-gray-800
                                     "
                                 >
-                                    Público
+                                    Turma
                                 </label>
 
-                                <input
-                                    type="text"
-                                    placeholder="Ex: Turma 1EM"
+                                <select
+
+                                    value={turma}
+
+                                    onChange={(e) => setTurma(e.target.value)}
+
                                     className="
                                         w-full
                                         mt-2
@@ -344,13 +405,39 @@ export const CreateEvaluation = () => {
                                         px-4
                                         py-3
                                         text-gray-500
-                                        placeholder:text-gray-400
                                         outline-none
                                         focus:ring-2
                                         focus:ring-[#B8A4FF]
                                         focus:border-[#B8A4FF]
                                     "
-                                />
+
+                                >
+
+                                    <option value="">
+                                        Selecione uma turma
+                                    </option>
+
+                                    <option value="1A">
+                                        1º EM A
+                                    </option>
+
+                                    <option value="1B">
+                                        1º EM B
+                                    </option>
+
+                                    <option value="2A">
+                                        2º EM A
+                                    </option>
+
+                                    <option value="2B">
+                                        2º EM B
+                                    </option>
+
+                                    <option value="3A">
+                                        3º EM A
+                                    </option>
+
+                                </select>
 
                             </div>
 
@@ -421,6 +508,125 @@ export const CreateEvaluation = () => {
 
                         </div>
 
+                            <div className="col-span-2 mt-6">
+
+                                <label
+                                    className="
+                                        font-medium
+                                        text-gray-800
+                                    "
+                                >
+                                    Destinatários
+                                </label>
+
+                                <div className="mt-3 space-y-3">
+
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            value="todos"
+                                            checked={tipoPublico === "todos"}
+                                            onChange={(e) =>
+                                                setTipoPublico(e.target.value)
+                                            }
+                                        />
+
+                                        Todos os alunos da turma
+
+                                    </label>
+
+                                    <label className="flex items-center gap-2 cursor-pointer">
+
+                                        <input
+                                            type="radio"
+                                            value="alguns"
+                                            checked={tipoPublico === "alguns"}
+                                            onChange={(e) =>
+                                                setTipoPublico(e.target.value)
+                                            }
+                                        />
+
+                                        Apenas alguns alunos
+
+                                    </label>
+
+                                </div>
+
+                                {
+                                    tipoPublico === "alguns" && (
+
+                                        <div
+                                            className="
+                                                mt-5
+                                                bg-[#F8F8FB]
+                                                border
+                                                border-gray-200
+                                                rounded-xl
+                                                p-5
+                                            "
+                                        >
+
+                                            <p className="font-medium text-gray-800 mb-4">
+                                                Selecione os alunos
+                                            </p>
+
+                                            <div className="space-y-3">
+
+                                                {
+                                                    alunos.map((aluno) => (
+
+                                                        <label
+                                                            key={aluno.id}
+                                                            className="
+                                                                flex
+                                                                items-center
+                                                                gap-3
+                                                                cursor-pointer
+                                                            "
+                                                        >
+
+                                                            <input
+                                                                type="checkbox"
+                                                                checked={alunosSelecionados.includes(aluno.id)}
+                                                                onChange={(e) => {
+
+                                                                    if (e.target.checked) {
+
+                                                                        setAlunosSelecionados(prev => [
+                                                                            ...prev,
+                                                                            aluno.id
+                                                                        ]);
+
+                                                                    } else {
+
+                                                                        setAlunosSelecionados(prev =>
+                                                                            prev.filter(id => id !== aluno.id)
+                                                                        );
+
+                                                                    }
+
+                                                                }}
+                                                            />
+
+                                                            <span className="text-gray-700">
+                                                                {aluno.nome}
+                                                            </span>
+
+                                                        </label>
+
+                                                    ))
+                                                }
+
+                                            </div>
+
+                                        </div>
+
+                                    )
+                                }
+
+                            </div>
+
                     </section>
 
                     <EvaluationSectionEditor
@@ -433,7 +639,8 @@ export const CreateEvaluation = () => {
                     <EvaluationPreview
                         dados={dados}
                         secoes={secoes}
-
+                        onSaveModel={salvarModelo}
+                        onCreate={criarAvaliacao}
                     />
 
                 </div>

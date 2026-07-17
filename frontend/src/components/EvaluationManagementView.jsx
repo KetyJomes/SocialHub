@@ -121,13 +121,25 @@ export const EvaluationManagementView = ({
             {
                 abaAtiva === "modelos" && (
 
-                    <section className="mt-8">
+                    <>
 
-                        <div className="text-gray-500">
-                            Área dos modelos.
-                        </div>
+                        <section className="mt-8 flex justify-between items-center">
 
-                    </section>
+                            <h2 className="text-2xl font-bold">
+                                Modelos
+                            </h2>
+
+                        </section>
+
+                        <section className="mt-8">
+
+                            <div className="text-gray-500">
+                                Área dos modelos.
+                            </div>
+
+                        </section>
+
+                    </>
 
                 )
             }
@@ -138,13 +150,25 @@ export const EvaluationManagementView = ({
             {
                 abaAtiva === "agendamentos" && (
 
-                    <section className="mt-8">
+                    <>
 
-                        <div className="text-gray-500">
-                            Área dos agendamentos.
-                        </div>
+                        <section className="mt-8 flex justify-between items-center">
 
-                    </section>
+                            <h2 className="text-2xl font-bold">
+                                Agendamentos
+                            </h2>
+
+                        </section>
+
+                        <section className="mt-8">
+
+                            <div className="text-gray-500">
+                                Área dos agendamentos.
+                            </div>
+
+                        </section>
+
+                    </>
 
                 )
             }

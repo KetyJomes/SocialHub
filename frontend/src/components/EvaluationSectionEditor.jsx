@@ -23,23 +23,62 @@ export const EvaluationSectionEditor = ({
 
     }
 
-    function adicionarPergunta(secaoId) {
+    function alterarDescricao(id, valor) {
 
         setSecoes(prev =>
             prev.map(secao =>
-                secao.id === secaoId
+                secao.id === id
                     ? {
                         ...secao,
-                        perguntas: [
-                            ...secao.perguntas,
-                            {
-                                id: Date.now(),
-                                texto: ""
-                            }
-                        ]
+                        descricao: valor
                     }
                     : secao
             )
+        );
+
+    }
+
+    function adicionarPergunta(secaoId) {
+
+        const escalas = [
+            "Crítico",
+            "Abaixo do esperado",
+            "Dentro do esperado",
+            "Acima do esperado"
+        ];
+
+        setSecoes(prev =>
+            prev.map(secao => {
+
+                if (secao.id !== secaoId) {
+                    return secao;
+                }
+
+                if (secao.perguntas.length >= 4) {
+                    return secao;
+                }
+
+                const escalasUtilizadas = secao.perguntas.map(
+                    pergunta => pergunta.escala
+                );
+
+                const proximaEscala = escalas.find(
+                    escala => !escalasUtilizadas.includes(escala)
+                );
+
+                return {
+                    ...secao,
+                    perguntas: [
+                        ...secao.perguntas,
+                        {
+                            id: Date.now(),
+                            texto: "",
+                            escala: proximaEscala || ""
+                        }
+                    ]
+                };
+
+            })
         );
 
     }
@@ -56,6 +95,28 @@ export const EvaluationSectionEditor = ({
                                 ? {
                                     ...pergunta,
                                     texto: valor
+                                }
+                                : pergunta
+                        )
+                    }
+                    : secao
+            )
+        );
+
+    }
+
+    function alterarEscala(secaoId, perguntaId, escala) {
+
+        setSecoes(prev =>
+            prev.map(secao =>
+                secao.id === secaoId
+                    ? {
+                        ...secao,
+                        perguntas: secao.perguntas.map(pergunta =>
+                            pergunta.id === perguntaId
+                                ? {
+                                    ...pergunta,
+                                    escala
                                 }
                                 : pergunta
                         )
@@ -110,6 +171,9 @@ export const EvaluationSectionEditor = ({
                             transition
                         "
                     >
+                        <h2 className="text-xl font-bold text-gray-800 mb-5">
+                            Tópico
+                        </h2>
                         <div
                             className="
                                 flex
@@ -117,15 +181,33 @@ export const EvaluationSectionEditor = ({
                                 items-center
                             "
                         >
-                            <h2
-                                className="
-                                    text-xl
-                                    font-bold
-                                    text-gray-800
-                                "
-                            >
-                                Tópico {index + 1}
-                            </h2>
+                            <input
+                            type="text"
+                            placeholder="Título da competência"
+                            value={secao.titulo}
+                            onChange={(e) =>
+                                alterarTitulo(
+                                    secao.id,
+                                    e.target.value
+                                )
+                            }
+                            className="
+                                w-full
+                                mt-2
+                                bg-[#F8F8FB]
+                                border
+                                border-gray-200
+                                rounded-lg
+                                px-4
+                                py-3
+                                text-gray-500             
+                                placeholder:text-gray-400
+                                outline-none
+                                focus:ring-2
+                                focus:ring-[#B8A4FF]
+                                focus:border-[#B8A4FF]
+                            "
+                        />
 
                             {
                                 secoes.length > 1 && (
@@ -148,33 +230,33 @@ export const EvaluationSectionEditor = ({
 
                         </div>
 
-                        <input
-                            type="text"
-                            placeholder="Ex: Competências Socioemocionais"
-                            value={secao.titulo}
+                        <textarea
+                            rows={3}
+                            placeholder="Descrição da competência"
+                            value={secao.descricao}
                             onChange={(e) =>
-                                alterarTitulo(
+                                alterarDescricao(
                                     secao.id,
                                     e.target.value
                                 )
                             }
                             className="
                                 w-full
-                                mt-5
-                                bg-white
+                                mt-2
+                                bg-[#F8F8FB]
                                 border
                                 border-gray-200
                                 rounded-lg
                                 px-4
                                 py-3
-                                text-gray-800
+                                text-gray-500             
                                 placeholder:text-gray-400
                                 outline-none
                                 focus:ring-2
                                 focus:ring-[#B8A4FF]
                                 focus:border-[#B8A4FF]
                             "
-                        />
+                        ></textarea>
 
                         <div
                             className="
@@ -198,6 +280,21 @@ export const EvaluationSectionEditor = ({
                                             )
                                         }
 
+                                        onChangeEscala={(escala) =>
+                                            alterarEscala(
+                                                secao.id,
+                                                pergunta.id,
+                                                escala
+                                            )
+                                        }
+
+                                        escalasDisponiveis={[
+                                            "Crítico",
+                                            "Abaixo do esperado",
+                                            "Dentro do esperado",
+                                            "Acima do esperado"
+                                        ]}
+
                                         onRemove={() =>
                                             removerPergunta(
                                                 secao.id,
@@ -216,26 +313,34 @@ export const EvaluationSectionEditor = ({
 
                         </div>
 
-                        <button
-                            onClick={() =>
-                                adicionarPergunta(secao.id)
-                            }
+                        {
+                        secao.perguntas.length < 4 && (
 
-                            className="
-                                mt-5
-                                flex
-                                items-center
-                                gap-2
-                                text-[#B8A4FF]
-                                font-medium
-                                hover:opacity-80
-                                transition
-                            "
+                            <button
+                                onClick={() =>
+                                    adicionarPergunta(secao.id)
+                                }
 
-                        >
-                            <Plus size={18} />
-                            Adicionar pergunta
-                        </button>
+                                className="
+                                    mt-5
+                                    flex
+                                    items-center
+                                    gap-2
+                                    text-[#B8A4FF]
+                                    font-medium
+                                    hover:opacity-80
+                                    transition
+                                "
+                            >
+
+                                <Plus size={18} />
+
+                                Adicionar questão
+
+                            </button>
+
+                        )
+                    }
                     </div>
 
                 ))

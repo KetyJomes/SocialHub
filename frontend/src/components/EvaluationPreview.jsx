@@ -1,8 +1,9 @@
 export const EvaluationPreview = ({
     dados,
-    secoes
+    secoes,
+    onSaveModel,
+    onCreate
 }) => {
-
     return (
 
         <section
@@ -22,166 +23,185 @@ export const EvaluationPreview = ({
                 Pré-visualização
             </h2>
 
-            <div className="space-y-6">
+            <div>
 
-                <div>
+                <h3 className="text-3xl font-bold text-gray-800">
+                    {dados.titulo || "Título da avaliação"}
+                </h3>
 
-                    <h3 className="text-2xl font-bold text-gray-800">
+                <p className="text-gray-500 mt-2 mb-8">
+                    {dados.tipo || "Tipo da avaliação"}
+                </p>
+
+            </div>
+
+            <div className="overflow-x-auto border border-gray-200 rounded-xl">
+
+                <table className="w-full border-collapse">
+
+                    <thead>
+
+                        <tr className="border-b border-gray-200 bg-white">
+
+                            <th className="w-20 px-4 py-5 text-center font-semibold">
+                                Nº
+                            </th>
+
+                            <th className="w-80 px-6 py-5 text-left font-semibold">
+                                Competência
+                            </th>
+
+                            <th className="px-6 py-5 text-center font-semibold">
+                                Crítico
+                            </th>
+
+                            <th className="px-6 py-5 text-center font-semibold">
+                                Abaixo
+                            </th>
+
+                            <th className="px-6 py-5 text-center font-semibold">
+                                Dentro
+                            </th>
+
+                            <th className="px-6 py-5 text-center font-semibold">
+                                Acima
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
 
                         {
-                            dados.titulo || "Título da avaliação"
-                        }
 
-                    </h3>
+                            secoes.map((secao, indice) => {
 
-                    <p className="text-gray-500 mt-2">
+                                const critico = secao.perguntas.find(
+                                    pergunta =>
+                                        pergunta.escala === "Crítico"
+                                );
 
-                        {
-                            dados.tipo || "Tipo da avaliação"
-                        }
+                                const abaixo = secao.perguntas.find(
+                                    pergunta =>
+                                        pergunta.escala === "Abaixo do esperado"
+                                );
 
-                    </p>
+                                const dentro = secao.perguntas.find(
+                                    pergunta =>
+                                        pergunta.escala === "Dentro do esperado"
+                                );
 
-                </div>
+                                const acima = secao.perguntas.find(
+                                    pergunta =>
+                                        pergunta.escala === "Acima do esperado"
+                                );
 
-                {
+                                return (
 
-                    secoes.map((secao, indiceSecao) => (
+                                    <tr
+                                        key={secao.id}
+                                        className="border-b border-gray-200 align-top"
+                                    >
 
-                        <div
-                            key={secao.id}
-                            className="
-                                border
-                                border-gray-200
-                                rounded-xl
-                                p-5
-                                bg-gray-50
-                            "
-                        >
+                                        <td className="text-center py-6 font-medium">
+                                            {(indice + 1)
+                                                .toString()
+                                                .padStart(2, "0")}
+                                        </td>
 
-                            <h4 className="text-lg font-semibold mb-5">
+                                        <td className="px-6 py-6">
 
-                                {
-
-                                    secao.titulo
-                                        ? secao.titulo
-                                        : `Tópico ${indiceSecao + 1}`
-
-                                }
-
-                            </h4>
-
-                            <div className="space-y-5">
-
-                                {
-
-                                    secao.perguntas.map((pergunta, indicePergunta) => (
-
-                                        <div key={pergunta.id}>
-
-                                            <p className="font-medium text-gray-800">
-
-                                                {indicePergunta + 1}. {
-
-                                                    pergunta.texto
-                                                        ? pergunta.texto
-                                                        : "Pergunta..."
-
+                                            <h4 className="font-bold text-lg text-gray-800">
+                                                {
+                                                    secao.titulo ||
+                                                    "Título da competência"
                                                 }
+                                            </h4>
 
+                                            <p className="text-gray-500 mt-2">
+                                                {
+                                                    secao.descricao ||
+                                                    "Descrição da competência"
+                                                }
                                             </p>
 
-                                            <div className="flex gap-3 mt-3 flex-wrap">
+                                        </td>
 
-                                                <span
-                                                    className="
-                                                        px-4
-                                                        py-2
-                                                        rounded-lg
-                                                        border
-                                                        border-gray-200
-                                                        text-sm
-                                                        bg-white
-                                                    "
-                                                >
-                                                    Abaixo do esperado
-                                                </span>
+                                        <td className="px-6 py-6 text-center">
 
-                                                <span
-                                                    className="
-                                                        px-4
-                                                        py-2
-                                                        rounded-lg
-                                                        border
-                                                        border-gray-200
-                                                        text-sm
-                                                        bg-white
-                                                    "
-                                                >
-                                                    Dentro do esperado
-                                                </span>
+                                            {
+                                                critico
+                                                    ? critico.texto
+                                                    : "-"
+                                            }
 
-                                                <span
-                                                    className="
-                                                        px-4
-                                                        py-2
-                                                        rounded-lg
-                                                        border
-                                                        border-gray-200
-                                                        text-sm
-                                                        bg-white
-                                                    "
-                                                >
-                                                    Acima do esperado
-                                                </span>
+                                        </td>
 
-                                                <span
-                                                    className="
-                                                        px-4
-                                                        py-2
-                                                        rounded-lg
-                                                        border
-                                                        border-gray-200
-                                                        text-sm
-                                                        bg-white
-                                                    "
-                                                >
-                                                    Não se aplica
-                                                </span>
+                                        <td className="px-6 py-6 text-center">
 
-                                            </div>
+                                            {
+                                                abaixo
+                                                    ? abaixo.texto
+                                                    : "-"
+                                            }
 
-                                        </div>
+                                        </td>
 
-                                    ))
+                                        <td className="px-6 py-6 text-center">
 
-                                }
+                                            {
+                                                dentro
+                                                    ? dentro.texto
+                                                    : "-"
+                                            }
 
-                            </div>
+                                        </td>
 
-                        </div>
+                                        <td className="px-6 py-6 text-center">
 
-                    ))
+                                            {
+                                                acima
+                                                    ? acima.texto
+                                                    : "-"
+                                            }
 
-                }
+                                        </td>
 
-                <div className="flex justify-end gap-4 pt-4">
+                                    </tr>
+
+                                );
+
+                            })
+
+                        }
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+                <div className="flex justify-end gap-4 mt-8">
 
                     <button
+                        onClick={onSaveModel}
                         className="
-                            border
-                            border-gray-300
-                            px-6
+                            bg-[#B8A4FF]
+                            text-white
+                            px-8
                             py-3
                             rounded-lg
-                            hover:bg-gray-50
+                            hover:opacity-90
                             transition
+                            font-medium
                         "
                     >
                         Salvar como modelo
                     </button>
 
                     <button
+                        onClick={onCreate}
                         className="
                             bg-[#B8A4FF]
                             text-white
@@ -197,8 +217,6 @@ export const EvaluationPreview = ({
                     </button>
 
                 </div>
-
-            </div>
 
         </section>
 
