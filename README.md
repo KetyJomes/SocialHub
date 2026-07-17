@@ -51,6 +51,7 @@ npx prisma generate
 ### 7. Executar a aplicação
 
 ```bash
+npm install
 npm run dev
 ```
 
@@ -64,7 +65,7 @@ http://localhost:5173
 
 - React
 - TypeScript
-- CSS
+- Tailwind
 - Node.js
 - Prisma ORM
 - MySQL
