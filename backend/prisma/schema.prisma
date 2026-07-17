@@ -54,6 +54,7 @@ model Test{
   grade Int
   type TestType
   AvailableResult Boolean
+  Frequency Frequency
 
   Skills Skill[]
 
@@ -114,7 +115,18 @@ enum TestType {
   Self
   Instructor
   Group
+  Lider
+  Class
 }
+
+enum Frequency {
+  unique
+  Mensal
+  Bimestral
+  Trimestral
+  Anual
+}
+
 
 
 enum Role {

@@ -7,5 +7,5 @@ export interface createAlternativeDTO{
 export interface updateAlternativeDTO{
     Content?: string,
     Scale?: number,
-    idSkill?: number
+    idSkill: number
 }

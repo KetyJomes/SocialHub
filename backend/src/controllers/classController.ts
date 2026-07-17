@@ -1,6 +1,6 @@
 import {Request,Response} from 'express';
 import { createClassDTO,updateClassDTO } from '../dtos/classDTO.ts';
-import { createClass, updateClass, deleteClass, showClass, showClasses } from '../services/classServices.ts';
+import { createClass, updateClass, deleteClass, showClass, showClasses, addStudentToClass, removeStudentFromClass } from '../services/classServices.ts';
 
 export default class ClassController {
     
@@ -24,7 +24,7 @@ export default class ClassController {
             return res.status(200).send({ response: 'Turma atualizada com sucesso'})
         }
         catch (e) {
-            return res.status(500).send({ rewsponse: "Ocorreu algum erro no servidor"})
+            return res.status(500).send({ response: "Ocorreu algum erro no servidor"})
         }
     }
 
@@ -60,6 +60,36 @@ export default class ClassController {
         }
         catch (e) {
             return res.status(500).send({ repsponse: "A turma não pode ser deletada"})
+        }
+    }
+
+    static async addStudent(req:Request, res: Response){
+        const id = parseInt(req.params.id,10);
+        const {studentId} = req.body;
+            
+        if(isNaN(id) || !studentId){
+            return res.status(400).send({Response: "Aluno não encontrado"})
+        }
+        try{
+            await addStudentToClass (id, parseInt(studentId,10));
+            return res.status(200).send({ response:  "Aluno adicionado com sucesso"})
+        }catch (e){
+            return res.status(500).send({ Response: "Não foi possivel adicionar o aluno a sala"})
+        }
+    }
+
+    static async RemoveStudent(req:Request, res: Response){
+        const id = parseInt(req.params.id,10);
+        const {studentId} = req.body;
+            
+        if(isNaN(id) || !studentId){
+            return res.status(400).send({Response: "Aluno não encontrado"})
+        }
+        try{
+            await removeStudentFromClass (id, parseInt(studentId,10));
+            return res.status(200).send({ response:  "Aluno removido com sucesso"})
+        }catch (e){
+            return res.status(500).send({ Response: "Não foi possivel remover o aluno da sala"})
         }
     }
 }

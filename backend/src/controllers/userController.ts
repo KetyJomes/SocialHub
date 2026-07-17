@@ -1,5 +1,5 @@
 import { Request, Response} from "express";
-import { createUserDTO, authUserDTO } from "../dtos/userDTO.ts";
+import { createUserDTO, authUserDTO, updateUserDTO } from "../dtos/userDTO.ts";
 import { createUser, getUser, authUser, getUsers, updateUser  } from "../services/userServices.ts";
 
 export default class UserController {
@@ -52,6 +52,17 @@ export default class UserController {
         }
     }
 
-    
+    static async updateUser(req: Request, res: Response){
+        const data: updateUserDTO = req.body
+        try{
+            const id = parseInt(req.params[0],10);
+            await updateUser(id,data);
+            return res.status(200).send({ reponse: 'User atualizado com sucesso!'})
+        }
+        catch (e) {
+            return res.status(500).send({ response: "Ocorreu um erro no servidor"})
+        }
+    }
+
 
 }
