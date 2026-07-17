@@ -25,7 +25,7 @@ import {ManagementAnswerEvaluation } from "./pages/ManagementAnswerEvaluation";
 import {Management360EvaluationPeople} from "./pages/Management360EvaluationPeople";
 import { EvaluationManagement } from "./pages/EvaluationManagement";
 import { CreateEvaluation } from "./pages/CreateEvaluation";
-import { ManagementAvaliacoesEnviadas } from "./pages/ManagementAvaliacoesEnviadas";
+import { ManagementAvaliacoes } from "./pages/ManagementAvaliacoes";
 import { ManagementEvaluationClasses } from "./pages/ManagementEvaluationClasses";
 import { ManagementEvaluationClassDetails } from "./pages/ManagementEvaluationClassDetails";
 
@@ -59,7 +59,7 @@ function App() {
           <Route path="/management-360-evaluation-people/:turma/:aluno/:avaliacao/:tipoAba" element={<Management360EvaluationPeople />}/>
           <Route  path="/management-evaluations"  element={<EvaluationManagement />}/>
           <Route path="/management-evaluations/create" element={<CreateEvaluation />}/>
-          <Route path="/management-avaliacoes" element={<ManagementAvaliacoesEnviadas />}/>
+          <Route path="/management-avaliacoes" element={<ManagementAvaliacoes />}/>
           <Route path="/management-avaliacoes-turmas" element={<ManagementEvaluationClasses />}/>
           <Route path="/management-avaliacoes-turmas-alunos" element={<ManagementEvaluationClassDetails />}/>
         </Routes>

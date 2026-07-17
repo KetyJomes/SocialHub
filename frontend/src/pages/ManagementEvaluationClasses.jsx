@@ -7,9 +7,13 @@ import {
 
 import { Header } from "../components/Header";
 import { SidebarManagement } from "../components/SidebarManagement";
+import { useNavigate } from "react-router-dom";
 
 
 export const ManagementEvaluationClasses = () => {
+
+    const navigate = useNavigate();
+
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -441,6 +445,8 @@ export const ManagementEvaluationClasses = () => {
                                                 >
 
                                                     <button
+                                                        onClick={() => navigate('/management-avaliacoes-turmas-alunos')}
+
                                                         className="
                                                             flex
                                                             items-center
