@@ -40,7 +40,7 @@ export const deleteAlternatives = async (id: number) => {
 
 
 
-export const findByskill = async (idSkill: number) => {
+export const findByskillId = async (idSkill: number) => {
     return await prisma.alternatives.findMany({
         where:{
             idSkill: idSkill
