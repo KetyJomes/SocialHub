@@ -214,7 +214,7 @@ export const ManagementMain = () => {
 
                     <div className="p-10">
                         <h1 className="font-bold text-3xl">
-                            Bem-vindo(a), Gestor!
+                            Bem-vindo(a), Instrutor!
                         </h1>
                         <p className="text-gray-500">
                             Acompanhe o desempenho das suas turmas e alunos.

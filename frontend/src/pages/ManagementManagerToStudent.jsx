@@ -116,7 +116,7 @@ export const ManagementManagerToStudent = () => {
                     </h2>
 
                     <p className="text-gray-500 mt-2 mb-6">
-                        Avaliações realizadas pelo gestor para este aluno.
+                        Avaliações realizadas pelo instrutor para este aluno.
                     </p>
 
                     <section className="flex gap-8 border-b border-gray-300">

@@ -154,7 +154,7 @@ export const ManagementStudentToManager = () => {
 
                     <p className="text-gray-500 mt-2 mb-6">
 
-                        Avaliações realizadas pelo aluno sobre o gestor.
+                        Avaliações realizadas pelo aluno sobre o instrutor.
 
                     </p>
 
