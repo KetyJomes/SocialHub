@@ -28,6 +28,7 @@ import { CreateEvaluation } from "./pages/CreateEvaluation";
 import { ManagementAvaliacoesEnviadas } from "./pages/ManagementAvaliacoesEnviadas";
 import { ManagementEvaluationClasses } from "./pages/ManagementEvaluationClasses";
 import { ManagementEvaluationClassDetails } from "./pages/ManagementEvaluationClassDetails";
+import { ManagementEvaluationsPending } from "./pages/ManagementEvaluationsPending";
 
 function App() {
 
@@ -62,6 +63,7 @@ function App() {
           <Route path="/management-avaliacoes" element={<ManagementAvaliacoesEnviadas />}/>
           <Route path="/management-avaliacoes-turmas" element={<ManagementEvaluationClasses />}/>
           <Route path="/management-avaliacoes-turmas-alunos" element={<ManagementEvaluationClassDetails />}/>
+          <Route path="/management-evaluations-pending" element={<ManagementEvaluationsPending /> } />
         </Routes>
       </BrowserRouter>
     </>
