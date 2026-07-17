@@ -51,7 +51,6 @@ npx prisma generate
 ### 7. Executar a aplicação
 
 ```bash
-npm install
 npm run dev
 ```
 
