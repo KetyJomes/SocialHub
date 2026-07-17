@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
     GraduationCap,
     Info,
@@ -14,6 +14,8 @@ import { SidebarManagement } from "../components/SidebarManagement";
 
 
 export const ManagementEvaluationClassDetails = () => {
+
+    const navigate = useNavigate();
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -494,6 +496,9 @@ export const ManagementEvaluationClassDetails = () => {
                                             <td className="px-5 py-5 text-center">
 
                                                 <button
+
+                                                    onClick={() => navigate('/management-avaliacoes-turmas-alunos')}
+
                                                     className="
                                                         flex
                                                         items-center
