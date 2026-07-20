@@ -69,3 +69,13 @@ export const deleteClass = async(id: number)=>{
         where: {id:id}
     })
 }
+
+export const archiveClass = async(id: number)=>{
+    const idClass = prisma.class.findUnique({
+        where: {ìd: id}
+    });
+    return await prisma.user.update({
+        where: {id:id},
+        data: {isActive: false}
+    })
+}

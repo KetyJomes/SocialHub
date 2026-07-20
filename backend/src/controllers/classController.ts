@@ -1,6 +1,6 @@
 import {Request,Response} from 'express';
 import { createClassDTO,updateClassDTO } from '../dtos/classDTO.ts';
-import { createClass, updateClass, deleteClass, showClass, showClasses, addStudentToClass, removeStudentFromClass } from '../services/classServices.ts';
+import { createClass, updateClass, deleteClass, showClass, showClasses, addStudentToClass, removeStudentFromClass, archiveClass } from '../services/classServices.ts';
 
 export default class ClassController {
     

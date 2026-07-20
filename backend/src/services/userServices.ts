@@ -72,4 +72,8 @@ export const updateUser = async(id:number, data: updateUserDTO)=>{
 }
 
 
-
+export const deleteUser = async(id: number)=>{
+    return await prisma.user.delete({
+        where: {id:id}
+    })
+}

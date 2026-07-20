@@ -71,6 +71,8 @@ model Class {
   idPIC Int 
 
   students User[] @relation("StudentClass")
+
+  isActive Boolean @default(true)
 }
 
 model Answers {
