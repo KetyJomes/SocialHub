@@ -1,6 +1,6 @@
-import { Request, Response} from "express";
+import { Request, response, Response} from "express";
 import { createUserDTO, authUserDTO, updateUserDTO } from "../dtos/userDTO.ts";
-import { createUser, getUser, authUser, getUsers, updateUser  } from "../services/userServices.ts";
+import { createUser, getUser, authUser, getUsers, updateUser, deleteUser  } from "../services/userServices.ts";
 
 export default class UserController {
     static async create(req: Request, res: Response){
@@ -64,5 +64,15 @@ export default class UserController {
         }
     }
 
+    static async removeUser(req: Request, res: Response){
+        const id = parseInt(req.params[0],10);
+        try{
+            await deleteUser(id);
+            return res.status(200).send({response: 'Usuário excluido com sucesso'})
+        }
+        catch (e){
+            return res.status(500).send({ response: 'Usuário não pode ser deletado'})
+        }
+    }
 
 }

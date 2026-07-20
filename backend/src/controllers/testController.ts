@@ -48,7 +48,7 @@ export default class TestController {
             return res.status(200).send({ response: 'Prova exluida com sucesso'})
         }
         catch (e) {
-            return res.status(500).send({ repsponse: "A prova não pode ser deletada"})
+            return res.status(500).send({ response: "A prova não pode ser deletada"})
         }
     }
 
