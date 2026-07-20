@@ -7,7 +7,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
-export const LinhaManagement360People = ({
+export const Row360Control = ({
     colega,
     turma,
     aluno,

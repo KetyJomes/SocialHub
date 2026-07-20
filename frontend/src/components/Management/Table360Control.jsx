@@ -1,9 +1,9 @@
 import { Search } from "lucide-react";
 import { useState } from "react";
 
-import { LinhaManagement360People } from "./LinhaManagement360People";
+import { Row360Control } from "./Row360Control";
 
-export const TabelaManagement360People = ({
+export const Table360Control = ({
     colegas,
     turma,
     aluno,
@@ -83,7 +83,7 @@ export const TabelaManagement360People = ({
 
                 filtrados.map(colega=>(
 
-                    <LinhaManagement360People
+                    <Row360Control
                         key={colega.id}
                         colega={colega}
                         turma={turma}
