@@ -92,4 +92,14 @@ export default class ClassController {
             return res.status(500).send({ Response: "Não foi possivel remover o aluno da sala"})
         }
     }
+
+    static async archiveClass(req:Request, res: Response){
+        const id = parseInt(req.params[0],10);
+        try {
+            await archiveClass(id)
+            return res.status(200).send({ Response: "Sala arquivada com sucesso"})
+        }catch (e){
+            return res.status(500).send({ Response: "Não foi possivel finalizar a ação"})
+        }
+    }
 }
