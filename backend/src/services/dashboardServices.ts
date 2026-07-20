@@ -1,10 +1,11 @@
 import { prisma } from '../lib/prisma.ts'
+import { User_Test, Answers } from '../../src/generated/prisma/client.ts';
 
 export const getGeneral = async () => {
     const [totalStudents, totalClasses, totalTests] = await Promise.all([
         prisma.user.count({
             where: {
-                students: {some: {}}
+                Evaluated: {some: {}}
             }
         }),
         prisma.class.count(),
@@ -17,33 +18,47 @@ export const getGeneral = async () => {
     };
 };
 
-// export const getStudent = async (studentId: number) => {
-//     const studentData = await prisma.user.findUnique({
-//         where: {id: studentId},
-//         include: {
-//             user: {
-//                 include :{
-//                     userTestAnswer: true
-//                 }
-//             }
-//         }
-//     });
-//     if (!studentData) return null;
-//     const totalGrades = studentData.user.reduce((sum ,attempt{ id: any; }) => sum + attempt.id,0);
-//     const testsCount = studentData.user.lenght;
-//     const avarageGrade = testsCount > 0? (totalGrades/testsCount): 0;
+export const getStudent = async (studentId: number) => {
+    const studentData = await prisma.user.findUnique({
+        where: { id: studentId },
+        include: {
+            Evaluated: { 
+                include: {
+                    userTestAnswer: true 
+                }
+            }
+        }
+    });
 
-//     return {
-//         name: studentData.name,
-//         totalTestsTaken: testsCount,
-//         avarageGrade
-//     };
-// };
+    if (!studentData) return null;
+
+    let totalGradesGlobal = 0;
+    const testsCount = studentData.Evaluated.length; 
+
+    // 2. Dizemos ao TS que 'attempt' inclui as respostas além do modelo padrão
+    studentData.Evaluated.forEach((attempt: User_Test & { userTestAnswer: Answers[] }) => {
+        
+        // 3. Tipamos o acumulador (sum) como number e a resposta (answer) como Answers
+        const testScore = attempt.userTestAnswer.reduce((sum: number, answer: Answers) => {
+            return sum + (answer.scale || 0); 
+        }, 0);
+
+        totalGradesGlobal += testScore;
+    });
+
+    const averageGrade = testsCount > 0 ? (totalGradesGlobal / testsCount) : 0;
+
+    return {
+        name: studentData.name, 
+        totalTestsTaken: testsCount,
+        averageGrade: Number(averageGrade.toFixed(2)) 
+    };
+};
 
 export const getClass = async (classId: number) =>{
     const classInfo = await prisma.class.findUnique({
         where: {
-            idClass : classId
+            id: classId
         },
         include:{
             students: true
@@ -54,29 +69,26 @@ export const getClass = async (classId: number) =>{
 }
 
 export const getRangking = async () => {
-    return await prisma.userTestAnswer.findMany({
+    return await prisma.user_Test.findMany({
         orderBy: {
             id: 'desc'
         }
     });
 };
 
-export const getEvolution = async (studentId: Number) => {
+export const getEvolution = async (studentId: number) => {
     return await prisma.user_Test.findMany({
         where:{
-            idEvaluated: studentId
+        idEvaluated: studentId
         },
-        OrderBy: {
+        orderBy: {
             id: 'asc'
         },
-        selected: {
+        select: {
             id: true,
-            idUserTest: true
+            idTest: true
         }
 
-
-
-        
     });
 };
 
@@ -104,7 +116,7 @@ export const getSkills = async (studentId: number) =>{
     const skillGroups: {[key: string]: {totalScale: number, count: number}} = {}
 
     answers.forEach(ans => {
-        const skillTitle = ans.skill.skillTitle;
+        const skillTitle = ans.skill.Title;
         if (!skillGroups[skillTitle]){
             skillGroups[skillTitle] = {totalScale: 0, count: 0};
         }
@@ -121,13 +133,13 @@ export const getSkills = async (studentId: number) =>{
 export const getComparison = async (classId: number) =>{
     const targetClass = await prisma.class.findUnique({
         where: {id: classId},
-        select: {avarageGrade: true}
+        select: {avarageScore: true}
     });
 
-    const generalAverageObj = await getAvarage();
+    const generalAverageObj = await getClassAvarage();
 
     return {
-        classAverage: targetClass?.avarageGrade || 0,
+        classAverage: targetClass?.avarageScore || 0,
         systemAverage: generalAverageObj.globalAvarage
 };
 };

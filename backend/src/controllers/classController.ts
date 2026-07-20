@@ -64,7 +64,7 @@ export default class ClassController {
     }
 
     static async addStudent(req:Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
         const {studentId} = req.body;
             
         if(isNaN(id) || !studentId){
@@ -79,7 +79,7 @@ export default class ClassController {
     }
 
     static async RemoveStudent(req:Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
         const {studentId} = req.body;
             
         if(isNaN(id) || !studentId){

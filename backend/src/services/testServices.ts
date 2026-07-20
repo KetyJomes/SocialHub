@@ -7,9 +7,9 @@ export const createTest = async(data: createTestDTO)=>{
 
     return await prisma.test.create({
         data:{
-            content:content,
+            Content:content,
             finalDate:finalDate,
-            startdate:startdate,
+            startDate:startdate,
             AvailableResult: AvailableResult,
             grade: grade,
             type: type,
@@ -26,9 +26,9 @@ export const updateTest = async(id:number,data: updateTestDTO)=>{
     return await prisma.test.update({
         where:{id:id},
         data: {
-            content:content,
+            Content:content,
             finalDate:finalDate,
-            startdate:startdate,
+            startDate:startdate,
             AvailableResult: AvailableResult,
             grade: grade,
             type: type,
@@ -104,7 +104,7 @@ export const addSkill = async (testId: number, skillId: number)=>{
     return await prisma.test.update({
         where: {id: testId},
         data:{
-            skills:{
+            Skills:{
                 connect: {id: skillId}
             }
         }
@@ -115,7 +115,7 @@ export const removeSkill = async (testId: number, skillId: number)=>{
     return await prisma.test.update({
         where: {id: testId},
         data:{
-            skills:{
+            Skills:{
                 disconnect: {id: skillId}
             }
         }
