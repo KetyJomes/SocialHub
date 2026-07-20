@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import { getAvarage, getComparison,getClass, getRangking, getEvolution, getGeneral, getSkills } from '../services/dashboardServices.ts';
+import { getAvarage, getComparison,getClass, getRangking, getEvolution, getSkills } from '../services/dashboardServices.ts';
 
 export default class dashboardController {
     static async showAverage (req:Request, res: Response){
@@ -12,15 +12,15 @@ export default class dashboardController {
         }
     }
 
-    static async showGeneral (req: Request, res: Response){
-        try{
-            const generalDashboard = await getGeneral();
-            return res.status(500).send({ generalDashboard})
-        }
-        catch(e){
-            return res.status(500).send({response: 'Ocorreu um erro no servidor'})
-        }
-    }
+    // static async showGeneral (req: Request, res: Response){
+    //     try{
+    //         const generalDashboard = await getGeneral();
+    //         return res.status(500).send({ generalDashboard})
+    //     }
+    //     catch(e){
+    //         return res.status(500).send({response: 'Ocorreu um erro no servidor'})
+    //     }
+    // }
 
     static async showComparison (req: Request, res: Response){
         const id = parseInt(req.params[0],10);
