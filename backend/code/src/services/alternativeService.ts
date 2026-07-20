@@ -30,7 +30,7 @@ export const updateAlternative = async( id: number, data: updateAlternativeDTO )
     })
 }
 
-export const deleteAlternatives = async (id: number) => {
+export const deleteAlternative = async (id: number) => {
     return await prisma.alternatives.delete({
         where: {
             id: id

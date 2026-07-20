@@ -1,0 +1,21 @@
+services:
+  backend:
+    image: socialhub-backend:latest
+
+    build: 
+      dockerfile: Dockerfile
+      context: ./backend
+      
+    ports:
+      - 1111:8080
+    env_file:
+      - ./backend/backend.env
+
+  db:
+    image: mysql:latest
+
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=socialhub_db
+      - MYSQL_USER=socialhub_user
+      - MYSQL_PASSWORD=110426_S2

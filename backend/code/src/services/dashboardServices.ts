@@ -80,7 +80,7 @@ export const getEvolution = async (studentId: Number) => {
     });
 };
 
-export const getAvarage= async () =>{
+export const getClassAvarage= async () =>{
     const aggregation = await prisma.class.aggregate({
         _avg: {
             avarageScore: true
@@ -93,7 +93,7 @@ export const getAvarage= async () =>{
 
 
 export const getSkills = async (studentId: number) =>{
-    const answers = await prisma.answers.findMnay({
+    const answers = await prisma.answers.findMany({
         where: {
             idUserTest: studentId
         },

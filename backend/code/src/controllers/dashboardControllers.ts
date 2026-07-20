@@ -1,10 +1,10 @@
 import {Request, Response} from 'express';
-import { getAvarage, getComparison,getClass, getRangking, getEvolution, getGeneral, getSkills } from '../services/dashboardServices.ts';
+import { getClassAvarage, getComparison,getClass, getRangking, getEvolution, getGeneral, getSkills } from '../services/dashboardServices.ts';
 
 export default class dashboardController {
-    static async showAverage (req:Request, res: Response){
+    static async showClassAverage (req:Request, res: Response){
         try{
-            const averageDashboard  = await getAvarage();
+            const averageDashboard  = await getClassAvarage();
             return res.status(200).send({averageDashboard})
         }
         catch(e){
