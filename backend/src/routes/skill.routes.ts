@@ -1,13 +1,14 @@
 import express from 'express';
+import SkillController from '../controllers/skillsController.ts';
 
 const route = express.Router();
 
 route
-    .post('/skill/create')
-    .get('/skill/findAll')
-    .patch('/skill/update/:id')
-    .delete('/skill/delete/:id')
-    .get('/skill/findById/:id')
-    .get('/skill/find/alternative/:id')
+    .post('/skill/create',SkillController.create)
+    .get('/skill/findAll',SkillController.showSkill)
+    .patch('/skill/update/:id',SkillController.updateSkill)
+    .delete('/skill/delete/:id',SkillController.deleteSkills)
+    .get('/skill/findById/:id',SkillController.getSkillById)
+    // .get('/skill/find/alternative/:id',SkillController.)
 
 export default route;

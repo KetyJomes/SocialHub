@@ -1,7 +1,7 @@
 import { createUserDTO, authUserDTO, updateUserDTO } from "../dtos/userDTO.ts";
 import { prisma } from "../lib/prisma.ts";
 // import { Prisma } from "@prisma/client";
-import * as bcrypt from "bcryptjs";
+import * as bcrypt from "bcrypt";
 
 export const  createUser = async(data: createUserDTO)=>{
     const {name, email, password, EDV, classId, role} = data
@@ -14,7 +14,7 @@ export const  createUser = async(data: createUserDTO)=>{
         throw new Error ("Este EDV já está cadastrado!")
     }
 
-    const hashedPassword = await bcrypt.hasch(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 10)
 
     return await prisma.user.create({
         data:{
@@ -22,7 +22,7 @@ export const  createUser = async(data: createUserDTO)=>{
             email:email,
             password:hashedPassword,
             EDV: EDV,
-            role: "Student",
+            role: role ?? "Student",
             idClass: classId,
         }
     });
@@ -72,8 +72,4 @@ export const updateUser = async(id:number, data: updateUserDTO)=>{
 }
 
 
-export const deleteUser = async(id: number)=>{
-    return await prisma.user.delete({
-        where: {id:id}
-    })
-}
+

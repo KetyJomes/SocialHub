@@ -1,14 +1,14 @@
 import express from 'express';
+import UserController from '../controllers/userController.ts';
 
 const route = express.Router();
 
 route
-    .post('/user/create')
-    .get('/user/findAll')
-    .patch('/user/update/:id')
-    .delete('/user/delete/:id')
-    .get('/user/findById/:id')
-    .get('/user/:id/perfomance')
-    .get('/user/:id/tests')
+    .post('/user/create',UserController.create)
+    .get('/user/findAll', UserController.showUsers)
+    .patch('/user/update/:id',UserController.updateUser)
+    // .delete('/user/delete/:id',UserController.)
+    .get('/user/findById/:id',UserController.showUser)
+  
 
 export default route;

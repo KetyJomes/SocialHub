@@ -1,44 +1,44 @@
 import { prisma } from '../lib/prisma.ts'
 
-// export const getGeneral = async () => {
-//     const [totalStudents, totalClasses, totalTests] = await Promise.all([
-//         prisma.user.count({
-//             where: {
-//                 students: {some: {}}
-//             }
-//         }),
-//         prisma.class.count(),
-//         prisma.test.count()
-//     ]);
-//     return {
-//         totalStudents,
-//         totalClasses,
-//         totalTests
-//     };
-// };
-
-export const getStudentAvarage = async (studentId: number) => {
-    const studentData = await prisma.user.findUnique({
-        where: {id: studentId},
-        include: {
-            user: {
-                include :{
-                    userTestAnswer: true
-                }
+export const getGeneral = async () => {
+    const [totalStudents, totalClasses, totalTests] = await Promise.all([
+        prisma.user.count({
+            where: {
+                students: {some: {}}
             }
-        }
-    });
-    if (!studentData) return null;
-    const totalGrades = studentData.user.reduce((sum ,attempt) => sum + attempt.id,0);
-    const testsCount = studentData.user.lenght;
-    const avarageGrade = testsCount > 0? (totalGrades/testsCount): 0;
-
+        }),
+        prisma.class.count(),
+        prisma.test.count()
+    ]);
     return {
-        name: studentData.name,
-        totalTestsTaken: testsCount,
-        avarageGrade
+        totalStudents,
+        totalClasses,
+        totalTests
     };
 };
+
+// export const getStudent = async (studentId: number) => {
+//     const studentData = await prisma.user.findUnique({
+//         where: {id: studentId},
+//         include: {
+//             user: {
+//                 include :{
+//                     userTestAnswer: true
+//                 }
+//             }
+//         }
+//     });
+//     if (!studentData) return null;
+//     const totalGrades = studentData.user.reduce((sum ,attempt{ id: any; }) => sum + attempt.id,0);
+//     const testsCount = studentData.user.lenght;
+//     const avarageGrade = testsCount > 0? (totalGrades/testsCount): 0;
+
+//     return {
+//         name: studentData.name,
+//         totalTestsTaken: testsCount,
+//         avarageGrade
+//     };
+// };
 
 export const getClass = async (classId: number) =>{
     const classInfo = await prisma.class.findUnique({
@@ -80,7 +80,7 @@ export const getEvolution = async (studentId: Number) => {
     });
 };
 
-export const getAvarage= async () =>{
+export const getClassAvarage= async () =>{
     const aggregation = await prisma.class.aggregate({
         _avg: {
             avarageScore: true
@@ -93,7 +93,7 @@ export const getAvarage= async () =>{
 
 
 export const getSkills = async (studentId: number) =>{
-    const answers = await prisma.answers.findMnay({
+    const answers = await prisma.answers.findMany({
         where: {
             idUserTest: studentId
         },
