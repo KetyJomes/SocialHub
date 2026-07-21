@@ -1,6 +1,6 @@
 import { Request, Response} from "express";
 import { createAlternativeDTO, updateAlternativeDTO } from "../dtos/alternativeDTO.ts";
-import { createAlternative, deleteAlternatives, findAlternatives, findAlternativesById, updateAlternative } from "../services/alternativeService.ts";
+import { createAlternative, deleteAlternative, findAlternatives, findAlternativesById, updateAlternative } from "../services/alternativeService.ts";
 
 export default class alternativeController {
     static async create(req: Request, res: Response){
@@ -50,7 +50,7 @@ export default class alternativeController {
         const {id} = req.params
 
         try{
-            await deleteAlternatives(Number(id))
+            await deleteAlternative(Number(id))
             return res.status(200).send({response: "Alternative deletada com sucesso!"})
         }
         catch(error){

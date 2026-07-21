@@ -351,9 +351,9 @@ export type ClassUncheckedUpdateManyInput = {
   idPIC?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
-export type ClassScalarRelationFilter = {
-  is?: Prisma.ClassWhereInput
-  isNot?: Prisma.ClassWhereInput
+export type ClassNullableScalarRelationFilter = {
+  is?: Prisma.ClassWhereInput | null
+  isNot?: Prisma.ClassWhereInput | null
 }
 
 export type ClassListRelationFilter = {
@@ -431,10 +431,12 @@ export type ClassUncheckedCreateNestedManyWithoutPICInput = {
   connect?: Prisma.ClassWhereUniqueInput | Prisma.ClassWhereUniqueInput[]
 }
 
-export type ClassUpdateOneRequiredWithoutStudentsNestedInput = {
+export type ClassUpdateOneWithoutStudentsNestedInput = {
   create?: Prisma.XOR<Prisma.ClassCreateWithoutStudentsInput, Prisma.ClassUncheckedCreateWithoutStudentsInput>
   connectOrCreate?: Prisma.ClassCreateOrConnectWithoutStudentsInput
   upsert?: Prisma.ClassUpsertWithoutStudentsInput
+  disconnect?: Prisma.ClassWhereInput | boolean
+  delete?: Prisma.ClassWhereInput | boolean
   connect?: Prisma.ClassWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.ClassUpdateToOneWithWhereWithoutStudentsInput, Prisma.ClassUpdateWithoutStudentsInput>, Prisma.ClassUncheckedUpdateWithoutStudentsInput>
 }

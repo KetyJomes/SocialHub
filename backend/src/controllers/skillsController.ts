@@ -1,7 +1,7 @@
 import { Request, Response} from "express";
 import { createAlternativeDTO, updateAlternativeDTO } from "../dtos/alternativeDTO.ts";
-import { createAlternative, deleteAlternatives, findAlternatives, findAlternativesById, findByskill, updateAlternative } from "../services/alternativeService.ts";
-import { createSkill, deleteSkill, getSkills, updateSkill } from "../services/skillService.ts";
+// import { createAlternative, deleteAlternatives, findAlternatives, findAlternativesById, findByskillId, updateAlternative } from "../services/alternativeService.ts";
+import { createSkill, deleteSkill, getSkillById, getSkills, updateSkill } from "../services/skillService.ts";
 import { createSkillDTO, updateSkillDTO } from "../dtos/skillDTO.ts";
 
 export default class SkillController {
@@ -28,7 +28,7 @@ export default class SkillController {
     static async getSkillById(req: Request, res: Response){
         const {id} = req.params
         try{
-            await findByskill(Number(id))
+            await getSkillById(Number(id))
         }
         catch(error){
             return res.status(404).send({response:"nenhuma Competência encontrada!"})

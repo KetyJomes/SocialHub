@@ -22,10 +22,10 @@ export const updateClass = async(id: number, data: updateClassDTO)=>{
         where: {id: id},
         data: {
             period, 
-            avarageScore, 
-            students: {
-                connect: students?.map(studentId => ({id: studentId}))
-            }
+            avarageScore,
+        },
+        include: {
+            students: true
         }
 
     })

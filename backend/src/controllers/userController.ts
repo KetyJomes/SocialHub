@@ -11,6 +11,7 @@ export default class UserController {
             return res.status(201).send({ response: "User cadastrado"});
         }
         catch (e) {
+            console.log(e)
             return res.status(500).send({ response: "Ocorreu algum erro no servidor."})
         }
 
