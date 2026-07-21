@@ -115,7 +115,7 @@ export const CardTurma = ({
                         navigate(`/management-class/${encodeURIComponent(turma)}`);
                     }}
                     className="
-                        text-[#B8A4FF]
+                         text-[#0291F7]
                         font-semibold
                         text-sm
                         hover:underline

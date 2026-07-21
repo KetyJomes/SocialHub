@@ -70,11 +70,11 @@ export const GraficoEvolucaoAluno = () => {
                     <Line
                         type="monotone"
                         dataKey="media"
-                        stroke="#B8A4FF"
+                        stroke="#0291F7"
                         strokeWidth={3}
                         dot={{
                             r: 6,
-                            fill: "#B8A4FF"
+                            fill: "#0291F7"
                         }}
                         activeDot={{
                             r: 8

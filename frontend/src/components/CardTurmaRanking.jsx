@@ -107,7 +107,7 @@ export const CardTurmaRanking = ({ turma, nota }) => {
                     className={`
                         text-2xl
                         font-bold
-                        text-[#B8A4FF]
+                        text-[#0291F7]
                         transition
                         duration-200
 

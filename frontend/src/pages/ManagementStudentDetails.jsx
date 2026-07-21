@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-    ClipboardList,
+    ClipboardCheck,
     Info,
     LineChart,
     PieChart
@@ -298,12 +298,11 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                                         justify-center
                                     "
                                 >
-
-                                    <ClipboardList
+                                    <ClipboardCheck
                                         size={20}
                                         className="text-[#0291F7]"
+                                        strokeWidth={2}
                                     />
-
                                 </div>
 
 
