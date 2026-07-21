@@ -5,10 +5,10 @@ const route = express.Router();
 
 route
     .post('/create',UserController.create)
-    .get('/user/findAll', UserController.showUsers)
+    .get('/findAll', UserController.showUsers)
     .patch('/user/update/:id',UserController.updateUser)
     // .delete('/user/delete/:id',UserController.)
-    .get('/user/findById/:id',UserController.showUser)
+    .get('/findById/:id',UserController.showUser)
   
 
 export default route;

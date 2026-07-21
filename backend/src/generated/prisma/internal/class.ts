@@ -23,7 +23,7 @@ const config: runtime.GetPrismaClientConfig = {
       "value": "prisma-client"
     },
     "output": {
-      "value": "C:\\Users\\Aluno\\Desktop\\SocialHub\\backend\\src\\generated\\prisma",
+      "value": "C:\\Users\\Aluno\\desktop\\SocialHub\\backend\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -37,7 +37,7 @@ const config: runtime.GetPrismaClientConfig = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\Aluno\\Desktop\\SocialHub\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Aluno\\desktop\\SocialHub\\backend\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativePath": "../../../prisma",
