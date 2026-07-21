@@ -5,14 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
 
-import { Header } from "../components/Header";
+import { Header } from "../../components/Header";
 
-import { Sidebar } from "../components/Sidebar";
+import { Sidebar } from "../../components/Sidebar";
 
-import { EvaluationTable } from "../components/EvaluationTable";
+import { EvaluationTable } from "../../components/EvaluationTable";
 
 
-import { evaluation } from "../data/evaluation";
+import { evaluation } from "../../data/evaluation";
 
 
 export const UserRealizarAvaliacao = () => {

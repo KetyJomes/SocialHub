@@ -7,11 +7,11 @@ import {
     PieChart
 } from "lucide-react";
 
-import { Header } from "../components/Header";
-import { SidebarManagement } from "../components/SidebarManagement";
-import { GraficoEvolucaoAluno } from "../components/GraficoEvolucaoAluno";
-import { GraficoCompetenciasAluno } from "../components/GraficoCompetenciasAluno";
-import { StudentTestsControlTable } from "../components/Management/StudentTestsControlTable";
+import { Header } from "../../components/Header";
+import { SidebarManagement } from "../../components/SidebarManagement";
+import { GraficoEvolucaoAluno } from "../../components/GraficoEvolucaoAluno";
+import { GraficoCompetenciasAluno } from "../../components/GraficoCompetenciasAluno";
+import { StudentTestsControlTable } from "../../components/Management/StudentTestsControlTable";
 
 export const ManagementStudentDetails = () => {
 

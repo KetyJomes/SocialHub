@@ -5,8 +5,8 @@ import {
     Eye
 } from "lucide-react";
 
-import { Header } from "../components/Header";
-import { SidebarManagement } from "../components/SidebarManagement";
+import { Header } from "../../components/Header";
+import { SidebarManagement } from "../../components/SidebarManagement";
 import { useNavigate } from "react-router-dom";
 
 

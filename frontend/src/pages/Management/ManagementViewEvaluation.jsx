@@ -1,11 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useState } from "react";
 
-import { Header } from "../components/Header";
-import { SidebarManagement } from "../components/SidebarManagement";
-import { ManagementEvaluationTable } from "../components/ManagementEvaluationTable";
+import { Header } from "../../components/Header";
+import { SidebarManagement } from "../../components/SidebarManagement";
+import { ManagementEvaluationTable } from "../../components/ManagementEvaluationTable";
 
-import { evaluation } from "../data/evaluation";
+import { evaluation } from "../../data/evaluation";
 
 export const ManagementViewEvaluation = () => {
 

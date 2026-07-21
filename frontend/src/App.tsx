@@ -3,25 +3,25 @@ import './App.css'
 
 import {Login} from "./pages/Login.jsx"
 import {Register} from "./pages/Register.jsx"
-import {UserMain} from "./pages/UserMain.jsx"
-import {UserAvaliacoes} from "./pages/UserAvaliacoes"
-import {UserResultados} from "./pages/UserResultados"
-import {UserRealizarAvaliacao} from "./pages/UserRealizarAvaliacao"
-import {UserComparacao} from "./pages/UserComparacao"
-import {UserAvaliacao360} from "./pages/UserAvaliacao360"
-import {ManagementMain} from "./pages/ManagementMain.jsx"
-import {ManagementClasses} from "./pages/ManagementClasses.jsx"
-import {ManagementClassDetails} from "./pages/ManagementClassDetails.jsx"
-import {ManagementStudentDetails} from "./pages/ManagementStudentDetails.jsx"
+import {UserMain} from "./pages/User/UserMain.jsx"
+import {UserAvaliacoes} from "./pages/User/UserAvaliacoes.jsx"
+import {UserResultados} from "./pages/User/UserResultados.jsx"
+import {UserRealizarAvaliacao} from "./pages/User/UserRealizarAvaliacao.jsx"
+import {UserComparacao} from "./pages/User/UserComparacao.jsx"
+import {UserAvaliacao360} from "./pages/User/UserAvaliacao360.jsx"
+import {ManagementMain} from "./pages/Management/ManagementMain.jsx"
+import {ManagementClasses} from "./pages/Management/ManagementClasses.jsx"
+import {ManagementClassDetails} from "./pages/Management/ManagementClassDetails.jsx"
+import {ManagementStudentDetails} from "./pages/Management/ManagementStudentDetails.jsx"
 import { Student360Test } from "./pages/Management/Student360Test.jsx";
-import {ManagementPerformEvaluation} from "./pages/ManagementPerformEvaluation.jsx";
-import { ManagementViewEvaluation } from "./pages/ManagementViewEvaluation";
-import {ManagementAnswerEvaluation } from "./pages/ManagementAnswerEvaluation";
+import {ManagementPerformEvaluation} from "./pages/Management/ManagementPerformEvaluation.jsx";
+import { ManagementViewEvaluation } from "./pages/Management/ManagementViewEvaluation.jsx";
+import {ManagementAnswerEvaluation } from "./pages/Management/ManagementAnswerEvaluation.jsx";
 import {Student360Responses} from "./pages/Management/Student360Responses.jsx";
 import { TestControl } from "./pages/Management/TestControl.jsx";
 import { CreateEvaluation } from "./pages/Management/CreateTest.jsx";
-import { ManagementEvaluationClasses } from "./pages/ManagementEvaluationClasses";
-import { ManagementEvaluationClassDetails } from "./pages/ManagementEvaluationClassDetails";
+import { ManagementEvaluationClasses } from "./pages/Management/ManagementEvaluationClasses.jsx";
+import { ManagementEvaluationClassDetails } from "./pages/Management/ManagementEvaluationClassDetails.jsx";
 import { Admin } from "./pages/Adm/Admin.jsx";
 import { AdminUsuarios } from "./pages/Adm/AdminUsuarios.jsx";
 import { AdminTurmas } from "./pages/Adm/AdminTurmas.jsx";

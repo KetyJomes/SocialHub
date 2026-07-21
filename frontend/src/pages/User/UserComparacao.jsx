@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-import { Header } from "../components/Header";
-import { Sidebar } from "../components/Sidebar";
+import { Header } from "../../components/Header";
+import { Sidebar } from "../../components/Sidebar";
 
-import { DashboardHeader } from "../components/DashboardHeader";
-import { SummaryCards } from "../components/SummaryCards";
-import { EvaluationCard } from "../components/EvaluationCard";
+import { DashboardHeader } from "../../components/DashboardHeader";
+import { SummaryCards } from "../../components/SummaryCards";
+import { EvaluationCard } from "../../components/EvaluationCard";
 
 import {
   Award,

@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 
-import { Header } from "../components/Header";
-import { Sidebar } from "../components/Sidebar";
-import { DashboardCard } from "../components/DashboardCard";
-import { TabelaAvaliacoes } from "../components/TabelaAvaliacoes";
-import { UserGraficoCompetencias } from "../components/UserGraficoCompetencias";
+import { Header } from "../../components/Header";
+import { Sidebar } from "../../components/Sidebar";
+import { DashboardCard } from "../../components/DashboardCard";
+import { TabelaAvaliacoes } from "../../components/TabelaAvaliacoes";
+import { UserGraficoCompetencias } from "../../components/UserGraficoCompetencias";
 
-import { avaliacoes } from "../data/avaliacoes";
+import { avaliacoes } from "../../data/avaliacoes";
 
 import {
     TrendingUp,

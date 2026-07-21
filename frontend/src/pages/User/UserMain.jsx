@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // Componentes
-import { Header } from "../components/Header";
-import { Sidebar } from "../components/Sidebar";
+import { Header } from "../../components/Header";
+import { Sidebar } from "../../components/Sidebar";
 
-import { CardNotificacaoAvaliacao } from "../components/CardNotificacaoAvaliacao";
-import { GraficoPessoal } from "../components/GraficoPessoal";
+import { CardNotificacaoAvaliacao } from "../../components/CardNotificacaoAvaliacao";
+import { GraficoPessoal } from "../../components/GraficoPessoal";
 
 // Imagens
 import bars from "../assets/bars.png";

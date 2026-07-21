@@ -1,20 +1,13 @@
 import { useEffect, useState } from "react";
 
-import { Header } from "../components/Header";
-import { Sidebar } from "../components/Sidebar";
-import { CardProgresso360 } from "../components/CardProgresso360";
-import { TabelaColaboradores360 } from "../components/TabelaColaboradores360";
+import { Header } from "../../components/Header";
+import { Sidebar } from "../../components/Sidebar";
+import { CardProgresso360 } from "../../components/CardProgresso360";
+import { TabelaColaboradores360 } from "../../components/TabelaColaboradores360";
 
 export const UserAvaliacao360 = () => {
 
     const [isOpen, setIsOpen] = useState(false);
-
-
-    /*
-    =====================================================
-    SEMPRE COMEÇAR NO TOPO DA PÁGINA
-    =====================================================
-    */
 
     useEffect(() => {
 

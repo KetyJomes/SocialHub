@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { GraduationCap, Info, BarChart3 } from "lucide-react";
 
-import { Header } from "../components/Header";
-import { SidebarManagement } from "../components/SidebarManagement";
-import { CardTurmaRanking } from "../components/CardTurmaRanking";
-import { GraficoTurmas } from "../components/GraficoTurmas";
+import { Header } from "../../components/Header";
+import { SidebarManagement } from "../../components/SidebarManagement";
+import { CardTurmaRanking } from "../../components/CardTurmaRanking";
+import { GraficoTurmas } from "../../components/GraficoTurmas";
 
 export const ManagementClasses = () => {
 

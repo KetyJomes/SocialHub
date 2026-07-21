@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { GraduationCap, Info, PieChart, BarChart3 } from "lucide-react";
 
-import { Header } from "../components/Header";
-import { SidebarManagement } from "../components/SidebarManagement";
-import { CardAlunoRanking } from "../components/CardAlunoRanking";
-import { GraficoCompetencias } from "../components/GraficoCompetencias";
-import { GraficoAluno } from "../components/GraficoAluno";
+import { Header } from "../../components/Header";
+import { SidebarManagement } from "../../components/SidebarManagement";
+import { CardAlunoRanking } from "../../components/CardAlunoRanking";
+import { GraficoCompetencias } from "../../components/GraficoCompetencias";
+import { GraficoAluno } from "../../components/GraficoAluno";
 
 export const ManagementClassDetails = () => {
 

@@ -2,11 +2,11 @@ import { useRef, useState } from "react";
 import { Info, ClipboardCheck, RotateCcw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-import { Header } from "../components/Header";
-import { CardTurma } from "../components/CardTurma";
-import { CardAvaliacao } from "../components/CardAvaliacao";
-import { CardAvaliacao360 } from "../components/CardAvaliacao360";
-import { SidebarManagement } from "../components/SidebarManagement";
+import { Header } from "../../components/Header";
+import { CardTurma } from "../../components/CardTurma";
+import { CardAvaliacao } from "../../components/CardAvaliacao";
+import { CardAvaliacao360 } from "../../components/CardAvaliacao360";
+import { SidebarManagement } from "../../components/SidebarManagement";
 
 
 export const ManagementMain = () => {

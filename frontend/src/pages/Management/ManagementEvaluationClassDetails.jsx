@@ -9,8 +9,8 @@ import {
     Eye
 } from "lucide-react";
 
-import { Header } from "../components/Header";
-import { SidebarManagement } from "../components/SidebarManagement";
+import { Header } from "../../components/Header";
+import { SidebarManagement } from "../../components/SidebarManagement";
 
 
 export const ManagementEvaluationClassDetails = () => {

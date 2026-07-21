@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { Header } from "../components/Header";
-import { Sidebar } from "../components/Sidebar";
-import { AbaAvaliacoes } from "../components/AbaAvaliacoes";
+import { Header } from "../../components/Header";
+import { Sidebar } from "../../components/Sidebar";
+import { AbaAvaliacoes } from "../../components/AbaAvaliacoes";
 
 
 export const UserAvaliacoes = () => {
