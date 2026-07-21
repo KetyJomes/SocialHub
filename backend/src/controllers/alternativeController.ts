@@ -1,5 +1,5 @@
 import { Request, Response} from "express";
-import { createAlternativeDTO, updateAlternativeDTO } from "../dtos/alternativeDTO.ts";
+import { createAlternativeDTO, updateAlternativeDTO } from "../DTOS/alternativeDTO.ts";
 import { createAlternative, deleteAlternatives, findAlternatives, findAlternativesById, updateAlternative } from "../services/alternativeService.ts";
 
 export default class alternativeController {

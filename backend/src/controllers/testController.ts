@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import { createTestDTO, updateTestDTO } from '../dtos/testDTO.ts';
+import { createTestDTO, updateTestDTO } from '../DTOS/testDTO.ts';
 import { createTest, deleteTest, showTest, showTests, updateTest, allowAccess, cancelAccess, publishtest,addSkill,removeSkill} from '../services/testServices.ts';
 
 // import test from 'node:test';

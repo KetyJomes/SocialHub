@@ -1,5 +1,5 @@
 
-import { createSkillDTO, updateSkillDTO } from "../dtos/skillDTO.ts"
+import { createSkillDTO, updateSkillDTO } from "../DTOS/skillDTO.ts"
 import {prisma} from "../lib/prisma.ts"
 
 export const createSkill = async(data: createSkillDTO)=>{

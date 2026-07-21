@@ -1,4 +1,4 @@
-import { createClassDTO, updateClassDTO } from "../dtos/classDTO.ts";
+import { createClassDTO, updateClassDTO } from "../DTOS/classDTO.ts";
 import {prisma} from "../lib/prisma.ts"
 
 export const createClass = async(data: createClassDTO)=>{

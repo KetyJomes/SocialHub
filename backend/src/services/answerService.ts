@@ -1,4 +1,4 @@
-import { createAnswerDTO, updateAnswerDTO } from "../dtos/answersDTO.ts"
+import { createAnswerDTO, updateAnswerDTO } from "../DTOS/answersDTO.ts"
 import {prisma} from "../lib/prisma.ts"
 
 export const createAnswer = async(data: createAnswerDTO) =>{
