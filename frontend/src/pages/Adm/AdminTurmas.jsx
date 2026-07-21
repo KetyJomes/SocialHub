@@ -86,7 +86,7 @@ export const AdminTurmas = () => {
 
         {
             id:3,
-            nome:"Juliana Martins"
+            nome:"Juliana Berger"
         }
 
     ];
@@ -152,7 +152,7 @@ export const AdminTurmas = () => {
 
             nome:"2º EM A",
 
-            lider:"Juliana Martins",
+            lider:"Juliana Berger",
 
             alunos:[],
 
@@ -648,7 +648,6 @@ export const AdminTurmas = () => {
                         text-white
                         px-6
                         py-3
-                        rounded-xl
                         cursor-pointer
                     "
 
@@ -674,7 +673,6 @@ export const AdminTurmas = () => {
 
                 <div className="
                     bg-white
-                    rounded-3xl
                     shadow-sm
                     p-8
                     flex
@@ -687,7 +685,6 @@ export const AdminTurmas = () => {
                         w-16
                         h-16
                         bg-blue-100
-                        rounded-2xl
                         flex
                         items-center
                         justify-center
@@ -731,7 +728,6 @@ export const AdminTurmas = () => {
 
                 <div className="
                     bg-white
-                    rounded-3xl
                     shadow-sm
                     p-8
                 ">
@@ -772,7 +768,6 @@ export const AdminTurmas = () => {
 
                 <div className="
                     bg-white
-                    rounded-3xl
                     shadow-sm
                     p-8
                 ">
@@ -816,8 +811,7 @@ export const AdminTurmas = () => {
 
 
             <div className="
-                bg-white
-                rounded-3xl
+                bg-white 
                 shadow-sm
                 mt-10
                 p-8
@@ -1016,301 +1010,74 @@ export const AdminTurmas = () => {
 
 
                 <table className="w-full">
-
-
                     <thead>
-
-
                         <tr className="
                             border-b
                             border-gray-200
                             text-gray-600
                         ">
-
-
-                            <th className="text-left py-4">
-
+                            <th className="text-center py-4">
                                 Turma
-
                             </th>
 
-
-
                             <th className="text-center">
-
                                 Líder
-
                             </th>
 
-
-
                             <th className="text-center">
-
                                 Alunos
-
                             </th>
 
-
-
                             <th className="text-center">
-
                                 Status
-
                             </th>
-
-
 
                             <th className="text-center">
-
                                 Ações
-
                             </th>
-
-
                         </tr>
-
-
                     </thead>
 
-
-
-
-
                     <tbody>
-
-
-                        {
-                            turmasFiltradas.map(
-
-
-                                turma => (
-
-
-                                    <tr
-
-                                        key={turma.id}
-
-                                        className="
-                                            border-b
-                                            border-gray-100
-                                            hover:bg-gray-50
-                                        "
-
-                                    >
-
-
-
-                                        <td className="py-5 font-medium">
-
-                                            {turma.nome}
-
-                                        </td>
-
-
-
-
-
-                                        <td className="text-center">
-
-                                            {turma.lider}
-
-                                        </td>
-
-
-
-
-
-                                        <td className="text-center">
-
-                                            {turma.alunos.length}
-
-                                        </td>
-
-
-
-
-
-                                        <td className="text-center">
-
-
-                                            <span className={`
-
-                                                px-4
-                                                py-2
-                                                rounded-full
-                                                text-sm
-
-                                                ${
-                                                    turma.status === "Ativa"
-
-                                                    ?
-
-                                                    "bg-green-100 text-green-700"
-
-                                                    :
-
-                                                    "bg-gray-100 text-gray-600"
-
-                                                }
-
-                                            `}>
-
-
-                                                {turma.status}
-
-
-                                            </span>
-
-
-                                        </td>
-
-
-
-
-
-                                        <td>
-
-
-                                            <div className="
-                                                flex
-                                                justify-center
-                                                gap-3
-                                            ">
-
-
-                                                <button
-
-                                                    onClick={() => abrirAlunos(turma)}
-
-                                                    className="
-                                                        w-10
-                                                        h-10
-                                                        rounded-xl
-                                                        bg-blue-100
-                                                        text-blue-600
-                                                        flex
-                                                        items-center
-                                                        justify-center
-                                                        cursor-pointer
-                                                    "
-
-                                                >
-
-                                                    <Eye size={18}/>
-
-                                                </button>
-
-
-
-
-
-                                                <button
-
-
-                                                    onClick={() => alterarStatusTurma(turma.id)}
-
-
-                                                    className={`
-
-                                                        w-10
-                                                        h-10
-                                                        rounded-xl
-                                                        flex
-                                                        items-center
-                                                        justify-center
-                                                        cursor-pointer
-
-
-                                                        ${
-                                                            turma.status === "Ativa"
-
-                                                            ?
-
-                                                            "bg-yellow-100 text-yellow-600"
-
-                                                            :
-
-                                                            "bg-green-100 text-green-600"
-
-                                                        }
-
-                                                    `}
-
-
-                                                >
-
-
-                                                    {
-
-                                                        turma.status === "Ativa"
-
-                                                        ?
-
-                                                        <Archive size={18}/>
-
-                                                        :
-
-                                                        <ArchiveRestore size={18}/>
-
-                                                    }
-
-
-                                                </button>
-
-
-
-
-
-
-                                                <button
-
-
-                                                    onClick={() => excluirTurma(turma.id)}
-
-
-                                                    className="
-                                                        w-10
-                                                        h-10
-                                                        rounded-xl
-                                                        bg-red-100
-                                                        text-red-600
-                                                        flex
-                                                        items-center
-                                                        justify-center
-                                                        cursor-pointer
-                                                    "
-
-
-                                                >
-
-                                                    <Trash2 size={18}/>
-
-
-                                                </button>
-
-
-
-                                            </div>
-
-
-                                        </td>
-
-
-
-                                    </tr>
-
-
-                                )
-
-
-                            )
-                        }
-
-
+                        {turmasFiltradas.map(turma => (
+                            <tr
+                                key={turma.id}
+                                className="
+                                    border-b
+                                    border-gray-100
+                                    hover:bg-gray-50
+                                "
+                            >
+                                <td className="py-5 text-center font-medium">
+                                    {turma.nome}
+                                </td>
+
+                                <td className="text-center">
+                                    {turma.lider}
+                                </td>
+
+                                <td className="text-center">
+                                    {turma.alunos.length}
+                                </td>
+
+                                <td className="text-center">
+                                    <span className={`...`}>
+                                        {turma.status}
+                                    </span>
+                                </td>
+
+                                <td className="text-center">
+                                    <div className="
+                                        flex
+                                        justify-center
+                                        gap-3
+                                    ">
+                                        ...
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
                     </tbody>
-
-
-
                 </table>
 
 

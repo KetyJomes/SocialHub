@@ -93,7 +93,6 @@ export const Admin = () => {
                             text-white
                             px-5
                             py-2.5
-                            rounded-xl
                             flex
                             items-center
                             gap-2
@@ -129,7 +128,6 @@ export const Admin = () => {
 
                     <div className="
                         bg-white
-                        rounded-2xl
                         shadow-sm
                         p-5
                         flex
@@ -141,15 +139,13 @@ export const Admin = () => {
                         <div className="
                             w-12
                             h-12
-                            rounded-xl
-                            bg-blue-100
                             flex
                             items-center
                             justify-center
                         ">
 
                             <School
-                                size={24}
+                                size={30}
                                 className="text-[#007BC0]"
                             />
 
@@ -181,16 +177,8 @@ export const Admin = () => {
                     </div>
 
 
-
-
-
-
-
-
-
                     <div className="
                         bg-white
-                        rounded-2xl
                         shadow-sm
                         p-5
                         flex
@@ -202,15 +190,13 @@ export const Admin = () => {
                         <div className="
                             w-12
                             h-12
-                            rounded-xl
-                            bg-green-100
                             flex
                             items-center
                             justify-center
                         ">
 
                             <Users
-                                size={24}
+                                size={30}
                                 className="text-green-600"
                             />
 
@@ -251,7 +237,6 @@ export const Admin = () => {
 
                     <div className="
                         bg-white
-                        rounded-2xl
                         shadow-sm
                         p-5
                         flex
@@ -263,8 +248,6 @@ export const Admin = () => {
                         <div className="
                             w-12
                             h-12
-                            rounded-xl
-                            bg-purple-100
                             flex
                             items-center
                             justify-center
@@ -272,7 +255,7 @@ export const Admin = () => {
 
 
                             <UserCog
-                                size={24}
+                                size={30}
                                 className="text-purple-600"
                             />
 
@@ -321,10 +304,9 @@ export const Admin = () => {
 
                 <div className="
                     bg-white
-                    rounded-2xl
                     shadow-sm
                     mt-8
-                    p-6
+                    p-6 
                 ">
 
 
