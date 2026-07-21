@@ -426,7 +426,6 @@ export const ManagementMain = () => {
 
 
                                 <button
-                                    onClick={() => navigate('/management-avaliacoes')}
 
                                     className="
                                         text-sm
@@ -538,7 +537,6 @@ export const ManagementMain = () => {
 
 
                                 <button
-                                    onClick={() => navigate('/management-evaluations-pending')}
                                     className="
                                         text-sm
                                         text-[#9B87E8]

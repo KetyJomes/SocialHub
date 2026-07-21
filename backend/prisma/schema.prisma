@@ -53,7 +53,8 @@ model Test{
   finalDate DateTime
   grade Int
   type TestType
-  AvaiableResult Boolean
+  AvailableResult Boolean
+  Frequency Frequency
 
   Skills Skill[]
 
@@ -114,7 +115,18 @@ enum TestType {
   Self
   Instructor
   Group
+  Lider
+  Class
 }
+
+enum Frequency {
+  unique
+  Mensal
+  Bimestral
+  Trimestral
+  Anual
+}
+
 
 
 enum Role {

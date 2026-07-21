@@ -14,11 +14,13 @@ export const  createUser = async(data: createUserDTO)=>{
         throw new Error ("Este EDV já está cadastrado!")
     }
 
+    const hashedPassword = await bcrypt.hasch(password, 10)
+
     return await prisma.user.create({
         data:{
             name:name,
             email:email,
-            password:password,
+            password:hashedPassword,
             EDV: EDV,
             role: "Student",
             idClass: classId,
@@ -48,13 +50,16 @@ export const authUser = async(data: authUserDTO)=>{
     return user;
 };
 
-export const getests = async(id:number)=>{
+
+export const getUser = async(id: number) =>{
     return await prisma.user.findUnique({
-        where:{
-            id:id
-        }
-    });
- };
+        where: {id: id}
+    })
+}
+
+export const getUsers = async() =>{
+    return await prisma.user.findMany({})
+}
 
 
 
