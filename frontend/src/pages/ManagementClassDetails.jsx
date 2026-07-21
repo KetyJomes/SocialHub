@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { GraduationCap,Info,PieChart,BarChart3} from "lucide-react";
+import { GraduationCap, Info, PieChart, BarChart3 } from "lucide-react";
 
 import { Header } from "../components/Header";
 import { SidebarManagement } from "../components/SidebarManagement";
@@ -9,8 +9,12 @@ import { GraficoCompetencias } from "../components/GraficoCompetencias";
 import { GraficoAluno } from "../components/GraficoAluno";
 
 export const ManagementClassDetails = () => {
+
     const [isOpen, setIsOpen] = useState(false);
+
     const { turma } = useParams();
+
+
     const alunos = [
 
         {
@@ -55,16 +59,22 @@ export const ManagementClassDetails = () => {
 
     ];
 
+
     const rankingAlunos = [...alunos].sort(
         (a, b) => b.nota - a.nota
     );
 
+
     return (
+
         <>
+
             <SidebarManagement
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
+
+
             {isOpen && (
 
                 <div
@@ -73,18 +83,31 @@ export const ManagementClassDetails = () => {
                 />
 
             )}
+
+
             <main className="mt-[10vh]">
+
+
                 <Header
                     isOpen={isOpen}
                     setIsOpen={setIsOpen}
                 />
+
+
                 <div className="p-10">
+
+
                     <h1 className="text-3xl font-bold">
                         {turma}
                     </h1>
+
+
                     <p className="text-gray-500">
                         Visualize o desempenho dos alunos desta turma.
                     </p>
+
+
+
                     <section
                         className="
                             grid
@@ -93,7 +116,11 @@ export const ManagementClassDetails = () => {
                             mt-8
                         "
                     >
+
+
+
                         {/* CARD DOS ALUNOS */}
+
 
                         <div
                             className="
@@ -109,14 +136,16 @@ export const ManagementClassDetails = () => {
                             "
                         >
 
+
                             <div className="flex items-center gap-3 mb-5">
+
 
                                 <div
                                     className="
                                         w-10
                                         h-10
                                         rounded-full
-                                        bg-[#F1EDFF]
+                                        bg-[#0291F7]/15
                                         flex
                                         items-center
                                         justify-center
@@ -125,16 +154,20 @@ export const ManagementClassDetails = () => {
 
                                     <GraduationCap
                                         size={20}
-                                        className="text-[#B8A4FF]"
+                                        className="text-[#0291F7]"
                                     />
 
                                 </div>
-                                
+
+
                                 <h2 className="text-xl font-bold">
                                     Alunos
                                 </h2>
 
+
                             </div>
+
+
 
                             <div
                                 className="
@@ -160,13 +193,22 @@ export const ManagementClassDetails = () => {
 
                             </div>
 
+
                         </div>
+
+
+
+
 
                         {/* COLUNA DOS GRÁFICOS */}
 
+
+
                         <div className="flex flex-col gap-8">
 
+
                             {/* PIZZA */}
+
 
                             <div
                                 className="
@@ -179,14 +221,16 @@ export const ManagementClassDetails = () => {
                                 "
                             >
 
+
                                 <div className="flex items-center gap-3 mb-5">
+
 
                                     <div
                                         className="
                                             w-10
                                             h-10
                                             rounded-full
-                                            bg-[#F1EDFF]
+                                            bg-[#0291F7]/15
                                             flex
                                             items-center
                                             justify-center
@@ -195,22 +239,32 @@ export const ManagementClassDetails = () => {
 
                                         <PieChart
                                             size={20}
-                                            className="text-[#B8A4FF]"
+                                            className="text-[#0291F7]"
                                         />
 
                                     </div>
+
 
                                     <h2 className="text-xl font-bold">
                                         Competências da Turma
                                     </h2>
 
+
                                 </div>
+
 
                                 <GraficoCompetencias />
 
+
                             </div>
 
+
+
+
+
                             {/* BARRAS */}
+
+
 
                             <div
                                 className="
@@ -223,14 +277,16 @@ export const ManagementClassDetails = () => {
                                 "
                             >
 
+
                                 <div className="flex items-center gap-3 mb-5">
+
 
                                     <div
                                         className="
                                             w-10
                                             h-10
                                             rounded-full
-                                            bg-[#F1EDFF]
+                                            bg-[#0291F7]/15
                                             flex
                                             items-center
                                             justify-center
@@ -239,26 +295,36 @@ export const ManagementClassDetails = () => {
 
                                         <BarChart3
                                             size={20}
-                                            className="text-[#B8A4FF]"
+                                            className="text-[#0291F7]"
                                         />
 
                                     </div>
+
 
                                     <h2 className="text-xl font-bold">
                                         Desempenho dos Alunos
                                     </h2>
 
+
                                 </div>
+
 
                                 <GraficoAluno
                                     dados={rankingAlunos}
                                 />
 
+
                             </div>
+
 
                         </div>
 
+
                     </section>
+
+
+
+
 
                     <div
                         className="
@@ -267,6 +333,7 @@ export const ManagementClassDetails = () => {
                             mt-8
                         "
                     >
+
 
                         <div
                             className="
@@ -282,22 +349,31 @@ export const ManagementClassDetails = () => {
                             "
                         >
 
+
                             <Info
                                 size={18}
-                                className="text-[#B8A4FF]"
+                                className="text-[#0291F7]"
                             />
 
+
                             <span className="text-sm text-gray-600">
+
                                 Clique em um aluno para visualizar informações detalhadas.
+
                             </span>
+
 
                         </div>
 
+
                     </div>
+
 
                 </div>
 
+
             </main>
+
 
         </>
 

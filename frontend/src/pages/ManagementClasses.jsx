@@ -7,7 +7,10 @@ import { CardTurmaRanking } from "../components/CardTurmaRanking";
 import { GraficoTurmas } from "../components/GraficoTurmas";
 
 export const ManagementClasses = () => {
+
     const [isOpen, setIsOpen] = useState(false);
+
+
     const turmas = [
 
         {
@@ -62,6 +65,7 @@ export const ManagementClasses = () => {
 
     ];
 
+
     return (
 
         <>
@@ -71,20 +75,29 @@ export const ManagementClasses = () => {
                 setIsOpen={setIsOpen}
             />
 
+
             <main>
+
 
                 <Header
                     isOpen={isOpen}
                     setIsOpen={setIsOpen}
                 />
 
+
                 <div className="pt-28 px-10 pb-10">
+
+
                     <h1 className="text-3xl font-bold">
                         Turmas
                     </h1>
+
+
                     <p className="text-gray-500">
                         Visualize o desempenho geral de todas as turmas.
                     </p>
+
+
 
                     <section
                         className="
@@ -95,7 +108,10 @@ export const ManagementClasses = () => {
                         "
                     >
 
+
+
                         {/* CARD DAS TURMAS */}
+
 
                         <div
                             className="
@@ -108,32 +124,36 @@ export const ManagementClasses = () => {
                             "
                         >
 
+
                             <div className="flex items-center gap-3 mb-5">
+
 
                                 <div
                                     className="
                                         w-10
                                         h-10
                                         rounded-full
-                                        bg-[#F1EDFF]
+                                        bg-[#0291F7]/15
                                         flex
                                         items-center
                                         justify-center
                                     "
                                 >
-
                                     <GraduationCap
                                         size={20}
-                                        className="text-[#B8A4FF]"
+                                        className="text-[#0291F7]"
                                     />
-
                                 </div>
+
 
                                 <h2 className="text-xl font-bold">
                                     Desempenho das Turmas
                                 </h2>
 
+
                             </div>
+
+
 
                             <div
                                 className="
@@ -144,8 +164,8 @@ export const ManagementClasses = () => {
                                 "
                             >
 
-                                {
 
+                                {
                                     turmas.map((turma, index) => (
 
                                         <CardTurmaRanking
@@ -155,14 +175,20 @@ export const ManagementClasses = () => {
                                         />
 
                                     ))
-
                                 }
+
 
                             </div>
 
+
                         </div>
 
+
+
+
+
                         {/* CARD DO GRÁFICO */}
+
 
                         <div
                             className="
@@ -175,40 +201,51 @@ export const ManagementClasses = () => {
                             "
                         >
 
+
                             <div className="flex items-center gap-3 mb-5">
+
 
                                 <div
                                     className="
                                         w-10
                                         h-10
                                         rounded-full
-                                        bg-[#F1EDFF]
+                                        bg-[#0291F7]/15
                                         flex
                                         items-center
                                         justify-center
                                     "
                                 >
-
                                     <BarChart3
                                         size={20}
-                                        className="text-[#B8A4FF]"
+                                        className="text-[#0291F7]"
                                     />
-
                                 </div>
+
 
                                 <h2 className="text-xl font-bold">
                                     Desempenho Geral
                                 </h2>
 
+
                             </div>
+
+
 
                             <GraficoTurmas
                                 dados={turmas}
                             />
 
+
                         </div>
 
+
+
                     </section>
+
+
+
+
 
                     <div
                         className="
@@ -217,6 +254,7 @@ export const ManagementClasses = () => {
                             mt-8
                         "
                     >
+
 
                         <div
                             className="
@@ -232,22 +270,32 @@ export const ManagementClasses = () => {
                             "
                         >
 
+
                             <Info
                                 size={18}
-                                className="text-[#B8A4FF]"
+                                className="text-[#0291F7]"
                             />
 
+
                             <span className="text-sm text-gray-600">
+
                                 Clique em uma turma para visualizar seu desempenho detalhado.
+
                             </span>
+
 
                         </div>
 
+
                     </div>
+
+
 
                 </div>
 
+
             </main>
+
 
         </>
 

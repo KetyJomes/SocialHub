@@ -1,10 +1,21 @@
 import { useState } from "react";
+import { ClipboardCheck } from "lucide-react";
 
 
-export const CardAvaliacao = ({nome, turma}) => {
+export const CardAvaliacao = ({
+    nome,
+    turma,
+    tipo,
+    status
+}) => {
+
+
     const [clicado, setClicado] = useState(false);
 
+
+
     return (
+
         <div
             className="
                 flex
@@ -17,35 +28,54 @@ export const CardAvaliacao = ({nome, turma}) => {
                 border-gray-200
                 transition
                 hover:shadow-sm
+                cursor-pointer
             "
         >
 
-            <div>
 
-                <h3 className="font-semibold text-gray-800">
-                    {nome}
-                </h3>
+            <div className="flex items-center gap-3">
 
-                <div className="flex items-center gap-2 mt-2">
 
-                    <span
-                        className="
-                            w-2
-                            h-2
-                            bg-green-500
-                            rounded-full
-                        "
-                    >
-                    </span>
+                <div
+                    className="
+                        w-9
+                        h-9
+                        rounded-full
+                        bg-[#0291F7]/15
+                        flex
+                        items-center
+                        justify-center
+                    "
+                >
 
-                    <span
+                    <ClipboardCheck
+                        size={18}
+                        className="text-[#0291F7]"
+                    />
+
+                </div>
+
+
+
+                <div>
+
+
+                    <h3 className="font-semibold text-gray-800">
+                        {nome}
+                    </h3>
+
+
+                    <p
                         className="
                             text-sm
                             text-gray-500
+                            mt-1
                         "
                     >
-                        Avaliação enviada
-                    </span>
+
+                        {tipo}
+
+                    </p>
 
 
                 </div>
@@ -53,46 +83,81 @@ export const CardAvaliacao = ({nome, turma}) => {
 
             </div>
 
-            <div className="flex items-center gap-5">
+
+
+
+            <div
+                className="
+                    flex
+                    items-center
+                    gap-3
+                "
+            >
+
+
+
+                <span className="text-sm text-gray-500">
+                    {turma}
+                </span>
+
+
 
 
                 <span
-                    className="
-                        text-sm
-                        bg-gray-100
+                    className={`
                         px-3
                         py-1
-                        rounded-lg
-                        text-gray-600
-                    "
+                        rounded-full
+                        text-xs
+                        font-medium
+
+
+                        ${
+                            status === "Em atraso"
+
+                            ?
+
+                            "bg-red-100 text-red-700"
+
+                            :
+
+                            "bg-yellow-100 text-yellow-700"
+
+                        }
+
+                    `}
                 >
-                    {turma}
+
+                    {status}
+
                 </span>
+
+
+
 
                 <button
 
                     onClick={() => setClicado(!clicado)}
 
-                    className={`
+                    className="
+                        text-[#0291F7]
                         text-2xl
                         font-bold
-                        transition
-                        duration-200
+                    "
 
-                        ${
-                            clicado
-                            ? "text-[#B8A4FF] scale-125"
-                            : "text-[#B8A4FF]"
-                        }
-
-                    `}
                 >
+
                     ›
+
                 </button>
+
+
 
             </div>
 
+
         </div>
 
-    )
-}
+    );
+
+};
