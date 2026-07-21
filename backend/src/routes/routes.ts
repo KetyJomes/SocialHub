@@ -1,14 +1,14 @@
 import { Express } from 'express'
 import express from 'express'
-import user from './user.routes.ts'
-import auth from './auth.routes.ts'
-import alternative from './alternative.routes.ts'
-import test from './Test.routes.ts'
-import answer from './answer.routes.ts'
-import dashboards from './dashboards.routes.ts'
-import skill from './skill.routes.ts'
-import Class from './class.routes.ts'
-import user_test from './user_test.routes.ts'
+import user from './userRoutes.ts'
+import auth from './authRoutes.ts'
+import alternative from './alternativeRoutes.ts'
+import test from './testRoutes.ts'
+import answer from './answerRoutes.ts'
+import dashboards from './dashboardsRoutes.ts'
+import skill from './skillRoutes.ts'
+import Class from './classRoutes.ts'
+import user_test from './userTestRoutes.ts'
 
 export default function (app: Express){
     app.use(express.json())
