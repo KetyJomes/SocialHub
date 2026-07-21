@@ -5,10 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
     Calendar,
     Clock3,
-    Eye,
     FileText
 } from "lucide-react";
-
 
 export const StudentTestsControlTable = ({
     avaliacoes,
@@ -19,9 +17,9 @@ export const StudentTestsControlTable = ({
 
     const { turma, aluno } = useParams();
 
-
     function visualizar(avaliacao) {
 
+        // Avaliação 360°
         if (avaliacao.tipo === "360°") {
 
             navigate(
@@ -32,23 +30,34 @@ export const StudentTestsControlTable = ({
 
         }
 
-
-        if (tipoAba === "disponiveis") {
-
-            navigate(
-                `/management-answer-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
-            );
-
-        } else {
+        // Avaliações já respondidas
+        if (tipoAba === "feitas") {
 
             navigate(
                 `/management-view-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
             );
 
+            return;
+
         }
 
-    }
+        // Disponíveis: somente Gestor → Aluno pode responder
+        if (avaliacao.tipo === "Gestor → Aluno") {
 
+            navigate(
+                `/management-perform-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
+            );
+
+            return;
+
+        }
+
+        // Demais avaliações disponíveis apenas visualizam
+        navigate(
+            `/management-answer-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
+        );
+
+    }
 
     return (
 
@@ -76,210 +85,171 @@ export const StudentTestsControlTable = ({
                             Prazo
                         </th>
 
-                        {
-                            avaliacoes[0]?.tipo !== "360°" && (
-
-                                <th className="text-center">
-                                    Status
-                                </th>
-
-                            )
-                        }
-
                         <th className="text-center">
-                            Ação
+                            Status
                         </th>
 
                     </tr>
 
                 </thead>
 
-
                 <tbody>
 
                     {
-                        avaliacoes.map((avaliacao) => (
+                        avaliacoes.length > 0 ? (
 
-                            <tr
-                                key={avaliacao.id}
-                                className="border-b hover:bg-gray-50 transition"
-                            >
+                            avaliacoes.map((avaliacao) => (
 
-                                <td className="px-6 py-5">
+                                <tr
+                                    key={avaliacao.id}
+                                    onClick={() => visualizar(avaliacao)}
+                                    className="
+                                        border-b
+                                        hover:bg-[#0291F7]/5
+                                        hover:shadow-sm
+                                        cursor-pointer
+                                        transition-all
+                                    "
+                                >
 
-                                    <div className="flex items-center gap-3">
+                                    <td className="px-6 py-5">
 
-                                        <div className={`w-10 h-10 rounded-full flex items-center justify-center ${avaliacao.bgIcon || "bg-[#F1EDFF]"}`}>
+                                        <div className="flex items-center gap-3">
 
-                                            <img
-                                                src={avaliacao.icon}
-                                                alt=""
-                                                className="w-5 h-5"
-                                            />
+                                            <div className="w-10 h-10 rounded-full bg-[#0291F7]/15 flex items-center justify-center">
+
+                                                <FileText
+                                                    size={18}
+                                                    className="text-[#0291F7]"
+                                                />
+
+                                            </div>
+
+
+                                            <div>
+
+                                                <h3 className="font-semibold">
+                                                    {avaliacao.nome}
+                                                </h3>
+
+                                                <p className="text-sm text-gray-500">
+                                                    {avaliacao.descricao}
+                                                </p>
+
+                                            </div>
 
                                         </div>
 
-
-                                        <div>
-
-                                            <h3 className="font-semibold">
-                                                {avaliacao.nome}
-                                            </h3>
+                                    </td>
 
 
-                                            <p className="text-sm text-gray-500">
-                                                {avaliacao.descricao}
-                                            </p>
-
-
-                                        </div>
-
-
-                                    </div>
-
-                                </td>
-
-
-                                <td className="text-center">
-
-                                    <div className="flex items-center justify-center gap-2">
-
-                                        <FileText size={16} />
+                                    <td className="text-center">
 
                                         {avaliacao.tipo}
 
-                                    </div>
-
-                                </td>
+                                    </td>
 
 
-                                <td className="text-center">
+                                    <td className="text-center">
 
-                                    <div className="flex flex-col items-center">
+                                        <div className="flex flex-col items-center">
 
-                                        <div className="flex items-center gap-2">
+                                            <div className="flex items-center gap-2">
 
-                                            <Calendar size={16} />
+                                                <Calendar size={16}/>
 
-                                            {avaliacao.disponibilizada}
+                                                {avaliacao.disponibilizada}
 
-                                        </div>
-
-
-                                        <span className="text-xs text-gray-500">
-                                            {avaliacao.infoDisponibilizada}
-                                        </span>
+                                            </div>
 
 
-                                    </div>
-
-                                </td>
-
-
-                                <td className="text-center">
-
-                                    <div className="flex flex-col items-center">
-
-                                        <div className="flex items-center gap-2">
-
-                                            <Clock3 size={16} />
-
-                                            {avaliacao.prazo}
+                                            <span className="text-xs text-gray-500">
+                                                {avaliacao.infoDisponibilizada}
+                                            </span>
 
                                         </div>
 
+                                    </td>
 
-                                        <span className="text-xs text-gray-500">
-                                            {avaliacao.infoPrazo}
+
+                                    <td className="text-center">
+
+                                        <div className="flex flex-col items-center">
+
+                                            <div className="flex items-center gap-2">
+
+                                                <Clock3 size={16}/>
+
+                                                {avaliacao.prazo}
+
+                                            </div>
+
+
+                                            <span className="text-xs text-gray-500">
+                                                {avaliacao.infoPrazo}
+                                            </span>
+
+                                        </div>
+
+                                    </td>
+
+
+                                    <td className="text-center">
+
+                                        <span
+                                            className={`
+                                                px-3
+                                                py-1
+                                                rounded-full
+                                                text-sm
+                                                font-medium
+
+                                                ${
+                                                    avaliacao.status === "Respondida"
+                                                        ? "bg-green-100 text-green-700"
+                                                        : avaliacao.status === "Em atraso"
+                                                            ? "bg-red-100 text-red-700"
+                                                            : "bg-yellow-100 text-yellow-700"
+                                                }
+                                            `}
+                                        >
+
+                                            {avaliacao.status}
+
                                         </span>
 
-
-                                    </div>
-
-                                </td>
+                                    </td>
 
 
-                                {
-                                    avaliacao.tipo !== "360°" && (
+                                </tr>
 
-                                        <td className="text-center">
+                            ))
 
+                        ) : (
 
-                                            {
-                                                tipoAba === "disponiveis"
+                            <tr>
 
-                                                    ? (
+                                <td
+                                    colSpan="5"
+                                    className="
+                                        text-center
+                                        py-10
+                                        text-gray-500
+                                    "
+                                >
 
-                                                        avaliacao.status === "Em atraso"
-
-                                                            ?
-
-                                                            <span className="px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-700">
-                                                                Em atraso
-                                                            </span>
-
-                                                            :
-
-                                                            <span className="px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-700">
-                                                                Pendente
-                                                            </span>
-
-                                                    )
-
-
-                                                    :
-
-                                                    (
-
-                                                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                                                            avaliacao.status === "Respondida"
-                                                                ? "bg-green-100 text-green-700"
-                                                                : avaliacao.status === "Em atraso"
-                                                                    ? "bg-red-100 text-red-700"
-                                                                    : "bg-yellow-100 text-yellow-700"
-                                                        }`}>
-
-                                                            {avaliacao.status}
-
-                                                        </span>
-
-                                                    )
-                                            }
-
-
-                                        </td>
-
-                                    )
-                                }
-
-
-                                <td className="text-center">
-
-                                    <button
-                                        onClick={() => visualizar(avaliacao)}
-                                        className="flex items-center gap-2 mx-auto px-4 py-2 rounded-lg bg-[#B8A4FF] text-white hover:opacity-90 transition"
-                                    >
-
-                                        <Eye size={18} />
-
-                                        Visualizar
-
-                                    </button>
+                                    Nenhuma avaliação encontrada.
 
                                 </td>
-
 
                             </tr>
 
-                        ))
+                        )
                     }
-
 
                 </tbody>
 
-
             </table>
-
 
         </div>
 
