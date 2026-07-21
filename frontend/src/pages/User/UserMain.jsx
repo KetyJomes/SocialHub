@@ -10,15 +10,15 @@ import { CardNotificacaoAvaliacao } from "../../components/CardNotificacaoAvalia
 import { GraficoPessoal } from "../../components/GraficoPessoal";
 
 // Imagens
-import bars from "../assets/bars.png";
-import people from "../assets/people.png";
-import exam from "../assets/exam.png";
-import bar_chart from "../assets/bar-chart.png";
-import people_purple from "../assets/people-purple.png";
+import bars from "../../assets/bars.png";
+import people from "../../assets/people.png";
+import exam from "../../assets/exam.png";
+import bar_chart from "../../assets/bar-chart.png";
+import people_purple from "../../assets/people-purple.png";
 
-import blue from "../assets/blue arrow.png";
-import green from "../assets/green arrow.png";
-import purple from "../assets/purple arrow.png";
+import blue from "../../assets/blue arrow.png";
+import green from "../../assets/green arrow.png";
+import purple from "../../assets/purple arrow.png";
 
 export const UserMain = () => {
 
