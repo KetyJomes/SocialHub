@@ -206,7 +206,7 @@ export type UserGroupByOutputType = {
   password: string
   EDV: number
   role: $Enums.Role
-  idClass: number
+  idClass: number | null
   _count: UserCountAggregateOutputType | null
   _avg: UserAvgAggregateOutputType | null
   _sum: UserSumAggregateOutputType | null
@@ -239,8 +239,8 @@ export type UserWhereInput = {
   password?: Prisma.StringFilter<"User"> | string
   EDV?: Prisma.IntFilter<"User"> | number
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
-  idClass?: Prisma.IntFilter<"User"> | number
-  class?: Prisma.XOR<Prisma.ClassScalarRelationFilter, Prisma.ClassWhereInput>
+  idClass?: Prisma.IntNullableFilter<"User"> | number | null
+  class?: Prisma.XOR<Prisma.ClassNullableScalarRelationFilter, Prisma.ClassWhereInput> | null
   PICs?: Prisma.ClassListRelationFilter
   Evaluated?: Prisma.User_TestListRelationFilter
   Evaluator?: Prisma.User_TestListRelationFilter
@@ -253,7 +253,7 @@ export type UserOrderByWithRelationInput = {
   password?: Prisma.SortOrder
   EDV?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  idClass?: Prisma.SortOrder
+  idClass?: Prisma.SortOrderInput | Prisma.SortOrder
   class?: Prisma.ClassOrderByWithRelationInput
   PICs?: Prisma.ClassOrderByRelationAggregateInput
   Evaluated?: Prisma.User_TestOrderByRelationAggregateInput
@@ -271,8 +271,8 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   name?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
-  idClass?: Prisma.IntFilter<"User"> | number
-  class?: Prisma.XOR<Prisma.ClassScalarRelationFilter, Prisma.ClassWhereInput>
+  idClass?: Prisma.IntNullableFilter<"User"> | number | null
+  class?: Prisma.XOR<Prisma.ClassNullableScalarRelationFilter, Prisma.ClassWhereInput> | null
   PICs?: Prisma.ClassListRelationFilter
   Evaluated?: Prisma.User_TestListRelationFilter
   Evaluator?: Prisma.User_TestListRelationFilter
@@ -285,7 +285,7 @@ export type UserOrderByWithAggregationInput = {
   password?: Prisma.SortOrder
   EDV?: Prisma.SortOrder
   role?: Prisma.SortOrder
-  idClass?: Prisma.SortOrder
+  idClass?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.UserCountOrderByAggregateInput
   _avg?: Prisma.UserAvgOrderByAggregateInput
   _max?: Prisma.UserMaxOrderByAggregateInput
@@ -303,7 +303,7 @@ export type UserScalarWhereWithAggregatesInput = {
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
   EDV?: Prisma.IntWithAggregatesFilter<"User"> | number
   role?: Prisma.EnumRoleWithAggregatesFilter<"User"> | $Enums.Role
-  idClass?: Prisma.IntWithAggregatesFilter<"User"> | number
+  idClass?: Prisma.IntNullableWithAggregatesFilter<"User"> | number | null
 }
 
 export type UserCreateInput = {
@@ -312,7 +312,7 @@ export type UserCreateInput = {
   password: string
   EDV: number
   role: $Enums.Role
-  class: Prisma.ClassCreateNestedOneWithoutStudentsInput
+  class?: Prisma.ClassCreateNestedOneWithoutStudentsInput
   PICs?: Prisma.ClassCreateNestedManyWithoutPICInput
   Evaluated?: Prisma.User_TestCreateNestedManyWithoutEvaluatedInput
   Evaluator?: Prisma.User_TestCreateNestedManyWithoutEvaluatorInput
@@ -325,7 +325,7 @@ export type UserUncheckedCreateInput = {
   password: string
   EDV: number
   role: $Enums.Role
-  idClass: number
+  idClass?: number | null
   PICs?: Prisma.ClassUncheckedCreateNestedManyWithoutPICInput
   Evaluated?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatedInput
   Evaluator?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatorInput
@@ -337,7 +337,7 @@ export type UserUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   EDV?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  class?: Prisma.ClassUpdateOneRequiredWithoutStudentsNestedInput
+  class?: Prisma.ClassUpdateOneWithoutStudentsNestedInput
   PICs?: Prisma.ClassUpdateManyWithoutPICNestedInput
   Evaluated?: Prisma.User_TestUpdateManyWithoutEvaluatedNestedInput
   Evaluator?: Prisma.User_TestUpdateManyWithoutEvaluatorNestedInput
@@ -350,7 +350,7 @@ export type UserUncheckedUpdateInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   EDV?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  idClass?: Prisma.IntFieldUpdateOperationsInput | number
+  idClass?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   PICs?: Prisma.ClassUncheckedUpdateManyWithoutPICNestedInput
   Evaluated?: Prisma.User_TestUncheckedUpdateManyWithoutEvaluatedNestedInput
   Evaluator?: Prisma.User_TestUncheckedUpdateManyWithoutEvaluatorNestedInput
@@ -363,7 +363,7 @@ export type UserCreateManyInput = {
   password: string
   EDV: number
   role: $Enums.Role
-  idClass: number
+  idClass?: number | null
 }
 
 export type UserUpdateManyMutationInput = {
@@ -381,7 +381,7 @@ export type UserUncheckedUpdateManyInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   EDV?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  idClass?: Prisma.IntFieldUpdateOperationsInput | number
+  idClass?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type UserOrderByRelevanceInput = {
@@ -461,6 +461,14 @@ export type IntFieldUpdateOperationsInput = {
 
 export type EnumRoleFieldUpdateOperationsInput = {
   set?: $Enums.Role
+}
+
+export type NullableIntFieldUpdateOperationsInput = {
+  set?: number | null
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type UserCreateNestedOneWithoutEvaluatedInput = {
@@ -553,7 +561,7 @@ export type UserCreateWithoutEvaluatedInput = {
   password: string
   EDV: number
   role: $Enums.Role
-  class: Prisma.ClassCreateNestedOneWithoutStudentsInput
+  class?: Prisma.ClassCreateNestedOneWithoutStudentsInput
   PICs?: Prisma.ClassCreateNestedManyWithoutPICInput
   Evaluator?: Prisma.User_TestCreateNestedManyWithoutEvaluatorInput
 }
@@ -565,7 +573,7 @@ export type UserUncheckedCreateWithoutEvaluatedInput = {
   password: string
   EDV: number
   role: $Enums.Role
-  idClass: number
+  idClass?: number | null
   PICs?: Prisma.ClassUncheckedCreateNestedManyWithoutPICInput
   Evaluator?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatorInput
 }
@@ -581,7 +589,7 @@ export type UserCreateWithoutEvaluatorInput = {
   password: string
   EDV: number
   role: $Enums.Role
-  class: Prisma.ClassCreateNestedOneWithoutStudentsInput
+  class?: Prisma.ClassCreateNestedOneWithoutStudentsInput
   PICs?: Prisma.ClassCreateNestedManyWithoutPICInput
   Evaluated?: Prisma.User_TestCreateNestedManyWithoutEvaluatedInput
 }
@@ -593,7 +601,7 @@ export type UserUncheckedCreateWithoutEvaluatorInput = {
   password: string
   EDV: number
   role: $Enums.Role
-  idClass: number
+  idClass?: number | null
   PICs?: Prisma.ClassUncheckedCreateNestedManyWithoutPICInput
   Evaluated?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatedInput
 }
@@ -620,7 +628,7 @@ export type UserUpdateWithoutEvaluatedInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   EDV?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  class?: Prisma.ClassUpdateOneRequiredWithoutStudentsNestedInput
+  class?: Prisma.ClassUpdateOneWithoutStudentsNestedInput
   PICs?: Prisma.ClassUpdateManyWithoutPICNestedInput
   Evaluator?: Prisma.User_TestUpdateManyWithoutEvaluatorNestedInput
 }
@@ -632,7 +640,7 @@ export type UserUncheckedUpdateWithoutEvaluatedInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   EDV?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  idClass?: Prisma.IntFieldUpdateOperationsInput | number
+  idClass?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   PICs?: Prisma.ClassUncheckedUpdateManyWithoutPICNestedInput
   Evaluator?: Prisma.User_TestUncheckedUpdateManyWithoutEvaluatorNestedInput
 }
@@ -654,7 +662,7 @@ export type UserUpdateWithoutEvaluatorInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   EDV?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  class?: Prisma.ClassUpdateOneRequiredWithoutStudentsNestedInput
+  class?: Prisma.ClassUpdateOneWithoutStudentsNestedInput
   PICs?: Prisma.ClassUpdateManyWithoutPICNestedInput
   Evaluated?: Prisma.User_TestUpdateManyWithoutEvaluatedNestedInput
 }
@@ -666,7 +674,7 @@ export type UserUncheckedUpdateWithoutEvaluatorInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   EDV?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  idClass?: Prisma.IntFieldUpdateOperationsInput | number
+  idClass?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   PICs?: Prisma.ClassUncheckedUpdateManyWithoutPICNestedInput
   Evaluated?: Prisma.User_TestUncheckedUpdateManyWithoutEvaluatedNestedInput
 }
@@ -677,7 +685,7 @@ export type UserCreateWithoutPICsInput = {
   password: string
   EDV: number
   role: $Enums.Role
-  class: Prisma.ClassCreateNestedOneWithoutStudentsInput
+  class?: Prisma.ClassCreateNestedOneWithoutStudentsInput
   Evaluated?: Prisma.User_TestCreateNestedManyWithoutEvaluatedInput
   Evaluator?: Prisma.User_TestCreateNestedManyWithoutEvaluatorInput
 }
@@ -689,7 +697,7 @@ export type UserUncheckedCreateWithoutPICsInput = {
   password: string
   EDV: number
   role: $Enums.Role
-  idClass: number
+  idClass?: number | null
   Evaluated?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatedInput
   Evaluator?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatorInput
 }
@@ -749,7 +757,7 @@ export type UserUpdateWithoutPICsInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   EDV?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  class?: Prisma.ClassUpdateOneRequiredWithoutStudentsNestedInput
+  class?: Prisma.ClassUpdateOneWithoutStudentsNestedInput
   Evaluated?: Prisma.User_TestUpdateManyWithoutEvaluatedNestedInput
   Evaluator?: Prisma.User_TestUpdateManyWithoutEvaluatorNestedInput
 }
@@ -761,7 +769,7 @@ export type UserUncheckedUpdateWithoutPICsInput = {
   password?: Prisma.StringFieldUpdateOperationsInput | string
   EDV?: Prisma.IntFieldUpdateOperationsInput | number
   role?: Prisma.EnumRoleFieldUpdateOperationsInput | $Enums.Role
-  idClass?: Prisma.IntFieldUpdateOperationsInput | number
+  idClass?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   Evaluated?: Prisma.User_TestUncheckedUpdateManyWithoutEvaluatedNestedInput
   Evaluator?: Prisma.User_TestUncheckedUpdateManyWithoutEvaluatorNestedInput
 }
@@ -792,7 +800,7 @@ export type UserScalarWhereInput = {
   password?: Prisma.StringFilter<"User"> | string
   EDV?: Prisma.IntFilter<"User"> | number
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
-  idClass?: Prisma.IntFilter<"User"> | number
+  idClass?: Prisma.IntNullableFilter<"User"> | number | null
 }
 
 export type UserCreateManyClassInput = {
@@ -893,7 +901,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   EDV?: boolean
   role?: boolean
   idClass?: boolean
-  class?: boolean | Prisma.ClassDefaultArgs<ExtArgs>
+  class?: boolean | Prisma.User$classArgs<ExtArgs>
   PICs?: boolean | Prisma.User$PICsArgs<ExtArgs>
   Evaluated?: boolean | Prisma.User$EvaluatedArgs<ExtArgs>
   Evaluator?: boolean | Prisma.User$EvaluatorArgs<ExtArgs>
@@ -914,7 +922,7 @@ export type UserSelectScalar = {
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "EDV" | "role" | "idClass", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  class?: boolean | Prisma.ClassDefaultArgs<ExtArgs>
+  class?: boolean | Prisma.User$classArgs<ExtArgs>
   PICs?: boolean | Prisma.User$PICsArgs<ExtArgs>
   Evaluated?: boolean | Prisma.User$EvaluatedArgs<ExtArgs>
   Evaluator?: boolean | Prisma.User$EvaluatorArgs<ExtArgs>
@@ -924,7 +932,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
-    class: Prisma.$ClassPayload<ExtArgs>
+    class: Prisma.$ClassPayload<ExtArgs> | null
     PICs: Prisma.$ClassPayload<ExtArgs>[]
     Evaluated: Prisma.$User_TestPayload<ExtArgs>[]
     Evaluator: Prisma.$User_TestPayload<ExtArgs>[]
@@ -936,7 +944,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     password: string
     EDV: number
     role: $Enums.Role
-    idClass: number
+    idClass: number | null
   }, ExtArgs["result"]["user"]>
   composites: {}
 }
@@ -1277,7 +1285,7 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  class<T extends Prisma.ClassDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ClassDefaultArgs<ExtArgs>>): Prisma.Prisma__ClassClient<runtime.Types.Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  class<T extends Prisma.User$classArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$classArgs<ExtArgs>>): Prisma.Prisma__ClassClient<runtime.Types.Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   PICs<T extends Prisma.User$PICsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$PICsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ClassPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Evaluated<T extends Prisma.User$EvaluatedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$EvaluatedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$User_TestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   Evaluator<T extends Prisma.User$EvaluatorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$EvaluatorArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$User_TestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -1657,6 +1665,25 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Users to delete.
    */
   limit?: number
+}
+
+/**
+ * User.class
+ */
+export type User$classArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Class
+   */
+  select?: Prisma.ClassSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Class
+   */
+  omit?: Prisma.ClassOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ClassInclude<ExtArgs> | null
+  where?: Prisma.ClassWhereInput
 }
 
 /**

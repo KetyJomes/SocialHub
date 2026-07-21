@@ -1,10 +1,10 @@
 import {Request, Response} from 'express';
-import { getAvarage, getComparison,getClass, getRangking, getEvolution, getSkills } from '../services/dashboardServices.ts';
+import { getClassAvarage, getComparison,getClass, getRangking, getEvolution, getSkills } from '../services/dashboardServices.ts';
 
 export default class dashboardController {
     static async showAverage (req:Request, res: Response){
         try{
-            const averageDashboard  = await getAvarage();
+            const averageDashboard  = await getClassAvarage();
             return res.status(200).send({averageDashboard})
         }
         catch(e){
@@ -12,18 +12,9 @@ export default class dashboardController {
         }
     }
 
-    // static async showGeneral (req: Request, res: Response){
-    //     try{
-    //         const generalDashboard = await getGeneral();
-    //         return res.status(500).send({ generalDashboard})
-    //     }
-    //     catch(e){
-    //         return res.status(500).send({response: 'Ocorreu um erro no servidor'})
-    //     }
-    // }
 
     static async showComparison (req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
 
         try{
             const comparassionDashboard = await getComparison(id);
@@ -36,7 +27,7 @@ export default class dashboardController {
     
 
     static async showClass (req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
 
         try{
             const classDashboard = await getClass(id);
@@ -48,7 +39,7 @@ export default class dashboardController {
     }
 
     static async showEvolution (req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
 
         try{
             const evolutionDashboard = await getEvolution(id);
@@ -60,7 +51,7 @@ export default class dashboardController {
     }
 
     static async showSkills (req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
 
         try {
             const skillDashboard = await getSkills(id);

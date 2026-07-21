@@ -6,7 +6,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = "mysql://root:root@localhost:3307/socialhub_db"
 }
 
 model User {
@@ -17,8 +17,8 @@ model User {
   EDV Int @unique
   role Role
 
-  class Class @relation("StudentClass",fields: [idClass], references: id)
-  idClass Int
+  class Class? @relation("StudentClass",fields: [idClass], references: id)
+  idClass Int?
 
 
   PICs Class[] @relation("PicClass")
@@ -66,13 +66,13 @@ model Class {
   Course String
   period String
   avarageScore Int
+  isActive Boolean @default(true)
 
   PIC User @relation("PicClass",fields: [idPIC], references: id)
   idPIC Int 
 
   students User[] @relation("StudentClass")
 
-  isActive Boolean @default(true)
 }
 
 model Answers {

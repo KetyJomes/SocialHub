@@ -1,6 +1,6 @@
-import {Request,Response} from 'express';
-import { createClassDTO,updateClassDTO } from '../DTOS/classDTO.ts';
-import { createClass, updateClass, deleteClass, showClass, showClasses, addStudentToClass, removeStudentFromClass, archiveClass } from '../services/classServices.ts';
+
+import { createClassDTO,updateClassDTO } from '../dtos/classDTO.ts';
+import { createClass, updateClass, deleteClass, showClass, showClasses, addStudentToClass, removeStudentFromClass } from '../services/classServices.ts';
 
 export default class ClassController {
     
@@ -19,7 +19,7 @@ export default class ClassController {
     static async updateClass(req: Request, res: Response){
         const data: updateClassDTO = req.body
         try{
-            const id = parseInt(req.params[0],10);
+            const id = Number(req.params.id);
             await updateClass(id,data);
             return res.status(200).send({ response: 'Turma atualizada com sucesso'})
         }
@@ -41,7 +41,7 @@ export default class ClassController {
     }
 
     static async showClass(req:Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
         try{
             const idClass = await showClass(id);
             return res.status(200).send(idClass);
@@ -53,7 +53,7 @@ export default class ClassController {
     }
 
     static async deleteClass(req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
         try{
             await deleteClass(id);
             return res.status(200).send({ response: 'Turma exluida com sucesso'})
@@ -90,16 +90,6 @@ export default class ClassController {
             return res.status(200).send({ response:  "Aluno removido com sucesso"})
         }catch (e){
             return res.status(500).send({ Response: "Não foi possivel remover o aluno da sala"})
-        }
-    }
-
-    static async archiveClass(req:Request, res: Response){
-        const id = parseInt(req.params[0],10);
-        try {
-            await archiveClass(id)
-            return res.status(200).send({ Response: "Sala arquivada com sucesso"})
-        }catch (e){
-            return res.status(500).send({ Response: "Não foi possivel finalizar a ação"})
         }
     }
 }

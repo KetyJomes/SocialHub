@@ -4,6 +4,7 @@ import dashboardController from '../controllers/dashboardControllers.ts';
 const route = express.Router();
 
 route
+
     // .get('/user/:id',dashboardController.)
     .get('/class/:id',dashboardController.showClass)
     .get('/ranking',dashboardController.showRanking)
@@ -11,6 +12,7 @@ route
     // .get('/average/user/:id',dashboardController.)
     .get('/average/class/:id',dashboardController.showClassAverage)
     .get('/comparison/:id',dashboardController.showComparison)
-    
+
+
 
 export default route;

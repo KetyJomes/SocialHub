@@ -9,6 +9,7 @@ route
     .patch('/update/:id',UserController.updateUser)
     // .delete('/delete/:id',UserController.)
     .get('/findById/:id',UserController.showUser)
-  
+
+
 
 export default route;

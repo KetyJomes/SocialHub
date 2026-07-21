@@ -35,10 +35,10 @@ export const getStudent = async (studentId: number) => {
     let totalGradesGlobal = 0;
     const testsCount = studentData.Evaluated.length; 
 
-    // 2. Dizemos ao TS que 'attempt' inclui as respostas além do modelo padrão
+
     studentData.Evaluated.forEach((attempt: User_Test & { userTestAnswer: Answers[] }) => {
         
-        // 3. Tipamos o acumulador (sum) como number e a resposta (answer) como Answers
+
         const testScore = attempt.userTestAnswer.reduce((sum: number, answer: Answers) => {
             return sum + (answer.scale || 0); 
         }, 0);

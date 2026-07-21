@@ -22,10 +22,10 @@ export const updateClass = async(id: number, data: updateClassDTO)=>{
         where: {id: id},
         data: {
             period, 
-            avarageScore, 
-            students: {
-                connect: students?.map(studentId => ({id: studentId}))
-            }
+            avarageScore,
+        },
+        include: {
+            students: true
         }
 
     })
@@ -67,5 +67,15 @@ export const showClass = async(id:number)=>{
 export const deleteClass = async(id: number)=>{
     return await prisma.class.delete({
         where: {id:id}
+    })
+}
+
+export const archiveClass = async(id: number) =>{
+    return await prisma.class.update({
+        where: {id: id},
+        data:{
+            isActive: false
+        }
+
     })
 }
