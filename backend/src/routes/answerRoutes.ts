@@ -4,10 +4,10 @@ import AnswerController from '../controllers/answerController.ts';
 const route = express.Router();
 
 route
-    .post('/answer/create',AnswerController.create)
-    .get('/answer/findById/:id',AnswerController.getAnswerById)
-    .get('/answer/findAll',AnswerController.showAnswers)
-    .put('/answer/update/:id',AnswerController.updateAnswer)
-    .delete('/answer/delete/:id',AnswerController.deleteAnswer)
+    .post('/create',AnswerController.create)
+    .get('/findById/:id',AnswerController.getAnswerById)
+    .get('/findAll',AnswerController.showAnswers)
+    .put('/update/:id',AnswerController.updateAnswer)
+    .delete('/delete/:id',AnswerController.deleteAnswer)
 
 export default route;

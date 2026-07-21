@@ -1,4 +1,4 @@
-import { createTestDTO, updateTestDTO } from "../dtos/testDTO.ts";
+import { createTestDTO, updateTestDTO } from "../DTOS/testDTO.ts";
 // import { Test } from "@prisma/client"
 import { prisma } from "../lib/prisma.ts"
 

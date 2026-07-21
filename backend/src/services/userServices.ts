@@ -1,4 +1,4 @@
-import { createUserDTO, authUserDTO, updateUserDTO } from "../dtos/userDTO.ts";
+import { createUserDTO, authUserDTO, updateUserDTO } from "../DTOS/userDTO.ts";
 import { prisma } from "../lib/prisma.ts";
 // import { Prisma } from "@prisma/client";
 import * as bcrypt from "bcrypt";

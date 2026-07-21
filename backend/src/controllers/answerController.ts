@@ -1,5 +1,5 @@
 import { Request, Response} from "express";
-import { createAnswerDTO, updateAnswerDTO } from "../dtos/answersDTO.ts";
+import { createAnswerDTO, updateAnswerDTO } from "../DTOS/answersDTO.ts";
 import { createAnswer, deleteAnswer, findAnswers, findAnswersById, updateAnswer } from "../services/answerService.ts";
 
 export default class AnswerController {

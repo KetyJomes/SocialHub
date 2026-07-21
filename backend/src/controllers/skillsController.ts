@@ -1,8 +1,11 @@
 import { Request, Response} from "express";
-import { createAlternativeDTO, updateAlternativeDTO } from "../dtos/alternativeDTO.ts";
+
+
 // import { createAlternative, deleteAlternatives, findAlternatives, findAlternativesById, findByskillId, updateAlternative } from "../services/alternativeService.ts";
 import { createSkill, deleteSkill, getSkillById, getSkills, updateSkill } from "../services/skillService.ts";
-import { createSkillDTO, updateSkillDTO } from "../dtos/skillDTO.ts";
+import { createSkillDTO, updateSkillDTO } from "../DTOS/skillDTO.ts";
+
+
 
 export default class SkillController {
     static async create(req: Request, res: Response){
