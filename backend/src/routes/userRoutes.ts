@@ -7,7 +7,7 @@ route
     .post('/create',UserController.create)
     .get('/findAll', UserController.showUsers)
     .patch('/update/:id',UserController.updateUser)
-    // .delete('/delete/:id',UserController.)
+    .delete('/delete/:id',UserController.removeUser)
     .get('/findById/:id',UserController.showUser)
 
 
