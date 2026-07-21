@@ -29,6 +29,8 @@ import { ManagementAvaliacoes } from "./pages/ManagementAvaliacoes";
 import { ManagementEvaluationClasses } from "./pages/ManagementEvaluationClasses";
 import { ManagementEvaluationClassDetails } from "./pages/ManagementEvaluationClassDetails";
 import { ManagementEvaluationsPending } from "./pages/ManagementEvaluationsPending";
+import { Admin } from "./pages/Adm/Admin.jsx";
+import { AdminUsuarios } from "./pages/Adm/AdminUsuarios.jsx";
 
 function App() {
 
@@ -64,6 +66,8 @@ function App() {
           <Route path="/management-avaliacoes-turmas" element={<ManagementEvaluationClasses />}/>
           <Route path="/management-avaliacoes-turmas-alunos" element={<ManagementEvaluationClassDetails />}/>
           <Route path="/management-evaluations-pending" element={<ManagementEvaluationsPending /> } />
+          <Route path="/adm-main" element={<Admin /> } />
+          <Route path="/adm-control-user" element={<AdminUsuarios /> } />
         </Routes>
       </BrowserRouter>
     </>
