@@ -15,7 +15,7 @@ export default class alternativeController {
         }
     }
 
-    static async showAlternative(req: Request, res:Response){
+    static async showAlternatives(req: Request, res:Response){
             try {
                 await findAlternatives()
                 return res.status(404).send({response: "Nenhum  encontrado"})
@@ -47,7 +47,7 @@ export default class alternativeController {
         }
     }
     
-    static async deleteAlternatives(req:Request, res: Response){
+    static async deleteAlternative(req:Request, res: Response){
         const {id} = req.params
 
         try{

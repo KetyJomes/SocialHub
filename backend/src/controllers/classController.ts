@@ -1,6 +1,7 @@
 
-import { createClassDTO,updateClassDTO } from '../dtos/classDTO.ts';
+import { createClassDTO, updateClassDTO } from '../DTOS/classDTO.ts';
 import { createClass, updateClass, deleteClass, showClass, showClasses, addStudentToClass, removeStudentFromClass } from '../services/classServices.ts';
+import { Request, Response } from "express";
 
 export default class ClassController {
     

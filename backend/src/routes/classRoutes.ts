@@ -4,7 +4,7 @@ import ClassController from '../controllers/classController.ts';
 const route = express.Router();
 
 route
-    .post('/create',ClassController.create)
+    .post('/create', ClassController.create)
     // .post('/archive',ClassController.)
     .get('/findAll',ClassController.showClasses)
     .put('/update/:id',ClassController.updateClass)

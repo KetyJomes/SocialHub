@@ -10,7 +10,7 @@ route
     .get('/ranking',dashboardController.showRanking)
     .get('/evolution/:id',dashboardController.showEvolution)
     // .get('/average/user/:id',dashboardController.)
-    .get('/average/class/:id',dashboardController.showClassAverage)
+    .get('/average/class/:id',dashboardController.showAverage)
     .get('/comparison/:id',dashboardController.showComparison)
 
 
