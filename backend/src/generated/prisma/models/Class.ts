@@ -43,8 +43,8 @@ export type ClassMinAggregateOutputType = {
   Course: string | null
   period: string | null
   avarageScore: number | null
-  idPIC: number | null
   isActive: boolean | null
+  idPIC: number | null
 }
 
 export type ClassMaxAggregateOutputType = {
@@ -52,8 +52,8 @@ export type ClassMaxAggregateOutputType = {
   Course: string | null
   period: string | null
   avarageScore: number | null
-  idPIC: number | null
   isActive: boolean | null
+  idPIC: number | null
 }
 
 export type ClassCountAggregateOutputType = {
@@ -61,8 +61,8 @@ export type ClassCountAggregateOutputType = {
   Course: number
   period: number
   avarageScore: number
-  idPIC: number
   isActive: number
+  idPIC: number
   _all: number
 }
 
@@ -84,8 +84,8 @@ export type ClassMinAggregateInputType = {
   Course?: true
   period?: true
   avarageScore?: true
-  idPIC?: true
   isActive?: true
+  idPIC?: true
 }
 
 export type ClassMaxAggregateInputType = {
@@ -93,8 +93,8 @@ export type ClassMaxAggregateInputType = {
   Course?: true
   period?: true
   avarageScore?: true
-  idPIC?: true
   isActive?: true
+  idPIC?: true
 }
 
 export type ClassCountAggregateInputType = {
@@ -102,8 +102,8 @@ export type ClassCountAggregateInputType = {
   Course?: true
   period?: true
   avarageScore?: true
-  idPIC?: true
   isActive?: true
+  idPIC?: true
   _all?: true
 }
 
@@ -198,8 +198,8 @@ export type ClassGroupByOutputType = {
   Course: string
   period: string
   avarageScore: number
-  idPIC: number
   isActive: boolean
+  idPIC: number
   _count: ClassCountAggregateOutputType | null
   _avg: ClassAvgAggregateOutputType | null
   _sum: ClassSumAggregateOutputType | null
@@ -230,8 +230,8 @@ export type ClassWhereInput = {
   Course?: Prisma.StringFilter<"Class"> | string
   period?: Prisma.StringFilter<"Class"> | string
   avarageScore?: Prisma.IntFilter<"Class"> | number
-  idPIC?: Prisma.IntFilter<"Class"> | number
   isActive?: Prisma.BoolFilter<"Class"> | boolean
+  idPIC?: Prisma.IntFilter<"Class"> | number
   PIC?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   students?: Prisma.UserListRelationFilter
 }
@@ -241,8 +241,8 @@ export type ClassOrderByWithRelationInput = {
   Course?: Prisma.SortOrder
   period?: Prisma.SortOrder
   avarageScore?: Prisma.SortOrder
-  idPIC?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  idPIC?: Prisma.SortOrder
   PIC?: Prisma.UserOrderByWithRelationInput
   students?: Prisma.UserOrderByRelationAggregateInput
   _relevance?: Prisma.ClassOrderByRelevanceInput
@@ -256,8 +256,8 @@ export type ClassWhereUniqueInput = Prisma.AtLeast<{
   Course?: Prisma.StringFilter<"Class"> | string
   period?: Prisma.StringFilter<"Class"> | string
   avarageScore?: Prisma.IntFilter<"Class"> | number
-  idPIC?: Prisma.IntFilter<"Class"> | number
   isActive?: Prisma.BoolFilter<"Class"> | boolean
+  idPIC?: Prisma.IntFilter<"Class"> | number
   PIC?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   students?: Prisma.UserListRelationFilter
 }, "id">
@@ -267,8 +267,8 @@ export type ClassOrderByWithAggregationInput = {
   Course?: Prisma.SortOrder
   period?: Prisma.SortOrder
   avarageScore?: Prisma.SortOrder
-  idPIC?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  idPIC?: Prisma.SortOrder
   _count?: Prisma.ClassCountOrderByAggregateInput
   _avg?: Prisma.ClassAvgOrderByAggregateInput
   _max?: Prisma.ClassMaxOrderByAggregateInput
@@ -284,8 +284,8 @@ export type ClassScalarWhereWithAggregatesInput = {
   Course?: Prisma.StringWithAggregatesFilter<"Class"> | string
   period?: Prisma.StringWithAggregatesFilter<"Class"> | string
   avarageScore?: Prisma.IntWithAggregatesFilter<"Class"> | number
-  idPIC?: Prisma.IntWithAggregatesFilter<"Class"> | number
   isActive?: Prisma.BoolWithAggregatesFilter<"Class"> | boolean
+  idPIC?: Prisma.IntWithAggregatesFilter<"Class"> | number
 }
 
 export type ClassCreateInput = {
@@ -302,8 +302,8 @@ export type ClassUncheckedCreateInput = {
   Course: string
   period: string
   avarageScore: number
-  idPIC: number
   isActive?: boolean
+  idPIC: number
   students?: Prisma.UserUncheckedCreateNestedManyWithoutClassInput
 }
 
@@ -321,8 +321,8 @@ export type ClassUncheckedUpdateInput = {
   Course?: Prisma.StringFieldUpdateOperationsInput | string
   period?: Prisma.StringFieldUpdateOperationsInput | string
   avarageScore?: Prisma.IntFieldUpdateOperationsInput | number
-  idPIC?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  idPIC?: Prisma.IntFieldUpdateOperationsInput | number
   students?: Prisma.UserUncheckedUpdateManyWithoutClassNestedInput
 }
 
@@ -331,8 +331,8 @@ export type ClassCreateManyInput = {
   Course: string
   period: string
   avarageScore: number
-  idPIC: number
   isActive?: boolean
+  idPIC: number
 }
 
 export type ClassUpdateManyMutationInput = {
@@ -347,8 +347,8 @@ export type ClassUncheckedUpdateManyInput = {
   Course?: Prisma.StringFieldUpdateOperationsInput | string
   period?: Prisma.StringFieldUpdateOperationsInput | string
   avarageScore?: Prisma.IntFieldUpdateOperationsInput | number
-  idPIC?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  idPIC?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ClassScalarRelationFilter = {
@@ -377,8 +377,8 @@ export type ClassCountOrderByAggregateInput = {
   Course?: Prisma.SortOrder
   period?: Prisma.SortOrder
   avarageScore?: Prisma.SortOrder
-  idPIC?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  idPIC?: Prisma.SortOrder
 }
 
 export type ClassAvgOrderByAggregateInput = {
@@ -392,8 +392,8 @@ export type ClassMaxOrderByAggregateInput = {
   Course?: Prisma.SortOrder
   period?: Prisma.SortOrder
   avarageScore?: Prisma.SortOrder
-  idPIC?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  idPIC?: Prisma.SortOrder
 }
 
 export type ClassMinOrderByAggregateInput = {
@@ -401,8 +401,8 @@ export type ClassMinOrderByAggregateInput = {
   Course?: Prisma.SortOrder
   period?: Prisma.SortOrder
   avarageScore?: Prisma.SortOrder
-  idPIC?: Prisma.SortOrder
   isActive?: Prisma.SortOrder
+  idPIC?: Prisma.SortOrder
 }
 
 export type ClassSumOrderByAggregateInput = {
@@ -480,8 +480,8 @@ export type ClassUncheckedCreateWithoutStudentsInput = {
   Course: string
   period: string
   avarageScore: number
-  idPIC: number
   isActive?: boolean
+  idPIC: number
 }
 
 export type ClassCreateOrConnectWithoutStudentsInput = {
@@ -540,8 +540,8 @@ export type ClassUncheckedUpdateWithoutStudentsInput = {
   Course?: Prisma.StringFieldUpdateOperationsInput | string
   period?: Prisma.StringFieldUpdateOperationsInput | string
   avarageScore?: Prisma.IntFieldUpdateOperationsInput | number
-  idPIC?: Prisma.IntFieldUpdateOperationsInput | number
   isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  idPIC?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type ClassUpsertWithWhereUniqueWithoutPICInput = {
@@ -568,8 +568,8 @@ export type ClassScalarWhereInput = {
   Course?: Prisma.StringFilter<"Class"> | string
   period?: Prisma.StringFilter<"Class"> | string
   avarageScore?: Prisma.IntFilter<"Class"> | number
-  idPIC?: Prisma.IntFilter<"Class"> | number
   isActive?: Prisma.BoolFilter<"Class"> | boolean
+  idPIC?: Prisma.IntFilter<"Class"> | number
 }
 
 export type ClassCreateManyPICInput = {
@@ -641,8 +641,8 @@ export type ClassSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   Course?: boolean
   period?: boolean
   avarageScore?: boolean
-  idPIC?: boolean
   isActive?: boolean
+  idPIC?: boolean
   PIC?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   students?: boolean | Prisma.Class$studentsArgs<ExtArgs>
   _count?: boolean | Prisma.ClassCountOutputTypeDefaultArgs<ExtArgs>
@@ -655,11 +655,11 @@ export type ClassSelectScalar = {
   Course?: boolean
   period?: boolean
   avarageScore?: boolean
-  idPIC?: boolean
   isActive?: boolean
+  idPIC?: boolean
 }
 
-export type ClassOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "Course" | "period" | "avarageScore" | "idPIC" | "isActive", ExtArgs["result"]["class"]>
+export type ClassOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "Course" | "period" | "avarageScore" | "isActive" | "idPIC", ExtArgs["result"]["class"]>
 export type ClassInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   PIC?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   students?: boolean | Prisma.Class$studentsArgs<ExtArgs>
@@ -677,8 +677,8 @@ export type $ClassPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     Course: string
     period: string
     avarageScore: number
-    idPIC: number
     isActive: boolean
+    idPIC: number
   }, ExtArgs["result"]["class"]>
   composites: {}
 }
@@ -1054,8 +1054,8 @@ export interface ClassFieldRefs {
   readonly Course: Prisma.FieldRef<"Class", 'String'>
   readonly period: Prisma.FieldRef<"Class", 'String'>
   readonly avarageScore: Prisma.FieldRef<"Class", 'Int'>
-  readonly idPIC: Prisma.FieldRef<"Class", 'Int'>
   readonly isActive: Prisma.FieldRef<"Class", 'Boolean'>
+  readonly idPIC: Prisma.FieldRef<"Class", 'Int'>
 }
     
 

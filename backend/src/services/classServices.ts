@@ -69,3 +69,13 @@ export const deleteClass = async(id: number)=>{
         where: {id:id}
     })
 }
+
+export const archiveClass = async(id: number) =>{
+    return await prisma.class.update({
+        where: {id: id},
+        data:{
+            isActive: false
+        }
+
+    })
+}

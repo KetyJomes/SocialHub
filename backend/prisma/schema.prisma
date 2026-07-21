@@ -66,13 +66,13 @@ model Class {
   Course String
   period String
   avarageScore Int
+  isActive Boolean @default(true)
 
   PIC User @relation("PicClass",fields: [idPIC], references: id)
   idPIC Int 
 
   students User[] @relation("StudentClass")
 
-  isActive Boolean @default(true)
 }
 
 model Answers {

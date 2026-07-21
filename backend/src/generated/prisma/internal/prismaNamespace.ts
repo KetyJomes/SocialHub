@@ -959,8 +959,8 @@ export const ClassScalarFieldEnum = {
   Course: 'Course',
   period: 'period',
   avarageScore: 'avarageScore',
-  idPIC: 'idPIC',
-  isActive: 'isActive'
+  isActive: 'isActive',
+  idPIC: 'idPIC'
 } as const
 
 export type ClassScalarFieldEnum = (typeof ClassScalarFieldEnum)[keyof typeof ClassScalarFieldEnum]

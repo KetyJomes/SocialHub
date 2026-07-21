@@ -18,7 +18,7 @@ export default class TestController {
     }
 
     static async showTest(req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
         try{
             const test = await showTest(id);
             return res.status(200).send(test)
@@ -42,7 +42,7 @@ export default class TestController {
     }
 
     static async deleteTest(req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
         try{
             await deleteTest(id);
             return res.status(200).send({ response: 'Prova exluida com sucesso'})
@@ -54,7 +54,7 @@ export default class TestController {
 
     static async updateTest(req: Request, res: Response){
         try{
-            const id = parseInt(req.params[0],10);
+            const id = Number(req.params.id);
             const data: updateTestDTO = req.body;
 
             await updateTest(id, data);
@@ -67,7 +67,7 @@ export default class TestController {
     }
 
     static async allowAccess(req: Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
 
         if (isNaN(id)){
             return res.status(400).send({response: "Teste não encontrado" })
@@ -82,7 +82,7 @@ export default class TestController {
     }  
 
     static async  RemoveAccess(req: Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
 
         if (isNaN(id)){
             return res.status(400).send({response: "Teste não encontrado" })
@@ -97,7 +97,7 @@ export default class TestController {
     }  
 
     static async publishTest(req: Request, res: Response){
-        const testeId = parseInt(req.params.id, 10);
+        const testeId = Number(req.params.id);
         const {startDate, finalDate} = req.body;
 
         if(isNaN(testeId)){
@@ -115,7 +115,7 @@ export default class TestController {
     }
 
     static async addSkill(req: Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
         const {skillId} = req.body;
 
         if(isNaN(id) || !skillId){
@@ -131,7 +131,7 @@ export default class TestController {
     }
     
      static async removeSkill(req: Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
         const {skillId} = req.body;
 
         if(isNaN(id) || !skillId){

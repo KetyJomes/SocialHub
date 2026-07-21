@@ -29,7 +29,7 @@ export default class UserController {
     }
 
     static async showUser(req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
         try{
             const user = await getUser(id);
             if (!user){
@@ -55,7 +55,7 @@ export default class UserController {
     static async updateUser(req: Request, res: Response){
         const data: updateUserDTO = req.body
         try{
-            const id = parseInt(req.params[0],10);
+            const id = Number(req.params.id);
             await updateUser(id,data);
             return res.status(200).send({ reponse: 'User atualizado com sucesso!'})
         }
@@ -65,7 +65,7 @@ export default class UserController {
     }
 
     static async removeUser(req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
         try{
             await deleteUser(id);
             return res.status(200).send({response: 'Usuário excluido com sucesso'})
