@@ -6,7 +6,7 @@ import { TabelaAvaliacoesEnviadas } from "../components/TabelaAvaliacoesEnviadas
 
 import { avaliacoesEnviadas } from "../data/avaliacoesEnviadas";
 
-export const ManagementAvaliacoesEnviadas = () => {
+export const ManagementAvaliacoes = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 

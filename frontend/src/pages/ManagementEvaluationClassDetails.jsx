@@ -497,7 +497,7 @@ export const ManagementEvaluationClassDetails = () => {
 
                                                 <button
 
-                                                    onClick={() => navigate('/management-avaliacoes-turmas-alunos')}
+                                                    onClick={() => navigate('/management-perform-evaluation/:turma/:aluno/:id')}
 
                                                     className="
                                                         flex

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { Header } from "../components/Header";
 import { SidebarManagement } from "../components/SidebarManagement";
-import { AbaManagementView } from "../components/AbaManagementView";
+import { StudentTestsControlTable } from "../components/Management/StudentTestsControlTable";
 
 export const ManagementStudentToManager = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -246,7 +246,7 @@ export const ManagementStudentToManager = () => {
 
                             (
 
-                                <AbaManagementView
+                                <StudentTestsControlTable
                                     avaliacoes={disponiveis}
                                     tipoAba="disponiveis"
                                 />
@@ -261,7 +261,7 @@ export const ManagementStudentToManager = () => {
 
                             (
 
-                                <AbaManagementView
+                                <StudentTestsControlTable
                                     avaliacoes={feitas}
                                     tipoAba="feitas"
                                 />

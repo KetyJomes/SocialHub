@@ -1,3 +1,5 @@
+// Visualização de dos tópicos adicionados
+
 export const EvaluationPreview = ({
     dados,
     secoes,

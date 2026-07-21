@@ -1,4 +1,4 @@
-export const EvaluationManagementTable = ({
+export const TestsControlTable = ({
     avaliacoes
 }) => {
 
