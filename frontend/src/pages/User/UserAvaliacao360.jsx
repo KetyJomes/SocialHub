@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { CardProgresso360 } from "../../components/CardProgresso360";
-import { TabelaColaboradores360 } from "../../components/TabelaColaboradores360";
+import { TabelaColaboradores360 } from "../../components/User/TabelaColaboradores360";
 
 export const UserAvaliacao360 = () => {
 

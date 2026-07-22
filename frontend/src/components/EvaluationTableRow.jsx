@@ -28,7 +28,9 @@ const optionStyle = {
   },
 };
 
-export const EvaluationTableRow = ({
+export const 
+
+EvaluationTableRow = ({
   topic,
   answer,
   onSelect,

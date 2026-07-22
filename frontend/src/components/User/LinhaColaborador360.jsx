@@ -110,6 +110,7 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                     avaliado ?
 
                         <button
+                            onClick={() => navigate('/realizar-avaliacao')}
                             className="flex items-center gap-2 px-5 py-2.5 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-100 transition"
                         >
 
