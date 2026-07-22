@@ -1,9 +1,10 @@
 import { createTestDTO, updateTestDTO } from "../DTOS/testDTO.ts";
 // import { Test } from "@prisma/client"
 import { prisma } from "../lib/prisma.ts"
+import { frequency } from '../../src/generated/prisma/client.ts';
 
 export const createTest = async(data: createTestDTO)=>{
-    const {  content, finalDate, startdate, grade, type, skill, questions, AvailableResult} = data;
+    const {  content, finalDate, startdate, grade, type, skill, questions, AvailableResult, frequency} = data;
 
     return await prisma.test.create({
         data:{
@@ -12,6 +13,7 @@ export const createTest = async(data: createTestDTO)=>{
             startDate:startdate,
             AvailableResult: AvailableResult,
             grade: grade,
+            frequency: frequency
             type: type,
             skill: skill,
             questions: {
@@ -22,7 +24,7 @@ export const createTest = async(data: createTestDTO)=>{
 }
 
 export const updateTest = async(id:number,data: updateTestDTO)=>{
-    const {content , finalDate, startdate, grade, type, skill, questions, AvailableResult} = data;
+    const {content , finalDate, startdate, grade, type, skill, questions, AvailableResult, frequency} = data;
     return await prisma.test.update({
         where:{id:id},
         data: {
@@ -31,6 +33,7 @@ export const updateTest = async(id:number,data: updateTestDTO)=>{
             startDate:startdate,
             AvailableResult: AvailableResult,
             grade: grade,
+            frequency: frequency,
             type: type,
             skill: skill,
             questions: {
@@ -38,7 +41,7 @@ export const updateTest = async(id:number,data: updateTestDTO)=>{
         }
     }
     })
-
+// 
 }
 
 export const showTests = async()=>{
@@ -123,3 +126,6 @@ export const removeSkill = async (testId: number, skillId: number)=>{
 };
 
 
+export const defineFrequency = async (testeId: number) =>{
+
+} 

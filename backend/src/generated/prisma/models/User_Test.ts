@@ -42,6 +42,7 @@ export type User_TestSumAggregateOutputType = {
 
 export type User_TestMinAggregateOutputType = {
   id: number | null
+  feedback: string | null
   idEvaluated: number | null
   idEvaluator: number | null
   idTest: number | null
@@ -49,6 +50,7 @@ export type User_TestMinAggregateOutputType = {
 
 export type User_TestMaxAggregateOutputType = {
   id: number | null
+  feedback: string | null
   idEvaluated: number | null
   idEvaluator: number | null
   idTest: number | null
@@ -56,6 +58,7 @@ export type User_TestMaxAggregateOutputType = {
 
 export type User_TestCountAggregateOutputType = {
   id: number
+  feedback: number
   idEvaluated: number
   idEvaluator: number
   idTest: number
@@ -79,6 +82,7 @@ export type User_TestSumAggregateInputType = {
 
 export type User_TestMinAggregateInputType = {
   id?: true
+  feedback?: true
   idEvaluated?: true
   idEvaluator?: true
   idTest?: true
@@ -86,6 +90,7 @@ export type User_TestMinAggregateInputType = {
 
 export type User_TestMaxAggregateInputType = {
   id?: true
+  feedback?: true
   idEvaluated?: true
   idEvaluator?: true
   idTest?: true
@@ -93,6 +98,7 @@ export type User_TestMaxAggregateInputType = {
 
 export type User_TestCountAggregateInputType = {
   id?: true
+  feedback?: true
   idEvaluated?: true
   idEvaluator?: true
   idTest?: true
@@ -187,6 +193,7 @@ export type User_TestGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type User_TestGroupByOutputType = {
   id: number
+  feedback: string
   idEvaluated: number
   idEvaluator: number
   idTest: number
@@ -217,6 +224,7 @@ export type User_TestWhereInput = {
   OR?: Prisma.User_TestWhereInput[]
   NOT?: Prisma.User_TestWhereInput | Prisma.User_TestWhereInput[]
   id?: Prisma.IntFilter<"User_Test"> | number
+  feedback?: Prisma.StringFilter<"User_Test"> | string
   idEvaluated?: Prisma.IntFilter<"User_Test"> | number
   idEvaluator?: Prisma.IntFilter<"User_Test"> | number
   idTest?: Prisma.IntFilter<"User_Test"> | number
@@ -228,6 +236,7 @@ export type User_TestWhereInput = {
 
 export type User_TestOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  feedback?: Prisma.SortOrder
   idEvaluated?: Prisma.SortOrder
   idEvaluator?: Prisma.SortOrder
   idTest?: Prisma.SortOrder
@@ -235,6 +244,7 @@ export type User_TestOrderByWithRelationInput = {
   Evaluator?: Prisma.UserOrderByWithRelationInput
   Tests?: Prisma.TestOrderByWithRelationInput
   userTestAnswer?: Prisma.AnswersOrderByRelationAggregateInput
+  _relevance?: Prisma.User_TestOrderByRelevanceInput
 }
 
 export type User_TestWhereUniqueInput = Prisma.AtLeast<{
@@ -242,6 +252,7 @@ export type User_TestWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.User_TestWhereInput | Prisma.User_TestWhereInput[]
   OR?: Prisma.User_TestWhereInput[]
   NOT?: Prisma.User_TestWhereInput | Prisma.User_TestWhereInput[]
+  feedback?: Prisma.StringFilter<"User_Test"> | string
   idEvaluated?: Prisma.IntFilter<"User_Test"> | number
   idEvaluator?: Prisma.IntFilter<"User_Test"> | number
   idTest?: Prisma.IntFilter<"User_Test"> | number
@@ -253,6 +264,7 @@ export type User_TestWhereUniqueInput = Prisma.AtLeast<{
 
 export type User_TestOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  feedback?: Prisma.SortOrder
   idEvaluated?: Prisma.SortOrder
   idEvaluator?: Prisma.SortOrder
   idTest?: Prisma.SortOrder
@@ -268,12 +280,14 @@ export type User_TestScalarWhereWithAggregatesInput = {
   OR?: Prisma.User_TestScalarWhereWithAggregatesInput[]
   NOT?: Prisma.User_TestScalarWhereWithAggregatesInput | Prisma.User_TestScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"User_Test"> | number
+  feedback?: Prisma.StringWithAggregatesFilter<"User_Test"> | string
   idEvaluated?: Prisma.IntWithAggregatesFilter<"User_Test"> | number
   idEvaluator?: Prisma.IntWithAggregatesFilter<"User_Test"> | number
   idTest?: Prisma.IntWithAggregatesFilter<"User_Test"> | number
 }
 
 export type User_TestCreateInput = {
+  feedback: string
   Evaluated: Prisma.UserCreateNestedOneWithoutEvaluatedInput
   Evaluator: Prisma.UserCreateNestedOneWithoutEvaluatorInput
   Tests: Prisma.TestCreateNestedOneWithoutUserInput
@@ -282,6 +296,7 @@ export type User_TestCreateInput = {
 
 export type User_TestUncheckedCreateInput = {
   id?: number
+  feedback: string
   idEvaluated: number
   idEvaluator: number
   idTest: number
@@ -289,6 +304,7 @@ export type User_TestUncheckedCreateInput = {
 }
 
 export type User_TestUpdateInput = {
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Evaluated?: Prisma.UserUpdateOneRequiredWithoutEvaluatedNestedInput
   Evaluator?: Prisma.UserUpdateOneRequiredWithoutEvaluatorNestedInput
   Tests?: Prisma.TestUpdateOneRequiredWithoutUserNestedInput
@@ -297,6 +313,7 @@ export type User_TestUpdateInput = {
 
 export type User_TestUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
@@ -305,17 +322,19 @@ export type User_TestUncheckedUpdateInput = {
 
 export type User_TestCreateManyInput = {
   id?: number
+  feedback: string
   idEvaluated: number
   idEvaluator: number
   idTest: number
 }
 
 export type User_TestUpdateManyMutationInput = {
-
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type User_TestUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
@@ -331,8 +350,15 @@ export type User_TestOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
 }
 
+export type User_TestOrderByRelevanceInput = {
+  fields: Prisma.User_TestOrderByRelevanceFieldEnum | Prisma.User_TestOrderByRelevanceFieldEnum[]
+  sort: Prisma.SortOrder
+  search: string
+}
+
 export type User_TestCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  feedback?: Prisma.SortOrder
   idEvaluated?: Prisma.SortOrder
   idEvaluator?: Prisma.SortOrder
   idTest?: Prisma.SortOrder
@@ -347,6 +373,7 @@ export type User_TestAvgOrderByAggregateInput = {
 
 export type User_TestMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  feedback?: Prisma.SortOrder
   idEvaluated?: Prisma.SortOrder
   idEvaluator?: Prisma.SortOrder
   idTest?: Prisma.SortOrder
@@ -354,6 +381,7 @@ export type User_TestMaxOrderByAggregateInput = {
 
 export type User_TestMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  feedback?: Prisma.SortOrder
   idEvaluated?: Prisma.SortOrder
   idEvaluator?: Prisma.SortOrder
   idTest?: Prisma.SortOrder
@@ -512,6 +540,7 @@ export type User_TestUpdateOneRequiredWithoutUserTestAnswerNestedInput = {
 }
 
 export type User_TestCreateWithoutEvaluatedInput = {
+  feedback: string
   Evaluator: Prisma.UserCreateNestedOneWithoutEvaluatorInput
   Tests: Prisma.TestCreateNestedOneWithoutUserInput
   userTestAnswer?: Prisma.AnswersCreateNestedManyWithoutUserTestAnswerInput
@@ -519,6 +548,7 @@ export type User_TestCreateWithoutEvaluatedInput = {
 
 export type User_TestUncheckedCreateWithoutEvaluatedInput = {
   id?: number
+  feedback: string
   idEvaluator: number
   idTest: number
   userTestAnswer?: Prisma.AnswersUncheckedCreateNestedManyWithoutUserTestAnswerInput
@@ -535,6 +565,7 @@ export type User_TestCreateManyEvaluatedInputEnvelope = {
 }
 
 export type User_TestCreateWithoutEvaluatorInput = {
+  feedback: string
   Evaluated: Prisma.UserCreateNestedOneWithoutEvaluatedInput
   Tests: Prisma.TestCreateNestedOneWithoutUserInput
   userTestAnswer?: Prisma.AnswersCreateNestedManyWithoutUserTestAnswerInput
@@ -542,6 +573,7 @@ export type User_TestCreateWithoutEvaluatorInput = {
 
 export type User_TestUncheckedCreateWithoutEvaluatorInput = {
   id?: number
+  feedback: string
   idEvaluated: number
   idTest: number
   userTestAnswer?: Prisma.AnswersUncheckedCreateNestedManyWithoutUserTestAnswerInput
@@ -578,6 +610,7 @@ export type User_TestScalarWhereInput = {
   OR?: Prisma.User_TestScalarWhereInput[]
   NOT?: Prisma.User_TestScalarWhereInput | Prisma.User_TestScalarWhereInput[]
   id?: Prisma.IntFilter<"User_Test"> | number
+  feedback?: Prisma.StringFilter<"User_Test"> | string
   idEvaluated?: Prisma.IntFilter<"User_Test"> | number
   idEvaluator?: Prisma.IntFilter<"User_Test"> | number
   idTest?: Prisma.IntFilter<"User_Test"> | number
@@ -600,6 +633,7 @@ export type User_TestUpdateManyWithWhereWithoutEvaluatorInput = {
 }
 
 export type User_TestCreateWithoutTestsInput = {
+  feedback: string
   Evaluated: Prisma.UserCreateNestedOneWithoutEvaluatedInput
   Evaluator: Prisma.UserCreateNestedOneWithoutEvaluatorInput
   userTestAnswer?: Prisma.AnswersCreateNestedManyWithoutUserTestAnswerInput
@@ -607,6 +641,7 @@ export type User_TestCreateWithoutTestsInput = {
 
 export type User_TestUncheckedCreateWithoutTestsInput = {
   id?: number
+  feedback: string
   idEvaluated: number
   idEvaluator: number
   userTestAnswer?: Prisma.AnswersUncheckedCreateNestedManyWithoutUserTestAnswerInput
@@ -639,6 +674,7 @@ export type User_TestUpdateManyWithWhereWithoutTestsInput = {
 }
 
 export type User_TestCreateWithoutUserTestAnswerInput = {
+  feedback: string
   Evaluated: Prisma.UserCreateNestedOneWithoutEvaluatedInput
   Evaluator: Prisma.UserCreateNestedOneWithoutEvaluatorInput
   Tests: Prisma.TestCreateNestedOneWithoutUserInput
@@ -646,6 +682,7 @@ export type User_TestCreateWithoutUserTestAnswerInput = {
 
 export type User_TestUncheckedCreateWithoutUserTestAnswerInput = {
   id?: number
+  feedback: string
   idEvaluated: number
   idEvaluator: number
   idTest: number
@@ -668,6 +705,7 @@ export type User_TestUpdateToOneWithWhereWithoutUserTestAnswerInput = {
 }
 
 export type User_TestUpdateWithoutUserTestAnswerInput = {
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Evaluated?: Prisma.UserUpdateOneRequiredWithoutEvaluatedNestedInput
   Evaluator?: Prisma.UserUpdateOneRequiredWithoutEvaluatorNestedInput
   Tests?: Prisma.TestUpdateOneRequiredWithoutUserNestedInput
@@ -675,6 +713,7 @@ export type User_TestUpdateWithoutUserTestAnswerInput = {
 
 export type User_TestUncheckedUpdateWithoutUserTestAnswerInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
@@ -682,17 +721,20 @@ export type User_TestUncheckedUpdateWithoutUserTestAnswerInput = {
 
 export type User_TestCreateManyEvaluatedInput = {
   id?: number
+  feedback: string
   idEvaluator: number
   idTest: number
 }
 
 export type User_TestCreateManyEvaluatorInput = {
   id?: number
+  feedback: string
   idEvaluated: number
   idTest: number
 }
 
 export type User_TestUpdateWithoutEvaluatedInput = {
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Evaluator?: Prisma.UserUpdateOneRequiredWithoutEvaluatorNestedInput
   Tests?: Prisma.TestUpdateOneRequiredWithoutUserNestedInput
   userTestAnswer?: Prisma.AnswersUpdateManyWithoutUserTestAnswerNestedInput
@@ -700,6 +742,7 @@ export type User_TestUpdateWithoutEvaluatedInput = {
 
 export type User_TestUncheckedUpdateWithoutEvaluatedInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
   userTestAnswer?: Prisma.AnswersUncheckedUpdateManyWithoutUserTestAnswerNestedInput
@@ -707,11 +750,13 @@ export type User_TestUncheckedUpdateWithoutEvaluatedInput = {
 
 export type User_TestUncheckedUpdateManyWithoutEvaluatedInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type User_TestUpdateWithoutEvaluatorInput = {
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Evaluated?: Prisma.UserUpdateOneRequiredWithoutEvaluatedNestedInput
   Tests?: Prisma.TestUpdateOneRequiredWithoutUserNestedInput
   userTestAnswer?: Prisma.AnswersUpdateManyWithoutUserTestAnswerNestedInput
@@ -719,6 +764,7 @@ export type User_TestUpdateWithoutEvaluatorInput = {
 
 export type User_TestUncheckedUpdateWithoutEvaluatorInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
   userTestAnswer?: Prisma.AnswersUncheckedUpdateManyWithoutUserTestAnswerNestedInput
@@ -726,17 +772,20 @@ export type User_TestUncheckedUpdateWithoutEvaluatorInput = {
 
 export type User_TestUncheckedUpdateManyWithoutEvaluatorInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type User_TestCreateManyTestsInput = {
   id?: number
+  feedback: string
   idEvaluated: number
   idEvaluator: number
 }
 
 export type User_TestUpdateWithoutTestsInput = {
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Evaluated?: Prisma.UserUpdateOneRequiredWithoutEvaluatedNestedInput
   Evaluator?: Prisma.UserUpdateOneRequiredWithoutEvaluatorNestedInput
   userTestAnswer?: Prisma.AnswersUpdateManyWithoutUserTestAnswerNestedInput
@@ -744,6 +793,7 @@ export type User_TestUpdateWithoutTestsInput = {
 
 export type User_TestUncheckedUpdateWithoutTestsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   userTestAnswer?: Prisma.AnswersUncheckedUpdateManyWithoutUserTestAnswerNestedInput
@@ -751,6 +801,7 @@ export type User_TestUncheckedUpdateWithoutTestsInput = {
 
 export type User_TestUncheckedUpdateManyWithoutTestsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
+  feedback?: Prisma.StringFieldUpdateOperationsInput | string
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -788,6 +839,7 @@ export type User_TestCountOutputTypeCountUserTestAnswerArgs<ExtArgs extends runt
 
 export type User_TestSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  feedback?: boolean
   idEvaluated?: boolean
   idEvaluator?: boolean
   idTest?: boolean
@@ -802,12 +854,13 @@ export type User_TestSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type User_TestSelectScalar = {
   id?: boolean
+  feedback?: boolean
   idEvaluated?: boolean
   idEvaluator?: boolean
   idTest?: boolean
 }
 
-export type User_TestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "idEvaluated" | "idEvaluator" | "idTest", ExtArgs["result"]["user_Test"]>
+export type User_TestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "feedback" | "idEvaluated" | "idEvaluator" | "idTest", ExtArgs["result"]["user_Test"]>
 export type User_TestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Evaluated?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   Evaluator?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -826,6 +879,7 @@ export type $User_TestPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
+    feedback: string
     idEvaluated: number
     idEvaluator: number
     idTest: number
@@ -1203,6 +1257,7 @@ export interface Prisma__User_TestClient<T, Null = never, ExtArgs extends runtim
  */
 export interface User_TestFieldRefs {
   readonly id: Prisma.FieldRef<"User_Test", 'Int'>
+  readonly feedback: Prisma.FieldRef<"User_Test", 'String'>
   readonly idEvaluated: Prisma.FieldRef<"User_Test", 'Int'>
   readonly idEvaluator: Prisma.FieldRef<"User_Test", 'Int'>
   readonly idTest: Prisma.FieldRef<"User_Test", 'Int'>

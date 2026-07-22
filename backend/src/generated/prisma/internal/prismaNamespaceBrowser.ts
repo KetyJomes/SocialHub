@@ -76,6 +76,7 @@ export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof
 
 export const UserScalarFieldEnum = {
   id: 'id',
+  pfp: 'pfp',
   name: 'name',
   email: 'email',
   password: 'password',
@@ -89,6 +90,7 @@ export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof User
 
 export const User_TestScalarFieldEnum = {
   id: 'id',
+  feedback: 'feedback',
   idEvaluated: 'idEvaluated',
   idEvaluator: 'idEvaluator',
   idTest: 'idTest'
@@ -171,12 +173,20 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
 export const UserOrderByRelevanceFieldEnum = {
+  pfp: 'pfp',
   name: 'name',
   email: 'email',
   password: 'password'
 } as const
 
 export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]
+
+
+export const User_TestOrderByRelevanceFieldEnum = {
+  feedback: 'feedback'
+} as const
+
+export type User_TestOrderByRelevanceFieldEnum = (typeof User_TestOrderByRelevanceFieldEnum)[keyof typeof User_TestOrderByRelevanceFieldEnum]
 
 
 export const TestOrderByRelevanceFieldEnum = {
