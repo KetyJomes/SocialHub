@@ -1,18 +1,9 @@
-import {
-    ArrowDown,
-    ArrowUp,
-    Circle,
-    Star,
-} from "lucide-react";
-
 const optionStyle = {
-
     critico: {
         bg: "bg-red-100",
         border: "border-red-500",
         ring: "ring-red-200",
         hover: "hover:bg-red-50",
-        icon: <Star size={16} className="text-red-500" />,
     },
 
     abaixo: {
@@ -20,7 +11,6 @@ const optionStyle = {
         border: "border-amber-500",
         ring: "ring-amber-200",
         hover: "hover:bg-amber-50",
-        icon: <ArrowDown size={16} className="text-amber-500" />,
     },
 
     dentro: {
@@ -28,7 +18,6 @@ const optionStyle = {
         border: "border-green-500",
         ring: "ring-green-200",
         hover: "hover:bg-green-50",
-        icon: <Circle size={16} className="text-green-500" />,
     },
 
     acima: {
@@ -36,9 +25,7 @@ const optionStyle = {
         border: "border-blue-500",
         ring: "ring-blue-200",
         hover: "hover:bg-blue-50",
-        icon: <ArrowUp size={16} className="text-blue-500" />,
     },
-
 };
 
 export const ManagementEvaluationTableRow = ({
@@ -63,14 +50,14 @@ export const ManagementEvaluationTableRow = ({
                             w-10
                             h-10
                             rounded-lg
-                            bg-indigo-50
-                            text-indigo-600
+                            bg-[#0291F7]/15
+                            text-[#0291F7]
                             font-semibold
                             flex
                             items-center
                             justify-center
                         "
-                    >
+                        >
                         {String(topic.id).padStart(2, "0")}
                     </span>
 
@@ -119,7 +106,7 @@ export const ManagementEvaluationTableRow = ({
 
                             className={`
                                 block
-                                h-full
+                                h-[170px]
                                 rounded-xl
                                 border-2
                                 p-4
@@ -190,15 +177,13 @@ export const ManagementEvaluationTableRow = ({
 
                                     }}
 
-                                    className="mt-1 accent-[#B8A4FF]"
+                                    className="mt-1 accent-[#21528A]"
 
                                 />
 
-                                <div className="flex-1">
+                                <div className="flex flex-col h-full">
 
-                                    <div className="flex items-center gap-2 mb-3">
-
-                                        {optionStyle[option.value].icon}
+                                    <div className="mb-3">
 
                                         <span className="font-semibold text-sm capitalize">
 
@@ -211,7 +196,7 @@ export const ManagementEvaluationTableRow = ({
 
                                     </div>
 
-                                    <p className="text-sm leading-6 text-gray-600">
+                                    <p className="text-sm leading-6 text-gray-600 flex-1">
 
                                         {option.text}
 

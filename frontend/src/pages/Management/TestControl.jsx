@@ -62,7 +62,7 @@ export const TestControl = () => {
                             onClick={() => setAbaAtiva("avaliacoes")}
                             className={`px-2 py-3 text-lg border-b-2 cursor-pointer ${
                                 abaAtiva === "avaliacoes"
-                                    ? "text-[#B8A4FF] border-[#B8A4FF] font-semibold"
+                                    ? "text-[#0291F7] border-[#0291F7] font-semibold"
                                     : "text-gray-500 border-transparent"
                             }`}
                         >
@@ -73,7 +73,7 @@ export const TestControl = () => {
                             onClick={() => setAbaAtiva("modelos")}
                             className={`px-2 py-3 text-lg border-b-2 cursor-pointer ${
                                 abaAtiva === "modelos"
-                                    ? "text-[#B8A4FF] border-[#B8A4FF] font-semibold"
+                                    ? "text-[#0291F7] border-[#0291F7] font-semibold"
                                     : "text-gray-500 border-transparent"
                             }`}
                         >
@@ -84,7 +84,7 @@ export const TestControl = () => {
                             onClick={() => setAbaAtiva("agendamentos")}
                             className={`px-2 py-3 text-lg border-b-2 cursor-pointer ${
                                 abaAtiva === "agendamentos"
-                                    ? "text-[#B8A4FF] border-[#B8A4FF] font-semibold"
+                                    ? "text-[#0291F7] border-[#0291F7] font-semibold"
                                     : "text-gray-500 border-transparent"
                             }`}
                         >
@@ -108,7 +108,7 @@ export const TestControl = () => {
 
                                     <button
                                         onClick={() => navigate("/management-evaluations/create")}
-                                        className="bg-[#B8A4FF] text-white px-5 py-2.5 rounded-lg hover:opacity-90 transition font-medium"
+                                        className="bg-[#0291F7] text-white px-5 py-2.5 rounded-lg hover:opacity-90 transition font-medium"
                                     >
                                         + Nova avaliação
                                     </button>

@@ -1,10 +1,3 @@
-import {
-    Star,
-    ArrowDown,
-    Circle,
-    ArrowUp
-} from "lucide-react";
-
 import { ManagementEvaluationTableRow } from "./ManagementEvaluationTableRow";
 
 export const ManagementEvaluationTable = ({
@@ -62,18 +55,13 @@ export const ManagementEvaluationTable = ({
 
                             <th className="px-5 py-6 bg-red-50">
 
-                                <div className="flex flex-col items-center gap-2">
+                                <div className="flex flex-col items-center">
 
-                                    <Star
-                                        size={18}
-                                        className="text-red-500"
-                                    />
-
-                                    <span className="font-semibold">
+                                    <span className="font-semibold text-gray-800">
                                         Crítico
                                     </span>
 
-                                    <span className="text-xs text-center text-gray-500">
+                                    <span className="text-xs text-center text-gray-500 mt-2">
                                         Muito abaixo do esperado
                                     </span>
 
@@ -83,18 +71,13 @@ export const ManagementEvaluationTable = ({
 
                             <th className="px-5 py-6 bg-orange-50">
 
-                                <div className="flex flex-col items-center gap-2">
+                                <div className="flex flex-col items-center">
 
-                                    <ArrowDown
-                                        size={18}
-                                        className="text-orange-500"
-                                    />
-
-                                    <span className="font-semibold">
+                                    <span className="font-semibold text-gray-800">
                                         Abaixo
                                     </span>
 
-                                    <span className="text-xs text-center text-gray-500">
+                                    <span className="text-xs text-center text-gray-500 mt-2">
                                         Abaixo das expectativas
                                     </span>
 
@@ -104,18 +87,13 @@ export const ManagementEvaluationTable = ({
 
                             <th className="px-5 py-6 bg-green-50">
 
-                                <div className="flex flex-col items-center gap-2">
+                                <div className="flex flex-col items-center">
 
-                                    <Circle
-                                        size={18}
-                                        className="text-green-500"
-                                    />
-
-                                    <span className="font-semibold">
+                                    <span className="font-semibold text-gray-800">
                                         Dentro
                                     </span>
 
-                                    <span className="text-xs text-center text-gray-500">
+                                    <span className="text-xs text-center text-gray-500 mt-2">
                                         Dentro das expectativas
                                     </span>
 
@@ -125,18 +103,13 @@ export const ManagementEvaluationTable = ({
 
                             <th className="px-5 py-6 bg-blue-50">
 
-                                <div className="flex flex-col items-center gap-2">
+                                <div className="flex flex-col items-center">
 
-                                    <ArrowUp
-                                        size={18}
-                                        className="text-blue-500"
-                                    />
-
-                                    <span className="font-semibold">
+                                    <span className="font-semibold text-gray-800">
                                         Acima
                                     </span>
 
-                                    <span className="text-xs text-center text-gray-500">
+                                    <span className="text-xs text-center text-gray-500 mt-2">
                                         Acima das expectativas
                                     </span>
 

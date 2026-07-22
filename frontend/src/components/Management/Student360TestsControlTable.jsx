@@ -7,7 +7,7 @@ import {
 } from "lucide-react";
 
 
-export const StudentTestsControlTable = ({
+export const Student360TestsControlTable = ({
     avaliacoes,
     tipoAba
 }) => {
@@ -28,16 +28,16 @@ export const StudentTestsControlTable = ({
     function visualizar(avaliacao) {
 
 
-
         // ==================================
-        // Avaliações já respondidas
+        // ABA FEITAS
+        // Visualizar respostas da avaliação 360°
         // ==================================
 
         if (tipoAba === "feitas") {
 
 
             navigate(
-                `/management-view-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
+                `/management-view-360-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}/${encodeURIComponent(avaliacao.colega)}`
             );
 
 
@@ -49,40 +49,13 @@ export const StudentTestsControlTable = ({
 
 
 
-
-
-
         // ==================================
-        // Gestor → Aluno
-        // ==================================
-
-        if (avaliacao.tipo === "Gestor → Aluno") {
-
-
-            navigate(
-                `/management-perform-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
-            );
-
-
-            return;
-
-        }
-
-
-
-
-
-
-
-
-        // ==================================
-        // Autoavaliação
-        // Aluno → Líder
-        // Líder → Turma
+        // ABA DISPONÍVEIS
+        // Visualizar avaliação 360° pendente
         // ==================================
 
         navigate(
-            `/management-answer-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
+            `/management-answer-360-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}/${encodeURIComponent(avaliacao.colega)}`
         );
 
 
@@ -104,25 +77,32 @@ export const StudentTestsControlTable = ({
             <table className="w-full">
 
 
+
                 <thead>
 
 
-                    <tr className="
-                        border-b
-                        border-gray-200
-                        text-gray-500
-                    ">
+                    <tr
+                        className="
+                            border-b
+                            border-gray-200
+                            text-gray-500
+                        "
+                    >
 
 
-                        <th className="
-                            text-left
-                            py-4
-                            px-6
-                        ">
 
-                            Avaliação
+                        <th
+                            className="
+                                text-left
+                                py-4
+                                px-6
+                            "
+                        >
+
+                            Colega para avaliar
 
                         </th>
+
 
 
                         <th className="text-center">
@@ -132,11 +112,13 @@ export const StudentTestsControlTable = ({
                         </th>
 
 
+
                         <th className="text-center">
 
                             Disponibilizada
 
                         </th>
+
 
 
                         <th className="text-center">
@@ -146,11 +128,13 @@ export const StudentTestsControlTable = ({
                         </th>
 
 
+
                         <th className="text-center">
 
                             Status
 
                         </th>
+
 
 
                     </tr>
@@ -176,9 +160,12 @@ export const StudentTestsControlTable = ({
 
                                 <tr
 
+
                                     key={avaliacao.id}
 
+
                                     onClick={() => visualizar(avaliacao)}
+
 
                                     className="
                                         border-b
@@ -189,6 +176,7 @@ export const StudentTestsControlTable = ({
                                         transition-all
                                     "
 
+
                                 >
 
 
@@ -198,7 +186,10 @@ export const StudentTestsControlTable = ({
                                     <td className="px-6 py-5">
 
 
+
                                         <div className="flex items-center gap-3">
+
+
 
 
 
@@ -227,12 +218,14 @@ export const StudentTestsControlTable = ({
 
 
 
+
+
                                             <div>
 
 
                                                 <h3 className="font-semibold">
 
-                                                    {avaliacao.nome}
+                                                    {avaliacao.colega}
 
                                                 </h3>
 
@@ -241,7 +234,7 @@ export const StudentTestsControlTable = ({
 
                                                 <p className="text-sm text-gray-500">
 
-                                                    {avaliacao.descricao}
+                                                    Avaliação 360°
 
                                                 </p>
 
@@ -265,9 +258,11 @@ export const StudentTestsControlTable = ({
 
 
 
+
+
                                     <td className="text-center">
 
-                                        {avaliacao.tipo}
+                                        360°
 
                                     </td>
 
@@ -278,10 +273,13 @@ export const StudentTestsControlTable = ({
 
 
 
+
                                     <td className="text-center">
 
 
+
                                         <div className="flex flex-col items-center">
+
 
 
                                             <div className="flex items-center gap-2">
@@ -298,11 +296,13 @@ export const StudentTestsControlTable = ({
 
 
 
+
                                             <span className="text-xs text-gray-500">
 
                                                 {avaliacao.infoDisponibilizada}
 
                                             </span>
+
 
 
 
@@ -319,10 +319,13 @@ export const StudentTestsControlTable = ({
 
 
 
+
                                     <td className="text-center">
 
 
+
                                         <div className="flex flex-col items-center">
+
 
 
                                             <div className="flex items-center gap-2">
@@ -339,11 +342,13 @@ export const StudentTestsControlTable = ({
 
 
 
+
                                             <span className="text-xs text-gray-500">
 
                                                 {avaliacao.infoPrazo}
 
                                             </span>
+
 
 
 
@@ -360,7 +365,9 @@ export const StudentTestsControlTable = ({
 
 
 
+
                                     <td className="text-center">
+
 
 
                                         <span
@@ -387,11 +394,14 @@ export const StudentTestsControlTable = ({
                                             {avaliacao.status}
 
 
+
                                         </span>
 
 
 
                                     </td>
+
+
 
 
 
@@ -404,11 +414,13 @@ export const StudentTestsControlTable = ({
                             ))
 
 
+
                         ) : (
 
 
 
                             <tr>
+
 
 
                                 <td
@@ -420,23 +432,28 @@ export const StudentTestsControlTable = ({
                                     "
                                 >
 
-                                    Nenhuma avaliação encontrada.
+                                    Nenhuma avaliação 360° encontrada.
 
 
                                 </td>
 
 
+
                             </tr>
+
 
 
                         )
                     }
 
 
+
                 </tbody>
 
 
+
             </table>
+
 
 
         </div>

@@ -109,40 +109,49 @@ export const ManagementPerformEvaluation = () => {
 
             <main className="mt-[8vh] p-8 overflow-y-auto">
 
-                <div className="w-[90vw] mx-auto">
+                <div className="w-[90vw] max-w-[1500px] mx-auto">
 
                     <h1 className="text-3xl font-bold">
                         Avaliação de Desempenho
                     </h1>
 
-                    <div className="flex justify-between items-end mt-3 mb-6">
+                    <div
+                        className="
+                            mt-5
+                            rounded-2xl
+                            border
+                            border-blue-200
+                            bg-blue-50
+                            px-6
+                            py-5
+                            w-full
+                        "
+                    >
 
-                        <div>
+                        <p className="text-sm text-gray-500">
+                            Você está avaliando
+                        </p>
 
-                            <div className="flex items-center gap-3">
+                        <h2 className="text-2xl font-semibold text-[#21528A]">
+                            {aluno}
+                        </h2>
 
-                                <h2 className="text-2xl font-semibold text-gray-800">
-                                    {aluno}
-                                </h2>
+                        <p className="text-gray-500 mt-1">
+                            {turma}
+                        </p>
 
-                                <span className="text-gray-300 text-2xl">|</span>
+                    </div>
 
-                                <h2 className="text-2xl font-semibold text-gray-800">
-                                    {turma}
-                                </h2>
+                    <div className="flex justify-between items-center mt-8 mb-8">
 
-                            </div>
-
-                            <p className="text-gray-500 mt-1">
-                                Escolha apenas uma alternativa para cada competência.
-                            </p>
-
-                        </div>
+                        <p className="text-gray-500">
+                            Escolha apenas uma alternativa para cada competência.
+                        </p>
 
                         <span
                             className="
-                                bg-[#F1EDFF]
-                                text-[#8B5CF6]
+                                bg-[#0291F7]/15
+                                text-[#0291F7]
                                 px-4
                                 py-2
                                 rounded-full
@@ -153,22 +162,17 @@ export const ManagementPerformEvaluation = () => {
                         </span>
 
                     </div>
+
                     <ManagementEvaluationTable
-
                         data={evaluation}
-
                         answers={answers}
-
                         onSelect={handleSelect}
-
                     />
 
                     <div className="flex justify-center gap-5 mt-10">
 
                         <button
-
                             onClick={limparRespostas}
-
                             className="
                                 border
                                 border-red-500
@@ -179,31 +183,23 @@ export const ManagementPerformEvaluation = () => {
                                 hover:bg-red-50
                                 transition
                             "
-
                         >
-
                             Limpar respostas
-
                         </button>
 
                         <button
-
                             onClick={handleEnviar}
-
                             className="
-                                bg-[#B8A4FF]
+                                bg-[#21528A]
                                 text-white
                                 px-10
                                 py-3
                                 rounded-xl
-                                hover:opacity-90
+                                hover:bg-[#1b4471]
                                 transition
                             "
-
                         >
-
                             Enviar avaliação
-
                         </button>
 
                     </div>
@@ -263,11 +259,13 @@ export const ManagementPerformEvaluation = () => {
                                     onClick={confirmarEnvio}
 
                                     className="
-                                        bg-[#B8A4FF]
+                                        bg-[#21528A]
                                         text-white
                                         px-5
                                         py-2
                                         rounded-lg
+                                        hover:bg-[#1b4471]
+                                        transition
                                     "
 
                                 >

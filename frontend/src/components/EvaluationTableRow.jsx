@@ -1,17 +1,9 @@
-import {
-  ArrowDown,
-  ArrowUp,
-  Circle,
-  Star,
-} from "lucide-react";
-
 const optionStyle = {
   critico: {
     bg: "bg-red-100",
     border: "border-red-500",
     ring: "ring-red-200",
     hover: "hover:bg-red-50",
-    icon: <Star size={16} className="text-red-500" />,
   },
 
   abaixo: {
@@ -19,7 +11,6 @@ const optionStyle = {
     border: "border-amber-500",
     ring: "ring-amber-200",
     hover: "hover:bg-amber-50",
-    icon: <ArrowDown size={16} className="text-amber-500" />,
   },
 
   dentro: {
@@ -27,7 +18,6 @@ const optionStyle = {
     border: "border-green-500",
     ring: "ring-green-200",
     hover: "hover:bg-green-50",
-    icon: <Circle size={16} className="text-green-500" />,
   },
 
   acima: {
@@ -35,7 +25,6 @@ const optionStyle = {
     border: "border-blue-500",
     ring: "ring-blue-200",
     hover: "hover:bg-blue-50",
-    icon: <ArrowUp size={16} className="text-blue-500" />,
   },
 };
 
@@ -58,8 +47,8 @@ export const EvaluationTableRow = ({
               w-10
               h-10
               rounded-lg
-              bg-indigo-50
-              text-indigo-600
+              bg-[#0291F7]/15
+              text-[#0291F7]
               font-semibold
               flex
               items-center
@@ -103,7 +92,7 @@ export const EvaluationTableRow = ({
               onClick={() => onSelect(topic.id, option.value)}
               className={`
                 block
-                h-full
+                h-[170px]
                 cursor-pointer
                 rounded-xl
                 border-2
@@ -145,9 +134,7 @@ export const EvaluationTableRow = ({
 
                 <div className="flex-1">
 
-                  <div className="flex items-center gap-2 mb-3">
-
-                    {optionStyle[option.value].icon}
+                  <div className="mb-3">
 
                     <span className="font-semibold text-sm capitalize">
 

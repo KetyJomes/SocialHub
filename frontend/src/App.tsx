@@ -13,11 +13,9 @@ import {ManagementMain} from "./pages/Management/ManagementMain.jsx"
 import {ManagementClasses} from "./pages/Management/ManagementClasses.jsx"
 import {ManagementClassDetails} from "./pages/Management/ManagementClassDetails.jsx"
 import {ManagementStudentDetails} from "./pages/Management/ManagementStudentDetails.jsx"
-import { Student360Test } from "./pages/Management/Student360Test.jsx";
 import {ManagementPerformEvaluation} from "./pages/Management/ManagementPerformEvaluation.jsx";
 import { ManagementViewEvaluation } from "./pages/Management/ManagementViewEvaluation.jsx";
 import {ManagementAnswerEvaluation } from "./pages/Management/ManagementAnswerEvaluation.jsx";
-import {Student360Responses} from "./pages/Management/Student360Responses.jsx";
 import { TestControl } from "./pages/Management/TestControl.jsx";
 import { CreateEvaluation } from "./pages/Management/CreateTest.jsx";
 import { ManagementEvaluationClasses } from "./pages/Management/ManagementEvaluationClasses.jsx";
@@ -25,6 +23,8 @@ import { ManagementEvaluationClassDetails } from "./pages/Management/ManagementE
 import { Admin } from "./pages/Adm/Admin.jsx";
 import { AdminUsuarios } from "./pages/Adm/AdminUsuarios.jsx";
 import { AdminTurmas } from "./pages/Adm/AdminTurmas.jsx";
+import { ManagementView360Evaluation } from "./pages/Management/ManagementView360Evaluation.jsx";
+import { ManagementAnswer360Evaluation } from "./pages/Management/ManagementAnswer360Evaluation.jsx";
 
 function App() {
 
@@ -44,11 +44,9 @@ function App() {
           <Route path="/management-classes" element={<ManagementClasses />} />
           <Route path="/management-class/:turma" element={<ManagementClassDetails />} />
           <Route path="/management-student/:turma/:aluno" element={<ManagementStudentDetails />} />
-          <Route path="/management-360-evaluation/:turma/:aluno" element={<Student360Test />} />
           <Route path="/management-perform-evaluation/:turma/:aluno/:id"element={<ManagementPerformEvaluation />}/>
-          <Route path="/management-view-evaluation/:turma/:aluno/:id"element={<ManagementViewEvaluation />}/>
-          <Route path="/management-answer-evaluation/:turma/:aluno/:id"element={<ManagementAnswerEvaluation />}/>
-          <Route path="/management-360-evaluation-people/:turma/:aluno/:avaliacao/:tipoAba" element={<Student360Responses />}/>
+          <Route path="/management-answer-evaluation/:turma/:aluno/:avaliacaoId"element={<ManagementAnswerEvaluation />}/>
+          <Route path="/management-view-evaluation/:turma/:aluno/:avaliacaoId" element={<ManagementViewEvaluation />}/>
           <Route path="/management-evaluations"  element={<TestControl />}/>
           <Route path="/management-evaluations/create" element={<CreateEvaluation />}/>
           <Route path="/management-avaliacoes-turmas" element={<ManagementEvaluationClasses />}/>
@@ -56,6 +54,16 @@ function App() {
           <Route path="/adm-main" element={<Admin /> } />
           <Route path="/adm-control-user" element={<AdminUsuarios /> } />
           <Route path="/admin/turmas" element={<AdminTurmas /> } />
+          <Route
+    path="/management-answer-360-evaluation/:turma/:aluno/:avaliacaoId/:colega"
+    element={<ManagementAnswer360Evaluation />}
+/>
+
+
+<Route
+    path="/management-view-360-evaluation/:turma/:aluno/:avaliacaoId/:colega"
+    element={<ManagementView360Evaluation />}
+/>
         </Routes>
       </BrowserRouter>
     </>

@@ -8,19 +8,31 @@ import { ManagementEvaluationTable } from "../../components/ManagementEvaluation
 import { evaluation } from "../../data/evaluation";
 
 
-export const ManagementAnswerEvaluation = () => {
+export const ManagementView360Evaluation = () => {
 
 
     const [isOpen, setIsOpen] = useState(false);
 
 
-    const { turma, aluno } = useParams();
-
+    const {
+        turma,
+        aluno,
+        colega
+    } = useParams();
 
 
 
     // Futuramente virá do back-end
-    const answers = {};
+    const answers = {
+
+        1: "dentro",
+        2: "acima",
+        3: "dentro",
+        4: "abaixo",
+        5: "acima",
+        6: "dentro"
+
+    };
 
 
 
@@ -31,10 +43,10 @@ export const ManagementAnswerEvaluation = () => {
 
 
 
-
     return (
 
         <>
+
 
             <SidebarManagement
                 isOpen={isOpen}
@@ -55,7 +67,6 @@ export const ManagementAnswerEvaluation = () => {
             <main className="mt-[8vh] p-8 overflow-y-auto">
 
 
-
                 <div className="w-[80vw] mx-auto">
 
 
@@ -64,7 +75,7 @@ export const ManagementAnswerEvaluation = () => {
 
                     <h1 className="text-3xl font-bold">
 
-                        Avaliação de Desempenho
+                        Avaliação 360°
 
                     </h1>
 
@@ -73,8 +84,8 @@ export const ManagementAnswerEvaluation = () => {
 
 
 
-
                     <div className="mt-5 mb-8">
+
 
 
                         <div
@@ -92,23 +103,39 @@ export const ManagementAnswerEvaluation = () => {
 
                             <p className="text-sm text-gray-500">
 
-                                Avaliação para
+                                Avaliação respondida sobre
 
                             </p>
 
 
 
 
-                            <h2 className="text-2xl font-semibold text-[#21528A]">
+                            <h2
+                                className="
+                                    text-2xl
+                                    font-semibold
+                                    text-[#21528A]
+                                "
+                            >
 
-                                {aluno}
+                                {colega}
 
                             </h2>
 
 
 
 
+
                             <p className="text-gray-500 mt-1">
+
+                                Avaliador: {aluno}
+
+                            </p>
+
+
+
+
+                            <p className="text-gray-500">
 
                                 {turma}
 
@@ -119,6 +146,7 @@ export const ManagementAnswerEvaluation = () => {
                         </div>
 
 
+
                     </div>
 
 
@@ -127,17 +155,23 @@ export const ManagementAnswerEvaluation = () => {
 
 
 
+                    <div
+                        className="
+                            flex
+                            justify-between
+                            items-center
+                            mb-8
+                        "
+                    >
 
-                    <div className="flex justify-between items-center mb-8">
 
 
 
                         <p className="text-gray-500">
 
-                            Responda a avaliação abaixo.
+                            Visualize as respostas da avaliação 360°.
 
                         </p>
-
 
 
 
@@ -160,8 +194,8 @@ export const ManagementAnswerEvaluation = () => {
 
 
 
-                    </div>
 
+                    </div>
 
 
 
@@ -178,10 +212,9 @@ export const ManagementAnswerEvaluation = () => {
 
                         onSelect={() => {}}
 
-                        readonly={false}
+                        readonly={true}
 
                     />
-
 
 
 

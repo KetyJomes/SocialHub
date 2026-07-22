@@ -28,6 +28,8 @@ export const UserRealizarAvaliacao = () => {
 
     const alunoAvaliado = params.get("avaliado");
 
+    const turma = params.get("turma");
+
     const idAvaliacao = params.get("id");
 
 
@@ -238,22 +240,32 @@ export const UserRealizarAvaliacao = () => {
                         alunoAvaliado && (
 
 
-                            <div className="mt-5 mb-8 rounded-2xl border border-blue-200 bg-blue-50 px-6 py-5">
-
+                            <div
+                                className="
+                                    mt-5
+                                    mb-8
+                                    rounded-2xl
+                                    border
+                                    border-blue-200
+                                    bg-blue-50
+                                    px-6
+                                    py-5
+                                "
+                            >
 
                                 <p className="text-sm text-gray-500">
-
                                     Você está avaliando
-
                                 </p>
 
-
                                 <h2 className="text-2xl font-semibold text-[#21528A]">
-
                                     {alunoAvaliado}
-
                                 </h2>
 
+                                {turma && (
+                                    <p className="text-gray-500 mt-1">
+                                        {turma}
+                                    </p>
+                                )}
 
                             </div>
 
@@ -272,7 +284,7 @@ export const UserRealizarAvaliacao = () => {
                         </p>
 
 
-                        <span className="bg-blue-100 text-blue-700 font-semibold px-4 py-2 rounded-full">
+                        <span className="bg-[#0291F7]/15 text-[#0291F7] font-semibold px-4 py-2 rounded-full">
 
                             {respondidas}/{totalQuestoes} respondidas
 

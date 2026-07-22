@@ -1,22 +1,16 @@
 import {
     House,
-    ClipboardList,
     ClipboardCheck,
     GraduationCap,
-    ChevronDown,
-    ChevronRight,
+    MessageSquareQuote,
     LogOut
 } from "lucide-react";
 
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 
 export const SidebarManagement = ({ isOpen }) => {
 
     const navigate = useNavigate();
-    const [abrirAvaliacoes, setAbrirAvaliacoes] = useState(false);
-
 
     return (
         <aside
@@ -47,7 +41,6 @@ export const SidebarManagement = ({ isOpen }) => {
                     </h2>
                 )}
 
-
                 {/* HOME */}
                 <button
                     onClick={() => navigate("/management-main")}
@@ -64,57 +57,7 @@ export const SidebarManagement = ({ isOpen }) => {
                     <House size={20} />
 
                     {isOpen && <span>Home</span>}
-
                 </button>
-
-
-                {/* AVALIAÇÕES */}
-                <button
-                    onClick={() => setAbrirAvaliacoes(!abrirAvaliacoes)}
-                    className="
-                        flex
-                        items-center
-                        justify-between
-                        w-full
-                        p-3
-                        rounded-lg
-                        hover:bg-gray-100
-                    "
-                >
-
-                    <div className="flex items-center gap-3">
-
-                        <ClipboardList size={20} />
-
-                        {isOpen && <span>Avaliações</span>}
-
-                    </div>
-
-
-                    {isOpen && (
-                        abrirAvaliacoes
-                            ? <ChevronDown size={18} />
-                            : <ChevronRight size={18} />
-                    )}
-
-                </button>
-
-
-                {isOpen && abrirAvaliacoes && (
-                    <div className="ml-8 mt-1 space-y-2">
-
-                        <button className="block text-gray-600 hover:text-[#B8A4FF]">
-                            Enviadas
-                        </button>
-
-                        <button className="block text-gray-600 hover:text-[#B8A4FF]">
-                            Recebidas
-                        </button>
-
-                    </div>
-                )}
-
-
 
                 {/* GERENCIAR AVALIAÇÕES */}
                 <button
@@ -151,16 +94,31 @@ export const SidebarManagement = ({ isOpen }) => {
                         hover:bg-gray-100
                     "
                 >
-
                     <GraduationCap size={20} />
 
                     {isOpen && <span>Turmas</span>}
-
                 </button>
 
+                {/* FEEDBACKS */}
+
+                <button
+                        className="
+                            flex
+                            items-center
+                            gap-3
+                            w-full
+                            p-3
+                            rounded-lg
+                            hover:bg-gray-100
+                            transition
+                        "
+                    >
+                        <MessageSquareQuote size={20} />
+
+                        {isOpen && <span>Feedback</span>}
+                    </button>
 
             </nav>
-
 
             {/* SAIR */}
             <div className="px-4 pb-6">
@@ -180,7 +138,6 @@ export const SidebarManagement = ({ isOpen }) => {
                         transition
                     "
                 >
-
                     <LogOut size={20} />
 
                     {isOpen && (
@@ -188,11 +145,9 @@ export const SidebarManagement = ({ isOpen }) => {
                             Sair
                         </span>
                     )}
-
                 </button>
 
             </div>
-
 
         </aside>
     );

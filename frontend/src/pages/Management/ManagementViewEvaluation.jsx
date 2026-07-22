@@ -7,91 +7,198 @@ import { ManagementEvaluationTable } from "../../components/ManagementEvaluation
 
 import { evaluation } from "../../data/evaluation";
 
+
 export const ManagementViewEvaluation = () => {
+
 
     const [isOpen, setIsOpen] = useState(false);
 
-    const { turma, aluno, id } = useParams();
 
-    // Apenas exemplo. Depois virá da API.
+    const { turma, aluno } = useParams();
+
+
+
+
+    // Exemplo. Depois virá do back-end.
     const answers = {
+
         1: "dentro",
         2: "acima",
         3: "abaixo",
         4: "dentro",
         5: "acima",
         6: "dentro"
+
     };
+
+
+
+    const respondidas = Object.keys(answers).length;
+
+    const totalQuestoes = evaluation.length;
+
+
+
+
 
     return (
 
         <>
+
 
             <SidebarManagement
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
 
+
+
             <Header
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
 
+
+
+
+
             <main className="mt-[8vh] p-8 overflow-y-auto">
 
-                <div className="w-[90vw] mx-auto">
 
-                    <div className="mb-8">
+                <div className="w-[80vw] mx-auto">
 
-                        <div className="flex items-center gap-2">
 
-                            <h1 className="text-3xl font-bold text-gray-900">
+
+
+
+                    <h1 className="text-3xl font-bold">
+
+                        Avaliação de Desempenho
+
+                    </h1>
+
+
+
+
+
+
+
+                    <div className="mt-5 mb-8">
+
+
+                        <div
+                            className="
+                                rounded-2xl
+                                border
+                                border-blue-200
+                                bg-blue-50
+                                px-6
+                                py-5
+                            "
+                        >
+
+
+
+                            <p className="text-sm text-gray-500">
+
+                                Avaliação respondida por
+
+                            </p>
+
+
+
+
+                            <h2 className="text-2xl font-semibold text-[#21528A]">
+
                                 {aluno}
-                            </h1>
 
-                            <span className="text-3xl font-bold text-gray-900">
-                                /
-                            </span>
+                            </h2>
 
-                            <span className="text-3xl font-bold text-gray-900">
+
+
+
+                            <p className="text-gray-500 mt-1">
+
                                 {turma}
-                            </span>
+
+                            </p>
+
+
 
                         </div>
 
-                        <p className="text-gray-500 mt-1">
-                            Visualização da avaliação respondida. Esta avaliação não pode ser alterada.
-                        </p>
 
                     </div>
 
-                    <div className="flex justify-end mb-6">
+
+
+
+
+
+
+                    <div className="flex justify-between items-center mb-8">
+
+
+                        <p className="text-gray-500">
+
+                            Visualize as respostas da avaliação.
+
+                        </p>
+
+
+
+
 
                         <span
                             className="
-                                bg-green-100
-                                text-green-700
+                                bg-[#0291F7]/15
+                                text-[#0291F7]
                                 px-4
                                 py-2
                                 rounded-full
                                 font-semibold
                             "
                         >
-                            Respondida
+
+                            {respondidas}/{totalQuestoes} respondidas
+
                         </span>
+
+
 
                     </div>
 
+
+
+
+
+
+
+
+
                     <ManagementEvaluationTable
+
                         data={evaluation}
+
                         answers={answers}
+
                         onSelect={() => {}}
-                        readOnly={true}
+
+                        readonly={true}
+
                     />
+
+
+
+
+
 
                 </div>
 
+
             </main>
+
+
 
         </>
 

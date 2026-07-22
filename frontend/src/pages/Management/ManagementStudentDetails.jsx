@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
+
 import {
     ClipboardCheck,
     Info,
@@ -7,22 +8,35 @@ import {
     PieChart
 } from "lucide-react";
 
+
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
+
 import { GraficoEvolucaoAluno } from "../../components/GraficoEvolucaoAluno";
 import { GraficoCompetenciasAluno } from "../../components/GraficoCompetenciasAluno";
+
+
 import { StudentTestsControlTable } from "../../components/Management/StudentTestsControlTable";
+import { Student360TestsControlTable } from "../../components/Management/Student360TestsControlTable";
+
+
 
 export const ManagementStudentDetails = () => {
 
+
     const [isOpen, setIsOpen] = useState(false);
+
     const [abaAtiva, setAbaAtiva] = useState("disponiveis");
+
     const [filtroTipo, setFiltroTipo] = useState("Todos");
+
 
     const { turma, aluno } = useParams();
 
 
+
     const avaliacoes = [
+
 
         {
             id: 1,
@@ -36,6 +50,7 @@ export const ManagementStudentDetails = () => {
             status: "Pendente"
         },
 
+
         {
             id: 2,
             nome: "2º Trimestre",
@@ -47,6 +62,7 @@ export const ManagementStudentDetails = () => {
             infoPrazo: "Concluída",
             status: "Respondida"
         },
+
 
         {
             id: 3,
@@ -60,10 +76,26 @@ export const ManagementStudentDetails = () => {
             status: "Pendente"
         },
 
+
         {
             id: 4,
             nome: "Avaliação 360°",
-            descricao: "Avaliação dos colegas",
+            colega: "Maria Silva",
+            descricao: "Avaliação individual dos colegas",
+            tipo: "360°",
+            disponibilizada: "01/02/2026",
+            infoDisponibilizada: "Disponível",
+            prazo: "15/02/2026",
+            infoPrazo: "5 dias restantes",
+            status: "Pendente"
+        },
+
+
+        {
+            id: 5,
+            nome: "Avaliação 360°",
+            colega: "Pedro Santos",
+            descricao: "Avaliação individual dos colegas",
             tipo: "360°",
             disponibilizada: "01/02/2026",
             infoDisponibilizada: "Finalizada",
@@ -73,6 +105,7 @@ export const ManagementStudentDetails = () => {
         }
 
     ];
+
 
 
     const disponiveis = avaliacoes.filter((avaliacao) => {
@@ -85,6 +118,7 @@ export const ManagementStudentDetails = () => {
     });
 
 
+
     const feitas = avaliacoes.filter((avaliacao) => {
 
         return avaliacao.status === "Respondida";
@@ -92,25 +126,62 @@ export const ManagementStudentDetails = () => {
     });
 
 
+
     const aplicarFiltroTipo = (lista) => {
 
+
         if (filtroTipo === "Todos") {
+
             return lista;
+
         }
 
+
         return lista.filter(
+
             (avaliacao) => avaliacao.tipo === filtroTipo
+
         );
+
 
     };
 
 
-const disponiveisFiltradas = aplicarFiltroTipo(disponiveis);
 
-const feitasFiltradas = aplicarFiltroTipo(feitas);
-
+    const disponiveisFiltradas = aplicarFiltroTipo(disponiveis);
 
 
+    const feitasFiltradas = aplicarFiltroTipo(feitas);
+
+
+
+    const disponiveis360 = disponiveisFiltradas.filter(
+
+        (avaliacao) => avaliacao.tipo === "360°"
+
+    );
+
+
+    const feitas360 = feitasFiltradas.filter(
+
+        (avaliacao) => avaliacao.tipo === "360°"
+
+    );
+
+
+
+    const disponiveisNormais = disponiveisFiltradas.filter(
+
+        (avaliacao) => avaliacao.tipo !== "360°"
+
+    );
+
+
+    const feitasNormais = feitasFiltradas.filter(
+
+        (avaliacao) => avaliacao.tipo !== "360°"
+
+    );
     return (
 
         <>
@@ -121,14 +192,23 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
             />
 
 
-            {isOpen && (
 
-                <div
-                    className="fixed inset-0 bg-black/20 z-40"
-                    onClick={() => setIsOpen(false)}
-                />
+            {
+                isOpen && (
 
-            )}
+                    <div
+                        className="
+                            fixed
+                            inset-0
+                            bg-black/20
+                            z-40
+                        "
+                        onClick={() => setIsOpen(false)}
+                    />
+
+                )
+            }
+
 
 
             <main className="mt-[8vh]">
@@ -140,22 +220,33 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                 />
 
 
+
                 <div className="p-10">
 
 
+
                     <h1 className="text-3xl font-bold">
+
                         {aluno}
+
                     </h1>
 
 
+
                     <p className="text-lg font-semibold mt-1">
+
                         {turma}
+
                     </p>
+
 
 
                     <p className="text-gray-500">
+
                         Visualize o desempenho individual do aluno.
+
                     </p>
+
 
 
 
@@ -169,6 +260,7 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                     >
 
 
+
                         <div
                             className="
                                 bg-white
@@ -180,7 +272,9 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                             "
                         >
 
+
                             <div className="flex items-center gap-3 mb-5">
+
 
                                 <div
                                     className="
@@ -202,17 +296,23 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                                 </div>
 
 
+
                                 <h2 className="text-xl font-bold">
+
                                     Evolução Trimestral
+
                                 </h2>
 
+
                             </div>
+
 
 
                             <GraficoEvolucaoAluno />
 
 
                         </div>
+
 
 
 
@@ -227,6 +327,7 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                                 p-5
                             "
                         >
+
 
                             <div className="flex items-center gap-3 mb-5">
 
@@ -251,12 +352,19 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                                 </div>
 
 
+
+
                                 <h2 className="text-xl font-bold">
+
                                     Competências do Aluno
+
                                 </h2>
 
 
+
                             </div>
+
+
 
 
                             <GraficoCompetenciasAluno />
@@ -265,9 +373,15 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                         </div>
 
 
+
                     </section>
 
+
+
+
+
                     {/* CARD DE AVALIAÇÕES */}
+
 
                     <section className="mt-8">
 
@@ -284,7 +398,9 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                         >
 
 
+
                             <div className="flex items-center gap-3 mb-5">
+
 
 
                                 <div
@@ -298,24 +414,36 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                                         justify-center
                                     "
                                 >
+
+
                                     <ClipboardCheck
                                         size={20}
                                         className="text-[#0291F7]"
-                                        strokeWidth={2}
                                     />
+
+
                                 </div>
 
 
+
+
                                 <h2 className="text-xl font-bold">
+
                                     Avaliações
+
                                 </h2>
+
 
 
                             </div>
 
 
 
+
+
                             {/* ABAS + FILTRO */}
+
+
 
                             <section
                                 className="
@@ -326,6 +454,7 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                                     border-gray-300
                                 "
                             >
+
 
 
                                 <div className="flex gap-8">
@@ -351,7 +480,9 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
 
                                         Disponíveis ({disponiveisFiltradas.length})
 
+
                                     </button>
+
 
 
 
@@ -373,12 +504,17 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                                         `}
                                     >
 
+
                                         Feitas ({feitasFiltradas.length})
+
 
                                     </button>
 
 
+
                                 </div>
+
+
 
 
 
@@ -400,39 +536,54 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                                     "
                                 >
 
+
+
                                     <option value="Todos">
+
                                         Todos os tipos
+
                                     </option>
+
 
 
                                     <option value="Gestor → Aluno">
+
                                         Gestor → Aluno
+
                                     </option>
+
 
 
                                     <option value="Aluno → Instrutor">
+
                                         Aluno → Instrutor
+
                                     </option>
+
 
 
                                     <option value="Autoavaliação">
+
                                         Autoavaliação
+
                                     </option>
+
 
 
                                     <option value="360°">
+
                                         Avaliação 360°
+
                                     </option>
+
 
 
                                 </select>
 
 
+
                             </section>
-
-
-
-                            {/* TABELA */}
+                            {/* TABELAS */}
 
                             <div className="mt-6">
 
@@ -440,29 +591,156 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                                 {
                                     abaAtiva === "disponiveis" && (
 
-                                        <StudentTestsControlTable
-                                            avaliacoes={disponiveisFiltradas}
-                                            tipoAba="disponiveis"
-                                        />
+                                        <>
+
+
+                                            {
+                                                disponiveisNormais.length > 0 && (
+
+                                                    <StudentTestsControlTable
+                                                        avaliacoes={disponiveisNormais}
+                                                        tipoAba="disponiveis"
+                                                    />
+
+                                                )
+                                            }
+
+
+
+                                            {
+                                                disponiveis360.length > 0 && (
+
+                                                    <div className="mt-8">
+
+                                                        <h3 className="
+                                                            text-lg
+                                                            font-semibold
+                                                            mb-4
+                                                        ">
+                                                            Avaliações 360°
+                                                        </h3>
+
+
+                                                        <Student360TestsControlTable
+                                                            avaliacoes={disponiveis360}
+                                                            tipoAba="disponiveis"
+                                                        />
+
+                                                    </div>
+
+                                                )
+                                            }
+
+
+
+                                            {
+                                                disponiveisNormais.length === 0 &&
+                                                disponiveis360.length === 0 && (
+
+                                                    <div className="
+                                                        text-center
+                                                        py-10
+                                                        text-gray-500
+                                                    ">
+                                                        Nenhuma avaliação disponível.
+                                                    </div>
+
+                                                )
+                                            }
+
+
+
+                                        </>
 
                                     )
                                 }
+
+
 
 
 
                                 {
                                     abaAtiva === "feitas" && (
 
-                                        <StudentTestsControlTable
-                                            avaliacoes={feitasFiltradas}
-                                            tipoAba="feitas"
-                                        />
+                                        <>
+
+
+
+                                            {
+                                                feitasNormais.length > 0 && (
+
+                                                    <StudentTestsControlTable
+                                                        avaliacoes={feitasNormais}
+                                                        tipoAba="feitas"
+                                                    />
+
+                                                )
+                                            }
+
+
+
+
+
+                                            {
+                                                feitas360.length > 0 && (
+
+                                                    <div className="mt-8">
+
+
+                                                        <h3 className="
+                                                            text-lg
+                                                            font-semibold
+                                                            mb-4
+                                                        ">
+                                                            Avaliações 360°
+                                                        </h3>
+
+
+
+                                                        <Student360TestsControlTable
+                                                            avaliacoes={feitas360}
+                                                            tipoAba="feitas"
+                                                        />
+
+
+
+                                                    </div>
+
+
+                                                )
+                                            }
+
+
+
+
+
+                                            {
+                                                feitasNormais.length === 0 &&
+                                                feitas360.length === 0 && (
+
+                                                    <div className="
+                                                        text-center
+                                                        py-10
+                                                        text-gray-500
+                                                    ">
+                                                        Nenhuma avaliação realizada.
+                                                    </div>
+
+                                                )
+                                            }
+
+
+
+
+                                        </>
 
                                     )
                                 }
 
 
+
                             </div>
+
 
 
                         </div>
@@ -474,7 +752,9 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
 
 
 
+
                     {/* AVISO */}
+
 
 
                     <div
@@ -484,6 +764,7 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                             mt-8
                         "
                     >
+
 
 
                         <div
@@ -501,10 +782,12 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                         >
 
 
+
                             <Info
                                 size={18}
                                 className="text-[#0291F7]"
                             />
+
 
 
                             <span className="text-sm text-gray-600">
@@ -514,7 +797,9 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
                             </span>
 
 
+
                         </div>
+
 
 
                     </div>
@@ -522,6 +807,7 @@ const feitasFiltradas = aplicarFiltroTipo(feitas);
 
 
                 </div>
+
 
 
             </main>
