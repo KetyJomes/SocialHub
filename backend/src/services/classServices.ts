@@ -9,9 +9,10 @@ export const createClass = async(data: createClassDTO)=>{
             course:course,
             period:period,
             avarageScore:avarageScore,
-            students: {
-                connect: students?.map(studentId => ({id: studentId}))
-            } 
+        },
+        include: {
+            students:true
+
         }
     })
 }
