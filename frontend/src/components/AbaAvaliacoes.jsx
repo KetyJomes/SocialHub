@@ -2,11 +2,8 @@ import { useNavigate } from "react-router-dom";
 
 
 export const AbaAvaliacoes = ({
-
     avaliacoes,
-
     modoVisualizacao = false
-
 }) => {
 
 
@@ -193,7 +190,7 @@ export const AbaAvaliacoes = ({
 
                                             :
 
-                                            "bg-[#2563EB] text-white hover:bg-blue-700"
+                                            "bg-[#0291F7] text-white hover:bg-blue-700"
 
                                     }
 

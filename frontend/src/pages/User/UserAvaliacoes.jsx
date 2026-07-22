@@ -11,7 +11,6 @@ export const UserAvaliacoes = () => {
 
     const [abaAtiva, setAbaAtiva] = useState("disponiveis");
 
-
     const [avaliacoes, setAvaliacoes] = useState([
 
         {
@@ -85,7 +84,7 @@ export const UserAvaliacoes = () => {
 
             prazo: "20/03/2026",
 
-            infoPrazo: "Concluída",
+            infoPrazo: "Pendente",
 
             status: "Respondida",
 
@@ -95,16 +94,36 @@ export const UserAvaliacoes = () => {
 
             bgIcon: "bg-green-100"
 
-        }
+        },
+        {
+    id: 4,
+
+    nome: "Avaliação Comportamental",
+
+    descricao: "Avaliação de comportamento e relacionamento",
+
+    tipo: "Trimestral",
+
+    disponibilizada: "10/04/2026",
+
+    infoDisponibilizada: "Disponível",
+
+    prazo: "25/04/2026",
+
+    infoPrazo: "Pendente",
+
+    status: "Respondida",
+
+    acao: "Responder",
+
+    icon: "/icons/user.png",
+
+    bgIcon: "bg-green-100"
+
+}
 
     ]);
 
-
-    /*
-    =====================================================
-    CARREGA AS AVALIAÇÕES SALVAS
-    =====================================================
-    */
 
     useEffect(() => {
 
@@ -147,12 +166,6 @@ export const UserAvaliacoes = () => {
     }, []);
 
 
-    /*
-    =====================================================
-    AVALIAÇÕES DISPONÍVEIS
-    =====================================================
-    */
-
     const disponiveis = avaliacoes.filter(
 
         avaliacao =>
@@ -164,13 +177,6 @@ export const UserAvaliacoes = () => {
             avaliacao.status === "Em atraso"
 
     );
-
-
-    /*
-    =====================================================
-    AVALIAÇÕES FEITAS
-    =====================================================
-    */
 
     const feitas = avaliacoes.filter(
 

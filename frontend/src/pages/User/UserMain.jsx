@@ -26,13 +26,7 @@ export const UserMain = () => {
 
     const [isOpen, setIsOpen] = useState(false);
 
-
-    /*
-    =====================================================
-    SEMPRE COMEÇAR NO TOPO DA PÁGINA
-    =====================================================
-    */
-
+    // Função que faz a página começar sempre do início
     useEffect(() => {
 
         window.scrollTo({
@@ -67,86 +61,56 @@ export const UserMain = () => {
 
                 <div className="user-container p-10">
 
-
                     <h1 className="font-bold text-3xl mb-8">
-
                         Bem-Vindo, Usuário!
-
                     </h1>
 
-
                     <div className="flex justify-center">
-
                         <CardNotificacaoAvaliacao />
-
                     </div>
 
 
-                    {/* ================================
-                        MEU DESEMPENHO
-                    ================================= */}
+                    {/* Section de resultados de "Meu Desempenho" */}
 
                     <div className="mt-15 flex items-center gap-4 mb-8">
 
-
+                        {/* Linha azul */}
                         <div className="w-1 h-10 bg-[#2563EB] rounded-full"></div>
 
-
                         <h1 className="font-bold text-3xl">
-
                             Meu Desempenho
-
                         </h1>
 
-
                     </div>
-
 
                     <div className="flex justify-between">
 
 
-                        {/* =================================
-                            DESEMPENHO COMPARATIVO
-                        ================================== */}
+                        {/* Resultado comparativo */}
 
                         <section className="w-[48%]">
 
-
                             <div className="flex items-center gap-5 mb-6">
-
 
                                 <div className="w-16 h-16 bg-[#0291F7]/15 rounded-xl flex items-center justify-center">
 
-
                                     <img
-
-                                        src={bars}
-
-                                        alt=""
-
-                                        className="w-10 h-10"
-
+                                        src={bars} alt="" className="w-10 h-10"
                                     />
-
 
                                 </div>
 
-
                                 <h1 className="font-bold text-xl">
-
                                     Desempenho Comparativo
-
                                 </h1>
-
 
                             </div>
 
 
                             <div className="flex items-center justify-between">
 
-
-                                {/* RESULTADO */}
-
+                                {/* Card de porcentagem
+                                 */}
                                 <section className="w-70 bg-white rounded-3xl shadow-lg border border-gray-100 p-6">
 
 
@@ -332,7 +296,7 @@ export const UserMain = () => {
                         ACESSO RÁPIDO
                     ================================= */}
 
-                    <div className="mt-15 flex items-center gap-4 mb-8">
+                    <div className="mt-15 flex items-start gap-4 mb-8">
 
 
                         <div className="w-1 h-10 bg-[#2563EB] rounded-full"></div>
@@ -358,7 +322,7 @@ export const UserMain = () => {
 
                             <section
 
-                                className="flex items-center w-[20%] gap-4 cursor-pointer"
+                                className="flex items-start w-[20%] gap-4 cursor-pointer"
 
                                 onClick={() => navigate("/user-avaliacoes")}
 
@@ -476,70 +440,7 @@ export const UserMain = () => {
 
 
                             </section>
-
-
-                            {/* AVALIAÇÃO 360 */}
-
-                            <section
-
-                                className="flex items-center w-[20%] gap-4 cursor-pointer"
-
-                                onClick={() => navigate("/360")}
-
-                            >
-
-
-                                <div className="w-20 h-20 bg-[#6e12c3]/20 rounded-2xl flex items-center justify-center">
-
-
-                                    <img
-
-                                        src={people_purple}
-
-                                        alt=""
-
-                                        className="w-12 h-12 object-contain"
-
-                                    />
-
-
-                                </div>
-
-
-                                <div className="ml-5">
-
-
-                                    <h1 className="text-[#6e12c3] font-bold text-2xl">
-
-                                        Feedback 360
-
-                                    </h1>
-
-
-                                    <p className="mt-2 text-gray-500">
-
-                                        Confira o feedback 360
-
-                                    </p>
-
-
-                                </div>
-
-
-                                <img
-
-                                    src={purple}
-
-                                    alt=""
-
-                                    className="w-5"
-
-                                />
-
-
-                            </section>
-
-
+                            
                         </div>
 
 
