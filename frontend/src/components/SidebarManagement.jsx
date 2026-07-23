@@ -99,24 +99,25 @@ export const SidebarManagement = ({ isOpen }) => {
                     {isOpen && <span>Turmas</span>}
                 </button>
 
-                {/* FEEDBACKS */}
+               {/* FEEDBACKS */}
 
                 <button
-                        className="
-                            flex
-                            items-center
-                            gap-3
-                            w-full
-                            p-3
-                            rounded-lg
-                            hover:bg-gray-100
-                            transition
-                        "
-                    >
-                        <MessageSquareQuote size={20} />
+                    onClick={() => navigate("/management-feedbacks")}
+                    className="
+                        flex
+                        items-center
+                        gap-3
+                        w-full
+                        p-3
+                        rounded-lg
+                        hover:bg-gray-100
+                        transition
+                    "
+                >
+                    <MessageSquareQuote size={20} />
 
-                        {isOpen && <span>Feedback</span>}
-                    </button>
+                    {isOpen && <span>Feedback</span>}
+                </button>
 
             </nav>
 

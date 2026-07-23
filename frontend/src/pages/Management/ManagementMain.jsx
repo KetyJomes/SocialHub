@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { CardTurma } from "../../components/CardTurma";
 import { CardAvaliacao } from "../../components/CardAvaliacao";
-import { CardAvaliacao360 } from "../../components/CardAvaliacao360";
+import { CardAvaliacao360 } from "../../components/CardFeedbacks";
 import { SidebarManagement } from "../../components/SidebarManagement";
 
 
@@ -146,7 +146,7 @@ export const ManagementMain = () => {
 
 
 
-    const avaliacoes360 = [
+    const feedback = [
 
         {
             tipo: "Avaliação pelos Alunos",
@@ -615,7 +615,7 @@ export const ManagementMain = () => {
 
 
                         </div>
-                                                {/* AVALIAÇÕES 360 */}
+                                                {/* FEEDBACKS */}
 
 
                         <div
@@ -671,7 +671,7 @@ export const ManagementMain = () => {
 
                                     <h2 className="text-xl font-bold">
 
-                                        Avaliações 360
+                                        Feedbacks
 
                                     </h2>
 
@@ -697,7 +697,7 @@ export const ManagementMain = () => {
 
 
                                 {
-                                    avaliacoes360.map((item,index)=>(
+                                    feedback.map((item,index)=>(
 
 
                                         <CardAvaliacao360
