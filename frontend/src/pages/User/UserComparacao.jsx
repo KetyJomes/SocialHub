@@ -1,11 +1,14 @@
 import { useState } from "react";
 
+
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 
-import { DashboardHeader } from "../../components/DashboardHeader";
 import { SummaryCards } from "../../components/SummaryCards";
 import { EvaluationCard } from "../../components/EvaluationCard";
+
+import { exportarAvaliacaoPDF } from "../../export/exportarAvaliacaoPDF.js";
+
 
 import {
     Award,
@@ -15,8 +18,11 @@ import {
     MessageCircle,
     Lightbulb,
     Pencil,
-    Save
+    Save,
+    Download,
+    Info
 } from "lucide-react";
+
 
 
 
@@ -152,6 +158,19 @@ export const UserComparacao = () => {
         },
 
     ];
+
+
+
+
+
+    const handleExportar = () => {
+
+        exportarAvaliacaoPDF(
+            selfEvaluation,
+            managerEvaluation
+        );
+
+    };
         return (
 
         <div className="flex min-h-screen bg-[#F7F8FC] p-8">
@@ -170,7 +189,11 @@ export const UserComparacao = () => {
 
 
 
+
+
             <div className="flex-1 flex flex-col">
+
+
 
 
 
@@ -188,7 +211,11 @@ export const UserComparacao = () => {
 
 
 
+
+
                 <main className="flex-1 p-8 mt-16">
+
+
 
 
 
@@ -198,63 +225,218 @@ export const UserComparacao = () => {
 
 
 
-                        <DashboardHeader>
 
 
-                            <button
-
-                                onClick={() => setEditando(!editando)}
-
-                                className="
-                                    flex
-                                    items-center
-                                    gap-3
-                                    px-5
-                                    py-3
-                                    rounded-xl
-                                    bg-blue-600
-                                    text-white
-                                    font-semibold
-                                    hover:bg-blue-700
-                                    transition
-                                    shadow-sm
-                                "
-
-                            >
-
-
-                                {
-                                    editando
-
-                                    ?
-
-                                    <>
-
-                                        <Save size={18}/>
-
-                                        Salvar
-
-                                    </>
-
-
-                                    :
-
-                                    <>
-
-                                        <Pencil size={18}/>
-
-                                        Editar
-
-                                    </>
-
-                                }
-
-
-                            </button>
+                        {/* CABEÇALHO */}
 
 
 
-                        </DashboardHeader>
+                        <div className="flex items-start justify-between mb-8">
+
+
+
+
+
+                            <div>
+
+
+
+                                <h1 className="text-4xl font-bold text-gray-900">
+
+                                    Comparativo de Resultados
+
+                                </h1>
+
+
+
+                                <p className="text-gray-500 mt-2 text-[15px]">
+
+                                    Acompanhe o desempenho das avaliações e identifique oportunidades de melhoria.
+
+                                </p>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <div className="flex items-center gap-4">
+
+
+
+
+
+
+
+                                <button
+
+                                    className="
+                                        w-9
+                                        h-9
+                                        rounded-full
+                                        border
+                                        border-gray-200
+                                        flex
+                                        items-center
+                                        justify-center
+                                        hover:bg-gray-100
+                                        transition
+                                    "
+
+                                >
+
+
+
+                                    <Info
+
+                                        size={18}
+
+                                        className="text-gray-500"
+
+                                    />
+
+
+
+                                </button>
+
+
+
+
+
+
+
+
+
+                                {/* EXPORTAR */}
+
+
+
+                                <button
+
+                                    onClick={handleExportar}
+
+                                    className="
+                                        flex
+                                        items-center
+                                        gap-3
+                                        px-5
+                                        py-3
+                                        rounded-xl
+                                        bg-white
+                                        border
+                                        border-blue-500
+                                        text-blue-600
+                                        font-semibold
+                                        hover:bg-blue-50
+                                        transition
+                                        shadow-sm
+                                    "
+
+                                >
+
+
+
+                                    <Download size={18}/>
+
+
+
+                                    Exportar relatório
+
+
+
+                                </button>
+
+
+
+
+
+
+
+
+
+                                {/* EDITAR */}
+
+
+
+                                <button
+
+                                    onClick={() => setEditando(!editando)}
+
+                                    className="
+                                        flex
+                                        items-center
+                                        gap-3
+                                        px-5
+                                        py-3
+                                        rounded-xl
+                                        bg-blue-600
+                                        text-white
+                                        font-semibold
+                                        hover:bg-blue-700
+                                        transition
+                                        shadow-sm
+                                    "
+
+                                >
+
+
+
+                                    {
+                                        editando
+
+                                        ?
+
+                                        <>
+
+                                            <Save size={18}/>
+
+                                            Salvar
+
+                                        </>
+
+
+
+                                        :
+
+
+
+                                        <>
+
+                                            <Pencil size={18}/>
+
+                                            Editar
+
+                                        </>
+
+
+                                    }
+
+
+
+                                </button>
+
+
+
+
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+
 
 
 
@@ -270,6 +452,7 @@ export const UserComparacao = () => {
 
 
 
+
                             {/* RESUMO */}
 
 
@@ -277,10 +460,16 @@ export const UserComparacao = () => {
                             <div className="w-[22%] min-w-[280px]">
 
 
+
                                 <SummaryCards />
 
 
+
                             </div>
+
+
+
+
 
 
 
@@ -314,6 +503,8 @@ export const UserComparacao = () => {
 
 
 
+
+
                                 <div className="flex-1">
 
 
@@ -333,6 +524,10 @@ export const UserComparacao = () => {
 
 
                                 </div>
+
+
+
+
 
 
 
@@ -367,7 +562,14 @@ export const UserComparacao = () => {
 
 
 
+
+
+
                             </div>
+
+
+
+
 
 
 
@@ -379,7 +581,15 @@ export const UserComparacao = () => {
 
 
 
+
+
+
+
                     </div>
+
+
+
+
 
 
 
@@ -390,12 +600,25 @@ export const UserComparacao = () => {
 
 
 
+
+
+
+
+
             </div>
 
 
 
 
+
+
+
+
+
         </div>
+
+
+
 
 
     );

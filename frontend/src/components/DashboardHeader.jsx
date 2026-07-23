@@ -1,6 +1,7 @@
 // usado no UserComparacao
 
 import { Download, Info } from "lucide-react";
+import { exportarAvaliacaoPDF } from "../export/exportarAvaliacaoPDF.js";
 
 
 export const DashboardHeader = ({ children }) => {
@@ -72,33 +73,37 @@ export const DashboardHeader = ({ children }) => {
 
         <button
 
-          className="
-            flex
-            items-center
-            gap-3
-            px-5
-            py-3
-            rounded-xl
-            bg-white
-            border
-            border-blue-500
-            text-blue-600
-            font-semibold
-            hover:bg-blue-50
-            transition
-            shadow-sm
-          "
+    onClick={() => 
+        exportarAvaliacaoPDF(
+            selfEvaluation,
+            managerEvaluation
+        )
+    }
 
-        >
+    className="
+        flex
+        items-center
+        gap-3
+        px-5
+        py-3
+        rounded-xl
+        bg-white
+        border
+        border-blue-500
+        text-blue-600
+        font-semibold
+        hover:bg-blue-50
+        transition
+        shadow-sm
+    "
 
+>
 
-          <Download size={18} />
+    <Download size={18}/>
 
+    Exportar relatório
 
-          Exportar relatório
-
-
-        </button>
+</button>
 
 
 
