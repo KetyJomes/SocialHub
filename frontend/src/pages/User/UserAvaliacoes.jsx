@@ -120,6 +120,31 @@ export const UserAvaliacoes = () => {
 
     bgIcon: "bg-green-100"
 
+},
+{
+    id: 5,
+
+    nome: "Avaliação de Clima Organizacional",
+
+    descricao: "Pesquisa sobre o ambiente de trabalho",
+
+    tipo: "Anual",
+
+    disponibilizada: "15/07/2026",
+
+    infoDisponibilizada: "Disponível",
+
+    prazo: "30/07/2026",
+
+    infoPrazo: "7 dias restantes",
+
+    status: "Pendente",
+
+    acao: "Responder",
+
+    icon: "/icons/user.png",
+
+    bgIcon: "bg-yellow-100"
 }
 
     ]);
@@ -128,34 +153,52 @@ export const UserAvaliacoes = () => {
     useEffect(() => {
 
         const avaliacoesSalvas =
-            JSON.parse(localStorage.getItem("avaliacoesRespondidas")) || {};
+            JSON.parse(
+                localStorage.getItem("avaliacoesRespondidas")
+            ) || {};
 
         setAvaliacoes(prev =>
 
             prev.map(avaliacao => {
 
-                const respostasSalvas =
+                const avaliacaoSalva =
                     avaliacoesSalvas[avaliacao.id];
 
+                if (avaliacaoSalva) {
 
-                if (respostasSalvas) {
+                    if (avaliacaoSalva.finalizada) {
+
+                        return {
+
+                            ...avaliacao,
+
+                            status: "Respondida",
+
+                            acao: "Visualizar",
+
+                            infoPrazo: "Concluída",
+
+                            respostas: avaliacaoSalva.respostas
+
+                        };
+
+                    }
 
                     return {
 
                         ...avaliacao,
 
-                        status: "Respondida",
+                        status: "Em andamento",
 
-                        acao: "Visualizar",
+                        acao: "Continuar",
 
-                        infoPrazo: "Concluída",
+                        infoPrazo: "Salva",
 
-                        respostas: respostasSalvas
+                        respostas: avaliacaoSalva.respostas
 
                     };
 
                 }
-
 
                 return avaliacao;
 

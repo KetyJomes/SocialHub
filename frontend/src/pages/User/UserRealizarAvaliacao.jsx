@@ -29,28 +29,7 @@ export const UserRealizarAvaliacao = () => {
     =====================================================
     */
 
-    useEffect(() => {
-
-        const avaliacoesSalvas =
-            JSON.parse(
-                localStorage.getItem("avaliacoesRespondidas")
-            ) || {};
-
-        const avaliacaoSalva = avaliacoesSalvas[idAvaliacao];
-
-        if (avaliacaoSalva) {
-
-            setAnswers(
-                avaliacaoSalva.respostas || {}
-            );
-
-            setAvaliacaoFinalizada(
-                avaliacaoSalva.finalizada || false
-            );
-
-        }
-
-    }, [idAvaliacao]);
+    
 
     /*
     =====================================================

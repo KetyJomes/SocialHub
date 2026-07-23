@@ -21,7 +21,7 @@ export const CardProgresso360 = ({ colaboradores }) => {
 
     return (
 
-        <div className="bg-white rounded-3xl border border-gray-100 shadow-sm p-8">
+        <div className="bg-white rounded-3xl border border-[#E5E7EB] shadow-sm p-8">
 
 
             {/* CABEÇALHO */}
@@ -29,7 +29,7 @@ export const CardProgresso360 = ({ colaboradores }) => {
             <div className="flex items-center gap-4">
 
 
-                <div className="w-14 h-14 rounded-2xl bg-violet-100 flex items-center justify-center">
+                <div className="w-14 h-14 rounded-2xl bg-[#F1ECF8] flex items-center justify-center">
 
                     <CircleCheckBig
                         size={28}
@@ -194,15 +194,15 @@ export const CardProgresso360 = ({ colaboradores }) => {
 
                 {/* PENDENTES */}
 
-                <div className="bg-amber-50 rounded-2xl p-6">
+                <div className="bg-[#FDE8E8] rounded-2xl flex items-center justify-start">
 
 
-                    <div className="w-11 h-11 rounded-xl bg-amber-100 flex items-center justify-center mb-5">
+                    <div className="w-20 h-11 rounded-xl flex items-center justify-start ml-5 mb-5">
 
 
                         <Clock3
 
-                            size={22}
+                            size={80}
 
                             className="text-amber-600"
 
@@ -211,19 +211,21 @@ export const CardProgresso360 = ({ colaboradores }) => {
 
                     </div>
 
+                    <div>
+                        <p className="text-2xl text-gray-500 text-left">
 
-                    <p className="text-sm text-gray-500">
+                            Pendentes
 
-                        Pendentes
-
-                    </p>
+                        </p>
 
 
-                    <h2 className="text-3xl font-bold text-gray-800 mt-1">
+                        <h2 className="text-3xl font-bold text-gray-800 mt-1">
 
-                        {pendentes}
+                            {pendentes}
 
-                    </h2>
+                        </h2>
+
+                    </div>
 
 
                 </div>

@@ -77,23 +77,15 @@ export const UserAvaliacao360 = () => {
 
         <>
 
-            {/* SIDEBAR */}
 
             <Sidebar
-
                 isOpen={isOpen}
-
                 setIsOpen={setIsOpen}
 
             />
 
-
-            {/* HEADER */}
-
             <Header
-
                 isOpen={isOpen}
-
                 setIsOpen={setIsOpen}
 
             />
