@@ -28,15 +28,19 @@ export const AdminTurmas = () => {
 
     const [filtroStatus, setFiltroStatus] = useState("Todas");
 
+
     const [modalAlunos, setModalAlunos] = useState(false);
 
     const [modalAdicionar, setModalAdicionar] = useState(false);
 
-    const [turmaSelecionada, setTurmaSelecionada] = useState(null);
-
     const [modalTurma, setModalTurma] = useState(false);
 
+
+    const [turmaSelecionada, setTurmaSelecionada] = useState(null);
+
+
     const [editando, setEditando] = useState(false);
+
 
 
     const [novaTurma, setNovaTurma] = useState({
@@ -51,9 +55,16 @@ export const AdminTurmas = () => {
 
     });
 
+
+
+
+
+
     const abrirNovaTurma = () => {
 
+
         setEditando(false);
+
 
         setNovaTurma({
 
@@ -65,36 +76,58 @@ export const AdminTurmas = () => {
 
             status: "Ativa"
 
-    });
+        });
+
 
         setModalTurma(true);
 
-};
+
+    };
+
+
+
+
+
+
+
 
 
     const professores = [
+
 
         {
             id:1,
             nome:"Maria Souza"
         },
 
+
         {
             id:2,
             nome:"Carlos Oliveira"
         },
+
 
         {
             id:3,
             nome:"Juliana Berger"
         }
 
+
     ];
+
+
+
+
+
+
+
+
 
     const [turmas, setTurmas] = useState([
 
 
         {
+
             id: 1,
 
             nome: "1º EM A",
@@ -124,7 +157,10 @@ export const AdminTurmas = () => {
 
 
 
+
+
         {
+
             id:2,
 
             nome:"1º EM B",
@@ -133,11 +169,13 @@ export const AdminTurmas = () => {
 
             alunos:[
 
+
                 {
                     id:3,
                     nome:"Pedro Lima",
                     email:"pedro@email.com"
                 }
+
 
             ],
 
@@ -147,7 +185,10 @@ export const AdminTurmas = () => {
 
 
 
+
+
         {
+
             id:3,
 
             nome:"2º EM A",
@@ -169,31 +210,113 @@ export const AdminTurmas = () => {
 
 
 
+
+
     const [alunosDisponiveis, setAlunosDisponiveis] = useState([
 
 
+
         {
+
             id:10,
+
             nome:"Lucas Santos",
+
             email:"lucas@email.com"
+
         },
 
 
+
         {
+
             id:11,
+
             nome:"Mariana Alves",
+
             email:"mariana@email.com"
+
         },
 
 
+
         {
+
             id:12,
+
             nome:"Rafael Souza",
+
             email:"rafael@email.com"
+
         }
 
 
+
     ]);
+
+
+
+
+
+
+
+
+
+    const criarTurma = () => {
+
+
+        const nova = {
+
+
+            id: turmas.length + 1,
+
+
+            nome: novaTurma.nome,
+
+
+            lider: novaTurma.lider,
+
+
+            alunos: [],
+
+
+            status: novaTurma.status
+
+
+        };
+
+
+
+        setTurmas([
+
+            ...turmas,
+
+            nova
+
+        ]);
+
+
+
+        setModalTurma(false);
+
+
+
+        setNovaTurma({
+
+            nome:"",
+
+            professorId:"",
+
+            lider:"",
+
+            status:"Ativa"
+
+        });
+
+
+    };
+
+
 
 
 
@@ -217,7 +340,6 @@ export const AdminTurmas = () => {
 
             const statusSelecionado =
 
-
                 filtroStatus === "Todas"
 
                 ||
@@ -233,13 +355,7 @@ export const AdminTurmas = () => {
 
 
     );
-
-
-
-
-
-
-
+    
     const alterarStatusTurma = (id) => {
 
 
@@ -320,6 +436,8 @@ export const AdminTurmas = () => {
 
 
 
+
+
     const adicionarAluno = (aluno) => {
 
 
@@ -370,6 +488,7 @@ export const AdminTurmas = () => {
 
 
 
+
         setAlunosDisponiveis(
 
 
@@ -383,6 +502,7 @@ export const AdminTurmas = () => {
 
 
         );
+
 
 
 
@@ -414,6 +534,8 @@ export const AdminTurmas = () => {
 
 
 
+
+
     const removerAluno = (alunoId) => {
 
 
@@ -424,6 +546,7 @@ export const AdminTurmas = () => {
 
 
         );
+
 
 
 
@@ -480,6 +603,7 @@ export const AdminTurmas = () => {
 
 
 
+
         setTurmaSelecionada({
 
 
@@ -499,6 +623,7 @@ export const AdminTurmas = () => {
 
 
         });
+
 
 
 
@@ -526,6 +651,7 @@ export const AdminTurmas = () => {
 
 
 
+
     const excluirTurma = (id) => {
 
 
@@ -545,6 +671,7 @@ export const AdminTurmas = () => {
 
 
     };
+
 
 
 
@@ -585,9 +712,22 @@ export const AdminTurmas = () => {
 
 
     );
+
+
+
+
+
+
+
+
+
     return (
 
+
     <div className="min-h-screen bg-[#F7F8FC]">
+
+
+
 
 
         <Header
@@ -597,6 +737,9 @@ export const AdminTurmas = () => {
             setIsOpen={setIsOpen}
 
         />
+
+
+
 
 
         <SidebarAdmin
@@ -609,11 +752,21 @@ export const AdminTurmas = () => {
 
 
 
+
+
+
+
+
         <main className="pt-[12vh] px-10 pb-10">
 
 
 
+
+
+
+
             <div className="flex justify-between items-center">
+
 
 
                 <div>
@@ -639,23 +792,35 @@ export const AdminTurmas = () => {
 
 
 
+
+
+
+
                 <button
 
+
                     onClick={abrirNovaTurma}
+
 
                     className="
                         bg-[#007BC0]
                         text-white
                         px-6
                         py-3
+                        rounded-xl
                         cursor-pointer
                     "
 
+
                 >
+
 
                     + Nova turma
 
+
                 </button>
+
+
 
 
 
@@ -667,7 +832,13 @@ export const AdminTurmas = () => {
 
 
 
+
+
             <div className="grid grid-cols-3 gap-6 mt-10">
+
+
+
+
 
 
 
@@ -681,6 +852,7 @@ export const AdminTurmas = () => {
                 ">
 
 
+
                     <div className="
                         w-16
                         h-16
@@ -691,14 +863,19 @@ export const AdminTurmas = () => {
                     ">
 
 
+
                         <Users className="text-[#007BC0]" />
+
 
 
                     </div>
 
 
 
+
+
                     <div>
+
 
 
                         <h2 className="text-3xl font-bold">
@@ -708,6 +885,8 @@ export const AdminTurmas = () => {
                         </h2>
 
 
+
+
                         <p className="text-gray-500">
 
                             Turmas
@@ -715,10 +894,14 @@ export const AdminTurmas = () => {
                         </p>
 
 
+
                     </div>
 
 
+
                 </div>
+
+
 
 
 
@@ -733,7 +916,9 @@ export const AdminTurmas = () => {
                 ">
 
 
+
                     <h2 className="text-3xl font-bold">
+
 
                         {
                             turmas.reduce(
@@ -747,7 +932,9 @@ export const AdminTurmas = () => {
                             )
                         }
 
+
                     </h2>
+
 
 
                     <p className="text-gray-500">
@@ -757,7 +944,9 @@ export const AdminTurmas = () => {
                     </p>
 
 
+
                 </div>
+
 
 
 
@@ -771,6 +960,8 @@ export const AdminTurmas = () => {
                     shadow-sm
                     p-8
                 ">
+
+
 
 
                     <h2 className="text-3xl font-bold">
@@ -790,6 +981,7 @@ export const AdminTurmas = () => {
 
 
 
+
                     <p className="text-gray-500">
 
                         Turmas ativas
@@ -797,11 +989,15 @@ export const AdminTurmas = () => {
                     </p>
 
 
+
                 </div>
 
 
 
+
+
             </div>
+
 
 
 
@@ -821,12 +1017,14 @@ export const AdminTurmas = () => {
 
 
 
+
                 <div className="
                     flex
                     justify-between
                     items-center
                     mb-8
                 ">
+
 
 
 
@@ -847,6 +1045,8 @@ export const AdminTurmas = () => {
                             "
 
                         />
+
+
 
 
 
@@ -880,8 +1080,8 @@ export const AdminTurmas = () => {
                         />
 
 
-                    </div>
 
+                    </div>
 
 
 
@@ -895,27 +1095,11 @@ export const AdminTurmas = () => {
 
                             onClick={()=>setFiltroStatus("Todas")}
 
-                            className={`
-
-                                px-5
-                                py-2
-                                rounded-xl
-                                cursor-pointer
-
-                                ${
-                                    filtroStatus==="Todas"
-
-                                    ?
-
-                                    "bg-[#007BC0] text-white"
-
-                                    :
-
-                                    "bg-gray-100"
-
-                                }
-
-                            `}
+                            className={`px-5 py-2 rounded-xl cursor-pointer ${
+                                filtroStatus==="Todas"
+                                ? "bg-[#007BC0] text-white"
+                                : "bg-gray-100"
+                            }`}
 
                         >
 
@@ -931,27 +1115,11 @@ export const AdminTurmas = () => {
 
                             onClick={()=>setFiltroStatus("Ativa")}
 
-                            className={`
-
-                                px-5
-                                py-2
-                                rounded-xl
-                                cursor-pointer
-
-                                ${
-                                    filtroStatus==="Ativa"
-
-                                    ?
-
-                                    "bg-green-500 text-white"
-
-                                    :
-
-                                    "bg-gray-100"
-
-                                }
-
-                            `}
+                            className={`px-5 py-2 rounded-xl cursor-pointer ${
+                                filtroStatus==="Ativa"
+                                ? "bg-green-500 text-white"
+                                : "bg-gray-100"
+                            }`}
 
                         >
 
@@ -968,27 +1136,11 @@ export const AdminTurmas = () => {
 
                             onClick={()=>setFiltroStatus("Arquivada")}
 
-                            className={`
-
-                                px-5
-                                py-2
-                                rounded-xl
-                                cursor-pointer
-
-                                ${
-                                    filtroStatus==="Arquivada"
-
-                                    ?
-
-                                    "bg-gray-700 text-white"
-
-                                    :
-
-                                    "bg-gray-100"
-
-                                }
-
-                            `}
+                            className={`px-5 py-2 rounded-xl cursor-pointer ${
+                                filtroStatus==="Arquivada"
+                                ? "bg-gray-700 text-white"
+                                : "bg-gray-100"
+                            }`}
 
                         >
 
@@ -1003,82 +1155,247 @@ export const AdminTurmas = () => {
 
 
 
+
                 </div>
+                                <table className="w-full">
 
-
-
-
-
-                <table className="w-full">
                     <thead>
+
                         <tr className="
                             border-b
                             border-gray-200
                             text-gray-600
                         ">
+
                             <th className="text-center py-4">
                                 Turma
                             </th>
+
 
                             <th className="text-center">
                                 Líder
                             </th>
 
+
                             <th className="text-center">
                                 Alunos
                             </th>
+
 
                             <th className="text-center">
                                 Status
                             </th>
 
+
                             <th className="text-center">
                                 Ações
                             </th>
+
+
                         </tr>
+
+
                     </thead>
 
+
+
+
+
                     <tbody>
-                        {turmasFiltradas.map(turma => (
-                            <tr
-                                key={turma.id}
-                                className="
-                                    border-b
-                                    border-gray-100
-                                    hover:bg-gray-50
-                                "
-                            >
-                                <td className="py-5 text-center font-medium">
-                                    {turma.nome}
-                                </td>
 
-                                <td className="text-center">
-                                    {turma.lider}
-                                </td>
 
-                                <td className="text-center">
-                                    {turma.alunos.length}
-                                </td>
+                        {
+                            turmasFiltradas.map(turma => (
 
-                                <td className="text-center">
-                                    <span className={`...`}>
-                                        {turma.status}
-                                    </span>
-                                </td>
 
-                                <td className="text-center">
-                                    <div className="
-                                        flex
-                                        justify-center
-                                        gap-3
+                                <tr
+
+                                    key={turma.id}
+
+                                    className="
+                                        border-b
+                                        border-gray-100
+                                        hover:bg-gray-50
+                                    "
+
+                                >
+
+
+
+                                    <td className="
+                                        py-5
+                                        text-center
+                                        font-medium
                                     ">
-                                        ...
-                                    </div>
-                                </td>
-                            </tr>
-                        ))}
+
+                                        {turma.nome}
+
+                                    </td>
+
+
+
+
+                                    <td className="text-center">
+
+                                        {turma.lider}
+
+                                    </td>
+
+
+
+
+                                    <td className="text-center">
+
+
+                                        {turma.alunos.length}
+
+
+                                    </td>
+
+
+
+
+
+
+                                    <td className="text-center">
+
+
+                                        <span
+                                            className={`
+                                                px-3
+                                                py-1
+                                                rounded-full
+                                                text-sm
+
+                                                ${
+                                                    turma.status === "Ativa"
+                                                    ?
+                                                    "bg-green-100 text-green-600"
+                                                    :
+                                                    "bg-gray-200 text-gray-600"
+                                                }
+
+                                            `}
+                                        >
+
+                                            {turma.status}
+
+                                        </span>
+
+
+                                    </td>
+
+
+
+
+
+
+                                    <td className="text-center">
+
+
+                                        <div className="
+                                            flex
+                                            justify-center
+                                            gap-3
+                                        ">
+
+
+
+                                            <button
+
+                                                onClick={() => abrirAlunos(turma)}
+
+                                                className="
+                                                    text-blue-600
+                                                    cursor-pointer
+                                                "
+
+                                            >
+
+                                                <Eye size={20}/>
+
+                                            </button>
+
+
+
+
+
+
+                                            <button
+
+                                                onClick={() => alterarStatusTurma(turma.id)}
+
+                                                className="
+                                                    text-gray-600
+                                                    cursor-pointer
+                                                "
+
+                                            >
+
+                                                {
+                                                    turma.status === "Ativa"
+
+                                                    ?
+
+                                                    <Archive size={20}/>
+
+                                                    :
+
+                                                    <ArchiveRestore size={20}/>
+
+                                                }
+
+
+                                            </button>
+
+
+
+
+
+
+
+                                            <button
+
+                                                onClick={() => excluirTurma(turma.id)}
+
+                                                className="
+                                                    text-red-600
+                                                    cursor-pointer
+                                                "
+
+                                            >
+
+                                                <Trash2 size={20}/>
+
+
+                                            </button>
+
+
+
+
+
+                                        </div>
+
+
+                                    </td>
+
+
+
+
+                                </tr>
+
+
+                            ))
+
+                        }
+
+
+
                     </tbody>
+
+
                 </table>
+
 
 
 
@@ -1088,9 +1405,24 @@ export const AdminTurmas = () => {
 
 
 
+
         </main>
-                {
-            modalAlunos && turmaSelecionada && (
+
+
+
+
+
+
+
+
+
+
+        {/* MODAL NOVA TURMA */}
+
+
+        {
+
+            modalTurma && (
 
 
                 <div className="
@@ -1104,16 +1436,15 @@ export const AdminTurmas = () => {
                 ">
 
 
+
                     <div className="
                         bg-white
-                        w-[950px]
-                        h-[700px]
+                        w-[600px]
                         rounded-3xl
                         shadow-xl
                         p-8
-                        flex
-                        flex-col
                     ">
+
 
 
 
@@ -1127,26 +1458,35 @@ export const AdminTurmas = () => {
 
                             <div>
 
-                                <h2 className="text-2xl font-bold">
 
-                                    {turmaSelecionada.nome}
+                                <h2 className="
+                                    text-2xl
+                                    font-bold
+                                ">
+
+                                    Nova turma
 
                                 </h2>
 
 
-                                <p className="text-gray-500">
+                                <p className="
+                                    text-gray-500
+                                    mt-1
+                                ">
 
-                                    Líder: {turmaSelecionada.lider}
+                                    Cadastre uma nova turma.
 
                                 </p>
+
 
                             </div>
 
 
 
+
                             <button
 
-                                onClick={() => setModalAlunos(false)}
+                                onClick={() => setModalTurma(false)}
 
                                 className="cursor-pointer"
 
@@ -1154,54 +1494,6 @@ export const AdminTurmas = () => {
 
                                 <X/>
 
-                            </button>
-
-
-                        </div>
-
-
-
-
-
-
-
-                        <div className="
-                            flex
-                            justify-between
-                            mb-5
-                        ">
-
-
-                            <h3 className="text-lg font-bold">
-
-                                Alunos
-
-                            </h3>
-
-
-
-                            <button
-
-                                onClick={() => setModalAdicionar(true)}
-
-                                className="
-                                    bg-[#007BC0]
-                                    text-white
-                                    px-4
-                                    py-2
-                                    rounded-xl
-                                    flex
-                                    gap-2
-                                    items-center
-                                    cursor-pointer
-                                "
-
-                            >
-
-                                <UserPlus size={18}/>
-
-                                Adicionar
-
 
                             </button>
 
@@ -1214,255 +1506,164 @@ export const AdminTurmas = () => {
 
 
 
-
-                        <div className="
-                            flex-1
-                            overflow-y-auto
-                            flex
-                            flex-col
-                            gap-3
-                        ">
-
-
-
-                            {
-
-                                turmaSelecionada.alunos.length > 0
-
-                                ?
-
-                                turmaSelecionada.alunos.map(
-
-                                    aluno => (
-
-
-                                        <div
-
-                                            key={aluno.id}
-
-                                            className="
-                                                border
-                                                rounded-xl
-                                                p-4
-                                                flex
-                                                justify-between
-                                            "
-
-                                        >
-
-
-                                            <div>
-
-                                                <p className="font-medium">
-
-                                                    {aluno.nome}
-
-                                                </p>
-
-
-                                                <p className="text-sm text-gray-500">
-
-                                                    {aluno.email}
-
-                                                </p>
-
-
-                                            </div>
-
-
-
-
-                                            <button
-
-                                                onClick={() => removerAluno(aluno.id)}
-
-                                                className="
-                                                    text-red-600
-                                                    cursor-pointer
-                                                "
-
-                                            >
-
-                                                Remover
-
-                                            </button>
-
-
-                                        </div>
-
-
-                                    )
-
-                                )
-
-
-                                :
-
-
-                                <div className="
-                                    flex
-                                    flex-col
-                                    items-center
-                                    justify-center
-                                    h-full
-                                    text-gray-500
-                                ">
-
-
-                                    <Users size={45}/>
-
-
-                                    <p className="font-medium mt-4">
-
-                                        Nenhum aluno cadastrado
-
-                                    </p>
-
-
-                                    <span className="text-sm">
-
-                                        Adicione alunos para vincular a esta turma.
-
-                                    </span>
-
-
-                                </div>
-
-
-                            }
-
-
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-            )
-
-        }
-
-
-
-
-
-
-
-
-
-        {
-            modalAdicionar && (
-
-
-                <div className="
-                    fixed
-                    inset-0
-                    bg-black/40
-                    flex
-                    items-center
-                    justify-center
-                    z-[60]
-                ">
-
-
-                    <div className="
-                        bg-white
-                        w-[600px]
-                        h-[650px]
-                        rounded-3xl
-                        shadow-xl
-                        p-8
-                        flex
-                        flex-col
-                    ">
-
-
-
-                        <div className="
-                            flex
-                            justify-between
-                            mb-6
-                        ">
-
-
-                            <h2 className="text-2xl font-bold">
-
-                                Adicionar aluno
-
-                            </h2>
-
-
-
-                            <button
-
-                                onClick={() => setModalAdicionar(false)}
-
-                                className="cursor-pointer"
-
-                            >
-
-                                <X/>
-
-                            </button>
-
-
-                        </div>
-
-
-
-
-
-
-
-
-                        <div className="relative mb-5">
-
-
-                            <Search
-
-                                size={20}
-
-                                className="
-                                    absolute
-                                    left-4
-                                    top-1/2
-                                    -translate-y-1/2
-                                "
-
-                            />
+                        <div className="flex flex-col gap-5">
 
 
 
                             <input
 
+                                placeholder="Nome da turma"
 
-                                value={pesquisaAluno}
+                                value={novaTurma.nome}
 
-
-                                onChange={(e)=>setPesquisaAluno(e.target.value)}
-
-
-                                placeholder="Pesquisar usuário..."
-
+                                onChange={(e)=>
+                                    setNovaTurma({
+                                        ...novaTurma,
+                                        nome:e.target.value
+                                    })
+                                }
 
                                 className="
-                                    w-full
                                     h-12
                                     border
                                     rounded-xl
-                                    pl-12
+                                    px-4
                                 "
-
 
                             />
 
 
-                        </div>
 
+
+
+
+                            <select
+
+                                value={novaTurma.professorId}
+
+                                onChange={(e)=>
+                                    setNovaTurma({
+                                        ...novaTurma,
+                                        professorId:e.target.value
+                                    })
+                                }
+
+
+                                className="
+                                    h-12
+                                    border
+                                    rounded-xl
+                                    px-4
+                                "
+
+                            >
+
+
+                                <option value="">
+
+                                    Professor responsável
+
+                                </option>
+
+
+                                {
+                                    professores.map(professor => (
+
+
+                                        <option
+
+                                            key={professor.id}
+
+                                            value={professor.id}
+
+                                        >
+
+                                            {professor.nome}
+
+                                        </option>
+
+
+                                    ))
+                                }
+
+
+
+                            </select>
+
+
+
+
+
+
+
+                            <input
+
+                                placeholder="Líder da turma"
+
+                                value={novaTurma.lider}
+
+                                onChange={(e)=>
+                                    setNovaTurma({
+                                        ...novaTurma,
+                                        lider:e.target.value
+                                    })
+                                }
+
+
+                                className="
+                                    h-12
+                                    border
+                                    rounded-xl
+                                    px-4
+                                "
+
+                            />
+
+
+
+
+
+
+                            <select
+
+                                value={novaTurma.status}
+
+                                onChange={(e)=>
+                                    setNovaTurma({
+                                        ...novaTurma,
+                                        status:e.target.value
+                                    })
+                                }
+
+
+                                className="
+                                    h-12
+                                    border
+                                    rounded-xl
+                                    px-4
+                                "
+
+                            >
+
+                                <option value="Ativa">
+
+                                    Ativa
+
+                                </option>
+
+
+                                <option value="Arquivada">
+
+                                    Arquivada
+
+                                </option>
+
+
+                            </select>
+
+
+
+                        </div>
 
 
 
@@ -1472,137 +1673,60 @@ export const AdminTurmas = () => {
 
 
                         <div className="
-                            flex-1
-                            overflow-y-auto
                             flex
-                            flex-col
-                            gap-3
+                            justify-end
+                            gap-4
+                            mt-8
                         ">
 
 
 
-                            {
+                            <button
 
+                                onClick={() => setModalTurma(false)}
 
-                                alunosDisponiveisFiltrados.length > 0
+                                className="
+                                    px-5
+                                    py-3
+                                    rounded-xl
+                                    bg-gray-100
+                                    cursor-pointer
+                                "
 
+                            >
 
-                                ?
+                                Cancelar
 
 
-                                alunosDisponiveisFiltrados.map(
+                            </button>
 
 
-                                    aluno => (
 
 
-                                        <div
 
-                                            key={aluno.id}
 
-                                            className="
-                                                border
-                                                rounded-xl
-                                                p-4
-                                                flex
-                                                justify-between
-                                            "
 
-                                        >
+                            <button
 
+                                onClick={criarTurma}
 
+                                className="
+                                    px-6
+                                    py-3
+                                    rounded-xl
+                                    bg-[#007BC0]
+                                    text-white
+                                    cursor-pointer
+                                "
 
-                                            <div>
+                            >
 
+                                Criar turma
 
-                                                <p className="font-medium">
 
-                                                    {aluno.nome}
+                            </button>
 
-                                                </p>
 
-
-
-                                                <p className="text-sm text-gray-500">
-
-                                                    {aluno.email}
-
-                                                </p>
-
-
-                                            </div>
-
-
-
-
-
-                                            <button
-
-                                                onClick={() => adicionarAluno(aluno)}
-
-                                                className="
-                                                    bg-[#007BC0]
-                                                    text-white
-                                                    px-4
-                                                    py-2
-                                                    rounded-xl
-                                                    cursor-pointer
-                                                "
-
-                                            >
-
-                                                Adicionar
-
-
-                                            </button>
-
-
-                                        </div>
-
-
-                                    )
-
-
-                                )
-
-
-                                :
-
-
-                                <div className="
-                                    h-full
-                                    flex
-                                    flex-col
-                                    items-center
-                                    justify-center
-                                    text-gray-500
-                                ">
-
-
-                                    <Users size={45}/>
-
-
-
-                                    <p className="font-medium mt-3">
-
-                                        Nenhum usuário disponível
-
-                                    </p>
-
-
-
-                                    <span className="text-sm text-center">
-
-                                        Todos os usuários já estão vinculados
-                                        ou não existem usuários disponíveis.
-
-                                    </span>
-
-
-                                </div>
-
-
-                            }
 
 
 
@@ -1610,7 +1734,11 @@ export const AdminTurmas = () => {
 
 
 
+
+
+
                     </div>
+
 
 
                 </div>
@@ -1619,6 +1747,11 @@ export const AdminTurmas = () => {
             )
 
         }
+
+
+
+
+
 
 
     </div>

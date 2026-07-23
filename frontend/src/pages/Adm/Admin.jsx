@@ -79,37 +79,6 @@ export const Admin = () => {
                     </div>
 
 
-
-
-
-                    <button
-
-
-                        onClick={() => navigate("/adm-control-user")}
-
-
-                        className="
-                            bg-[#007BC0]
-                            text-white
-                            px-5
-                            py-2.5
-                            flex
-                            items-center
-                            gap-2
-                            hover:bg-[#0067a3]
-                            transition
-                            cursor-pointer
-                        "
-
-                    >
-
-                        <UserCog size={18}/>
-
-                        Usuários
-
-                    </button>
-
-
                 </div>
 
 
