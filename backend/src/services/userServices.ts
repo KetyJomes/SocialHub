@@ -1,9 +1,10 @@
-import { createUserDTO, authUserDTO, updateUserDTO } from "../DTOS/userDTO.ts";
+import { createUserDTO, loginDTO as loginDTO, updateUserDTO } from "../DTOS/userDTO.ts";
 import { prisma } from "../lib/prisma.ts";
-// import { Prisma } from "@prisma/client";
 import * as bcrypt from "bcrypt";
 
+
 export const  createUser = async(data: createUserDTO)=>{
+    
     const {name, email, password, EDV, classId, role} = data
     
     const userExists = await prisma.user.findUnique({
@@ -29,7 +30,7 @@ export const  createUser = async(data: createUserDTO)=>{
 
 };
 
-export const authUser = async(data: authUserDTO)=>{
+export const login = async(data: loginDTO)=>{
     const {EDV, password} = data
 
     const user = await prisma.user.findUnique({

@@ -1,6 +1,6 @@
 import { Request, response, Response} from "express";
-import { createUserDTO, authUserDTO, updateUserDTO } from "../DTOS/userDTO.ts";
-import { createUser, getUser, authUser, getUsers, updateUser, deleteUser  } from "../services/userServices.ts";
+import { createUserDTO, loginDTO, updateUserDTO } from "../DTOS/userDTO.ts";
+import { createUser, getUser, login, getUsers, updateUser, deleteUser  } from "../services/userServices.ts";
 
 export default class UserController {
     static async create(req: Request, res: Response){
@@ -17,9 +17,9 @@ export default class UserController {
     }
 
     static async login(req: Request, res: Response){
-        const data: authUserDTO = req.body
+        const data: loginDTO = req.body
         try{
-            const user = await authUser(data);
+            const user = await login(data);
 
             return res.status(200).send({ response: "Bem vindo!"});
         }
