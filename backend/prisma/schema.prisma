@@ -58,6 +58,7 @@ model Test{
   type TestType
   AvailableResult Boolean
   Frequency Frequency
+  Feedback String
 
   Skills Skill[]
 

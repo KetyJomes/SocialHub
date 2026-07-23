@@ -1,15 +1,11 @@
 import { NextFunction, Request, Response} from "express";
 
 
-export const answerExistsMiddleware = (req: Request, res: Response, next: NextFunction) =>{
+export const validateAnswer = (req: Request, res: Response, next: NextFunction) =>{
+    const {Value, Scale} = req.body
+    if(!Value || !Scale){
+        return res.status(400).send({response: "Preencha todos os campos para prosseguir!"})
+    }
 
+    next()
 }
-
-export const editAnswerMiddleware = (req: Request, res: Response, next: NextFunction) =>{
-
-}
-
-export const validateAnswerMiddleware = (req: Request, res: Response, next: NextFunction) =>{
-    
-}
-
