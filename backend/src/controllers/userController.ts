@@ -1,9 +1,5 @@
 import { Request, response, Response} from "express";
-<<<<<<< HEAD
 import { createUserDTO, loginDTO, updateUserDTO } from "../DTOS/userDTO.ts";
-=======
-import { createUserDTO, authUserDTO, updateUserDTO } from "../DTOS/userDTO.ts";
->>>>>>> 1d9b32c6564a2ad9ef6d00f5f635504551d71b60
 import { createUser, getUser, login, getUsers, updateUser, deleteUser  } from "../services/userServices.ts";
 
 export default class UserController {
