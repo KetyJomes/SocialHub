@@ -112,36 +112,23 @@ export const AbaAvaliacoes = ({
 
                             <button
                                 onClick={() => acessarAvaliacao(avaliacao)}
-                                className="
+                                className={`
                                     px-6
                                     py-3
                                     rounded-xl
-                                    bg-[#2563EB]
-                                    text-white
-                                    hover:bg-blue-700
                                     transition
-                                "
-
                                     ${
-
                                         modoVisualizacao
-
-                                            ?
-
-                                            "bg-gray-100 text-gray-700 hover:bg-gray-200"
-
-                                            :
-
-                                            "bg-[#0291F7] text-white hover:bg-blue-700"
-
+                                            ? "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                                            : "bg-[#0291F7] text-white hover:bg-blue-700"
                                     }
-
                                 `}
-
                             >
-                                {modoVisualizacao
-                                    ? "Visualizar"
-                                    : avaliacao.acao}
+                                {
+                                    modoVisualizacao
+                                        ? "Visualizar"
+                                        : avaliacao.acao
+                                }
                             </button>
 
                         </div>
