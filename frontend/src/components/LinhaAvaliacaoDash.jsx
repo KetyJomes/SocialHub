@@ -6,9 +6,9 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
     const navigate = useNavigate();
 
     const tipoClasses = {
-        "360°": "bg-purple-100 text-purple-600",
-        Gestão: "bg-green-100 text-green-600",
-        Autoavaliação: "bg-blue-100 text-blue-600"
+        "360°": "text-purple-600",
+        Gestão: "text-green-600",
+        Autoavaliação: "text-blue-600"
     };
 
     return (
@@ -34,7 +34,7 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
             <td className="text-center">
 
                 <span
-                    className={`inline-flex px-3 py-1 rounded-full text-xs ${tipoClasses[avaliacao.tipo]}`}
+                    className={`inline-flex px-3 py-1 rounded-full text-md ${tipoClasses[avaliacao.tipo]}`}
                 >
                     {avaliacao.tipo}
                 </span>
@@ -47,7 +47,7 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
 
             <td className="text-center">
 
-                <span className="inline-flex bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs">
+                <span className="inline-flex text-green-600 px-3 py-1 rounded-full text-md">
                     {avaliacao.situacao}
                 </span>
 
@@ -71,16 +71,20 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
 
             <td className="text-center">
 
-                <button
-                    className="inline-flex items-center gap-2 border border-blue-500 text-blue-500 rounded-lg px-4 py-2 hover:bg-blue-50 transition"
-                    onClick={() => navigate('/comparacao')}
-                >
+               <button
+                className="inline-flex items-center gap-2 border border-blue-500 text-white rounded-lg px-4 py-2 bg-[#0291F7] hover:bg-blue-700 transition"
+                onClick={() => 
+                    avaliacao.tipo === "Autoavaliação"
+                        ? navigate("/realizar-avaliacao")
+                        : navigate("/comparacao")
+                }
+            >
 
-                    Ver resultados
+                Ver resultados
 
-                    <ChevronRight size={16} />
+                <ChevronRight size={16} />
 
-                </button>
+            </button>
 
             </td>
 

@@ -4,6 +4,7 @@ import {
     Clock3
 } from "lucide-react";
 
+
 export const CardProgresso360 = ({ colaboradores }) => {
 
     const total = colaboradores.length;
@@ -28,17 +29,6 @@ export const CardProgresso360 = ({ colaboradores }) => {
 
             <div className="flex items-center gap-4">
 
-
-                <div className="w-14 h-14 rounded-2xl bg-[#F1ECF8] flex items-center justify-center">
-
-                    <CircleCheckBig
-                        size={28}
-                        className="text-violet-600"
-                    />
-
-                </div>
-
-
                 <div>
 
                     <h2 className="text-2xl font-bold text-gray-800">
@@ -60,79 +50,69 @@ export const CardProgresso360 = ({ colaboradores }) => {
             </div>
 
 
-            {/* CARDS DE INFORMAÇÃO */}
 
-            <div className="grid grid-cols-4 gap-5 mt-8">
+
+
+            {/* CARDS */}
+
+            <div className="flex gap-5 mt-8">
+
+
+
 
 
                 {/* PROGRESSO */}
 
-                <div className="bg-violet-50 rounded-2xl p-6 flex flex-col items-center justify-center">
+                <div className="bg-[#F1ECF8] rounded-2xl w-[180px] h-full p-6 flex items-center justify-center">
 
 
                     <div className="relative w-28 h-28 flex items-center justify-center">
 
 
-                        {/* CÍRCULO EXTERNO */}
-
                         <svg
-
                             className="absolute w-full h-full -rotate-90"
-
                             viewBox="0 0 100 100"
-
                         >
 
+
                             <circle
-
                                 cx="50"
-
                                 cy="50"
-
                                 r="42"
-
                                 stroke="currentColor"
-
                                 strokeWidth="8"
-
                                 fill="transparent"
-
-                                className="text-violet-200"
-
+                                className="text-[#D9CCEA]"
                             />
 
 
+
                             <circle
-
                                 cx="50"
-
                                 cy="50"
-
                                 r="42"
-
                                 stroke="currentColor"
-
                                 strokeWidth="8"
-
                                 fill="transparent"
-
                                 strokeDasharray="264"
-
-                                strokeDashoffset={264 - (264 * porcentagem) / 100}
-
+                                strokeDashoffset={
+                                    264 - (264 * porcentagem) / 100
+                                }
                                 strokeLinecap="round"
-
-                                className="text-violet-600 transition-all duration-700"
-
+                                className="text-[#5B3A9D] transition-all duration-700"
                             />
+
 
                         </svg>
+
+
+
 
 
                         <div className="text-center">
 
 
-                            <p className="text-2xl font-bold text-violet-600">
+                            <p className="text-2xl font-bold text-[#5B3A9D]">
 
                                 {porcentagem}%
 
@@ -149,25 +129,33 @@ export const CardProgresso360 = ({ colaboradores }) => {
                         </div>
 
 
+
                     </div>
 
 
                 </div>
+
+
+
+
+
+
+
 
 
                 {/* RESPONDIDAS */}
 
-                <div className="bg-green-50 rounded-2xl p-6">
+                <div className="bg-[#E8F5EF] rounded-2xl p-6 flex-1 flex items-center gap-6">
 
 
-                    <div className="w-11 h-11 rounded-xl bg-green-100 flex items-center justify-center mb-5">
+                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center">
 
 
                         <CircleCheckBig
 
-                            size={22}
+                            size={50}
 
-                            className="text-green-600"
+                            className="text-[#008542]"
 
                         />
 
@@ -175,75 +163,110 @@ export const CardProgresso360 = ({ colaboradores }) => {
                     </div>
 
 
-                    <p className="text-sm text-gray-500">
-
-                        Respondidas
-
-                    </p>
 
 
-                    <h2 className="text-3xl font-bold text-gray-800 mt-1">
+                    <div>
 
-                        {respondidos}
 
-                    </h2>
+                        <p className="text-base text-gray-500">
+
+                            Respondidas
+
+                        </p>
+
+
+
+                        <h2 className="text-3xl font-bold text-gray-800">
+
+                            {respondidos}
+
+                        </h2>
+
+
+                    </div>
+
 
 
                 </div>
 
 
+
+
+
+
+
+
+
                 {/* PENDENTES */}
 
-                <div className="bg-[#FDE8E8] rounded-2xl flex items-center justify-start">
+                <div className="bg-[#FBE8E8] rounded-2xl p-6 flex-1 flex items-center gap-6">
 
 
-                    <div className="w-20 h-11 rounded-xl flex items-center justify-start ml-5 mb-5">
+                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center">
 
 
                         <Clock3
 
-                            size={80}
+                            size={50}
 
-                            className="text-amber-600"
+                            className="text-[#B51E35]"
 
                         />
 
 
                     </div>
 
+
+
+
+
                     <div>
-                        <p className="text-2xl text-gray-500 text-left">
+
+
+                        <p className="text-base text-gray-500">
 
                             Pendentes
 
                         </p>
 
 
-                        <h2 className="text-3xl font-bold text-gray-800 mt-1">
+
+
+                        <h2 className="text-3xl font-bold text-gray-800">
 
                             {pendentes}
 
                         </h2>
 
+
+
                     </div>
+
 
 
                 </div>
 
 
+
+
+
+
+
+
+
                 {/* TOTAL */}
 
-                <div className="bg-blue-50 rounded-2xl p-6">
+                <div className="bg-[#E8EFF8] rounded-2xl p-6 flex-1 flex items-center gap-6">
 
 
-                    <div className="w-11 h-11 rounded-xl bg-blue-100 flex items-center justify-center mb-5">
+                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center">
 
 
                         <Users
 
-                            size={22}
+                            size={50}
 
-                            className="text-blue-600"
+                            className="text-[#17458F]"
 
                         />
 
@@ -251,21 +274,38 @@ export const CardProgresso360 = ({ colaboradores }) => {
                     </div>
 
 
-                    <p className="text-sm text-gray-500">
-
-                        Total
-
-                    </p>
 
 
-                    <h2 className="text-3xl font-bold text-gray-800 mt-1">
 
-                        {total}
+                    <div>
 
-                    </h2>
+
+                        <p className="text-base text-gray-500">
+
+                            Total
+
+                        </p>
+
+
+
+
+
+                        <h2 className="text-3xl font-bold text-gray-800">
+
+                            {total}
+
+                        </h2>
+
+
+
+                    </div>
+
 
 
                 </div>
+
+
+
 
 
             </div>
