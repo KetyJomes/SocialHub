@@ -31,3 +31,21 @@ export const authRequired = (req: Request, res: Response, next: NextFunction) =>
     }
     
 };
+
+export const checkRole = (allowedRoles: string[]) => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        // 1. Verifica se o middleware authRequired rodou antes e injetou o usuário
+        if (!req.user) {
+            return res.status(401).json({ response: "Usuário não autenticado." });
+        }
+
+        // 2. Verifica se a role do usuário logado está na lista de permissões da rota
+        if (!allowedRoles.includes(req.user.role)) {
+            return res.status(403).json({ 
+                response: "Acesso negado. Você não tem permissão para executar esta ação." 
+            });
+        }
+
+        return next();
+    };
+};

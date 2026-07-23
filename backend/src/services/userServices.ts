@@ -29,7 +29,7 @@ export const  createUser = async(data: createUserDTO)=>{
 
 };
 
-export const authUser = async(data: authUserDTO)=>{
+export const login = async(data: authUserDTO)=>{
     const {EDV, password} = data
 
     const user = await prisma.user.findUnique({
@@ -46,6 +46,11 @@ export const authUser = async(data: authUserDTO)=>{
     if (!isPasswordValid){
         throw new Error("EDV ou senha incorretos!")
     }
+
+    //jwt
+
+
+    //return token;
 
     return user;
 };

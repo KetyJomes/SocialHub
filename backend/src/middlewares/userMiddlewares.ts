@@ -1,4 +1,5 @@
-import { NextFunction, Request, Response} from "express";
+import { NextFunction, Request, Response} from "express"
+import {prisma} from '../lib/prisma.ts'
 import {z} from "zod"
 
 export const validateCreate = (req: Request,res: Response,next: NextFunction)=>{
@@ -31,3 +32,5 @@ export const validateCreate = (req: Request,res: Response,next: NextFunction)=>{
     }
     return next();
 }
+
+
