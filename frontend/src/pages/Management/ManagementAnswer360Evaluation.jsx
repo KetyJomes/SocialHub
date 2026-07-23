@@ -198,8 +198,8 @@ export const ManagementAnswer360Evaluation = () => {
 
                         <span
                             className="
-                                bg-yellow-100
-                                text-yellow-700
+                                bg-[#0291F7]/15
+                                text-[#0291F7]
                                 px-4
                                 py-2
                                 rounded-full

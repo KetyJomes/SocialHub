@@ -3,7 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
-import { ManagementEvaluationTable } from "../../components/ManagementEvaluationTable";
+
+// Agora usando o componente padrão do sistema
+import { EvaluationTable } from "../../components/EvaluationTable";
 
 import { evaluation } from "../../data/evaluation";
 
@@ -19,6 +21,8 @@ export const ManagementPerformEvaluation = () => {
 
     const [showConfirm, setShowConfirm] = useState(false);
 
+
+
     function handleSelect(questionId, option) {
 
         setAnswers(prev => ({
@@ -30,6 +34,8 @@ export const ManagementPerformEvaluation = () => {
         }));
 
     }
+
+
 
     function limparRespostas() {
 
@@ -48,6 +54,8 @@ export const ManagementPerformEvaluation = () => {
         }
 
     }
+
+
 
     function handleEnviar() {
 
@@ -71,6 +79,8 @@ export const ManagementPerformEvaluation = () => {
 
     }
 
+
+
     function confirmarEnvio() {
 
         console.log(answers);
@@ -79,13 +89,17 @@ export const ManagementPerformEvaluation = () => {
 
         navigate(
 
-            `/management-student/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/gestor`
+            `/management-student/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}`
 
         );
 
     }
 
+
+
     const respondidas = Object.keys(answers).length;
+
+
 
     return (
 
@@ -163,7 +177,9 @@ export const ManagementPerformEvaluation = () => {
 
                     </div>
 
-                    <ManagementEvaluationTable
+                    {/* TABELA PADRÃO DO SISTEMA */}
+
+                    <EvaluationTable
                         data={evaluation}
                         answers={answers}
                         onSelect={handleSelect}

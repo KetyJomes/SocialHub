@@ -25,6 +25,8 @@ import { AdminUsuarios } from "./pages/Adm/AdminUsuarios.jsx";
 import { AdminTurmas } from "./pages/Adm/AdminTurmas.jsx";
 import { ManagementView360Evaluation } from "./pages/Management/ManagementView360Evaluation.jsx";
 import { ManagementAnswer360Evaluation } from "./pages/Management/ManagementAnswer360Evaluation.jsx";
+import { ManagementFeedbackStudents } from "./pages/Management/ManagementFeedbackStudents.jsx";
+import { ManagementComparison } from "./pages/Management/ManagementComparison";
 
 function App() {
 
@@ -54,16 +56,10 @@ function App() {
           <Route path="/adm-main" element={<Admin /> } />
           <Route path="/adm-control-user" element={<AdminUsuarios /> } />
           <Route path="/admin/turmas" element={<AdminTurmas /> } />
-          <Route
-    path="/management-answer-360-evaluation/:turma/:aluno/:avaliacaoId/:colega"
-    element={<ManagementAnswer360Evaluation />}
-/>
-
-
-<Route
-    path="/management-view-360-evaluation/:turma/:aluno/:avaliacaoId/:colega"
-    element={<ManagementView360Evaluation />}
-/>
+          <Route path="/management-answer-360-evaluation/:turma/:aluno/:avaliacaoId/:colega" element={<ManagementAnswer360Evaluation />}/>
+          <Route path="/management-view-360-evaluation/:turma/:aluno/:avaliacaoId/:colega" element={<ManagementView360Evaluation />} />
+          <Route path="/management-feedbacks"element={<ManagementFeedbackStudents />} />
+          <Route path="/management-comparison/:turma/:aluno" element={<ManagementComparison />}/>
         </Routes>
       </BrowserRouter>
     </>

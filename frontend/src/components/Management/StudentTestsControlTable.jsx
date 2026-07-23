@@ -46,12 +46,6 @@ export const StudentTestsControlTable = ({
         }
 
 
-
-
-
-
-
-
         // ==================================
         // Gestor → Aluno
         // ==================================
@@ -69,12 +63,6 @@ export const StudentTestsControlTable = ({
         }
 
 
-
-
-
-
-
-
         // ==================================
         // Autoavaliação
         // Aluno → Líder
@@ -87,12 +75,6 @@ export const StudentTestsControlTable = ({
 
 
     }
-
-
-
-
-
-
 
 
 
@@ -157,11 +139,6 @@ export const StudentTestsControlTable = ({
 
 
                 </thead>
-
-
-
-
-
 
 
                 <tbody>
