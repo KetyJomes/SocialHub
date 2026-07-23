@@ -2,13 +2,14 @@ import { createClassDTO, updateClassDTO } from "../DTOS/classDTO.ts";
 import {prisma} from "../lib/prisma.ts"
 
 export const createClass = async(data: createClassDTO)=>{
-    const {course, period, avarageScore, students} = data;
+    const {course, period, avarageScore, students, PIC} = data;
 
     return await prisma.class.create({
         data:{
-            course:course,
+            Course:course,
             period:period,
             avarageScore:avarageScore,
+            idPIC: PIC
         },
         include: {
             students:true
