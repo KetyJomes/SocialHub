@@ -193,7 +193,7 @@ export type User_TestGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 
 export type User_TestGroupByOutputType = {
   id: number
-  feedback: string
+  feedback: string | null
   idEvaluated: number
   idEvaluator: number
   idTest: number
@@ -224,7 +224,7 @@ export type User_TestWhereInput = {
   OR?: Prisma.User_TestWhereInput[]
   NOT?: Prisma.User_TestWhereInput | Prisma.User_TestWhereInput[]
   id?: Prisma.IntFilter<"User_Test"> | number
-  feedback?: Prisma.StringFilter<"User_Test"> | string
+  feedback?: Prisma.StringNullableFilter<"User_Test"> | string | null
   idEvaluated?: Prisma.IntFilter<"User_Test"> | number
   idEvaluator?: Prisma.IntFilter<"User_Test"> | number
   idTest?: Prisma.IntFilter<"User_Test"> | number
@@ -236,7 +236,7 @@ export type User_TestWhereInput = {
 
 export type User_TestOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  feedback?: Prisma.SortOrder
+  feedback?: Prisma.SortOrderInput | Prisma.SortOrder
   idEvaluated?: Prisma.SortOrder
   idEvaluator?: Prisma.SortOrder
   idTest?: Prisma.SortOrder
@@ -252,7 +252,7 @@ export type User_TestWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.User_TestWhereInput | Prisma.User_TestWhereInput[]
   OR?: Prisma.User_TestWhereInput[]
   NOT?: Prisma.User_TestWhereInput | Prisma.User_TestWhereInput[]
-  feedback?: Prisma.StringFilter<"User_Test"> | string
+  feedback?: Prisma.StringNullableFilter<"User_Test"> | string | null
   idEvaluated?: Prisma.IntFilter<"User_Test"> | number
   idEvaluator?: Prisma.IntFilter<"User_Test"> | number
   idTest?: Prisma.IntFilter<"User_Test"> | number
@@ -264,7 +264,7 @@ export type User_TestWhereUniqueInput = Prisma.AtLeast<{
 
 export type User_TestOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  feedback?: Prisma.SortOrder
+  feedback?: Prisma.SortOrderInput | Prisma.SortOrder
   idEvaluated?: Prisma.SortOrder
   idEvaluator?: Prisma.SortOrder
   idTest?: Prisma.SortOrder
@@ -280,14 +280,14 @@ export type User_TestScalarWhereWithAggregatesInput = {
   OR?: Prisma.User_TestScalarWhereWithAggregatesInput[]
   NOT?: Prisma.User_TestScalarWhereWithAggregatesInput | Prisma.User_TestScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"User_Test"> | number
-  feedback?: Prisma.StringWithAggregatesFilter<"User_Test"> | string
+  feedback?: Prisma.StringNullableWithAggregatesFilter<"User_Test"> | string | null
   idEvaluated?: Prisma.IntWithAggregatesFilter<"User_Test"> | number
   idEvaluator?: Prisma.IntWithAggregatesFilter<"User_Test"> | number
   idTest?: Prisma.IntWithAggregatesFilter<"User_Test"> | number
 }
 
 export type User_TestCreateInput = {
-  feedback: string
+  feedback?: string | null
   Evaluated: Prisma.UserCreateNestedOneWithoutEvaluatedInput
   Evaluator: Prisma.UserCreateNestedOneWithoutEvaluatorInput
   Tests: Prisma.TestCreateNestedOneWithoutUserInput
@@ -296,7 +296,7 @@ export type User_TestCreateInput = {
 
 export type User_TestUncheckedCreateInput = {
   id?: number
-  feedback: string
+  feedback?: string | null
   idEvaluated: number
   idEvaluator: number
   idTest: number
@@ -304,7 +304,7 @@ export type User_TestUncheckedCreateInput = {
 }
 
 export type User_TestUpdateInput = {
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Evaluated?: Prisma.UserUpdateOneRequiredWithoutEvaluatedNestedInput
   Evaluator?: Prisma.UserUpdateOneRequiredWithoutEvaluatorNestedInput
   Tests?: Prisma.TestUpdateOneRequiredWithoutUserNestedInput
@@ -313,7 +313,7 @@ export type User_TestUpdateInput = {
 
 export type User_TestUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
@@ -322,19 +322,19 @@ export type User_TestUncheckedUpdateInput = {
 
 export type User_TestCreateManyInput = {
   id?: number
-  feedback: string
+  feedback?: string | null
   idEvaluated: number
   idEvaluator: number
   idTest: number
 }
 
 export type User_TestUpdateManyMutationInput = {
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type User_TestUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
@@ -540,7 +540,7 @@ export type User_TestUpdateOneRequiredWithoutUserTestAnswerNestedInput = {
 }
 
 export type User_TestCreateWithoutEvaluatedInput = {
-  feedback: string
+  feedback?: string | null
   Evaluator: Prisma.UserCreateNestedOneWithoutEvaluatorInput
   Tests: Prisma.TestCreateNestedOneWithoutUserInput
   userTestAnswer?: Prisma.AnswersCreateNestedManyWithoutUserTestAnswerInput
@@ -548,7 +548,7 @@ export type User_TestCreateWithoutEvaluatedInput = {
 
 export type User_TestUncheckedCreateWithoutEvaluatedInput = {
   id?: number
-  feedback: string
+  feedback?: string | null
   idEvaluator: number
   idTest: number
   userTestAnswer?: Prisma.AnswersUncheckedCreateNestedManyWithoutUserTestAnswerInput
@@ -565,7 +565,7 @@ export type User_TestCreateManyEvaluatedInputEnvelope = {
 }
 
 export type User_TestCreateWithoutEvaluatorInput = {
-  feedback: string
+  feedback?: string | null
   Evaluated: Prisma.UserCreateNestedOneWithoutEvaluatedInput
   Tests: Prisma.TestCreateNestedOneWithoutUserInput
   userTestAnswer?: Prisma.AnswersCreateNestedManyWithoutUserTestAnswerInput
@@ -573,7 +573,7 @@ export type User_TestCreateWithoutEvaluatorInput = {
 
 export type User_TestUncheckedCreateWithoutEvaluatorInput = {
   id?: number
-  feedback: string
+  feedback?: string | null
   idEvaluated: number
   idTest: number
   userTestAnswer?: Prisma.AnswersUncheckedCreateNestedManyWithoutUserTestAnswerInput
@@ -610,7 +610,7 @@ export type User_TestScalarWhereInput = {
   OR?: Prisma.User_TestScalarWhereInput[]
   NOT?: Prisma.User_TestScalarWhereInput | Prisma.User_TestScalarWhereInput[]
   id?: Prisma.IntFilter<"User_Test"> | number
-  feedback?: Prisma.StringFilter<"User_Test"> | string
+  feedback?: Prisma.StringNullableFilter<"User_Test"> | string | null
   idEvaluated?: Prisma.IntFilter<"User_Test"> | number
   idEvaluator?: Prisma.IntFilter<"User_Test"> | number
   idTest?: Prisma.IntFilter<"User_Test"> | number
@@ -633,7 +633,7 @@ export type User_TestUpdateManyWithWhereWithoutEvaluatorInput = {
 }
 
 export type User_TestCreateWithoutTestsInput = {
-  feedback: string
+  feedback?: string | null
   Evaluated: Prisma.UserCreateNestedOneWithoutEvaluatedInput
   Evaluator: Prisma.UserCreateNestedOneWithoutEvaluatorInput
   userTestAnswer?: Prisma.AnswersCreateNestedManyWithoutUserTestAnswerInput
@@ -641,7 +641,7 @@ export type User_TestCreateWithoutTestsInput = {
 
 export type User_TestUncheckedCreateWithoutTestsInput = {
   id?: number
-  feedback: string
+  feedback?: string | null
   idEvaluated: number
   idEvaluator: number
   userTestAnswer?: Prisma.AnswersUncheckedCreateNestedManyWithoutUserTestAnswerInput
@@ -674,7 +674,7 @@ export type User_TestUpdateManyWithWhereWithoutTestsInput = {
 }
 
 export type User_TestCreateWithoutUserTestAnswerInput = {
-  feedback: string
+  feedback?: string | null
   Evaluated: Prisma.UserCreateNestedOneWithoutEvaluatedInput
   Evaluator: Prisma.UserCreateNestedOneWithoutEvaluatorInput
   Tests: Prisma.TestCreateNestedOneWithoutUserInput
@@ -682,7 +682,7 @@ export type User_TestCreateWithoutUserTestAnswerInput = {
 
 export type User_TestUncheckedCreateWithoutUserTestAnswerInput = {
   id?: number
-  feedback: string
+  feedback?: string | null
   idEvaluated: number
   idEvaluator: number
   idTest: number
@@ -705,7 +705,7 @@ export type User_TestUpdateToOneWithWhereWithoutUserTestAnswerInput = {
 }
 
 export type User_TestUpdateWithoutUserTestAnswerInput = {
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Evaluated?: Prisma.UserUpdateOneRequiredWithoutEvaluatedNestedInput
   Evaluator?: Prisma.UserUpdateOneRequiredWithoutEvaluatorNestedInput
   Tests?: Prisma.TestUpdateOneRequiredWithoutUserNestedInput
@@ -713,7 +713,7 @@ export type User_TestUpdateWithoutUserTestAnswerInput = {
 
 export type User_TestUncheckedUpdateWithoutUserTestAnswerInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
@@ -721,20 +721,20 @@ export type User_TestUncheckedUpdateWithoutUserTestAnswerInput = {
 
 export type User_TestCreateManyEvaluatedInput = {
   id?: number
-  feedback: string
+  feedback?: string | null
   idEvaluator: number
   idTest: number
 }
 
 export type User_TestCreateManyEvaluatorInput = {
   id?: number
-  feedback: string
+  feedback?: string | null
   idEvaluated: number
   idTest: number
 }
 
 export type User_TestUpdateWithoutEvaluatedInput = {
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Evaluator?: Prisma.UserUpdateOneRequiredWithoutEvaluatorNestedInput
   Tests?: Prisma.TestUpdateOneRequiredWithoutUserNestedInput
   userTestAnswer?: Prisma.AnswersUpdateManyWithoutUserTestAnswerNestedInput
@@ -742,7 +742,7 @@ export type User_TestUpdateWithoutEvaluatedInput = {
 
 export type User_TestUncheckedUpdateWithoutEvaluatedInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
   userTestAnswer?: Prisma.AnswersUncheckedUpdateManyWithoutUserTestAnswerNestedInput
@@ -750,13 +750,13 @@ export type User_TestUncheckedUpdateWithoutEvaluatedInput = {
 
 export type User_TestUncheckedUpdateManyWithoutEvaluatedInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type User_TestUpdateWithoutEvaluatorInput = {
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Evaluated?: Prisma.UserUpdateOneRequiredWithoutEvaluatedNestedInput
   Tests?: Prisma.TestUpdateOneRequiredWithoutUserNestedInput
   userTestAnswer?: Prisma.AnswersUpdateManyWithoutUserTestAnswerNestedInput
@@ -764,7 +764,7 @@ export type User_TestUpdateWithoutEvaluatorInput = {
 
 export type User_TestUncheckedUpdateWithoutEvaluatorInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
   userTestAnswer?: Prisma.AnswersUncheckedUpdateManyWithoutUserTestAnswerNestedInput
@@ -772,20 +772,20 @@ export type User_TestUncheckedUpdateWithoutEvaluatorInput = {
 
 export type User_TestUncheckedUpdateManyWithoutEvaluatorInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idTest?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type User_TestCreateManyTestsInput = {
   id?: number
-  feedback: string
+  feedback?: string | null
   idEvaluated: number
   idEvaluator: number
 }
 
 export type User_TestUpdateWithoutTestsInput = {
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   Evaluated?: Prisma.UserUpdateOneRequiredWithoutEvaluatedNestedInput
   Evaluator?: Prisma.UserUpdateOneRequiredWithoutEvaluatorNestedInput
   userTestAnswer?: Prisma.AnswersUpdateManyWithoutUserTestAnswerNestedInput
@@ -793,7 +793,7 @@ export type User_TestUpdateWithoutTestsInput = {
 
 export type User_TestUncheckedUpdateWithoutTestsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
   userTestAnswer?: Prisma.AnswersUncheckedUpdateManyWithoutUserTestAnswerNestedInput
@@ -801,7 +801,7 @@ export type User_TestUncheckedUpdateWithoutTestsInput = {
 
 export type User_TestUncheckedUpdateManyWithoutTestsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  feedback?: Prisma.StringFieldUpdateOperationsInput | string
+  feedback?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   idEvaluated?: Prisma.IntFieldUpdateOperationsInput | number
   idEvaluator?: Prisma.IntFieldUpdateOperationsInput | number
 }
@@ -879,7 +879,7 @@ export type $User_TestPayload<ExtArgs extends runtime.Types.Extensions.InternalA
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    feedback: string
+    feedback: string | null
     idEvaluated: number
     idEvaluator: number
     idTest: number

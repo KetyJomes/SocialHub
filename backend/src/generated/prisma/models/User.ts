@@ -207,7 +207,7 @@ export type UserGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 
 export type UserGroupByOutputType = {
   id: number
-  pfp: string
+  pfp: string | null
   name: string
   email: string
   password: string
@@ -241,7 +241,7 @@ export type UserWhereInput = {
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   id?: Prisma.IntFilter<"User"> | number
-  pfp?: Prisma.StringFilter<"User"> | string
+  pfp?: Prisma.StringNullableFilter<"User"> | string | null
   name?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
@@ -256,7 +256,7 @@ export type UserWhereInput = {
 
 export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  pfp?: Prisma.SortOrder
+  pfp?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
@@ -277,7 +277,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   OR?: Prisma.UserWhereInput[]
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
-  pfp?: Prisma.StringFilter<"User"> | string
+  pfp?: Prisma.StringNullableFilter<"User"> | string | null
   name?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
   role?: Prisma.EnumRoleFilter<"User"> | $Enums.Role
@@ -290,7 +290,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
 
 export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  pfp?: Prisma.SortOrder
+  pfp?: Prisma.SortOrderInput | Prisma.SortOrder
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   password?: Prisma.SortOrder
@@ -309,7 +309,7 @@ export type UserScalarWhereWithAggregatesInput = {
   OR?: Prisma.UserScalarWhereWithAggregatesInput[]
   NOT?: Prisma.UserScalarWhereWithAggregatesInput | Prisma.UserScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"User"> | number
-  pfp?: Prisma.StringWithAggregatesFilter<"User"> | string
+  pfp?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   name?: Prisma.StringWithAggregatesFilter<"User"> | string
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   password?: Prisma.StringWithAggregatesFilter<"User"> | string
@@ -319,7 +319,7 @@ export type UserScalarWhereWithAggregatesInput = {
 }
 
 export type UserCreateInput = {
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -333,7 +333,7 @@ export type UserCreateInput = {
 
 export type UserUncheckedCreateInput = {
   id?: number
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -346,7 +346,7 @@ export type UserUncheckedCreateInput = {
 }
 
 export type UserUpdateInput = {
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -360,7 +360,7 @@ export type UserUpdateInput = {
 
 export type UserUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -374,7 +374,7 @@ export type UserUncheckedUpdateInput = {
 
 export type UserCreateManyInput = {
   id?: number
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -384,7 +384,7 @@ export type UserCreateManyInput = {
 }
 
 export type UserUpdateManyMutationInput = {
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -394,7 +394,7 @@ export type UserUpdateManyMutationInput = {
 
 export type UserUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -467,6 +467,10 @@ export type UserListRelationFilter = {
 
 export type UserOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -578,7 +582,7 @@ export type UserUncheckedUpdateManyWithoutClassNestedInput = {
 }
 
 export type UserCreateWithoutEvaluatedInput = {
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -591,7 +595,7 @@ export type UserCreateWithoutEvaluatedInput = {
 
 export type UserUncheckedCreateWithoutEvaluatedInput = {
   id?: number
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -608,7 +612,7 @@ export type UserCreateOrConnectWithoutEvaluatedInput = {
 }
 
 export type UserCreateWithoutEvaluatorInput = {
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -621,7 +625,7 @@ export type UserCreateWithoutEvaluatorInput = {
 
 export type UserUncheckedCreateWithoutEvaluatorInput = {
   id?: number
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -649,7 +653,7 @@ export type UserUpdateToOneWithWhereWithoutEvaluatedInput = {
 }
 
 export type UserUpdateWithoutEvaluatedInput = {
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -662,7 +666,7 @@ export type UserUpdateWithoutEvaluatedInput = {
 
 export type UserUncheckedUpdateWithoutEvaluatedInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -685,7 +689,7 @@ export type UserUpdateToOneWithWhereWithoutEvaluatorInput = {
 }
 
 export type UserUpdateWithoutEvaluatorInput = {
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -698,7 +702,7 @@ export type UserUpdateWithoutEvaluatorInput = {
 
 export type UserUncheckedUpdateWithoutEvaluatorInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -710,7 +714,7 @@ export type UserUncheckedUpdateWithoutEvaluatorInput = {
 }
 
 export type UserCreateWithoutPICsInput = {
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -723,7 +727,7 @@ export type UserCreateWithoutPICsInput = {
 
 export type UserUncheckedCreateWithoutPICsInput = {
   id?: number
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -740,7 +744,7 @@ export type UserCreateOrConnectWithoutPICsInput = {
 }
 
 export type UserCreateWithoutClassInput = {
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -753,7 +757,7 @@ export type UserCreateWithoutClassInput = {
 
 export type UserUncheckedCreateWithoutClassInput = {
   id?: number
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -786,7 +790,7 @@ export type UserUpdateToOneWithWhereWithoutPICsInput = {
 }
 
 export type UserUpdateWithoutPICsInput = {
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -799,7 +803,7 @@ export type UserUpdateWithoutPICsInput = {
 
 export type UserUncheckedUpdateWithoutPICsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -831,7 +835,7 @@ export type UserScalarWhereInput = {
   OR?: Prisma.UserScalarWhereInput[]
   NOT?: Prisma.UserScalarWhereInput | Prisma.UserScalarWhereInput[]
   id?: Prisma.IntFilter<"User"> | number
-  pfp?: Prisma.StringFilter<"User"> | string
+  pfp?: Prisma.StringNullableFilter<"User"> | string | null
   name?: Prisma.StringFilter<"User"> | string
   email?: Prisma.StringFilter<"User"> | string
   password?: Prisma.StringFilter<"User"> | string
@@ -842,7 +846,7 @@ export type UserScalarWhereInput = {
 
 export type UserCreateManyClassInput = {
   id?: number
-  pfp: string
+  pfp?: string | null
   name: string
   email: string
   password: string
@@ -851,7 +855,7 @@ export type UserCreateManyClassInput = {
 }
 
 export type UserUpdateWithoutClassInput = {
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -864,7 +868,7 @@ export type UserUpdateWithoutClassInput = {
 
 export type UserUncheckedUpdateWithoutClassInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -877,7 +881,7 @@ export type UserUncheckedUpdateWithoutClassInput = {
 
 export type UserUncheckedUpdateManyWithoutClassInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  pfp?: Prisma.StringFieldUpdateOperationsInput | string
+  pfp?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   name?: Prisma.StringFieldUpdateOperationsInput | string
   email?: Prisma.StringFieldUpdateOperationsInput | string
   password?: Prisma.StringFieldUpdateOperationsInput | string
@@ -982,7 +986,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    pfp: string
+    pfp: string | null
     name: string
     email: string
     password: string

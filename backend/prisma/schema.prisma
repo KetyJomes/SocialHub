@@ -12,7 +12,7 @@ datasource db {
 model User {
   id Int @id @default (autoincrement())
   // // a discutir o formato
-  // pfp String
+  pfp String?
   name String 
   email String @unique
   password String
@@ -33,7 +33,7 @@ model User {
 
 model User_Test{
   id Int @id @default(autoincrement())
-  feedback String
+  feedback String?
   
   Evaluated User @relation("Evaluated",fields: [idEvaluated], references: [id])
   idEvaluated Int

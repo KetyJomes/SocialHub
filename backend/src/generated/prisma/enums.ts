@@ -25,6 +25,7 @@ export const Frequency = {
   Mensal: 'Mensal',
   Bimestral: 'Bimestral',
   Trimestral: 'Trimestral',
+  Semestral: 'Semestral',
   Anual: 'Anual'
 } as const
 
