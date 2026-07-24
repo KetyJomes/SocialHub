@@ -1,7 +1,7 @@
 // Criar Avaliação
 
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
@@ -14,22 +14,32 @@ export const CreateTest = () => {
 
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
+    const location = useLocation();
+    const modelo = location.state?.modelo;
+    const modoCriacao = location.state?.criarAvaliacao || false;
+    const modoEdicao = location.state?.editarModelo || false;
+    const modeloOrigemId = location.state?.modeloOrigemId;
     const [showAlert, setShowAlert] = useState(false);
     const [mensagemAlert, setMensagemAlert] = useState("");
 
     const [dados, setDados] = useState({
-        titulo: "",
-        tipo: "",
-        publico: "",
-        disponibilidade: "",
-        prazo: "",
-        recorrencia: "uma-vez"
+        titulo: modelo?.titulo || "",
+        tipo: modelo?.tipo || "",
+        publico: modelo?.publico || "",
+        disponibilidade: modelo?.disponibilidade || "",
+        prazo: modelo?.prazo || "",
+        recorrencia: modelo?.recorrencia || "uma-vez"
     });
 
-    const [turma, setTurma] = useState("");
-    const [tipoPublico, setTipoPublico] = useState("todos");
-    const [alunosSelecionados, setAlunosSelecionados] = useState([]);
-
+    const [turma, setTurma] = useState(
+        modelo?.turma || ""
+    );
+    const [tipoPublico, setTipoPublico] = useState(
+        modelo?.tipoPublico || "todos"
+    );
+    const [alunosSelecionados, setAlunosSelecionados] = useState(
+        modelo?.alunosSelecionados || []
+    );
     const alunos = [
         { id: 1, nome: "João Pedro" },
         { id: 2, nome: "Maria Eduarda" },
@@ -38,20 +48,53 @@ export const CreateTest = () => {
         { id: 5, nome: "Gabriel" },
     ];
 
-    const [secoes, setSecoes] = useState([
-        {
-            id: 1,
-            titulo: "",
-            descricao: "",
-            perguntas: [
-                {
-                    id: 1,
-                    texto: "",
-                    escala: ""
-                }
-            ]
-        }
-    ]);
+    const [secoes, setSecoes] = useState(
+
+        modelo?.secoes || [
+
+            {
+                id: 1,
+                titulo: "",
+                descricao: "",
+                perguntas: [
+                    {
+                        id: 1,
+                        texto: "",
+                        escala: ""
+                    }
+                ]
+            }
+
+        ]
+
+    );
+
+    useEffect(() => {
+
+        if (!modelo) return;
+
+        setDados({
+            titulo: modelo.titulo || "",
+            tipo: modelo.tipo || "",
+            publico: modelo.publico || "",
+            disponibilidade: modelo.disponibilidade || "",
+            prazo: modelo.prazo || "",
+            recorrencia: modelo.recorrencia || "uma-vez"
+        });
+
+        setTurma(modelo.turma || "");
+
+        setTipoPublico(
+        modelo.tipoPublico || "todos"
+        );
+
+        setAlunosSelecionados(
+            modelo.alunosSelecionados || []
+        );
+
+        setSecoes(modelo.secoes || []);
+
+    }, [modelo]);
 
     function atualizarCampo(campo, valor) {
 
@@ -83,8 +126,10 @@ export const CreateTest = () => {
 
     function criarAvaliacao() {
 
-        // VALIDAR INFORMAÇÕES DA AVALIAÇÃO
-     
+        // ============================
+        // Informações da avaliação
+        // ============================
+
         if (
             !dados.titulo ||
             !dados.tipo ||
@@ -103,15 +148,17 @@ export const CreateTest = () => {
 
         }
 
-        // VALIDAR TÓPICOS
+        // ============================
+        // Destinatários
+        // ============================
 
         if (
-            secoes.length === 0 ||
-            secoes.some(secao => !secao.titulo.trim())
+            tipoPublico === "alguns" &&
+            alunosSelecionados.length === 0
         ) {
 
             setMensagemAlert(
-                "Crie pelo menos um tópico e informe o nome de todos os tópicos."
+                "Selecione pelo menos um aluno como destinatário da avaliação."
             );
 
             setShowAlert(true);
@@ -120,20 +167,14 @@ export const CreateTest = () => {
 
         }
 
-        // VALIDAR QUESTÕES
+        // ============================
+        // Tópicos
+        // ============================
 
-        const perguntas = secoes.flatMap(secao => secao.perguntas);
-
-        if (
-            perguntas.length === 0 ||
-            perguntas.some(pergunta =>
-                !pergunta.texto.trim() ||
-                !pergunta.escala
-            )
-        ) {
+        if (secoes.length < 1) {
 
             setMensagemAlert(
-                "Preencha todas as questões e selecione uma escala para cada uma delas."
+                "Crie pelo menos um tópico para a avaliação."
             );
 
             setShowAlert(true);
@@ -142,36 +183,87 @@ export const CreateTest = () => {
 
         }
 
-        // VALIDAR ESCALAS
-    
-        const escalasObrigatorias = [
-            "Crítico",
-            "Abaixo do esperado",
-            "Dentro do esperado",
-            "Acima do esperado"
-        ];
+        // ============================
+        // Validação dos tópicos
+        // ============================
 
-        const escalasSelecionadas = perguntas.map(
-            pergunta => pergunta.escala
-        );
+        for (const secao of secoes) {
 
-        const todasEscalasForamUsadas = escalasObrigatorias.every(
-            escala => escalasSelecionadas.includes(escala)
-        );
+            if (!secao.titulo.trim()) {
 
-        if (!todasEscalasForamUsadas) {
+                setMensagemAlert(
+                    "Todos os tópicos devem possuir um título."
+                );
 
-            setMensagemAlert(
-                "É obrigatório utilizar todas as escalas na avaliação."
+                setShowAlert(true);
+
+                return;
+
+            }
+
+            if (secao.perguntas.length === 0) {
+
+                setMensagemAlert(
+                    "Todos os tópicos devem possuir pelo menos uma questão."
+                );
+
+                setShowAlert(true);
+
+                return;
+
+            }
+
+            const escalasUtilizadas = secao.perguntas
+                .map(pergunta => pergunta.escala)
+                .filter(Boolean);
+
+            const escalasObrigatorias = [
+                "Crítico",
+                "Abaixo do esperado",
+                "Dentro do esperado",
+                "Acima do esperado"
+            ];
+
+            const possuiTodasEscalas = escalasObrigatorias.every(
+                escala => escalasUtilizadas.includes(escala)
             );
 
-            setShowAlert(true);
+            if (!possuiTodasEscalas) {
 
-            return;
+                setMensagemAlert(
+                    `O tópico "${secao.titulo}" deve conter questões utilizando todas as escalas: Crítico, Abaixo do esperado, Dentro do esperado e Acima do esperado.`
+                );
+
+                setShowAlert(true);
+
+                return;
+
+            }
+
+            for (const pergunta of secao.perguntas) {
+
+                if (
+                    !pergunta.texto.trim() ||
+                    !pergunta.escala
+                ) {
+
+                    setMensagemAlert(
+                        "Todas as questões devem possuir um texto e uma escala."
+                    );
+
+                    setShowAlert(true);
+
+                    return;
+
+                }
+
+            }
 
         }
 
-        // CRIAR AVALIAÇÃO
+        // ============================
+        // Criar avaliação
+        // ============================
 
         const novaAvaliacao = {
 
@@ -187,9 +279,10 @@ export const CreateTest = () => {
 
             secoes,
 
-            status: "Pendente"
+            status:"Pendente"
 
         };
+
 
         testsMock.push(novaAvaliacao);
 
@@ -218,23 +311,43 @@ export const CreateTest = () => {
 
         }
 
-        const modelo = {
 
-            id: Date.now(),
+        const modeloAtualizado = {
 
-            ...dados,
+        id: modeloOrigemId || Date.now(),
 
-            turma,
+        ...dados,
 
-            secoes
+        turma,
 
-        };
+        tipoPublico,
 
-        modelsMock.push(modelo);
+        alunosSelecionados,
+
+        secoes
+
+    };
+
+
+    const index = modelsMock.findIndex(
+        item => item.id === modeloOrigemId
+    );
+
+
+        if(index !== -1){
+
+            modelsMock[index] = modeloAtualizado;
+
+        } else {
+
+            modelsMock.push(modeloAtualizado);
+
+        }
+
 
         navigate("/management-test", {
-            state: {
-                abaInicial: "modelos"
+            state:{
+                abaInicial:"modelos"
             }
         });
 
@@ -259,7 +372,16 @@ export const CreateTest = () => {
                 <div className="max-w-7xl mx-auto">
 
                     <h1 className="text-3xl font-bold text-gray-800">
-                        Nova Avaliação
+                        {
+                            modelo
+                                ? modoCriacao
+                                    ? "Criar Avaliação"
+                                    : modoEdicao
+                                        ? "Editar Modelo"
+                                        : "Editar Modelo"
+                                : "Nova Avaliação"
+                        }
+
                     </h1>
 
                     <p className="text-gray-500 mt-2">
@@ -566,37 +688,36 @@ export const CreateTest = () => {
 
             </main>
             {
-                showAlert && (
-    
-                    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-    
-                        <div className="bg-white rounded-2xl shadow-xl p-8 w-[420px]">
-    
-                            <h2 className="text-2xl font-bold mb-4">
-                                Atenção
-                            </h2>
-    
-                            <p className="text-gray-600 mb-8">
-                                {mensagemAlert}
-                            </p>
-    
-                            <div className="flex justify-end">
-    
-                                <button
-                                    onClick={() => setShowAlert(false)}
-                                    className="bg-[#0291F7] text-white rounded-lg px-5 py-2 hover:opacity-90 transition"
-                                >
-                                    Entendi
-                                </button>
-    
-                            </div>
-    
-                        </div>
-    
-                    </div>
-    
-                )
+            showAlert && (
             
+                <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+
+                    <div className="bg-white rounded-2xl shadow-xl p-8 w-[420px]">
+
+                        <h2 className="text-2xl font-bold mb-4">
+                            Atenção
+                        </h2>
+
+                        <p className="text-gray-600 mb-8">
+                            {mensagemAlert}
+                        </p>
+
+                        <div className="flex justify-end">
+
+                            <button
+                                onClick={() => setShowAlert(false)}
+                                className="bg-[#0291F7] text-white rounded-lg px-5 py-2 hover:opacity-90 transition"
+                            >
+                                Entendi
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            )
         }
 
         </>
