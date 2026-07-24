@@ -16,6 +16,8 @@ import {
   Lightbulb,
   Download,
   Save,
+  Pencil,
+  Info
 } from "lucide-react";
 
 export const ManagementComparison = () => {
@@ -166,24 +168,93 @@ export const ManagementComparison = () => {
 
             </div>
 
+            <div className="flex items-center gap-4">
+
+
+            {/* INFORMAÇÃO */}
+
             <button
               className="
+                w-9
+                h-9
+                rounded-full
+                border
+                border-gray-200
                 flex
                 items-center
-                gap-2
-                bg-[#21528A]
-                text-white
-                px-5
-                py-3
-                rounded-xl
-                font-semibold
-                hover:bg-[#1b4471]
+                justify-center
+                hover:bg-gray-100
                 transition
               "
             >
-              <Download size={18} />
-              Exportar PDF
+
+              <Info
+                size={18}
+                className="text-gray-500"
+              />
+
             </button>
+
+
+
+            {/* EXPORTAR */}
+
+            <button
+
+              className="
+                flex
+                items-center
+                gap-3
+                px-5
+                py-3
+                rounded-xl
+                bg-white
+                border
+                border-blue-500
+                text-blue-600
+                font-semibold
+                hover:bg-blue-50
+                transition
+                shadow-sm
+              "
+
+            >
+
+              <Download size={18}/>
+
+              Exportar relatório
+
+            </button>
+
+            {/* EDITAR */}
+
+            <button
+
+              className="
+                flex
+                items-center
+                gap-3
+                px-5
+                py-3
+                rounded-xl
+                bg-blue-600
+                text-white
+                font-semibold
+                hover:bg-blue-700
+                transition
+                shadow-sm
+              "
+
+            >
+
+              <Pencil size={18}/>
+
+              Editar
+
+            </button>
+
+
+          </div>
 
           </div>
 
