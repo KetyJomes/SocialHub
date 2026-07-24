@@ -14,8 +14,8 @@ export const createTest = async(data: createTestDTO)=>{
             startDate:startdate,
             AvailableResult: AvailableResult,
             grade: grade,
-            frequency: frequency,
-            type: type,
+            Frequency: frequency,
+            TestType: type,
             skill: skill,
             questions: {
                 create: questions
@@ -35,7 +35,7 @@ export const updateTest = async(id:number,data: updateTestDTO)=>{
             AvailableResult: AvailableResult,
             grade: grade,
             Frequency: frequency,
-            Testtype: type,
+            TestType: type,
             skill: skill,
             questions: {
                 create: questions
@@ -136,7 +136,7 @@ const test = await prisma.test.findUnique({
     },
 });
 
-if (!test || test.frequency == Frequency.unique){
+if (!test || test.Frequency == Frequency.unique){
     return null;
 }
 
@@ -167,6 +167,7 @@ switch (test.Frequency){
 
     case Frequency.Anual:
             nextStart.setMonth(nextStart.getMonth() +12);
+            break;
     
     default:
         return null;   
