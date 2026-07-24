@@ -25,16 +25,13 @@ export const  createUser = async(data: createUserDTO)=>{
             EDV: EDV,
             role: role ?? "Student",
             idClass: classId,
+            pfp : ""
         }
     });
 
 };
 
-<<<<<<< HEAD
 export const login = async(data: loginDTO)=>{
-=======
-export const login = async(data: authUserDTO)=>{
->>>>>>> 1d9b32c6564a2ad9ef6d00f5f635504551d71b60
     const {EDV, password} = data
 
     const user = await prisma.user.findUnique({
