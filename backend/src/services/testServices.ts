@@ -148,21 +148,21 @@ const duration = currentEnd.getTime() - currentStart.getTime();
 
 let nextStart = new Date(currentStart);
 
-switch (test.frequency){
+switch (test.Frequency){
     case Frequency.Mensal:
         nextStart.setMonth(nextStart.getMonth() +1);
         break;
     
     case Frequency.Bimestral:
-        nextStart.setMonth(nextStart.getMonth() +1);
+        nextStart.setMonth(nextStart.getMonth() +2);
         break;
     
     case Frequency.Trimestral:
-        nextStart.setMonth(nextStart.getMonth() +1);
+        nextStart.setMonth(nextStart.getMonth() +3);
         break;
 
-    case Frequency.Bimestral:
-        nextStart.setMonth(nextStart.getMonth() +1);
+    case Frequency.Semestral:
+        nextStart.setMonth(nextStart.getMonth() +4);
         break;
     } 
 

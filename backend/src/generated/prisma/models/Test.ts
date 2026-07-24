@@ -45,6 +45,7 @@ export type TestMinAggregateOutputType = {
   type: $Enums.TestType | null
   AvailableResult: boolean | null
   Frequency: $Enums.Frequency | null
+  Feedback: string | null
 }
 
 export type TestMaxAggregateOutputType = {
@@ -56,6 +57,7 @@ export type TestMaxAggregateOutputType = {
   type: $Enums.TestType | null
   AvailableResult: boolean | null
   Frequency: $Enums.Frequency | null
+  Feedback: string | null
 }
 
 export type TestCountAggregateOutputType = {
@@ -67,6 +69,7 @@ export type TestCountAggregateOutputType = {
   type: number
   AvailableResult: number
   Frequency: number
+  Feedback: number
   _all: number
 }
 
@@ -90,6 +93,7 @@ export type TestMinAggregateInputType = {
   type?: true
   AvailableResult?: true
   Frequency?: true
+  Feedback?: true
 }
 
 export type TestMaxAggregateInputType = {
@@ -101,6 +105,7 @@ export type TestMaxAggregateInputType = {
   type?: true
   AvailableResult?: true
   Frequency?: true
+  Feedback?: true
 }
 
 export type TestCountAggregateInputType = {
@@ -112,6 +117,7 @@ export type TestCountAggregateInputType = {
   type?: true
   AvailableResult?: true
   Frequency?: true
+  Feedback?: true
   _all?: true
 }
 
@@ -210,6 +216,7 @@ export type TestGroupByOutputType = {
   type: $Enums.TestType
   AvailableResult: boolean
   Frequency: $Enums.Frequency
+  Feedback: string
   _count: TestCountAggregateOutputType | null
   _avg: TestAvgAggregateOutputType | null
   _sum: TestSumAggregateOutputType | null
@@ -244,6 +251,7 @@ export type TestWhereInput = {
   type?: Prisma.EnumTestTypeFilter<"Test"> | $Enums.TestType
   AvailableResult?: Prisma.BoolFilter<"Test"> | boolean
   Frequency?: Prisma.EnumFrequencyFilter<"Test"> | $Enums.Frequency
+  Feedback?: Prisma.StringFilter<"Test"> | string
   Skills?: Prisma.SkillListRelationFilter
   user?: Prisma.User_TestListRelationFilter
 }
@@ -257,6 +265,7 @@ export type TestOrderByWithRelationInput = {
   type?: Prisma.SortOrder
   AvailableResult?: Prisma.SortOrder
   Frequency?: Prisma.SortOrder
+  Feedback?: Prisma.SortOrder
   Skills?: Prisma.SkillOrderByRelationAggregateInput
   user?: Prisma.User_TestOrderByRelationAggregateInput
   _relevance?: Prisma.TestOrderByRelevanceInput
@@ -274,6 +283,7 @@ export type TestWhereUniqueInput = Prisma.AtLeast<{
   type?: Prisma.EnumTestTypeFilter<"Test"> | $Enums.TestType
   AvailableResult?: Prisma.BoolFilter<"Test"> | boolean
   Frequency?: Prisma.EnumFrequencyFilter<"Test"> | $Enums.Frequency
+  Feedback?: Prisma.StringFilter<"Test"> | string
   Skills?: Prisma.SkillListRelationFilter
   user?: Prisma.User_TestListRelationFilter
 }, "id">
@@ -287,6 +297,7 @@ export type TestOrderByWithAggregationInput = {
   type?: Prisma.SortOrder
   AvailableResult?: Prisma.SortOrder
   Frequency?: Prisma.SortOrder
+  Feedback?: Prisma.SortOrder
   _count?: Prisma.TestCountOrderByAggregateInput
   _avg?: Prisma.TestAvgOrderByAggregateInput
   _max?: Prisma.TestMaxOrderByAggregateInput
@@ -306,6 +317,7 @@ export type TestScalarWhereWithAggregatesInput = {
   type?: Prisma.EnumTestTypeWithAggregatesFilter<"Test"> | $Enums.TestType
   AvailableResult?: Prisma.BoolWithAggregatesFilter<"Test"> | boolean
   Frequency?: Prisma.EnumFrequencyWithAggregatesFilter<"Test"> | $Enums.Frequency
+  Feedback?: Prisma.StringWithAggregatesFilter<"Test"> | string
 }
 
 export type TestCreateInput = {
@@ -316,6 +328,7 @@ export type TestCreateInput = {
   type: $Enums.TestType
   AvailableResult: boolean
   Frequency: $Enums.Frequency
+  Feedback: string
   Skills?: Prisma.SkillCreateNestedManyWithoutTestsInput
   user?: Prisma.User_TestCreateNestedManyWithoutTestsInput
 }
@@ -329,6 +342,7 @@ export type TestUncheckedCreateInput = {
   type: $Enums.TestType
   AvailableResult: boolean
   Frequency: $Enums.Frequency
+  Feedback: string
   Skills?: Prisma.SkillUncheckedCreateNestedManyWithoutTestsInput
   user?: Prisma.User_TestUncheckedCreateNestedManyWithoutTestsInput
 }
@@ -341,6 +355,7 @@ export type TestUpdateInput = {
   type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
   Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Skills?: Prisma.SkillUpdateManyWithoutTestsNestedInput
   user?: Prisma.User_TestUpdateManyWithoutTestsNestedInput
 }
@@ -354,6 +369,7 @@ export type TestUncheckedUpdateInput = {
   type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
   Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Skills?: Prisma.SkillUncheckedUpdateManyWithoutTestsNestedInput
   user?: Prisma.User_TestUncheckedUpdateManyWithoutTestsNestedInput
 }
@@ -367,6 +383,7 @@ export type TestCreateManyInput = {
   type: $Enums.TestType
   AvailableResult: boolean
   Frequency: $Enums.Frequency
+  Feedback: string
 }
 
 export type TestUpdateManyMutationInput = {
@@ -377,6 +394,7 @@ export type TestUpdateManyMutationInput = {
   type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
   Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Feedback?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type TestUncheckedUpdateManyInput = {
@@ -388,6 +406,7 @@ export type TestUncheckedUpdateManyInput = {
   type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
   Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Feedback?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type TestScalarRelationFilter = {
@@ -410,6 +429,7 @@ export type TestCountOrderByAggregateInput = {
   type?: Prisma.SortOrder
   AvailableResult?: Prisma.SortOrder
   Frequency?: Prisma.SortOrder
+  Feedback?: Prisma.SortOrder
 }
 
 export type TestAvgOrderByAggregateInput = {
@@ -426,6 +446,7 @@ export type TestMaxOrderByAggregateInput = {
   type?: Prisma.SortOrder
   AvailableResult?: Prisma.SortOrder
   Frequency?: Prisma.SortOrder
+  Feedback?: Prisma.SortOrder
 }
 
 export type TestMinOrderByAggregateInput = {
@@ -437,6 +458,7 @@ export type TestMinOrderByAggregateInput = {
   type?: Prisma.SortOrder
   AvailableResult?: Prisma.SortOrder
   Frequency?: Prisma.SortOrder
+  Feedback?: Prisma.SortOrder
 }
 
 export type TestSumOrderByAggregateInput = {
@@ -496,6 +518,7 @@ export type TestCreateWithoutUserInput = {
   type: $Enums.TestType
   AvailableResult: boolean
   Frequency: $Enums.Frequency
+  Feedback: string
   Skills?: Prisma.SkillCreateNestedManyWithoutTestsInput
 }
 
@@ -508,6 +531,7 @@ export type TestUncheckedCreateWithoutUserInput = {
   type: $Enums.TestType
   AvailableResult: boolean
   Frequency: $Enums.Frequency
+  Feedback: string
   Skills?: Prisma.SkillUncheckedCreateNestedManyWithoutTestsInput
 }
 
@@ -535,6 +559,7 @@ export type TestUpdateWithoutUserInput = {
   type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
   Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Skills?: Prisma.SkillUpdateManyWithoutTestsNestedInput
 }
 
@@ -547,6 +572,7 @@ export type TestUncheckedUpdateWithoutUserInput = {
   type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
   Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Skills?: Prisma.SkillUncheckedUpdateManyWithoutTestsNestedInput
 }
 
@@ -558,6 +584,7 @@ export type TestCreateWithoutSkillsInput = {
   type: $Enums.TestType
   AvailableResult: boolean
   Frequency: $Enums.Frequency
+  Feedback: string
   user?: Prisma.User_TestCreateNestedManyWithoutTestsInput
 }
 
@@ -570,6 +597,7 @@ export type TestUncheckedCreateWithoutSkillsInput = {
   type: $Enums.TestType
   AvailableResult: boolean
   Frequency: $Enums.Frequency
+  Feedback: string
   user?: Prisma.User_TestUncheckedCreateNestedManyWithoutTestsInput
 }
 
@@ -597,6 +625,7 @@ export type TestUpdateWithoutSkillsInput = {
   type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
   Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   user?: Prisma.User_TestUpdateManyWithoutTestsNestedInput
 }
 
@@ -609,6 +638,7 @@ export type TestUncheckedUpdateWithoutSkillsInput = {
   type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
   Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   user?: Prisma.User_TestUncheckedUpdateManyWithoutTestsNestedInput
 }
 
@@ -661,6 +691,7 @@ export type TestSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   type?: boolean
   AvailableResult?: boolean
   Frequency?: boolean
+  Feedback?: boolean
   Skills?: boolean | Prisma.Test$SkillsArgs<ExtArgs>
   user?: boolean | Prisma.Test$userArgs<ExtArgs>
   _count?: boolean | Prisma.TestCountOutputTypeDefaultArgs<ExtArgs>
@@ -677,9 +708,10 @@ export type TestSelectScalar = {
   type?: boolean
   AvailableResult?: boolean
   Frequency?: boolean
+  Feedback?: boolean
 }
 
-export type TestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "Content" | "startDate" | "finalDate" | "grade" | "type" | "AvailableResult" | "Frequency", ExtArgs["result"]["test"]>
+export type TestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "Content" | "startDate" | "finalDate" | "grade" | "type" | "AvailableResult" | "Frequency" | "Feedback", ExtArgs["result"]["test"]>
 export type TestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   Skills?: boolean | Prisma.Test$SkillsArgs<ExtArgs>
   user?: boolean | Prisma.Test$userArgs<ExtArgs>
@@ -701,6 +733,7 @@ export type $TestPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     type: $Enums.TestType
     AvailableResult: boolean
     Frequency: $Enums.Frequency
+    Feedback: string
   }, ExtArgs["result"]["test"]>
   composites: {}
 }
@@ -1080,6 +1113,7 @@ export interface TestFieldRefs {
   readonly type: Prisma.FieldRef<"Test", 'TestType'>
   readonly AvailableResult: Prisma.FieldRef<"Test", 'Boolean'>
   readonly Frequency: Prisma.FieldRef<"Test", 'Frequency'>
+  readonly Feedback: Prisma.FieldRef<"Test", 'String'>
 }
     
 

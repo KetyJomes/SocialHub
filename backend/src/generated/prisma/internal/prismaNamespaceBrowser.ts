@@ -107,7 +107,8 @@ export const TestScalarFieldEnum = {
   grade: 'grade',
   type: 'type',
   AvailableResult: 'AvailableResult',
-  Frequency: 'Frequency'
+  Frequency: 'Frequency',
+  Feedback: 'Feedback'
 } as const
 
 export type TestScalarFieldEnum = (typeof TestScalarFieldEnum)[keyof typeof TestScalarFieldEnum]
@@ -190,7 +191,8 @@ export type User_TestOrderByRelevanceFieldEnum = (typeof User_TestOrderByRelevan
 
 
 export const TestOrderByRelevanceFieldEnum = {
-  Content: 'Content'
+  Content: 'Content',
+  Feedback: 'Feedback'
 } as const
 
 export type TestOrderByRelevanceFieldEnum = (typeof TestOrderByRelevanceFieldEnum)[keyof typeof TestOrderByRelevanceFieldEnum]
