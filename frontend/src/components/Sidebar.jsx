@@ -93,6 +93,25 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                         {isOpen && <span>Avaliações</span>}
                     </button>
 
+                    {/* FEEDBACK 360 */}
+                    <button
+                        onClick={() => navigate("/360")}
+                        className="
+                            flex
+                            items-center
+                            gap-3
+                            w-full
+                            p-3
+                            rounded-lg
+                            hover:bg-gray-100
+                            transition
+                        "
+                    >
+                        <MessageSquareQuote size={20} />
+
+                        {isOpen && <span>Avaliação 360</span>}
+                    </button>
+
                     {/* RESULTADOS */}
                     <button
                         onClick={() => navigate("/resultados")}
@@ -112,24 +131,6 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                         {isOpen && <span>Resultados</span>}
                     </button>
 
-                    {/* FEEDBACK 360 */}
-                    <button
-                        onClick={() => navigate("/user-feedback")}
-                        className="
-                            flex
-                            items-center
-                            gap-3
-                            w-full
-                            p-3
-                            rounded-lg
-                            hover:bg-gray-100
-                            transition
-                        "
-                    >
-                        <MessageSquareQuote size={20} />
-
-                        {isOpen && <span>Feedback 360</span>}
-                    </button>
 
                 </nav>
 

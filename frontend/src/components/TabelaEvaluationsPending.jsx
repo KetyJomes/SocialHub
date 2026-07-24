@@ -41,7 +41,7 @@ export const TabelaEvaluationsPending = ({ avaliacoes }) => {
 
                     <ClipboardCheck
                         size={20}
-                        className="text-[#B8A4FF]"
+                        className="text-[#0291F7]"
                         strokeWidth={2}
                     />
 

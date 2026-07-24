@@ -1,10 +1,17 @@
-import { useState } from "react";
+import { ClipboardCheck } from "lucide-react";
 
 
-export const CardAvaliacao = ({nome, turma}) => {
-    const [clicado, setClicado] = useState(false);
+export const CardAvaliacao = ({
+    nome,
+    turma,
+    tipo,
+    status,
+    tipoCard = "avaliacao"
+}) => {
+
 
     return (
+
         <div
             className="
                 flex
@@ -17,35 +24,65 @@ export const CardAvaliacao = ({nome, turma}) => {
                 border-gray-200
                 transition
                 hover:shadow-sm
+                cursor-pointer
             "
         >
 
-            <div>
+            <div className="flex items-center gap-3">
 
-                <h3 className="font-semibold text-gray-800">
-                    {nome}
-                </h3>
 
-                <div className="flex items-center gap-2 mt-2">
+                <div
+                    className="
+                        w-9
+                        h-9
+                        rounded-full
+                        bg-[#0291F7]/15
+                        flex
+                        items-center
+                        justify-center
+                    "
+                >
 
-                    <span
-                        className="
-                            w-2
-                            h-2
-                            bg-green-500
-                            rounded-full
-                        "
-                    >
-                    </span>
+                    <ClipboardCheck
+                        size={18}
+                        className="text-[#0291F7]"
+                    />
 
-                    <span
+                </div>
+
+
+
+                <div>
+
+                    <h3 className="font-semibold text-gray-800">
+
+                        {nome}
+
+                    </h3>
+
+
+                    <p
                         className="
                             text-sm
                             text-gray-500
+                            mt-1
                         "
                     >
-                        Avaliação enviada
-                    </span>
+
+                        {
+                            tipoCard === "feedback"
+
+                            ?
+
+                            "Feedback 360°"
+
+                            :
+
+                            tipo
+
+                        }
+
+                    </p>
 
 
                 </div>
@@ -53,46 +90,97 @@ export const CardAvaliacao = ({nome, turma}) => {
 
             </div>
 
-            <div className="flex items-center gap-5">
 
+
+            <div
+                className="
+                    flex
+                    items-center
+                    gap-3
+                "
+            >
 
                 <span
                     className="
                         text-sm
-                        bg-gray-100
-                        px-3
-                        py-1
-                        rounded-lg
-                        text-gray-600
+                        text-gray-500
                     "
                 >
+
                     {turma}
+
                 </span>
+
+
+
+                {
+                    status && (
+
+                        <span
+                            className={`
+                                px-3
+                                py-1
+                                rounded-full
+                                text-xs
+                                font-medium
+
+                                ${
+                                    status === "Em atraso"
+
+                                    ?
+
+                                    "bg-red-100 text-red-700"
+
+
+                                    :
+
+
+                                    status === "Respondida"
+
+                                    ?
+
+                                    "bg-green-100 text-green-700"
+
+
+                                    :
+
+
+                                    "bg-yellow-100 text-yellow-700"
+
+                                }
+
+                            `}
+                        >
+
+                            {status}
+
+                        </span>
+
+                    )
+                }
+
+
 
                 <button
 
-                    onClick={() => setClicado(!clicado)}
-
-                    className={`
+                    className="
+                        text-[#0291F7]
                         text-2xl
                         font-bold
-                        transition
-                        duration-200
+                    "
 
-                        ${
-                            clicado
-                            ? "text-[#B8A4FF] scale-125"
-                            : "text-[#B8A4FF]"
-                        }
-
-                    `}
                 >
+
                     ›
+
                 </button>
+
 
             </div>
 
+
         </div>
 
-    )
-}
+    );
+
+};

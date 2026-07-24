@@ -13,4 +13,12 @@ export const evaluationsPending = [
         prazo: "30/07/2026",
         status: "Pendente"
     }
+    ,
+    {
+        id: 2,
+        nome: "Avaliação Técnica",
+        responsavel: "Maria Souza",
+        prazo: "30/07/2026",
+        status: "Pendente"
+    }
 ];

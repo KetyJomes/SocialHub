@@ -46,8 +46,8 @@ export const EvaluationForm = () => {
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-2
-                                focus:ring-[#B8A4FF]
-                                focus:border-[#B8A4FF]
+                                focus:ring-[#0291F7]
+                                focus:border-[#0291F7]
                             "
                         />
 
@@ -75,8 +75,8 @@ export const EvaluationForm = () => {
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-2
-                                focus:ring-[#B8A4FF]
-                                focus:border-[#B8A4FF]
+                                focus:ring-[#0291F7]
+                                focus:border-[#0291F7]
                             "
                         >
 
@@ -136,8 +136,8 @@ export const EvaluationForm = () => {
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-2
-                                focus:ring-[#B8A4FF]
-                                focus:border-[#B8A4FF]
+                                focus:ring-[#0291F7]
+                                focus:border-[#0291F7]
                             "
                         />
 
@@ -166,8 +166,8 @@ export const EvaluationForm = () => {
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-2
-                                focus:ring-[#B8A4FF]
-                                focus:border-[#B8A4FF]
+                                focus:ring-[#0291F7]
+                                focus:border-[#0291F7]
                             "
                         />
 
@@ -196,8 +196,8 @@ export const EvaluationForm = () => {
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-2
-                                focus:ring-[#B8A4FF]
-                                focus:border-[#B8A4FF]
+                                focus:ring-[#0291F7]
+                                focus:border-[#0291F7]
                             "
                         />
 
@@ -225,8 +225,8 @@ export const EvaluationForm = () => {
                                 placeholder:text-gray-400
                                 focus:outline-none
                                 focus:ring-2
-                                focus:ring-[#B8A4FF]
-                                focus:border-[#B8A4FF]
+                                focus:ring-[#0291F7]
+                                focus:border-[#0291F7]
                             "
                         >
 
@@ -320,7 +320,7 @@ export const EvaluationForm = () => {
 
                 <button
                     className="
-                        bg-[#B8A4FF]
+                        bg-[#0291F7]
                         text-white
                         px-8
                         py-3

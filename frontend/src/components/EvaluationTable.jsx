@@ -1,12 +1,3 @@
-// usado na UserRealizarAvaliação
-
-import {
-  Star,
-  ArrowDown,
-  Circle,
-  ArrowUp,
-} from "lucide-react";
-
 import { EvaluationTableRow } from "./EvaluationTableRow";
 
 export const EvaluationTable = ({
@@ -35,14 +26,9 @@ export const EvaluationTable = ({
                 Competência
               </th>
 
-              <th className="px-5 py-6 bg-red-50/60">
+              <th className="px-5 py-6 bg-red-50">
 
                 <div className="flex flex-col items-center gap-2">
-
-                  <Star
-                    size={18}
-                    className="text-red-500"
-                  />
 
                   <span className="font-semibold text-gray-800">
                     Crítico
@@ -56,14 +42,9 @@ export const EvaluationTable = ({
 
               </th>
 
-              <th className="px-5 py-6 bg-amber-50/60">
+              <th className="px-5 py-6 bg-orange-50">
 
                 <div className="flex flex-col items-center gap-2">
-
-                  <ArrowDown
-                    size={18}
-                    className="text-amber-500"
-                  />
 
                   <span className="font-semibold text-gray-800">
                     Abaixo
@@ -77,14 +58,9 @@ export const EvaluationTable = ({
 
               </th>
 
-              <th className="px-5 py-6 bg-green-50/60">
+              <th className="px-5 py-6 bg-green-50">
 
                 <div className="flex flex-col items-center gap-2">
-
-                  <Circle
-                    size={18}
-                    className="text-green-500"
-                  />
 
                   <span className="font-semibold text-gray-800">
                     Dentro
@@ -98,14 +74,9 @@ export const EvaluationTable = ({
 
               </th>
 
-              <th className="px-5 py-6 bg-blue-50/60">
+              <th className="px-5 py-6 bg-blue-50">
 
                 <div className="flex flex-col items-center gap-2">
-
-                  <ArrowUp
-                    size={18}
-                    className="text-blue-500"
-                  />
 
                   <span className="font-semibold text-gray-800">
                     Acima

@@ -103,7 +103,7 @@ export const CardTurmaRankingAvaliacao = ({ turma }) => {
 
                     <Users
                         size={22}
-                        className="text-[#B8A4FF]"
+                        className="text-[#0291F7]"
                     />
 
                     <div>
@@ -184,7 +184,7 @@ export const CardTurmaRankingAvaliacao = ({ turma }) => {
 
                     <BarChart3
                         size={22}
-                        className="text-[#B8A4FF]"
+                        className="text-[#0291F7]"
                     />
 
 
@@ -256,7 +256,7 @@ export const CardTurmaRankingAvaliacao = ({ turma }) => {
                         flex
                         items-center
                         gap-2
-                        text-[#B8A4FF]
+                        text-[#0291F7]
                         font-semibold
                         hover:underline
                     "

@@ -3,32 +3,30 @@ import './App.css'
 
 import {Login} from "./pages/Login.jsx"
 import {Register} from "./pages/Register.jsx"
-import {UserMain} from "./pages/UserMain.jsx"
-import {UserAvaliacoes} from "./pages/UserAvaliacoes"
-import {UserResultados} from "./pages/UserResultados"
-import {UserRealizarAvaliacao} from "./pages/UserRealizarAvaliacao"
-import {UserComparacao} from "./pages/UserComparacao"
-import {UserAvaliacao360} from "./pages/UserAvaliacao360"
-import {ManagementMain} from "./pages/ManagementMain.jsx"
-import {ManagementClasses} from "./pages/ManagementClasses.jsx"
-import {ManagementClassDetails} from "./pages/ManagementClassDetails.jsx"
-import {ManagementStudentDetails} from "./pages/ManagementStudentDetails.jsx"
-import {ManagementManagerToStudent} from "./pages/ManagementManagerToStudent.jsx"
-import {ManagementStudentToManager } from "./pages/ManagementStudentToManager.jsx"
-import {ManagementSelfEvaluation} from "./pages/ManagementSelfEvaluation.jsx"
-import {Management360Evaluation } from "./pages/Management360Evaluation.jsx";
-import {ManagementStudentToLeader } from "./pages/ManagementStudentToLeader.jsx";
-import {ManagementLeaderToClass } from "./pages/ManagementLeaderToClass.jsx";
-import {ManagementPerformEvaluation} from "./pages/ManagementPerformEvaluation.jsx";
-import { ManagementViewEvaluation } from "./pages/ManagementViewEvaluation";
-import {ManagementAnswerEvaluation } from "./pages/ManagementAnswerEvaluation";
-import {Management360EvaluationPeople} from "./pages/Management360EvaluationPeople";
-import { EvaluationManagement } from "./pages/EvaluationManagement";
-import { CreateEvaluation } from "./pages/CreateEvaluation";
-import { ManagementAvaliacoes } from "./pages/ManagementAvaliacoes";
-import { ManagementEvaluationClasses } from "./pages/ManagementEvaluationClasses";
-import { ManagementEvaluationClassDetails } from "./pages/ManagementEvaluationClassDetails";
-import { ManagementEvaluationsPending } from "./pages/ManagementEvaluationsPending";
+import {UserMain} from "./pages/User/UserMain.jsx"
+import {UserAvaliacoes} from "./pages/User/UserAvaliacoes.jsx"
+import {UserResultados} from "./pages/User/UserResultados.jsx"
+import {UserRealizarAvaliacao} from "./pages/User/UserRealizarAvaliacao.jsx"
+import {UserComparacao} from "./pages/User/UserComparacao.jsx"
+import {UserAvaliacao360} from "./pages/User/UserAvaliacao360.jsx"
+import {ManagementMain} from "./pages/Management/ManagementMain.jsx"
+import {ManagementClasses} from "./pages/Management/ManagementClasses.jsx"
+import {ManagementClassDetails} from "./pages/Management/ManagementClassDetails.jsx"
+import {ManagementStudentDetails} from "./pages/Management/ManagementStudentDetails.jsx"
+import {ManagementPerformEvaluation} from "./pages/Management/ManagementPerformEvaluation.jsx";
+import { ManagementViewEvaluation } from "./pages/Management/ManagementViewEvaluation.jsx";
+import {ManagementAnswerEvaluation } from "./pages/Management/ManagementAnswerEvaluation.jsx";
+import { TestControl } from "./pages/Management/TestControl.jsx";
+import { CreateTest} from "./pages/Management/CreateTest.jsx";
+import { ManagementEvaluationClasses } from "./pages/Management/ManagementEvaluationClasses.jsx";
+import { ManagementEvaluationClassDetails } from "./pages/Management/ManagementEvaluationClassDetails.jsx";
+import { Admin } from "./pages/Adm/Admin.jsx";
+import { AdminUsuarios } from "./pages/Adm/AdminUsuarios.jsx";
+import { AdminTurmas } from "./pages/Adm/AdminTurmas.jsx";
+import { ManagementView360Evaluation } from "./pages/Management/ManagementView360Evaluation.jsx";
+import { ManagementAnswer360Evaluation } from "./pages/Management/ManagementAnswer360Evaluation.jsx";
+import { ManagementFeedbackStudents } from "./pages/Management/ManagementFeedbackStudents.jsx";
+import { ManagementComparison } from "./pages/Management/ManagementComparison";
 
 function App() {
 
@@ -48,22 +46,20 @@ function App() {
           <Route path="/management-classes" element={<ManagementClasses />} />
           <Route path="/management-class/:turma" element={<ManagementClassDetails />} />
           <Route path="/management-student/:turma/:aluno" element={<ManagementStudentDetails />} />
-          <Route path="/management-student/:turma/:aluno/gestor" element={<ManagementManagerToStudent />} />
-          <Route path="/management-student-to-manager/:turma/:aluno" element={<ManagementStudentToManager />} />
-          <Route path="/management-self-evaluation/:turma/:aluno" element={<ManagementSelfEvaluation />} />
-          <Route path="/management-360-evaluation/:turma/:aluno" element={<Management360Evaluation />} />
-          <Route path="/management-student-to-leader/:turma/:aluno" element={<ManagementStudentToLeader />} />
-          <Route path="//management-leader-to-class/:turma" element={<ManagementLeaderToClass />} />
           <Route path="/management-perform-evaluation/:turma/:aluno/:id"element={<ManagementPerformEvaluation />}/>
-          <Route path="/management-view-evaluation/:turma/:aluno/:id"element={<ManagementViewEvaluation />}/>
-          <Route path="/management-answer-evaluation/:turma/:aluno/:id"element={<ManagementAnswerEvaluation />}/>
-          <Route path="/management-360-evaluation-people/:turma/:aluno/:avaliacao/:tipoAba" element={<Management360EvaluationPeople />}/>
-          <Route  path="/management-evaluations"  element={<EvaluationManagement />}/>
-          <Route path="/management-evaluations/create" element={<CreateEvaluation />}/>
-          <Route path="/management-avaliacoes" element={<ManagementAvaliacoes />}/>
+          <Route path="/management-answer-evaluation/:turma/:aluno/:avaliacaoId"element={<ManagementAnswerEvaluation />}/>
+          <Route path="/management-view-evaluation/:turma/:aluno/:avaliacaoId" element={<ManagementViewEvaluation />}/>
+          <Route path="/management-test"  element={<TestControl />}/>
+          <Route path="/management-test/create" element={<CreateTest />}/>
           <Route path="/management-avaliacoes-turmas" element={<ManagementEvaluationClasses />}/>
           <Route path="/management-avaliacoes-turmas-alunos" element={<ManagementEvaluationClassDetails />}/>
-          <Route path="/management-evaluations-pending" element={<ManagementEvaluationsPending /> } />
+          <Route path="/adm-main" element={<Admin /> } />
+          <Route path="/adm-control-user" element={<AdminUsuarios /> } />
+          <Route path="/admin/turmas" element={<AdminTurmas /> } />
+          <Route path="/management-answer-360-evaluation/:turma/:aluno/:avaliacaoId/:colega" element={<ManagementAnswer360Evaluation />}/>
+          <Route path="/management-view-360-evaluation/:turma/:aluno/:avaliacaoId/:colega" element={<ManagementView360Evaluation />} />
+          <Route path="/management-feedbacks"element={<ManagementFeedbackStudents />} />
+          <Route path="/management-comparison/:turma/:aluno" element={<ManagementComparison />}/>
         </Routes>
       </BrowserRouter>
     </>
