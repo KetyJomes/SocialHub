@@ -8,6 +8,7 @@ export interface createClassDTO {
     period: string,
     avarageScore: number
     students: studentListDTO[]
+    PIC: number
 }
 
 export interface updateClassDTO {

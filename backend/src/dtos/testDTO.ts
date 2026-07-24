@@ -22,6 +22,7 @@ export interface createTestDTO {
     grade: number,
     AvailableResult: boolean,
     type: string,
+    frequency: string,
     skill:skillListDTO[],
     questions: questionInputDTO[],
 }
@@ -33,6 +34,7 @@ export interface updateTestDTO{
     grade?: number,
     AvailableResult?: boolean,
     type?: string,
+    frequency?: string
     skill?:skillListDTO[],
     questions?: questionInputDTO[]
 }

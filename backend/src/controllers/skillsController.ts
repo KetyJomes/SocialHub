@@ -1,14 +1,20 @@
 import { Request, Response} from "express";
-import { createAlternativeDTO, updateAlternativeDTO } from "../dtos/alternativeDTO.ts";
-import { createAlternative, deleteAlternatives, findAlternatives, findAlternativesById, findByskill, updateAlternative } from "../services/alternativeService.ts";
-import { createSkill, deleteSkill, getSkills, updateSkill } from "../services/skillService.ts";
-import { createSkillDTO, updateSkillDTO } from "../dtos/skillDTO.ts";
+
+
+// import { createAlternative, deleteAlternatives, findAlternatives, findAlternativesById, findByskillId, updateAlternative } from "../services/alternativeService.ts";
+import { createSkill, deleteSkill, getSkillById, getSkills, updateSkill } from "../services/skillService.ts";
+import { createSkillDTO, updateSkillDTO } from "../DTOS/skillDTO.ts";
+
+
 
 export default class SkillController {
     static async create(req: Request, res: Response){
         const data: createSkillDTO = req.body
+        const {id} = req.params
+
         try{
-            await createSkill(data)
+
+            await createSkill(Number(id),data)
             return res.status(200).send({response: "Competência registrada com sucesso!" })
         }
         catch(e){
@@ -18,9 +24,11 @@ export default class SkillController {
 
     static async showSkill(req: Request, res:Response){
             try {
-                await getSkills()
-                return res.status(404).send({response: "Nenhuma competencia encontrada"})
+                const skills = await getSkills()
+                return res.status(200).send(skills)
+
             } catch (error) {
+                return res.status(404).send({response: "Nenhuma competencia encontrada"})
                 
             }
     }
@@ -28,7 +36,7 @@ export default class SkillController {
     static async getSkillById(req: Request, res: Response){
         const {id} = req.params
         try{
-            await findByskill(Number(id))
+            await getSkillById(Number(id))
         }
         catch(error){
             return res.status(404).send({response:"nenhuma Competência encontrada!"})
