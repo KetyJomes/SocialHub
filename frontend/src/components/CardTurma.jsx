@@ -64,7 +64,7 @@ export const CardTurma = ({
 
                 ${
                     selecionado
-                        ? "border-[#B8A4FF]"
+                        ? "border-[#0291F7]"
                         : "border-gray-100"
                 }
             `}

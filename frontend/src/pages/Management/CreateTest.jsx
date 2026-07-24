@@ -5,11 +5,12 @@ import { useNavigate } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
-
 import { TopicsEditor } from "../../components/Management/TopicsEditor";
 import { EvaluationPreview } from "../../components/Management/EvaluationPreview";
+import { testsMock } from "../../data/testsMock";
+import { modelsMock } from "../../data/modelsMock";
 
-export const CreateEvaluation = () => {
+export const CreateTest = () => {
 
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
@@ -81,34 +82,52 @@ export const CreateEvaluation = () => {
     function criarAvaliacao() {
 
         const novaAvaliacao = {
+
             id: Date.now(),
+
             ...dados,
+
             turma,
+
             tipoPublico,
+
             alunosSelecionados,
-            secoes
+
+            secoes,
+
+            status: "Pendente"
+
         };
 
-        console.log(novaAvaliacao);
+        testsMock.push(novaAvaliacao);
 
-        navigate("/management-evaluations");
+        navigate("/management-test", {
+            state: {
+                abaInicial: "avaliacoes"
+            }
+        });
 
     }
 
     function salvarModelo() {
 
         const modelo = {
+
             id: Date.now(),
+
             ...dados,
+
+            turma,
+
             secoes
+
         };
 
-        console.log("Modelo salvo:", modelo);
+        modelsMock.push(modelo);
 
-        navigate("/management-evaluations", {
+        navigate("/management-test", {
             state: {
-                abaInicial: "modelos",
-                novoModelo: modelo
+                abaInicial: "modelos"
             }
         });
 
@@ -161,7 +180,7 @@ export const CreateEvaluation = () => {
                                     placeholder="Ex: Avaliação 2º Trimestre"
                                     value={dados.titulo}
                                     onChange={(e) => atualizarCampo("titulo", e.target.value)}
-                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#B8A4FF] focus:border-[#B8A4FF]"
+                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 />
 
                             </div>
@@ -175,7 +194,7 @@ export const CreateEvaluation = () => {
                                 <select
                                     value={dados.tipo}
                                     onChange={(e) => atualizarCampo("tipo", e.target.value)}
-                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#B8A4FF] focus:border-[#B8A4FF]"
+                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 >
 
                                     <option value="">
@@ -218,9 +237,12 @@ export const CreateEvaluation = () => {
 
                                 <input
                                     type="date"
-                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#B8A4FF] focus:border-[#B8A4FF]"
+                                    value={dados.disponibilidade}
+                                    onChange={(e) =>
+                                        atualizarCampo("disponibilidade", e.target.value)
+                                    }
+                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 />
-
                             </div>
 
                             <div>
@@ -231,7 +253,11 @@ export const CreateEvaluation = () => {
 
                                 <input
                                     type="date"
-                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#B8A4FF] focus:border-[#B8A4FF]"
+                                    value={dados.prazo}
+                                    onChange={(e) =>
+                                        atualizarCampo("prazo", e.target.value)
+                                    }
+                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 />
 
                             </div>
@@ -245,7 +271,7 @@ export const CreateEvaluation = () => {
                                 <select
                                     value={turma}
                                     onChange={(e) => setTurma(e.target.value)}
-                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 outline-none focus:ring-2 focus:ring-[#B8A4FF] focus:border-[#B8A4FF]"
+                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 >
 
                                     <option value="">
@@ -285,7 +311,7 @@ export const CreateEvaluation = () => {
                                 <select
                                     value={dados.recorrencia}
                                     onChange={(e) => atualizarCampo("recorrencia", e.target.value)}
-                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#B8A4FF] focus:border-[#B8A4FF]"
+                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 >
 
                                     <option value="uma-vez">

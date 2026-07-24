@@ -61,7 +61,7 @@ export const SidebarManagement = ({ isOpen }) => {
 
                 {/* GERENCIAR AVALIAÇÕES */}
                 <button
-                    onClick={() => navigate("/management-evaluations")}
+                    onClick={() => navigate("/management-test")}
                     className="
                         flex
                         items-center

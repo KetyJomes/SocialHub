@@ -5,26 +5,18 @@ import { useNavigate } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { CardTurma } from "../../components/CardTurma";
 import { CardAvaliacao } from "../../components/CardAvaliacao";
-import { CardAvaliacao360 } from "../../components/CardFeedbacks";
 import { SidebarManagement } from "../../components/SidebarManagement";
 
-
 export const ManagementMain = () => {
-
-
     const navigate = useNavigate();
-
-
     const [isOpen, setIsOpen] = useState(false);
-
     const [turmaSelecionada, setTurmaSelecionada] = useState(null);
-
     const [turmaFiltroAvaliacao, setTurmaFiltroAvaliacao] = useState("");
-
-
+    const [turmaFiltroFeedback, setTurmaFiltroFeedback] = useState("");
 
     const listaTurmas = useRef();
 
+    // Turmas
 
     const turmas = [
 
@@ -78,8 +70,6 @@ export const ManagementMain = () => {
 
     ];
 
-
-
     // Avaliações Gestor → Aluno pendentes
 
     const alunosPendentes = [
@@ -125,9 +115,7 @@ export const ManagementMain = () => {
 
     ];
 
-
-
-    // FILTRO DAS AVALIAÇÕES PENDENTES
+    // Filtro avaliações pendentes
 
     const alunosPendentesFiltrados =
 
@@ -145,37 +133,108 @@ export const ManagementMain = () => {
             );
 
 
+    // Feedbacks pendentes
 
-    const feedback = [
+    const feedbackPendentes = [
 
         {
-            tipo: "Avaliação pelos Alunos",
-            descricao: "Como os alunos avaliam o líder",
-            status: "concluido"
+            id: 1,
+            avaliacao: "Avaliação pelos Alunos",
+            nome: "João Silva",
+            turma: "Turma 9A",
+            status: "Pendente"
         },
 
-
         {
-            tipo: "Avaliação pelos Pares",
-            descricao: "Como os pares avaliam o líder",
-            status: "concluido"
+            id: 2,
+            avaliacao: "Avaliação pelos Pares",
+            nome: "Maria Souza",
+            turma: "Turma 9A",
+            status: "Pendente"
         },
 
-
         {
-            tipo: "Avaliação pelo Líder",
-            descricao: "Autoavaliação do líder",
-            status: "concluido"
+            id: 3,
+            avaliacao: "Avaliação pela Equipe",
+            nome: "Pedro Oliveira",
+            turma: "Turma 1EM",
+            status: "Em atraso"
         },
 
+        {
+            id: 4,
+            avaliacao: "Avaliação 360°",
+            nome: "Ana Costa",
+            turma: "Turma 2EM",
+            status: "Pendente"
+        },
 
         {
-            tipo: "Avaliação pela Equipe",
-            descricao: "Como a equipe avalia o líder",
-            status: "pendente"
+            id: 5,
+            avaliacao: "Feedback de Liderança",
+            nome: "Lucas Ferreira",
+            turma: "Turma 5A",
+            status: "Pendente"
+        },
+
+        {
+            id: 6,
+            avaliacao: "Avaliação Comportamental",
+            nome: "Mariana Alves",
+            turma: "Turma 8A",
+            status: "Em atraso"
+        },
+
+        {
+            id: 7,
+            avaliacao: "Feedback de Desenvolvimento",
+            nome: "Carlos Eduardo",
+            turma: "Turma 3EM",
+            status: "Pendente"
+        },
+
+        {
+            id: 8,
+            avaliacao: "Avaliação de Competências",
+            nome: "Beatriz Lima",
+            turma: "Turma 4A",
+            status: "Pendente"
+        },
+
+        {
+            id: 9,
+            avaliacao: "Feedback de Trabalho em Equipe",
+            nome: "Rafael Martins",
+            turma: "Turma 9B",
+            status: "Respondida"
+        },
+
+        {
+            id: 10,
+            avaliacao: "Avaliação de Comunicação",
+            nome: "Juliana Rocha",
+            turma: "Turma 1EM",
+            status: "Pendente"
         }
 
     ];
+
+    // Filtro feedbacks pendentes
+
+    const feedbacksPendentesFiltrados =
+
+    turmaFiltroFeedback === ""
+
+        ?
+
+        feedbackPendentes
+
+        :
+
+        feedbackPendentes.filter(
+            (feedback) =>
+                feedback.turma === turmaFiltroFeedback
+        );
 
 
 
@@ -243,18 +302,13 @@ export const ManagementMain = () => {
 
                     </h1>
 
-
-
                     <p className="text-gray-500">
 
                         Acompanhe o desempenho das suas turmas e alunos.
 
                     </p>
 
-
-
-
-                    {/* TURMAS */}
+                    {/* Turmas */}
 
 
                     <section className="mt-8">
@@ -267,10 +321,7 @@ export const ManagementMain = () => {
                         </h2>
 
 
-
                         <div className="relative">
-
-
 
                             <button
                                 onClick={() => moverCards("esquerda")}
@@ -292,10 +343,6 @@ export const ManagementMain = () => {
 
                             </button>
 
-
-
-
-
                             <div
                                 ref={listaTurmas}
                                 className="
@@ -307,10 +354,8 @@ export const ManagementMain = () => {
                                 "
                             >
 
-
                                 {
                                     turmas.map((turma,index)=>(
-
 
                                         <CardTurma
 
@@ -341,10 +386,6 @@ export const ManagementMain = () => {
 
                             </div>
 
-
-
-
-
                             <button
                                 onClick={() => moverCards("direita")}
                                 className="
@@ -365,21 +406,11 @@ export const ManagementMain = () => {
 
                             </button>
 
-
-
                         </div>
-
 
                     </section>
 
-
-
-
-
-
-
-                    {/* CARDS INFERIORES */}
-
+                    {/* Cards Inferiores */}
 
                     <section
                         className="
@@ -389,13 +420,7 @@ export const ManagementMain = () => {
                             mt-10
                         "
                     >
-
-
-
-
-
-                        {/* AVALIAÇÕES PENDENTES */}
-
+                        {/* AValiações pendentes */}
 
                         <div
                             className="
@@ -408,9 +433,6 @@ export const ManagementMain = () => {
                             "
                         >
 
-
-
-
                             <div
                                 className="
                                     flex
@@ -420,10 +442,7 @@ export const ManagementMain = () => {
                                 "
                             >
 
-
-
                                 <div className="flex items-center gap-3">
-
 
                                     <div
                                         className="
@@ -445,23 +464,15 @@ export const ManagementMain = () => {
 
                                     </div>
 
-
-
                                     <h2 className="text-xl font-bold">
 
                                         Avaliações Pendentes
 
                                     </h2>
 
-
                                 </div>
 
-
-
-
-
-                                {/* FILTRO TURMA */}
-
+                                {/* Filtro turma */}
 
                                 <select
                                     value={turmaFiltroAvaliacao}
@@ -481,18 +492,15 @@ export const ManagementMain = () => {
                                         text-gray-700
                                         focus:outline-none
                                         focus:ring-2
-                                        focus:ring-[#B8A4FF]
+                                        focus:ring-[#0291F7]
                                     "
                                 >
-
 
                                     <option value="">
 
                                         Todas as turmas
 
                                     </option>
-
-
 
                                     {
                                         turmas.map((turma,index)=>(
@@ -501,7 +509,6 @@ export const ManagementMain = () => {
                                                 key={index}
                                                 value={turma.nome}
                                             >
-
                                                 {turma.nome}
 
                                             </option>
@@ -509,17 +516,9 @@ export const ManagementMain = () => {
                                         ))
                                     }
 
-
                                 </select>
 
-
                             </div>
-
-
-
-
-
-
 
                             <div
                                 className="
@@ -529,8 +528,6 @@ export const ManagementMain = () => {
                                     pr-2
                                 "
                             >
-
-
 
                                 {
                                     alunosPendentesFiltrados.length > 0
@@ -561,9 +558,9 @@ export const ManagementMain = () => {
                                                 "
                                             >
 
-
-
                                                 <CardAvaliacao
+
+                                                    tipoCard="avaliacao"
 
                                                     nome={`${aluno.avaliacao} - ${aluno.nome}`}
 
@@ -575,18 +572,13 @@ export const ManagementMain = () => {
 
                                                 />
 
-
-
                                             </div>
-
 
                                         ))
 
                                     )
 
-
                                     :
-
 
                                     (
 
@@ -612,11 +604,9 @@ export const ManagementMain = () => {
 
                             </div>
 
-
-
                         </div>
-                                                {/* FEEDBACKS */}
 
+                            {/* Feedbacks */}
 
                         <div
                             className="
@@ -629,8 +619,6 @@ export const ManagementMain = () => {
                             "
                         >
 
-
-
                             <div
                                 className="
                                     flex
@@ -640,50 +628,84 @@ export const ManagementMain = () => {
                                 "
                             >
 
-
-
                                 <div className="flex items-center gap-3">
-
 
                                     <div
                                         className="
                                             w-10
                                             h-10
                                             rounded-full
-                                            bg-[#F1EDFF]
+                                            bg-[#EAF4FF]
                                             flex
                                             items-center
                                             justify-center
                                         "
                                     >
 
-
-                                        <RotateCcw
+                                        <ClipboardCheck
                                             size={20}
-                                            className="text-[#B8A4FF]"
+                                            className="text-[#0291F7]"
                                             strokeWidth={2}
                                         />
 
-
                                     </div>
-
-
 
                                     <h2 className="text-xl font-bold">
 
-                                        Feedbacks
+                                        Feedbacks Pendentes
 
                                     </h2>
 
-
                                 </div>
 
+                                {/* Filtro turma */}
+
+                                <select
+
+                                        value={turmaFiltroFeedback}
+
+                                        onChange={(e)=>
+                                            setTurmaFiltroFeedback(
+                                                e.target.value
+                                            )
+                                        }
+
+                                    className="
+                                        border
+                                        border-gray-200
+                                        rounded-lg
+                                        px-4
+                                        py-2
+                                        text-gray-700
+                                        focus:outline-none
+                                        focus:ring-2
+                                        focus:ring-[#0291F7]
+                                    "
+                                >
+
+                                    <option value="">
+
+                                        Todas as turmas
+
+                                    </option>
+
+                                    {
+                                        turmas.map((turma,index)=>(
+
+                                            <option
+                                                key={index}
+                                                value={turma.nome}
+                                            >
+                                                {turma.nome}
+
+                                            </option>
+
+                                        ))
+                                    }
+
+                                </select>
 
                             </div>
-
-
-
-
 
                             <div
                                 className="
@@ -693,56 +715,76 @@ export const ManagementMain = () => {
                                     pr-2
                                 "
                             >
+                                    {
+                                        feedbacksPendentesFiltrados.length > 0
+
+                                        ?
+
+                                        (
+
+                                            feedbacksPendentesFiltrados.map((feedback)=>(
 
 
+                                                <div
+                                                    key={feedback.id}
 
-                                {
-                                    feedback.map((item,index)=>(
+                                                className="
+                                                    cursor-pointer
+                                                    rounded-lg
+                                                    transition
+                                                    hover:bg-[#0291F7]/5
+                                                "
+                                            >
 
+                                                <CardAvaliacao
 
-                                        <CardAvaliacao360
+                                                    tipoCard="feedback"
 
-                                            key={index}
+                                                    nome={`${feedback.avaliacao} - ${feedback.nome}`}
 
-                                            tipo={item.tipo}
+                                                    turma={feedback.turma}
 
-                                            descricao={item.descricao}
+                                                    status={feedback.status}
 
-                                            status={item.status}
+                                                />
 
-                                        />
+                                            </div>
 
+                                        ))
 
-                                    ))
+                                    )
+
+                                    :
+
+                                    (
+
+                                        <div
+                                            className="
+                                                flex
+                                                justify-center
+                                                items-center
+                                                h-full
+                                                text-gray-500
+                                                text-sm
+                                            "
+                                        >
+
+                                            Nenhuma feedback pendente encontrada.
+
+                                        </div>
+
+                                    )
 
                                 }
 
 
-
                             </div>
-
-
-
 
                         </div>
 
-
-
-
-
                     </section>
 
-
-
-
-
-
-
-
-
-                    {/* INFORMAÇÃO */}
-
-
+                    {/* Informação */}
 
                     <div
                         className="
@@ -751,8 +793,6 @@ export const ManagementMain = () => {
                             mt-8
                         "
                     >
-
-
 
                         <div
                             className="
@@ -768,15 +808,11 @@ export const ManagementMain = () => {
                             "
                         >
 
-
-
                             <Info
                                 size={18}
-                                className="text-[#B8A4FF]"
+                                className="text-[#0291F7]"
                                 strokeWidth={2}
                             />
-
-
 
                             <span className="text-sm text-gray-600">
 
@@ -784,24 +820,13 @@ export const ManagementMain = () => {
 
                             </span>
 
-
-
                         </div>
-
-
 
                     </div>
 
-
-
-
-
                 </div>
 
-
-
             </main>
-
 
         </div>
 

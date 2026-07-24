@@ -189,7 +189,7 @@ export const EvaluationPreview = ({
                     <button
                         onClick={onSaveModel}
                         className="
-                            bg-[#B8A4FF]
+                            bg-[#0291F7]
                             text-white
                             px-8
                             py-3
@@ -205,7 +205,7 @@ export const EvaluationPreview = ({
                     <button
                         onClick={onCreate}
                         className="
-                            bg-[#B8A4FF]
+                            bg-[#0291F7]
                             text-white
                             px-8
                             py-3

@@ -17,7 +17,7 @@ import {ManagementPerformEvaluation} from "./pages/Management/ManagementPerformE
 import { ManagementViewEvaluation } from "./pages/Management/ManagementViewEvaluation.jsx";
 import {ManagementAnswerEvaluation } from "./pages/Management/ManagementAnswerEvaluation.jsx";
 import { TestControl } from "./pages/Management/TestControl.jsx";
-import { CreateEvaluation } from "./pages/Management/CreateTest.jsx";
+import { CreateTest} from "./pages/Management/CreateTest.jsx";
 import { ManagementEvaluationClasses } from "./pages/Management/ManagementEvaluationClasses.jsx";
 import { ManagementEvaluationClassDetails } from "./pages/Management/ManagementEvaluationClassDetails.jsx";
 import { Admin } from "./pages/Adm/Admin.jsx";
@@ -49,8 +49,8 @@ function App() {
           <Route path="/management-perform-evaluation/:turma/:aluno/:id"element={<ManagementPerformEvaluation />}/>
           <Route path="/management-answer-evaluation/:turma/:aluno/:avaliacaoId"element={<ManagementAnswerEvaluation />}/>
           <Route path="/management-view-evaluation/:turma/:aluno/:avaliacaoId" element={<ManagementViewEvaluation />}/>
-          <Route path="/management-evaluations"  element={<TestControl />}/>
-          <Route path="/management-evaluations/create" element={<CreateEvaluation />}/>
+          <Route path="/management-test"  element={<TestControl />}/>
+          <Route path="/management-test/create" element={<CreateTest />}/>
           <Route path="/management-avaliacoes-turmas" element={<ManagementEvaluationClasses />}/>
           <Route path="/management-avaliacoes-turmas-alunos" element={<ManagementEvaluationClassDetails />}/>
           <Route path="/adm-main" element={<Admin /> } />

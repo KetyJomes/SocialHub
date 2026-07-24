@@ -149,7 +149,7 @@ export const ManagementEvaluationClasses = () => {
 
                                 <GraduationCap
                                     size={20}
-                                    className="text-[#B8A4FF]"
+                                    className="text-[#0291F7]"
                                 />
 
                             </div>
@@ -376,7 +376,7 @@ export const ManagementEvaluationClasses = () => {
                                                             <div
                                                                 className="
                                                                     h-full
-                                                                    bg-[#B8A4FF]
+                                                                    bg-[#0291F7]
                                                                     rounded-full
                                                                 "
                                                                 style={{
@@ -452,7 +452,7 @@ export const ManagementEvaluationClasses = () => {
                                                             items-center
                                                             justify-center
                                                             gap-2
-                                                            text-[#B8A4FF]
+                                                            text-[#0291F7]
                                                             font-semibold
                                                             mx-auto
                                                             hover:underline
@@ -525,7 +525,7 @@ export const ManagementEvaluationClasses = () => {
 
                             <Info
                                 size={18}
-                                className="text-[#B8A4FF]"
+                                className="text-[#0291F7]"
                             />
 
                             <span className="text-sm text-gray-600">

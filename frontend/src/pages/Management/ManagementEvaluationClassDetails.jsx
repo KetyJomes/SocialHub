@@ -217,7 +217,7 @@ export const ManagementEvaluationClassDetails = () => {
 
                                 <GraduationCap
                                     size={20}
-                                    className="text-[#B8A4FF]"
+                                    className="text-[#0291F7]"
                                 />
 
                             </div>
@@ -337,7 +337,7 @@ export const ManagementEvaluationClassDetails = () => {
                                 <div
                                     className="
                                         h-full
-                                        bg-[#B8A4FF]
+                                        bg-[#0291F7]
                                     "
                                     style={{
                                         width: `${progressoGeral}%`
@@ -505,7 +505,7 @@ export const ManagementEvaluationClassDetails = () => {
                                                         justify-center
                                                         gap-2
                                                         mx-auto
-                                                        text-[#B8A4FF]
+                                                        text-[#0291F7]
                                                         font-semibold
                                                         hover:underline
                                                     "
@@ -572,7 +572,7 @@ export const ManagementEvaluationClassDetails = () => {
 
                             <Info
                                 size={18}
-                                className="text-[#B8A4FF]"
+                                className="text-[#0291F7]"
                             />
 
                             <span className="text-sm text-gray-600">

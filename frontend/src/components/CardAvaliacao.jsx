@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { ClipboardCheck } from "lucide-react";
 
 
@@ -6,12 +5,9 @@ export const CardAvaliacao = ({
     nome,
     turma,
     tipo,
-    status
+    status,
+    tipoCard = "avaliacao"
 }) => {
-
-
-    const [clicado, setClicado] = useState(false);
-
 
 
     return (
@@ -31,7 +27,6 @@ export const CardAvaliacao = ({
                 cursor-pointer
             "
         >
-
 
             <div className="flex items-center gap-3">
 
@@ -59,9 +54,10 @@ export const CardAvaliacao = ({
 
                 <div>
 
-
                     <h3 className="font-semibold text-gray-800">
+
                         {nome}
+
                     </h3>
 
 
@@ -73,7 +69,18 @@ export const CardAvaliacao = ({
                         "
                     >
 
-                        {tipo}
+                        {
+                            tipoCard === "feedback"
+
+                            ?
+
+                            "Feedback 360°"
+
+                            :
+
+                            tipo
+
+                        }
 
                     </p>
 
@@ -85,7 +92,6 @@ export const CardAvaliacao = ({
 
 
 
-
             <div
                 className="
                     flex
@@ -94,50 +100,68 @@ export const CardAvaliacao = ({
                 "
             >
 
-
-
-                <span className="text-sm text-gray-500">
-                    {turma}
-                </span>
-
-
-
-
                 <span
-                    className={`
-                        px-3
-                        py-1
-                        rounded-full
-                        text-xs
-                        font-medium
-
-
-                        ${
-                            status === "Em atraso"
-
-                            ?
-
-                            "bg-red-100 text-red-700"
-
-                            :
-
-                            "bg-yellow-100 text-yellow-700"
-
-                        }
-
-                    `}
+                    className="
+                        text-sm
+                        text-gray-500
+                    "
                 >
 
-                    {status}
+                    {turma}
 
                 </span>
 
+
+
+                {
+                    status && (
+
+                        <span
+                            className={`
+                                px-3
+                                py-1
+                                rounded-full
+                                text-xs
+                                font-medium
+
+                                ${
+                                    status === "Em atraso"
+
+                                    ?
+
+                                    "bg-red-100 text-red-700"
+
+
+                                    :
+
+
+                                    status === "Respondida"
+
+                                    ?
+
+                                    "bg-green-100 text-green-700"
+
+
+                                    :
+
+
+                                    "bg-yellow-100 text-yellow-700"
+
+                                }
+
+                            `}
+                        >
+
+                            {status}
+
+                        </span>
+
+                    )
+                }
 
 
 
                 <button
-
-                    onClick={() => setClicado(!clicado)}
 
                     className="
                         text-[#0291F7]
@@ -150,7 +174,6 @@ export const CardAvaliacao = ({
                     ›
 
                 </button>
-
 
 
             </div>

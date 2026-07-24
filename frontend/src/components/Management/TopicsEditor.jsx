@@ -177,7 +177,7 @@ export const TopicsEditor = ({
                                 placeholder="Título da competência"
                                 value={secao.titulo}
                                 onChange={(e) => alterarTitulo(secao.id, e.target.value)}
-                                className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#B8A4FF] focus:border-[#B8A4FF]"
+                                className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                             />
 
                             {
@@ -200,7 +200,7 @@ export const TopicsEditor = ({
                             placeholder="Descrição da competência"
                             value={secao.descricao}
                             onChange={(e) => alterarDescricao(secao.id, e.target.value)}
-                            className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#B8A4FF] focus:border-[#B8A4FF]"
+                            className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                         />
 
                         <div className="mt-6 space-y-4">
@@ -234,7 +234,7 @@ export const TopicsEditor = ({
 
                                 <button
                                     onClick={() => adicionarPergunta(secao.id)}
-                                    className="mt-5 flex items-center gap-2 text-[#B8A4FF] font-medium hover:opacity-80 transition"
+                                    className="mt-5 flex items-center gap-2 text-[#0291F7] font-medium hover:opacity-80 transition"
                                 >
 
                                     <Plus size={18} />
@@ -253,7 +253,7 @@ export const TopicsEditor = ({
 
             <button
                 onClick={adicionarSecao}
-                className="w-full border-2 border-dashed border-[#B8A4FF] rounded-xl py-4 text-[#B8A4FF] font-semibold hover:bg-[#F8F5FF] transition"
+                className="w-full border-2 border-dashed border-[##0291F7] rounded-xl py-4 text-[#0291F7] font-semibold hover:bg-[#F8F5FF] transition"
             >
                 + Adicionar novo tópico
             </button>

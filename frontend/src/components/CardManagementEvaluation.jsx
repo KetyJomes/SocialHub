@@ -167,7 +167,7 @@ export const CardManagementEvaluation = ({ avaliacao }) => {
                         px-4
                         py-2
                         rounded-lg
-                        bg-[#B8A4FF]
+                        bg-[#0291F7]
                         text-white
                         hover:opacity-90
                         transition

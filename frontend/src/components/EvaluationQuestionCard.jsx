@@ -78,8 +78,8 @@ export const EvaluationQuestionCard = ({
                                 resize-none
                                 outline-none
                                 focus:ring-2
-                                focus:ring-[#B8A4FF]
-                                focus:border-[#B8A4FF]
+                                focus:ring-[#0291F7]
+                                focus:border-[#0291F7]
                             "
 
                         />
@@ -112,8 +112,8 @@ export const EvaluationQuestionCard = ({
                         text-gray-500
                         outline-none
                         focus:ring-2
-                        focus:ring-[#B8A4FF]
-                        focus:border-[#B8A4FF]
+                        focus:ring-[#0291F7]
+                        focus:border-[#0291F7]
                     "
                 >
 
