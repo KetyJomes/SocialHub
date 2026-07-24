@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
 import { createTestDTO, updateTestDTO } from '../DTOS/testDTO.ts';
-import { createTest, deleteTest, showTest, showTests, updateTest, allowAccess, cancelAccess, publishtest,addSkill,removeSkill} from '../services/testServices.ts';
+import { createTest, deleteTest, showTest, showTests, updateTest, allowAccess, cancelAccess, publishtest,addSkill,removeSkill, defineFrequency} from '../services/testServices.ts';
 
 // import test from 'node:test';
 
@@ -143,6 +143,22 @@ export default class TestController {
         } catch (e) {
             return res.status(500).send({Response: "Não foi possivel remover a skill a prova"})
         }
+    }
+
+    static async frequency(req: Request, res: Response){
+        const id = Number(req.params.id);
+
+         if (isNaN(id)){
+            return res.status(400).send({response: "Teste não encontrado" })
+        }
+        try{
+            await defineFrequency(id);
+            return res.status(200).send({response: 'Frequencia definida'})
+        } catch (e) {
+            return res.status(500).send({ response: "Erro ao definir frequencia"})
+        }
+    
+
     }
 
     
