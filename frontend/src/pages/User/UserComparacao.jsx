@@ -327,8 +327,8 @@ export const UserComparacao = () => {
                                     rounded-xl
                                     bg-white
                                     border
-                                    border-blue-500
-                                    text-blue-600
+                                    border-[#0291F7]
+                                    text-[#0291F7]
                                     font-semibold
                                     hover:bg-blue-50
                                     transition
@@ -414,7 +414,7 @@ export const UserComparacao = () => {
                                     px-5
                                     py-3
                                     rounded-xl
-                                    bg-blue-600
+                                    bg-[#0291F7]
                                     text-white
                                     font-semibold
                                     hover:bg-blue-700
@@ -424,13 +424,9 @@ export const UserComparacao = () => {
 
                             >
 
-
-
                                 {
 
-
                                     editando
-
 
                                     ?
 

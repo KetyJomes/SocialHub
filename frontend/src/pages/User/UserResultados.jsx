@@ -6,8 +6,12 @@ import { Sidebar } from "../../components/Sidebar";
 import { TabelaAvaliacoes } from "../../components/TabelaAvaliacoes";
 import { UserGraficoCompetencias } from "../../components/UserGraficoCompetencias";
 import { ProgressCircle } from "../../components/ProgressCircle";
-
 import { avaliacoes } from "../../data/avaliacoes";
+import {
+    ClipboardCheck,
+    Users,
+    UserCheck
+} from "lucide-react";
 
 
 export const UserResultados = () => {
@@ -110,13 +114,28 @@ export const UserResultados = () => {
 
                             <div className="flex items-center gap-3">
 
+                                <div
+                                    className="
+                                        w-10
+                                        h-10
+                                        rounded-full
+                                        bg-[#EAF4FF]
+                                        flex
+                                        items-center
+                                        justify-center
+                                    "
+                                >
+                                    <ClipboardCheck
+                                        size={20}
+                                        className="text-[#0291F7]"
+                                        strokeWidth={2}
+                                    />
+                                </div>
 
-                                <h3 className="font-semibold text-xl">
 
+                                <h3 className="font-bold text-2xl">
                                     Meu Desempenho Geral
-
                                 </h3>
-
 
                             </div>
 
@@ -129,7 +148,7 @@ export const UserResultados = () => {
 
                                 <ProgressCircle
                                     value={75}
-                                    color="#2563EB"
+                                    color="#0291F7"
                                 />
 
 
@@ -140,7 +159,7 @@ export const UserResultados = () => {
                                     <h2
                                         className="text-5xl font-bold"
                                         style={{
-                                            color:"#2563EB"
+                                            color:"#0291F7"
                                         }}
                                     >
 
@@ -153,11 +172,11 @@ export const UserResultados = () => {
                                     <p
                                         className="font-semibold mt-1"
                                         style={{
-                                            color:"#2563EB"
+                                            color:"#0291F7"
                                         }}
                                     >
 
-                                        Muito bom
+                                        Acima
 
                                     </p>
 
@@ -210,13 +229,32 @@ export const UserResultados = () => {
 
                             <div className="flex items-center gap-3">
 
+                                <div
+                                    className="
+                                        w-10
+                                        h-10
+                                        rounded-full
+                                        bg-purple-100
+                                        flex
+                                        items-center
+                                        justify-center
+                                    "
+                                >
 
-                                <h3 className="font-semibold text-xl">
+                                    <Users
+                                        size={20}
+                                        className="text-[#7C3AED]"
+                                        strokeWidth={2}
+                                    />
+
+                                </div>
+
+
+                                <h3 className="font-bold text-2xl">
 
                                     Desempenho 360°
 
                                 </h3>
-
 
                             </div>
 
@@ -310,13 +348,32 @@ export const UserResultados = () => {
 
                             <div className="flex items-center gap-3">
 
+                                <div
+                                    className="
+                                        w-10
+                                        h-10
+                                        rounded-full
+                                        bg-green-100
+                                        flex
+                                        items-center
+                                        justify-center
+                                    "
+                                >
 
-                                <h3 className="font-semibold text-xl">
+                                    <UserCheck
+                                        size={20}
+                                        className="text-[#10B981]"
+                                        strokeWidth={2}
+                                    />
+
+                                </div>
+
+
+                                <h3 className="font-bold text-2xl">
 
                                     Avaliação Gestão
 
                                 </h3>
-
 
                             </div>
 
@@ -432,7 +489,7 @@ export const UserResultados = () => {
                         <div className="w-[30%] bg-white rounded-3xl shadow-sm border border-gray-100 p-6">
 
 
-                            <h2 className="text-lg font-semibold text-gray-800 mb-4">
+                            <h2 className="font-bold text-2xl">
 
                                 Competências
 

@@ -15,8 +15,8 @@ export const EvaluationCard = ({
 
     const titleColor =
         color === "purple"
-            ? "text-purple-600"
-            : "text-blue-600";
+            ? "text-purple-400"
+            : "text-[#0291F7]";
 
 
 

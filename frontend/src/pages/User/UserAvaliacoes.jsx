@@ -4,6 +4,8 @@ import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { AbaAvaliacoes } from "../../components/AbaAvaliacoes";
 
+import { FileText } from "lucide-react";
+
 
 export const UserAvaliacoes = () => {
 
@@ -34,9 +36,9 @@ export const UserAvaliacoes = () => {
 
             acao: "Responder",
 
-            icon: "/icons/user.png",
+            icon: FileText,
 
-            bgIcon: "bg-blue-100"
+            bgIcon: "bg-[#EAF4FF]"
 
         },
 
@@ -62,7 +64,7 @@ export const UserAvaliacoes = () => {
 
             acao: "Responder",
 
-            icon: "/icons/user.png",
+            icon: FileText,
 
             bgIcon: "bg-red-100"
 
@@ -90,62 +92,62 @@ export const UserAvaliacoes = () => {
 
             acao: "Visualizar",
 
-            icon: "/icons/user.png",
+            icon: FileText,
 
             bgIcon: "bg-green-100"
 
         },
         {
-    id: 4,
+            id: 4,
 
-    nome: "Avaliação Comportamental",
+            nome: "Avaliação Comportamental",
 
-    descricao: "Avaliação de comportamento e relacionamento",
+            descricao: "Avaliação de comportamento e relacionamento",
 
-    tipo: "Trimestral",
+            tipo: "Trimestral",
 
-    disponibilizada: "10/04/2026",
+            disponibilizada: "10/04/2026",
 
-    infoDisponibilizada: "Disponível",
+            infoDisponibilizada: "Disponível",
 
-    prazo: "25/04/2026",
+            prazo: "25/04/2026",
 
-    infoPrazo: "Pendente",
+            infoPrazo: "Pendente",
 
-    status: "Respondida",
+            status: "Respondida",
 
-    acao: "Responder",
+            acao: "Responder",
 
-    icon: "/icons/user.png",
+            icon: FileText,
 
-    bgIcon: "bg-green-100"
+            bgIcon: "bg-green-100"
 
-},
-{
-    id: 5,
+        },
+        {
+            id: 5,
 
-    nome: "Avaliação de Clima Organizacional",
+            nome: "Avaliação de Clima Organizacional",
 
-    descricao: "Pesquisa sobre o ambiente de trabalho",
+            descricao: "Pesquisa sobre o ambiente de trabalho",
 
-    tipo: "Anual",
+            tipo: "Anual",
 
-    disponibilizada: "15/07/2026",
+            disponibilizada: "15/07/2026",
 
-    infoDisponibilizada: "Disponível",
+            infoDisponibilizada: "Disponível",
 
-    prazo: "30/07/2026",
+            prazo: "30/07/2026",
 
-    infoPrazo: "7 dias restantes",
+            infoPrazo: "7 dias restantes",
 
-    status: "Pendente",
+            status: "Pendente",
 
-    acao: "Responder",
+            acao: "Responder",
 
-    icon: "/icons/user.png",
+            icon: FileText,
 
-    bgIcon: "bg-yellow-100"
-}
+            bgIcon: "bg-yellow-100"
+        }
 
     ]);
 
@@ -301,7 +303,7 @@ export const UserAvaliacoes = () => {
 
                                         ?
 
-                                        "text-[#2563EB] border-[#2563EB] font-semibold"
+                                        "text-[#0291F7] border-[#0291F7] font-semibold"
 
                                         :
 
@@ -340,7 +342,7 @@ export const UserAvaliacoes = () => {
 
                                         ?
 
-                                        "text-[#2563EB] border-[#2563EB] font-semibold"
+                                        "text-[#0291F7] border-[#0291F7] font-semibold"
 
                                         :
 

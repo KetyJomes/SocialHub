@@ -1,92 +1,223 @@
 import { ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
+
 export const LinhaAvaliacaoDash = ({ avaliacao }) => {
 
     const navigate = useNavigate();
 
-    const tipoClasses = {
-        "360°": "text-purple-600",
-        Gestão: "text-green-600",
-        Autoavaliação: "text-blue-600"
-    };
+
+    function visualizarComparacao() {
+
+        navigate("/comparacao");
+
+    }
+
 
     return (
 
-        <tr className="border-b last:border-none hover:bg-gray-50 transition">
+        <tr
+            className="
+                border-b
+                border-gray-200
+                hover:bg-gray-50
+                transition
+            "
+        >
 
-            <td className="py-5 text-left">
 
-                <div>
+            {/* AVALIAÇÃO */}
+            <td className="px-6 py-5">
 
-                    <h4 className="font-semibold text-sm">
+                <div className="flex flex-col gap-1">
+
+                    <h3
+                        className="
+                            font-semibold
+                            text-[15px]
+                            text-gray-800
+                        "
+                    >
                         {avaliacao.nome}
-                    </h4>
+                    </h3>
 
-                    <span className="text-xs text-gray-500">
-                        {avaliacao.subtitulo}
-                    </span>
+
+                    <p
+                        className="
+                            text-sm
+                            text-gray-500
+                        "
+                    >
+                        {avaliacao.descricao}
+                    </p>
 
                 </div>
 
             </td>
 
-            <td className="text-center">
+
+
+
+            {/* TIPO */}
+            <td className="text-center py-5 px-4">
 
                 <span
-                    className={`inline-flex px-3 py-1 rounded-full text-md ${tipoClasses[avaliacao.tipo]}`}
+                    className="
+                        text-sm
+                        text-gray-700
+                    "
                 >
                     {avaliacao.tipo}
                 </span>
 
             </td>
 
-            <td className="text-center text-gray-600">
-                {avaliacao.data}
-            </td>
 
-            <td className="text-center">
 
-                <span className="inline-flex text-green-600 px-3 py-1 rounded-full text-md">
-                    {avaliacao.situacao}
+
+
+            {/* DATA */}
+            <td className="text-center py-5 px-4">
+
+                <span
+                    className="
+                        text-sm
+                        text-gray-700
+                    "
+                >
+                    {
+                        avaliacao.dataConclusao
+                        ||
+                        avaliacao.data
+                        ||
+                        "-"
+                    }
                 </span>
 
             </td>
 
-            <td className="text-center">
 
-                <div className="flex flex-col items-center">
 
-                    <p className="font-bold text-lg text-blue-600">
-                        {avaliacao.desempenho}%
-                    </p>
 
-                    <span className="text-xs text-gray-500">
-                        {avaliacao.conceito}
-                    </span>
 
-                </div>
+
+
+            {/* STATUS */}
+            <td className="text-center py-5 px-4">
+
+                <span
+                    className={`
+                        inline-flex
+                        justify-center
+                        items-center
+                        min-w-[90px]
+                        px-3
+                        py-1
+                        rounded-full
+                        text-xs
+                        font-semibold
+
+                        ${
+                            avaliacao.status === "Concluída" ||
+                            avaliacao.status === "Respondida"
+
+                            ?
+
+                            "bg-green-100 text-green-700"
+
+
+                            :
+
+                            avaliacao.status === "Pendente"
+
+                            ?
+
+                            "bg-yellow-100 text-yellow-700"
+
+
+                            :
+
+                            avaliacao.status === "Em atraso"
+
+                            ?
+
+                            "bg-red-100 text-red-700"
+
+
+                            :
+
+                            "bg-gray-100 text-gray-700"
+
+                        }
+                    `}
+                >
+
+                    {avaliacao.status}
+
+                </span>
 
             </td>
 
-            <td className="text-center">
 
-               <button
-                className="inline-flex items-center gap-2 border border-blue-500 text-white rounded-lg px-4 py-2 bg-[#0291F7] hover:bg-blue-700 transition"
-                onClick={() => 
-                    avaliacao.tipo === "Autoavaliação"
-                        ? navigate("/realizar-avaliacao")
-                        : navigate("/comparacao")
-                }
-            >
 
-                Ver resultados
 
-                <ChevronRight size={16} />
 
-            </button>
+
+
+            {/* DESEMPENHO */}
+            <td className="text-center py-5 px-4">
+
+                <span
+                    className="
+                        text-sm
+                        font-semibold
+                        text-gray-800
+                    "
+                >
+
+                    {
+                        avaliacao.desempenho
+                        ||
+                        "-"
+                    }
+
+                </span>
 
             </td>
+
+
+
+
+
+
+
+            {/* AÇÃO */}
+            <td className="text-center py-5 px-4">
+
+                <button
+                    onClick={visualizarComparacao}
+
+                    className="
+                        w-9
+                        h-9
+                        rounded-full
+                        bg-[#0291F7]
+                        text-white
+                        flex
+                        items-center
+                        justify-center
+                        mx-auto
+                        hover:bg-[#027bd1]
+                        transition
+                    "
+                >
+
+                    <ChevronRight size={18}/>
+
+                </button>
+
+            </td>
+
 
         </tr>
 

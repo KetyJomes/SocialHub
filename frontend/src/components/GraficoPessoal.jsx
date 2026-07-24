@@ -40,8 +40,8 @@ export const GraficoPessoal = () => {
             {
                 data: [70, 76, 82, 85, 90],
 
-                borderColor: "#2563EB",
-                backgroundColor: "#2563EB",
+                borderColor: "#0291F7",
+                backgroundColor: "#0291F7",
 
                 borderWidth: 3,
 
@@ -52,8 +52,8 @@ export const GraficoPessoal = () => {
                 pointRadius: 6,
                 pointHoverRadius: 8,
 
-                pointBackgroundColor: "#2563EB",
-                pointBorderColor: "#2563EB",
+                pointBackgroundColor: "#0291F7",
+                pointBorderColor: "#0291F7",
                 pointBorderWidth: 0,
 
                 pointHitRadius: 15,

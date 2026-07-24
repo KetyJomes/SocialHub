@@ -34,7 +34,7 @@ const cards = [
     percentage: 72,
     variation: "+8 p.p.",
     positive: true,
-    colors: ["#2563EB", "#8B5CF6", "#F59E0B", "#FACC15"],
+    colors: ["#0291F7", "#8B5CF6", "#F59E0B", "#FACC15"],
     data: [55, 25, 15, 5],
   },
   {
@@ -42,7 +42,7 @@ const cards = [
     percentage: 72,
     variation: "+6 p.p.",
     positive: true,
-    colors: ["#2563EB", "#8B5CF6", "#F59E0B"],
+    colors: ["#0291F7", "#8B5CF6", "#F59E0B"],
     data: [72, 20, 8],
   },
   {
@@ -50,7 +50,7 @@ const cards = [
     percentage: 68,
     variation: "-4 p.p.",
     positive: false,
-    colors: ["#2563EB", "#8B5CF6", "#F59E0B"],
+    colors: ["#0291F7", "#8B5CF6", "#F59E0B"],
     data: [68, 22, 10],
   },
 ];
@@ -99,7 +99,7 @@ export const SummaryCards = () => {
 
             <div>
 
-              <h2 className="text-4xl font-bold text-[#2563EB]">
+              <h2 className="text-4xl font-bold text-[#0291F7]">
                 {card.percentage}%
               </h2>
 

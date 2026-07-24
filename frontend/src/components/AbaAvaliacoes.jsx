@@ -7,6 +7,7 @@ export const AbaAvaliacoes = ({
 
     const navigate = useNavigate();
 
+
     const acessarAvaliacao = (avaliacao) => {
 
         /*
@@ -24,6 +25,7 @@ export const AbaAvaliacoes = ({
             return;
 
         }
+
 
         /*
         =====================================================
@@ -43,6 +45,7 @@ export const AbaAvaliacoes = ({
 
         }
 
+
         /*
         =====================================================
         OUTRAS AVALIAÇÕES
@@ -55,88 +58,97 @@ export const AbaAvaliacoes = ({
 
     };
 
+
     return (
 
         <div className="grid gap-5">
 
             {
+                avaliacoes.map((avaliacao) => {
 
-                avaliacoes.map((avaliacao) => (
+                    const Icon = avaliacao.icon;
 
-                    <div
-                        key={avaliacao.id}
-                        className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6"
-                    >
+                    return (
 
-                        <div className="flex items-center justify-between">
+                        <div
+                            key={avaliacao.id}
+                            className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6"
+                        >
 
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center justify-between">
 
-                                <div
+                                <div className="flex items-center gap-4">
+
+                                    <div
+                                        className="
+                                            w-10
+                                            h-10
+                                            rounded-full
+                                            bg-[#EAF4FF]
+                                            flex
+                                            items-center
+                                            justify-center
+                                        "
+                                    >
+
+                                        <Icon
+                                            size={20}
+                                            className="text-[#0291F7]"
+                                            strokeWidth={2}
+                                        />
+
+                                    </div>
+
+
+                                    <div>
+
+                                        <h2 className="text-xl font-bold text-gray-800">
+                                            {avaliacao.nome}
+                                        </h2>
+
+                                        <p className="text-gray-500">
+                                            {avaliacao.descricao}
+                                        </p>
+
+                                        <p className="text-sm text-gray-400 mt-1">
+                                            {avaliacao.tipo}
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+
+                                <button
+                                    onClick={() => acessarAvaliacao(avaliacao)}
                                     className={`
-                                        w-14
-                                        h-14
-                                        rounded-2xl
-                                        flex
-                                        items-center
-                                        justify-center
-                                        ${avaliacao.bgIcon}
+                                        px-6
+                                        py-3
+                                        rounded-xl
+                                        transition
+                                        ${
+                                            modoVisualizacao
+                                                ? "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                                                : "bg-[#0291F7] text-white hover:bg-blue-700"
+                                        }
                                     `}
                                 >
 
-                                    <img
-                                        src={avaliacao.icon}
-                                        alt=""
-                                        className="w-8 h-8"
-                                    />
+                                    {
+                                        modoVisualizacao
+                                            ? "Visualizar"
+                                            : avaliacao.acao
+                                    }
 
-                                </div>
-
-                                <div>
-
-                                    <h2 className="text-xl font-bold text-gray-800">
-                                        {avaliacao.nome}
-                                    </h2>
-
-                                    <p className="text-gray-500">
-                                        {avaliacao.descricao}
-                                    </p>
-
-                                    <p className="text-sm text-gray-400 mt-1">
-                                        {avaliacao.tipo}
-                                    </p>
-
-                                </div>
+                                </button>
 
                             </div>
 
-                            <button
-                                onClick={() => acessarAvaliacao(avaliacao)}
-                                className={`
-                                    px-6
-                                    py-3
-                                    rounded-xl
-                                    transition
-                                    ${
-                                        modoVisualizacao
-                                            ? "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                                            : "bg-[#0291F7] text-white hover:bg-blue-700"
-                                    }
-                                `}
-                            >
-                                {
-                                    modoVisualizacao
-                                        ? "Visualizar"
-                                        : avaliacao.acao
-                                }
-                            </button>
-
                         </div>
 
-                    </div>
+                    );
 
-                ))
-
+                })
             }
 
         </div>
