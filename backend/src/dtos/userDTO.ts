@@ -12,7 +12,7 @@ export interface updateUserDTO{
     role: "Student" | "ADM" | "Leader" | "Manager"
 }
 
-export interface authUserDTO{
+export interface loginDTO{
     EDV: number,
     password: string
 }

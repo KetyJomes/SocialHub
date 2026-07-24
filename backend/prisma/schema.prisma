@@ -6,19 +6,21 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("DATABASE_URL")
+  url      = "mysql://root:root@localhost:3307/socialhub_db"
 }
 
 model User {
   id Int @id @default (autoincrement())
+  // // a discutir o formato
+  pfp String?
   name String 
   email String @unique
   password String
   EDV Int @unique
   role Role
 
-  class Class @relation("StudentClass",fields: [idClass], references: id)
-  idClass Int
+  class Class? @relation("StudentClass",fields: [idClass], references: id)
+  idClass Int?
 
 
   PICs Class[] @relation("PicClass")
@@ -31,6 +33,7 @@ model User {
 
 model User_Test{
   id Int @id @default(autoincrement())
+  feedback String?
   
   Evaluated User @relation("Evaluated",fields: [idEvaluated], references: [id])
   idEvaluated Int
@@ -42,7 +45,6 @@ model User_Test{
   idTest Int
 
   userTestAnswer Answers[]
-
 }
 
 
@@ -55,6 +57,7 @@ model Test{
   type TestType
   AvailableResult Boolean
   Frequency Frequency
+  Feedback String
 
   Skills Skill[]
 
@@ -66,6 +69,7 @@ model Class {
   Course String
   period String
   avarageScore Int
+  isActive Boolean @default(true)
 
   PIC User @relation("PicClass",fields: [idPIC], references: id)
   idPIC Int 
@@ -83,8 +87,6 @@ model Answers {
 
   skill Skill @relation(fields: [idSkill], references: [id])
   idSkill Int
-
-  
 }
 
 model Skill{
@@ -106,7 +108,6 @@ model Alternatives {
 
   Skills Skill @relation(fields: [idSkill], references: [id])
   idSkill Int
-
 }
 
 
@@ -121,13 +122,12 @@ enum TestType {
 
 enum Frequency {
   unique
-  Mensal
+  Mensal 
   Bimestral
   Trimestral
+  Semestral
   Anual
 }
-
-
 
 enum Role {
   Student

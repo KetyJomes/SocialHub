@@ -1,6 +1,7 @@
-import {Request,Response} from 'express';
-import { createClassDTO,updateClassDTO } from '../dtos/classDTO.ts';
+
+import { createClassDTO, updateClassDTO } from '../DTOS/classDTO.ts';
 import { createClass, updateClass, deleteClass, showClass, showClasses, addStudentToClass, removeStudentFromClass } from '../services/classServices.ts';
+import { Request, Response } from "express";
 
 export default class ClassController {
     
@@ -19,7 +20,7 @@ export default class ClassController {
     static async updateClass(req: Request, res: Response){
         const data: updateClassDTO = req.body
         try{
-            const id = parseInt(req.params[0],10);
+            const id = Number(req.params.id);
             await updateClass(id,data);
             return res.status(200).send({ response: 'Turma atualizada com sucesso'})
         }
@@ -34,14 +35,13 @@ export default class ClassController {
         
         return res.status(200).send(classes);
     }
-
     catch(e) {
         return res.status(500).send({ rewsponse: "Ocorreu algum erro no servidor"})
         }
     }
 
     static async showClass(req:Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
         try{
             const idClass = await showClass(id);
             return res.status(200).send(idClass);
@@ -53,7 +53,7 @@ export default class ClassController {
     }
 
     static async deleteClass(req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
         try{
             await deleteClass(id);
             return res.status(200).send({ response: 'Turma exluida com sucesso'})
@@ -64,7 +64,7 @@ export default class ClassController {
     }
 
     static async addStudent(req:Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
         const {studentId} = req.body;
             
         if(isNaN(id) || !studentId){
@@ -79,7 +79,7 @@ export default class ClassController {
     }
 
     static async RemoveStudent(req:Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
         const {studentId} = req.body;
             
         if(isNaN(id) || !studentId){

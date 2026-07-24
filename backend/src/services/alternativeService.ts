@@ -1,4 +1,4 @@
-import { createAlternativeDTO, updateAlternativeDTO } from "../dtos/alternativeDTO.ts"
+import { createAlternativeDTO, updateAlternativeDTO } from "../DTOS/alternativeDTO.ts"
 import {prisma} from "../lib/prisma.ts"
 
 export const createAlternative = async(data: createAlternativeDTO) =>{
@@ -30,7 +30,7 @@ export const updateAlternative = async( id: number, data: updateAlternativeDTO )
     })
 }
 
-export const deleteAlternatives = async (id: number) => {
+export const deleteAlternative = async (id: number) => {
     return await prisma.alternatives.delete({
         where: {
             id: id

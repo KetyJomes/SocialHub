@@ -1,6 +1,6 @@
-import { Request, Response} from "express";
-import { createUserDTO, authUserDTO, updateUserDTO } from "../dtos/userDTO.ts";
-import { createUser, getUser, authUser, getUsers, updateUser  } from "../services/userServices.ts";
+import { Request, response, Response} from "express";
+import { createUserDTO, loginDTO, updateUserDTO } from "../DTOS/userDTO.ts";
+import { createUser, getUser, login, getUsers, updateUser, deleteUser  } from "../services/userServices.ts";
 
 export default class UserController {
     static async create(req: Request, res: Response){
@@ -11,15 +11,17 @@ export default class UserController {
             return res.status(201).send({ response: "User cadastrado"});
         }
         catch (e) {
+            console.log(e)
             return res.status(500).send({ response: "Ocorreu algum erro no servidor."})
         }
 
     }
 
     static async login(req: Request, res: Response){
-        const data: authUserDTO = req.body
+        const data: loginDTO = req.body
+        
         try{
-            const user = await authUser(data);
+            const user = await login(data);
 
             return res.status(200).send({ response: "Bem vindo!"});
         }
@@ -29,7 +31,7 @@ export default class UserController {
     }
 
     static async showUser(req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
         try{
             const user = await getUser(id);
             if (!user){
@@ -55,7 +57,7 @@ export default class UserController {
     static async updateUser(req: Request, res: Response){
         const data: updateUserDTO = req.body
         try{
-            const id = parseInt(req.params[0],10);
+            const id = Number(req.params.id);
             await updateUser(id,data);
             return res.status(200).send({ reponse: 'User atualizado com sucesso!'})
         }
@@ -64,5 +66,15 @@ export default class UserController {
         }
     }
 
+    static async removeUser(req: Request, res: Response){
+        const id = Number(req.params.id);
+        try{
+            await deleteUser(id);
+            return res.status(200).send({response: 'Usuário excluido com sucesso'})
+        }
+        catch (e){
+            return res.status(500).send({ response: 'Usuário não pode ser deletado'})
+        }
+    }
 
 }
