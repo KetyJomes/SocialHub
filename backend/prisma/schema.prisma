@@ -127,9 +127,10 @@ enum TestType {
 
 enum Frequency {
   unique
-  Mensal
+  Mensal 
   Bimestral
   Trimestral
+  Semestral
   Anual
 }
 
