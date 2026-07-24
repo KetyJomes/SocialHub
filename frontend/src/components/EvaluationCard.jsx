@@ -35,11 +35,13 @@ export const EvaluationCard = ({
             status: valor,
 
             color:
-                valor === "Muito bom"
+                valor === "Crítico"
+                    ? "red"
+                    : valor === "Abaixo"
+                    ? "yellow"
+                    : valor === "Dentro"
                     ? "green"
-                    : valor === "Bom"
-                    ? "blue"
-                    : "orange"
+                    : "blue"
 
         };
 
@@ -274,7 +276,7 @@ export const EvaluationCard = ({
 
                                             
                                                 
-                                                Abaixo do esperado
+                                                Abaixo
                                             
 
                                         </option>
@@ -282,7 +284,7 @@ export const EvaluationCard = ({
 
                                         <option>
 
-                                                Atende às expectativas
+                                                Dentro
                                             
                                         </option>
 
@@ -290,7 +292,7 @@ export const EvaluationCard = ({
                                         <option>
 
                                             
-                                                Acima do esperado
+                                                Acima
 
                                         </option>
 
@@ -324,22 +326,18 @@ export const EvaluationCard = ({
                                             text-sm
 
                                             ${
-                                                item.color === "green"
-                                                ?
-                                                "bg-green-50 text-green-700 border border-green-200"
-
-                                                :
 
                                                 item.color === "blue"
+                                                ? "bg-blue-50 text-blue-700 border border-blue-200"
 
-                                                ?
+                                                :item.color === "green"
+                                                ? "bg-green-50 text-green-700 border border-green-200"
 
-                                                "bg-blue-50 text-blue-700 border border-blue-200"
+                                                : item.color === "yellow"
+                                                ? "bg-yellow-50 text-yellow-700 border border-yellow-200"
 
-                                                :
-
-                                                "bg-orange-50 text-orange-700 border border-orange-200"
-                                            }
+                                                : "bg-red-50 text-red-700 border border-red-200"
+                                                }
                                         `}
 
                                     >
@@ -355,22 +353,17 @@ export const EvaluationCard = ({
                                                 rounded-full
 
                                                 ${
-                                                    item.color === "green"
-                                                    ?
-                                                    "bg-green-500"
-
-                                                    :
-
                                                     item.color === "blue"
+                                                    ? "bg-blue-500"
 
-                                                    ?
+                                                    :item.color === "green"
+                                                    ? "bg-green-500"
 
-                                                    "bg-blue-500"
+                                                    : item.color === "yellow"
+                                                    ? "bg-yellow-500"
 
-                                                    :
-
-                                                    "bg-orange-500"
-                                                }
+                                                    : "bg-red-500"
+                                                    }
 
                                             `}
 

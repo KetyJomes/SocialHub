@@ -50,7 +50,7 @@ export const UserComparacao = () => {
             title: "Foco no Cliente",
             description:
                 "Demonstra capacidade de compreender as necessidades dos clientes internos e externos, buscando entregar soluções que agreguem valor.",
-            status: "Muito bom",
+            status: "Dentro",
             color: "green",
         },
 
@@ -60,7 +60,7 @@ export const UserComparacao = () => {
             title: "Qualidade",
             description:
                 "Executa suas atividades seguindo padrões definidos, buscando excelência e melhoria contínua nos processos.",
-            status: "Muito bom",
+            status: "Dentro",
             color: "green",
         },
 
@@ -70,7 +70,7 @@ export const UserComparacao = () => {
             title: "Trabalho em Equipe",
             description:
                 "Colabora com colegas, compartilha conhecimento e contribui para um ambiente de cooperação.",
-            status: "Muito bom",
+            status: "Dentro",
             color: "green",
         },
 
@@ -80,7 +80,7 @@ export const UserComparacao = () => {
             title: "Resultados",
             description:
                 "Entrega resultados alinhados aos objetivos definidos e acompanha indicadores para evolução contínua.",
-            status: "Muito bom",
+            status: "Dentro",
             color: "green",
         },
 
@@ -90,7 +90,7 @@ export const UserComparacao = () => {
             title: "Comunicação",
             description:
                 "Comunica informações e ideias de forma clara, mantendo alinhamento com diferentes públicos.",
-            status: "Bom",
+            status: "Acima",
             color: "blue",
         },
 
@@ -100,8 +100,8 @@ export const UserComparacao = () => {
             title: "Inovação",
             description:
                 "Propõe melhorias e identifica oportunidades para evolução dos processos.",
-            status: "Regular",
-            color: "orange",
+            status: "Abaixo",
+            color: "yellow",
         },
 
 
@@ -118,7 +118,7 @@ export const UserComparacao = () => {
             title: "Foco no Cliente",
             description:
                 "Apresenta foco nas necessidades dos clientes buscando gerar valor através das suas entregas.",
-            status: "Muito bom",
+            status: "Dentro",
             color: "green",
         },
 
@@ -128,7 +128,7 @@ export const UserComparacao = () => {
             title: "Qualidade",
             description:
                 "Mantém atenção aos detalhes e busca garantir qualidade nas atividades realizadas.",
-            status: "Bom",
+            status: "Acima",
             color: "blue",
         },
 
@@ -138,7 +138,7 @@ export const UserComparacao = () => {
             title: "Trabalho em Equipe",
             description:
                 "Contribui com o time, compartilha conhecimento e incentiva a colaboração.",
-            status: "Muito bom",
+            status: "Dentro",
             color: "green",
         },
 
@@ -148,7 +148,7 @@ export const UserComparacao = () => {
             title: "Resultados",
             description:
                 "Entrega suas responsabilidades e busca alcançar os resultados esperados.",
-            status: "Bom",
+            status: "Acima",
             color: "blue",
         },
 
@@ -158,8 +158,8 @@ export const UserComparacao = () => {
             title: "Comunicação",
             description:
                 "Pode desenvolver ainda mais a clareza na comunicação e o alinhamento das informações compartilhadas.",
-            status: "Regular",
-            color: "orange",
+            status: "Abaixo",
+            color: "yellow",
         },
 
 
@@ -168,7 +168,7 @@ export const UserComparacao = () => {
             title: "Inovação",
             description:
                 "Demonstra abertura para novas ideias e melhorias.",
-            status: "Muito bom",
+            status: "Dentro",
             color: "green",
         },
 
