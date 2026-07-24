@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Swal from "sweetalert2";
 
 import {
     Users,
@@ -18,6 +19,117 @@ import { SidebarAdmin } from "../../components/SidebarAdmin";
 
 
 export const AdminTurmas = () => {
+const confirmarAlteracaoStatus = (turma) => {
+
+    const vaiArquivar = turma.status === "Ativa";
+
+
+    Swal.fire({
+
+        title: "Tem certeza?",
+
+        text: vaiArquivar
+            ? `Deseja arquivar a turma ${turma.nome}?`
+            : `Deseja desarquivar a turma ${turma.nome}?`,
+
+        icon: "warning",
+
+        showCancelButton: true,
+
+        confirmButtonText: vaiArquivar
+            ? "Sim, arquivar"
+            : "Sim, desarquivar",
+
+        cancelButtonText: "Cancelar",
+
+        confirmButtonColor: vaiArquivar
+            ? "#6B7280"
+            : "#009C5D",
+
+        cancelButtonColor: "#9CA3AF"
+
+    }).then((result) => {
+
+
+        if(result.isConfirmed){
+
+
+            alterarStatusTurma(turma.id);
+
+
+
+            Swal.fire({
+
+                title: vaiArquivar
+                    ? "Turma arquivada!"
+                    : "Turma desarquivada!",
+
+                text: `${turma.nome} foi ${
+                    vaiArquivar
+                    ? "arquivada"
+                    : "desarquivada"
+                } com sucesso.`,
+
+                icon: "success",
+
+                confirmButtonColor:"#007BC0"
+
+            });
+
+
+        }
+
+
+    });
+
+};
+
+const confirmarExcluir = (turma) => {
+
+    Swal.fire({
+
+        title: "Tem certeza?",
+
+        text: `Deseja excluir a turma ${turma.nome}? Essa ação não pode ser desfeita.`,
+
+        icon: "warning",
+
+        showCancelButton: true,
+
+        confirmButtonText: "Sim, excluir",
+
+        cancelButtonText: "Cancelar",
+
+        confirmButtonColor: "#DC2626",
+
+        cancelButtonColor: "#9CA3AF"
+
+    }).then((result) => {
+
+
+        if(result.isConfirmed){
+
+            excluirTurma(turma.id);
+
+
+            Swal.fire({
+
+                title: "Turma excluída!",
+
+                text: `${turma.nome} foi removida.`,
+
+                icon: "success",
+
+                confirmButtonColor:"#007BC0"
+
+            });
+
+        }
+
+
+    });
+
+};
 
 
     const [isOpen, setIsOpen] = useState(false);
@@ -30,7 +142,7 @@ export const AdminTurmas = () => {
 
 
     const [modalAlunos, setModalAlunos] = useState(false);
-
+    
     const [modalAdicionar, setModalAdicionar] = useState(false);
 
     const [modalTurma, setModalTurma] = useState(false);
@@ -41,6 +153,14 @@ export const AdminTurmas = () => {
 
     const [editando, setEditando] = useState(false);
 
+    const abrirAdicionarAluno = () => {
+
+        setPesquisaAluno("");
+
+        setModalAdicionar(true);
+
+    };
+
 
 
     const [novaTurma, setNovaTurma] = useState({
@@ -50,6 +170,8 @@ export const AdminTurmas = () => {
         professorId: "",
 
         lider: "",
+
+        turno: "",
 
         status: "Ativa"
 
@@ -73,6 +195,8 @@ export const AdminTurmas = () => {
             professorId: "",
 
             lider: "",
+
+            turno: "",
 
             status: "Ativa"
 
@@ -248,6 +372,18 @@ export const AdminTurmas = () => {
 
             email:"rafael@email.com"
 
+        },
+
+
+
+        {
+
+            id:13,
+
+            nome:"Rafael Souza",
+
+            email:"rafael@email.com"
+
         }
 
 
@@ -280,7 +416,9 @@ export const AdminTurmas = () => {
             alunos: [],
 
 
-            status: novaTurma.status
+            status: novaTurma.status,
+
+            turno: novaTurma.turno 
 
 
         };
@@ -308,6 +446,8 @@ export const AdminTurmas = () => {
             professorId:"",
 
             lider:"",
+
+            turno:"",
 
             status:"Ativa"
 
@@ -421,20 +561,13 @@ export const AdminTurmas = () => {
 
     const abrirAlunos = (turma) => {
 
-
         setTurmaSelecionada(turma);
 
+        setPesquisaAluno("");
 
         setModalAlunos(true);
 
-
     };
-
-
-
-
-
-
 
 
 
@@ -523,6 +656,7 @@ export const AdminTurmas = () => {
 
 
         });
+
 
 
 
@@ -682,40 +816,40 @@ export const AdminTurmas = () => {
 
     const alunosDisponiveisFiltrados = alunosDisponiveis.filter(
 
+        
 
         aluno =>
 
-
             aluno.nome
-
-            .toLowerCase()
-
-            .includes(
-
-                pesquisaAluno.toLowerCase()
-
-            )
-
+                .toLowerCase()
+                .includes(
+                    pesquisaAluno.toLowerCase()
+                )
 
             ||
 
-
             aluno.email
-
-            .toLowerCase()
-
-            .includes(
-
-                pesquisaAluno.toLowerCase()
-
-            )
-
+                .toLowerCase()
+                .includes(
+                    pesquisaAluno.toLowerCase()
+                )
 
     );
 
 
 
-
+    const alunosTurmaFiltrados = turmaSelecionada
+    ? turmaSelecionada.alunos.filter(
+        aluno =>
+            aluno.nome
+                .toLowerCase()
+                .includes(pesquisaAluno.toLowerCase())
+            ||
+            aluno.email
+                .toLowerCase()
+                .includes(pesquisaAluno.toLowerCase())
+    )
+    : [];
 
 
 
@@ -1170,6 +1304,11 @@ export const AdminTurmas = () => {
                             <th className="text-center py-4">
                                 Turma
                             </th>
+                            
+                            
+                            <th className="text-center">
+                                Turno
+                            </th>
 
 
                             <th className="text-center">
@@ -1229,6 +1368,25 @@ export const AdminTurmas = () => {
                                     ">
 
                                         {turma.nome}
+
+                                    </td>
+
+                                    <td className="text-center">
+
+                                        <span
+                                            className="
+                                                px-3
+                                                py-1
+                                                rounded-full
+                                                bg-[#EEF7FD]
+                                                text-[#007BC0]
+                                                text-sm
+                                            "
+                                        >
+
+                                            {turma.turno || "Não definido"}
+
+                                        </span>
 
                                     </td>
 
@@ -1323,7 +1481,7 @@ export const AdminTurmas = () => {
 
                                             <button
 
-                                                onClick={() => alterarStatusTurma(turma.id)}
+                                                onClick={() => confirmarAlteracaoStatus(turma)}
 
                                                 className="
                                                     text-gray-600
@@ -1356,7 +1514,7 @@ export const AdminTurmas = () => {
 
                                             <button
 
-                                                onClick={() => excluirTurma(turma.id)}
+                                                onClick={() => confirmarExcluir(turma)}
 
                                                 className="
                                                     text-red-600
@@ -1532,6 +1690,49 @@ export const AdminTurmas = () => {
 
                             />
 
+                            <select
+
+    value={novaTurma.turno}
+
+    onChange={(e)=>
+        setNovaTurma({
+            ...novaTurma,
+            turno:e.target.value
+        })
+    }
+
+    className="
+        h-12
+        border
+        rounded-xl
+        px-4
+    "
+
+>
+
+    <option value="">
+
+        Selecione o turno
+
+    </option>
+
+
+    <option value="Manhã">
+
+        Manhã
+
+    </option>
+
+
+    <option value="Tarde">
+
+        Tarde
+
+    </option>
+
+
+</select>
+
 
 
 
@@ -1596,19 +1797,16 @@ export const AdminTurmas = () => {
 
 
 
-                            <input
-
-                                placeholder="Líder da turma"
+                            <select
 
                                 value={novaTurma.lider}
 
                                 onChange={(e)=>
                                     setNovaTurma({
                                         ...novaTurma,
-                                        lider:e.target.value
+                                        lider: e.target.value
                                     })
                                 }
-
 
                                 className="
                                     h-12
@@ -1617,7 +1815,30 @@ export const AdminTurmas = () => {
                                     px-4
                                 "
 
-                            />
+                            >
+
+                                <option value="">
+
+                                    Selecione o líder da turma
+
+                                </option>
+
+                                {
+                                    alunosDisponiveis.map(aluno => (
+
+                                        <option
+                                            key={aluno.id}
+                                            value={aluno.nome}
+                                        >
+
+                                            {aluno.nome}
+
+                                        </option>
+
+                                    ))
+                                }
+
+                            </select>
 
 
 
@@ -1749,7 +1970,737 @@ export const AdminTurmas = () => {
         }
 
 
+    {
+    modalAlunos && turmaSelecionada && (
 
+        <div className="
+            fixed
+            inset-0
+            bg-black/40
+            flex
+            items-center
+            justify-center
+            z-50
+        ">
+
+            <div className="
+                bg-white
+                w-[900px]
+                h-[750px]
+                rounded-3xl
+                shadow-xl
+                overflow-hidden
+                flex
+                flex-col
+            ">
+
+
+                {/* CABEÇALHO */}
+
+                <div className="
+                    flex
+                    justify-between
+                    items-center
+                    px-8
+                    py-6
+                    border-b
+                ">
+
+                    <div>
+
+                        <h2 className="
+                            text-2xl
+                            font-bold
+                            text-gray-800
+                        ">
+
+                            {turmaSelecionada.nome}
+
+                        </h2>
+
+
+                        <p className="text-gray-500">
+
+                            Gerenciamento da turma
+
+                        </p>
+
+                    </div>
+
+
+                    <button
+
+                        onClick={() => setModalAlunos(false)}
+
+                        className="cursor-pointer"
+
+                    >
+
+                        <X size={24}/>
+
+                    </button>
+
+
+                </div>
+
+
+
+
+
+                {/* INFORMAÇÕES */}
+
+                <div className="
+                    grid
+                    grid-cols-3
+                    gap-5
+                    p-8
+                ">
+
+
+                    <div className="
+                        bg-[#EEF7FD]
+                        rounded-2xl
+                        p-5
+                    ">
+
+                        <p className="text-sm text-gray-500">
+
+                            Líder da turma
+
+                        </p>
+
+
+                        <h3 className="
+                            font-bold
+                            text-lg
+                            mt-2
+                        ">
+
+                            {turmaSelecionada.lider}
+
+                        </h3>
+
+
+                    </div>
+
+
+
+
+
+                    <div className="
+                        bg-[#EEF8F1]
+                        rounded-2xl
+                        p-5
+                    ">
+
+                        <p className="text-sm text-gray-500">
+
+                            Status
+
+                        </p>
+
+
+                        <h3 className="
+                            font-bold
+                            text-lg
+                            mt-2
+                        ">
+
+                            {turmaSelecionada.status}
+
+                        </h3>
+
+
+                    </div>
+
+
+
+
+
+                    <div className="
+                        bg-[#F7F7F7]
+                        rounded-2xl
+                        p-5
+                    ">
+
+                        <p className="text-sm text-gray-500">
+
+                            Total de alunos
+
+                        </p>
+
+
+                        <h3 className="
+                            font-bold
+                            text-lg
+                            mt-2
+                        ">
+
+                            {turmaSelecionada.alunos.length}
+
+                        </h3>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+
+
+
+                {/* TITULO + PESQUISA + BOTÃO */}
+
+<div className="
+    flex
+    justify-between
+    items-center
+    px-8
+    mb-5
+    gap-5
+">
+
+
+    <h3 className="
+        text-xl
+        font-semibold
+        whitespace-nowrap
+    ">
+
+        Alunos da turma
+
+    </h3>
+
+
+
+
+    <div className="
+    relative
+    w-[350px]
+">
+
+
+    <Search
+
+        size={18}
+
+        className="
+            absolute
+            left-3
+            top-1/2
+            -translate-y-1/2
+            text-gray-400
+        "
+
+    />
+
+
+
+    <input
+
+        type="text"
+
+        placeholder="Pesquisar aluno"
+
+        value={pesquisaAluno}
+
+        onChange={(e)=>setPesquisaAluno(e.target.value)}
+
+        className="
+            w-full
+            h-11
+            border
+            rounded-xl
+            pl-10
+            pr-4
+            outline-none
+        "
+
+    />
+
+
+</div>
+
+
+
+
+
+
+    <button
+
+        onClick={abrirAdicionarAluno}
+
+        className="
+            bg-[#007BC0]
+            text-white
+            px-5
+            py-3
+            rounded-xl
+            cursor-pointer
+            flex
+            items-center
+            gap-2
+            whitespace-nowrap
+        "
+
+    >
+
+        <UserPlus size={18}/>
+
+        Adicionar aluno
+
+
+    </button>
+
+
+
+</div>
+
+
+
+
+
+
+
+                {/* LISTA DE ALUNOS */}
+
+                <div className="
+                    px-8
+                    pb-8
+                    flex-1
+                    overflow-y-auto
+                    min-h-0
+                ">
+
+
+                    {
+                        turmaSelecionada.alunos.length === 0
+
+                        ?
+
+                        (
+
+                            <div className="
+                                h-[180px]
+                                flex
+                                items-center
+                                justify-center
+                                rounded-2xl
+                                border-2
+                                border-dashed
+                                border-gray-300
+                                text-gray-400
+                            ">
+
+                                Nenhum aluno cadastrado nesta turma.
+
+                            </div>
+
+                        )
+
+
+                        :
+
+
+                        (
+
+                            <table className="w-full">
+
+
+                                <thead>
+
+                                    <tr className="border-b">
+
+
+                                        <th className="
+                                            text-left
+                                            py-4
+                                        ">
+
+                                            Nome
+
+                                        </th>
+
+
+
+                                        <th className="text-left">
+
+                                            Email
+
+                                        </th>
+
+
+
+                                        <th className="text-center">
+
+                                            Ações
+
+                                        </th>
+
+
+                                    </tr>
+
+
+                                </thead>
+
+
+
+
+
+
+                                <tbody>
+
+
+                                    {
+                                        turmaSelecionada.alunos.map(aluno => (
+
+
+                                            <tr
+
+                                                key={aluno.id}
+
+                                                className="
+                                                    border-b
+                                                    border-gray-100
+                                                "
+
+                                            >
+
+
+                                                <td className="py-5">
+
+                                                    {aluno.nome}
+
+                                                </td>
+
+
+
+                                                <td>
+
+                                                    {aluno.email}
+
+                                                </td>
+
+
+
+                                                <td>
+
+
+                                                    <div className="
+                                                        flex
+                                                        justify-center
+                                                    ">
+
+
+                                                        <button
+
+                                                            onClick={() => removerAluno(aluno.id)}
+
+                                                            className="
+                                                                text-red-600
+                                                                hover:text-red-700
+                                                                cursor-pointer
+                                                            "
+
+                                                        >
+
+                                                            <Trash2 size={20}/>
+
+
+                                                        </button>
+
+
+                                                    </div>
+
+
+                                                </td>
+
+
+                                            </tr>
+
+
+                                        ))
+                                    }
+
+
+                                </tbody>
+
+
+                            </table>
+
+                        )
+
+                    }
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+    )
+}   
+    {
+    modalAdicionar && (
+
+        <div className="
+            fixed
+            inset-0
+            bg-black/50
+            flex
+            items-center
+            justify-center
+            z-[60]
+        ">
+
+
+            <div className="
+                bg-white
+                w-[600px]
+                h-[650px]
+                rounded-3xl
+                shadow-xl
+                p-8
+                flex
+                flex-col
+            ">
+
+
+                {/* CABEÇALHO */}
+
+                <div className="
+                    flex
+                    justify-between
+                    items-center
+                    mb-6
+                ">
+
+
+                    <div>
+
+                        <h2 className="
+                            text-2xl
+                            font-bold
+                            text-gray-800
+                        ">
+
+                            Adicionar alunos
+
+                        </h2>
+
+
+                        <p className="text-gray-500">
+
+                            Selecione os alunos para adicionar à turma.
+
+                        </p>
+
+
+                    </div>
+
+
+
+                    <button
+
+                        onClick={() => setModalAdicionar(false)}
+
+                        className="cursor-pointer"
+
+                    >
+
+                        <X />
+
+                    </button>
+
+
+                </div>
+
+
+
+
+
+                {/* PESQUISA */}
+
+                <div className="relative mb-6">
+
+
+                    <Search
+
+                        size={18}
+
+                        className="
+                            absolute
+                            left-3
+                            top-1/2
+                            -translate-y-1/2
+                            text-gray-400
+                        "
+
+                    />
+
+
+                    <input
+
+                        type="text"
+
+                        placeholder="Pesquisar aluno"
+
+                        value={pesquisaAluno}
+
+                        onChange={(e)=>setPesquisaAluno(e.target.value)}
+
+                        className="
+                            w-full
+                            h-12
+                            border
+                            rounded-xl
+                            pl-10
+                            pr-4
+                            outline-none
+                        "
+
+                    />
+
+
+                </div>
+
+
+
+
+
+                {/* LISTA */}
+
+                <div className="
+                    flex-1
+                    overflow-y-auto
+                    border
+                    rounded-2xl
+                ">
+
+
+                    {
+                        alunosDisponiveisFiltrados.length === 0
+
+                        ?
+
+                        (
+
+                            <div className="
+                                p-8
+                                text-center
+                                text-gray-500
+                            ">
+
+                                Nenhum aluno disponível.
+
+                            </div>
+
+                        )
+
+
+                        :
+
+
+                        (
+
+                            alunosDisponiveisFiltrados.map(aluno => (
+
+                                <div
+
+                                    key={aluno.id}
+
+                                    className="
+                                        flex
+                                        justify-between
+                                        items-center
+                                        p-4
+                                        border-b
+                                        last:border-b-0
+                                    "
+
+                                >
+
+
+                                    <div>
+
+                                        <p className="
+                                            font-medium
+                                            text-gray-800
+                                        ">
+
+                                            {aluno.nome}
+
+                                        </p>
+
+
+                                        <p className="
+                                            text-sm
+                                            text-gray-500
+                                        ">
+
+                                            {aluno.email}
+
+                                        </p>
+
+
+                                    </div>
+
+
+
+
+
+                                    <button
+
+                                        onClick={() => adicionarAluno(aluno)}
+
+                                        className="
+                                            bg-[#007BC0]
+                                            text-white
+                                            px-4
+                                            py-2
+                                            rounded-xl
+                                            flex
+                                            items-center
+                                            gap-2
+                                            cursor-pointer
+                                        "
+
+                                    >
+
+                                        <UserPlus size={18}/>
+
+                                        Adicionar
+
+                                    </button>
+
+
+                                </div>
+
+
+                            ))
+
+                        )
+
+                    }
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+    )
+}
     </div>
 
 

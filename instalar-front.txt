@@ -3,3 +3,4 @@ npm install chartjs-plugin-datalabels
 npm install lucide-react
 npm run dev -- --force
 npm install jspdf jspdf-autotable
+npm install sweetalert2
