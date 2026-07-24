@@ -4,17 +4,17 @@ import {prisma} from "../lib/prisma.ts"
 export const createAnswer = async(data: createAnswerDTO) =>{
     const {value, scale, idSkill, idUserTest} = data
 
-    return await prisma.Answers.create({
+    return await prisma.answers.create({
         data: { value, scale, idSkill, idUserTest}
     })
 }
 
 export const findAnswers = async() => {
-    return await prisma.Answers.findMany()
+    return await prisma.answers.findMany()
 }
 
 export const findAnswersById = async(id: number) => {
-    return await prisma.Answers.findFirstOrThrow({
+    return await prisma.answers.findFirstOrThrow({
         where: {
             id: id
         }
@@ -22,7 +22,7 @@ export const findAnswersById = async(id: number) => {
 }
 
 export const updateAnswer = async( id: number, data: updateAnswerDTO ) => {
-    return await prisma.Answers.update({
+    return await prisma.answers.update({
         where: {
             id: id
         },
@@ -31,7 +31,7 @@ export const updateAnswer = async( id: number, data: updateAnswerDTO ) => {
 }
 
 export const deleteAnswer = async (id: number) => {
-    return await prisma.Answers.delete({
+    return await prisma.answers.delete({
         where: {
             id: id
         }

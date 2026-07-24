@@ -1,11 +1,12 @@
 export interface createUsertestDTO{
-    idTest: Number
-    idEvaluated: Number
-    idEvaluator: Number
+    idTest: number
+    idEvaluated: number
+    idEvaluator: number
+    
 
     answers:{
-        idSkill: Number
-        value: String
+        idSkill: number
+        value: string
         scale: number
     }[];
 }
