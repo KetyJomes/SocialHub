@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { GetUers } from "../../services/userService"; 
+
 import {
     Users,
     Search,
