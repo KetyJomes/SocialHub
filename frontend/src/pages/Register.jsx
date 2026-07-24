@@ -1,5 +1,5 @@
 // Integração
-import { createUser } from "../services/userService";
+import { api } from "../services/apiService";
 
 import {Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -22,11 +22,13 @@ export const Register = () => {
 
     try {
 
-      const response = await createUser(user);
+      console.log(user)
+
+      const response = api.post('/user/create', user)
 
       console.log(
         "Usuário criado:",
-        resposta.data
+        response.data
       );
 
       navigate('/login')
@@ -167,7 +169,7 @@ export const Register = () => {
 
 
           <button
-            onClick={createUser}
+            onClick={create}
             className="bg-gray-300 hover:bg-gray-400 text-white font-bold py-3 rounded-xl transition"
           >
             Cadastrar

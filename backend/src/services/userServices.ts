@@ -7,6 +7,8 @@ export const  createUser = async(data: createUserDTO)=>{
     
     const {name, email, password, EDV, classId, role} = data
     
+    console.log(data)
+
     const userExists = await prisma.user.findUnique({
         where: {EDV:EDV}
     });
