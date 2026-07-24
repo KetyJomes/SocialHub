@@ -27,24 +27,20 @@ export const CardProgresso360 = ({ colaboradores }) => {
 
             {/* CABEÇALHO */}
 
-            <div className="flex items-center gap-4">
+            <div>
 
-                <div>
+                <h2 className="text-2xl font-bold text-gray-800">
 
-                    <h2 className="text-2xl font-bold text-gray-800">
+                    Progresso da Avaliação
 
-                        Progresso da Avaliação
-
-                    </h2>
+                </h2>
 
 
-                    <p className="text-gray-500 mt-1">
+                <p className="text-gray-500 mt-1">
 
-                        Continue respondendo para concluir sua avaliação.
+                    Continue respondendo para concluir sua avaliação.
 
-                    </p>
-
-                </div>
+                </p>
 
 
             </div>
@@ -63,7 +59,7 @@ export const CardProgresso360 = ({ colaboradores }) => {
 
                 {/* PROGRESSO */}
 
-                <div className="bg-[#F1ECF8] rounded-2xl w-[180px] h-full p-6 flex items-center justify-center">
+                <div className="bg-[#EDE9FE] rounded-2xl w-[180px] p-6 flex items-center justify-center">
 
 
                     <div className="relative w-28 h-28 flex items-center justify-center">
@@ -82,7 +78,7 @@ export const CardProgresso360 = ({ colaboradores }) => {
                                 stroke="currentColor"
                                 strokeWidth="8"
                                 fill="transparent"
-                                className="text-[#D9CCEA]"
+                                className="text-[#DDD6FE]"
                             />
 
 
@@ -99,7 +95,7 @@ export const CardProgresso360 = ({ colaboradores }) => {
                                     264 - (264 * porcentagem) / 100
                                 }
                                 strokeLinecap="round"
-                                className="text-[#5B3A9D] transition-all duration-700"
+                                className="text-[#7C3AED] transition-all duration-700"
                             />
 
 
@@ -112,7 +108,7 @@ export const CardProgresso360 = ({ colaboradores }) => {
                         <div className="text-center">
 
 
-                            <p className="text-2xl font-bold text-[#5B3A9D]">
+                            <p className="text-2xl font-bold text-[#7C3AED]">
 
                                 {porcentagem}%
 
@@ -142,21 +138,28 @@ export const CardProgresso360 = ({ colaboradores }) => {
 
 
 
-
                 {/* RESPONDIDAS */}
 
-                <div className="bg-[#E8F5EF] rounded-2xl p-6 flex-1 flex items-center gap-6">
+                <div className="bg-[#ECFDF5] rounded-2xl p-6 flex-1 flex items-center gap-6">
 
 
-                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center">
+                    <div
+                        className="
+                            w-10
+                            h-10
+                            rounded-full
+                            bg-[#D1FAE5]
+                            flex
+                            items-center
+                            justify-center
+                        "
+                    >
 
 
                         <CircleCheckBig
-
-                            size={50}
-
-                            className="text-[#008542]"
-
+                            size={20}
+                            className="text-[#10B981]"
+                            strokeWidth={2}
                         />
 
 
@@ -196,21 +199,28 @@ export const CardProgresso360 = ({ colaboradores }) => {
 
 
 
-
                 {/* PENDENTES */}
 
-                <div className="bg-[#FBE8E8] rounded-2xl p-6 flex-1 flex items-center gap-6">
+                <div className="bg-yellow-50 rounded-2xl p-6 flex-1 flex items-center gap-6">
 
 
-                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center">
+                    <div
+                        className="
+                            w-10
+                            h-10
+                            rounded-full
+                            bg-yellow-100
+                            flex
+                            items-center
+                            justify-center
+                        "
+                    >
 
 
                         <Clock3
-
-                            size={50}
-
-                            className="text-[#B51E35]"
-
+                            size={20}
+                            className="text-yellow-700"
+                            strokeWidth={2}
                         />
 
 
@@ -253,21 +263,28 @@ export const CardProgresso360 = ({ colaboradores }) => {
 
 
 
-
                 {/* TOTAL */}
 
-                <div className="bg-[#E8EFF8] rounded-2xl p-6 flex-1 flex items-center gap-6">
+                <div className="bg-[#EAF4FF] rounded-2xl p-6 flex-1 flex items-center gap-6">
 
 
-                    <div className="w-16 h-16 rounded-2xl flex items-center justify-center">
+                    <div
+                        className="
+                            w-10
+                            h-10
+                            rounded-full
+                            bg-[#DCEEFF]
+                            flex
+                            items-center
+                            justify-center
+                        "
+                    >
 
 
                         <Users
-
-                            size={50}
-
-                            className="text-[#17458F]"
-
+                            size={20}
+                            className="text-[#0291F7]"
+                            strokeWidth={2}
                         />
 
 
