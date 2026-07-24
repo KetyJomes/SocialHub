@@ -37,7 +37,7 @@ export const Admin = () => {
 
     return (
 
-        <div className="min-h-screen bg-[#F7F8FC]">
+        <div className="min-h-screen bg-white">
 
 
             <Header

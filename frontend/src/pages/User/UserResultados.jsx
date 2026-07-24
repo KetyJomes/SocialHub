@@ -51,7 +51,7 @@ export const UserResultados = () => {
 
 
 
-            <main className="min-h-screen bg-[#F7F8FC] p-10 mt-[8vh]">
+            <main className="min-h-screen bg-white p-10 mt-[8vh]">
 
 
                 <div className="mx-auto pb-12">
