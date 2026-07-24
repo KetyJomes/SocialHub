@@ -14,6 +14,8 @@ export const CreateTest = () => {
 
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
+    const [showAlert, setShowAlert] = useState(false);
+    const [mensagemAlert, setMensagemAlert] = useState("");
 
     const [dados, setDados] = useState({
         titulo: "",
@@ -81,6 +83,96 @@ export const CreateTest = () => {
 
     function criarAvaliacao() {
 
+        // VALIDAR INFORMAÇÕES DA AVALIAÇÃO
+     
+        if (
+            !dados.titulo ||
+            !dados.tipo ||
+            !dados.disponibilidade ||
+            !dados.prazo ||
+            !turma
+        ) {
+
+            setMensagemAlert(
+                "Preencha todos os campos obrigatórios em Informações da Avaliação antes de continuar."
+            );
+
+            setShowAlert(true);
+
+            return;
+
+        }
+
+        // VALIDAR TÓPICOS
+
+        if (
+            secoes.length === 0 ||
+            secoes.some(secao => !secao.titulo.trim())
+        ) {
+
+            setMensagemAlert(
+                "Crie pelo menos um tópico e informe o nome de todos os tópicos."
+            );
+
+            setShowAlert(true);
+
+            return;
+
+        }
+
+        // VALIDAR QUESTÕES
+
+        const perguntas = secoes.flatMap(secao => secao.perguntas);
+
+        if (
+            perguntas.length === 0 ||
+            perguntas.some(pergunta =>
+                !pergunta.texto.trim() ||
+                !pergunta.escala
+            )
+        ) {
+
+            setMensagemAlert(
+                "Preencha todas as questões e selecione uma escala para cada uma delas."
+            );
+
+            setShowAlert(true);
+
+            return;
+
+        }
+
+        // VALIDAR ESCALAS
+    
+        const escalasObrigatorias = [
+            "Crítico",
+            "Abaixo do esperado",
+            "Dentro do esperado",
+            "Acima do esperado"
+        ];
+
+        const escalasSelecionadas = perguntas.map(
+            pergunta => pergunta.escala
+        );
+
+        const todasEscalasForamUsadas = escalasObrigatorias.every(
+            escala => escalasSelecionadas.includes(escala)
+        );
+
+        if (!todasEscalasForamUsadas) {
+
+            setMensagemAlert(
+                "É obrigatório utilizar todas as escalas na avaliação."
+            );
+
+            setShowAlert(true);
+
+            return;
+
+        }
+
+        // CRIAR AVALIAÇÃO
+
         const novaAvaliacao = {
 
             id: Date.now(),
@@ -110,6 +202,21 @@ export const CreateTest = () => {
     }
 
     function salvarModelo() {
+
+        if (
+            !dados.titulo ||
+            !dados.tipo
+        ) {
+
+            setMensagemAlert(
+                "Informe pelo menos o título e o tipo antes de salvar um modelo."
+            );
+
+            setShowAlert(true);
+
+            return;
+
+        }
 
         const modelo = {
 
@@ -458,9 +565,43 @@ export const CreateTest = () => {
                 </div>
 
             </main>
+            {
+                showAlert && (
+    
+                    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    
+                        <div className="bg-white rounded-2xl shadow-xl p-8 w-[420px]">
+    
+                            <h2 className="text-2xl font-bold mb-4">
+                                Atenção
+                            </h2>
+    
+                            <p className="text-gray-600 mb-8">
+                                {mensagemAlert}
+                            </p>
+    
+                            <div className="flex justify-end">
+    
+                                <button
+                                    onClick={() => setShowAlert(false)}
+                                    className="bg-[#0291F7] text-white rounded-lg px-5 py-2 hover:opacity-90 transition"
+                                >
+                                    Entendi
+                                </button>
+    
+                            </div>
+    
+                        </div>
+    
+                    </div>
+    
+                )
+            
+        }
 
         </>
 
     );
 
 };
+
