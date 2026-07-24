@@ -1,18 +1,21 @@
-import { createTestDTO, updateTestDTO } from "../dtos/testDTO.ts";
+import { createTestDTO, updateTestDTO } from "../DTOS/testDTO.ts";
+import { Frequency } from "../generated/prisma/enums.ts";
 // import { Test } from "@prisma/client"
 import { prisma } from "../lib/prisma.ts"
 
+
 export const createTest = async(data: createTestDTO)=>{
-    const {  content, finalDate, startdate, grade, type, skill, questions, AvailableResult} = data;
+    const {  content, finalDate, startdate, grade, type, skill, questions, AvailableResult, frequency} = data;
 
     return await prisma.test.create({
         data:{
-            content:content,
+            Content:content,
             finalDate:finalDate,
-            startdate:startdate,
+            startDate:startdate,
             AvailableResult: AvailableResult,
             grade: grade,
-            type: type,
+            Frequency: frequency,
+            TestType: type,
             skill: skill,
             questions: {
                 create: questions
@@ -22,23 +25,24 @@ export const createTest = async(data: createTestDTO)=>{
 }
 
 export const updateTest = async(id:number,data: updateTestDTO)=>{
-    const {content , finalDate, startdate, grade, type, skill, questions, AvailableResult} = data;
+    const {content , finalDate, startdate, grade, type, skill, questions, AvailableResult, frequency} = data;
     return await prisma.test.update({
         where:{id:id},
         data: {
-            content:content,
+            Content:content,
             finalDate:finalDate,
-            startdate:startdate,
+            startDate:startdate,
             AvailableResult: AvailableResult,
             grade: grade,
-            type: type,
+            Frequency: frequency,
+            TestType: type,
             skill: skill,
             questions: {
                 create: questions
         }
     }
     })
-
+// 
 }
 
 export const showTests = async()=>{
@@ -49,8 +53,10 @@ export const showTest = async(id: number)=>{
     return await prisma.test.findUnique({
         where: {id:id},
         include: {
-            questions: {
-                alternatives:true
+            Skills: {
+                include: { 
+                    Alternative: true
+                }
             }
         }
     });
@@ -104,7 +110,7 @@ export const addSkill = async (testId: number, skillId: number)=>{
     return await prisma.test.update({
         where: {id: testId},
         data:{
-            skills:{
+            Skills:{
                 connect: {id: skillId}
             }
         }
@@ -115,7 +121,7 @@ export const removeSkill = async (testId: number, skillId: number)=>{
     return await prisma.test.update({
         where: {id: testId},
         data:{
-            skills:{
+            Skills:{
                 disconnect: {id: skillId}
             }
         }
@@ -123,3 +129,60 @@ export const removeSkill = async (testId: number, skillId: number)=>{
 };
 
 
+export const defineFrequency = async (testeId: number) =>{
+const test = await prisma.test.findUnique({
+    where: {
+        id: testeId
+    },
+});
+
+if (!test || test.Frequency == Frequency.unique){
+    return null;
+}
+
+const currentEnd = new Date(test.finalDate);
+const currentStart = new Date(test.startDate);
+
+
+const duration = currentEnd.getTime() - currentStart.getTime();
+
+let nextStart = new Date(currentStart);
+
+switch (test.Frequency){
+    case Frequency.Mensal:
+        nextStart.setMonth(nextStart.getMonth() +1);
+        break;
+    
+    case Frequency.Bimestral:
+        nextStart.setMonth(nextStart.getMonth() +2);
+        break;
+    
+    case Frequency.Trimestral:
+        nextStart.setMonth(nextStart.getMonth() +3);
+        break;
+
+    case Frequency.Semestral:
+        nextStart.setMonth(nextStart.getMonth() +6);
+        break;
+
+    case Frequency.Anual:
+            nextStart.setMonth(nextStart.getMonth() +12);
+            break;
+    
+    default:
+        return null;   
+    } 
+const nextEnd = new Date(nextStart.getTime() + duration);
+
+
+return await prisma.test.update({
+        where: { id: testeId },
+        data: {
+            startDate: nextStart,
+            finalDate: nextEnd
+        }
+    });
+
+    
+
+} 

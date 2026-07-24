@@ -1,16 +1,8 @@
-// Integração
-// import { createUser } from "../services/userService";
-
 import background from "../assets/supergraphic.svg";
 import { Link, useNavigate } from "react-router-dom";
 
 export const Login = () => {
   const navigateLogin = useNavigate();
-
-  // Integração
-  // const [user, setUser] = useState({
-
-  // })
 
   function handleLogin() {
     navigateLogin("/register");

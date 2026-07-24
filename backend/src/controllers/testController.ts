@@ -1,6 +1,6 @@
 import {Request, Response} from 'express';
-import { createTestDTO, updateTestDTO } from '../dtos/testDTO.ts';
-import { createTest, deleteTest, showTest, showTests, updateTest, allowAccess, cancelAccess, publishtest,addSkill,removeSkill} from '../services/testServices.ts';
+import { createTestDTO, updateTestDTO } from '../DTOS/testDTO.ts';
+import { createTest, deleteTest, showTest, showTests, updateTest, allowAccess, cancelAccess, publishtest,addSkill,removeSkill, defineFrequency} from '../services/testServices.ts';
 
 // import test from 'node:test';
 
@@ -18,13 +18,12 @@ export default class TestController {
     }
 
     static async showTest(req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
         try{
             const test = await showTest(id);
             return res.status(200).send(test)
 
         }
-        
         catch(e){
             return res.status(500).send({ response: 'Ocorreu algum erro no servidor'})
         }
@@ -42,19 +41,19 @@ export default class TestController {
     }
 
     static async deleteTest(req: Request, res: Response){
-        const id = parseInt(req.params[0],10);
+        const id = Number(req.params.id);
         try{
             await deleteTest(id);
             return res.status(200).send({ response: 'Prova exluida com sucesso'})
         }
         catch (e) {
-            return res.status(500).send({ repsponse: "A prova não pode ser deletada"})
+            return res.status(500).send({ response: "A prova não pode ser deletada"})
         }
     }
 
     static async updateTest(req: Request, res: Response){
         try{
-            const id = parseInt(req.params[0],10);
+            const id = Number(req.params.id);
             const data: updateTestDTO = req.body;
 
             await updateTest(id, data);
@@ -67,7 +66,7 @@ export default class TestController {
     }
 
     static async allowAccess(req: Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
 
         if (isNaN(id)){
             return res.status(400).send({response: "Teste não encontrado" })
@@ -82,7 +81,7 @@ export default class TestController {
     }  
 
     static async  RemoveAccess(req: Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
 
         if (isNaN(id)){
             return res.status(400).send({response: "Teste não encontrado" })
@@ -97,7 +96,7 @@ export default class TestController {
     }  
 
     static async publishTest(req: Request, res: Response){
-        const testeId = parseInt(req.params.id, 10);
+        const testeId = Number(req.params.id);
         const {startDate, finalDate} = req.body;
 
         if(isNaN(testeId)){
@@ -115,7 +114,7 @@ export default class TestController {
     }
 
     static async addSkill(req: Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
         const {skillId} = req.body;
 
         if(isNaN(id) || !skillId){
@@ -131,7 +130,7 @@ export default class TestController {
     }
     
      static async removeSkill(req: Request, res: Response){
-        const id = parseInt(req.params.id,10);
+        const id = Number(req.params.id);
         const {skillId} = req.body;
 
         if(isNaN(id) || !skillId){
@@ -145,4 +144,22 @@ export default class TestController {
             return res.status(500).send({Response: "Não foi possivel remover a skill a prova"})
         }
     }
+
+    static async frequency(req: Request, res: Response){
+        const id = Number(req.params.id);
+
+         if (isNaN(id)){
+            return res.status(400).send({response: "Teste não encontrado" })
+        }
+        try{
+            await defineFrequency(id);
+            return res.status(200).send({response: 'Frequencia definida'})
+        } catch (e) {
+            return res.status(500).send({ response: "Erro ao definir frequencia"})
+        }
+    
+
+    }
+
+    
 }
