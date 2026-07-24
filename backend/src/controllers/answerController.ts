@@ -1,24 +1,26 @@
 import { Request, Response} from "express";
-import { createAnswerDTO, updateAnswerDTO } from "../DTOS/answersDTO.ts";
+import { updateAnswerDTO } from "../DTOS/answersDTO.ts";
 import { createAnswer, deleteAnswer, findAnswers, findAnswersById, updateAnswer } from "../services/answerService.ts";
 
 export default class AnswerController {
-    static async create(req: Request, res: Response){
-        const data: createAnswerDTO = req.body
-        try{
-            await createAnswer(data)
-            return res.status(200).send({response: "Alternativa registrada com sucesso!" })
-        }
-        catch(e){
-            return res.status(500).send({response: "Ocorreu erro no servidor"})
-        }
-    }
+    // static async create(req: Request, res: Response){
+    //     const data:  = req.body
+    //     try{
+    //         await createAnswer(data)
+    //         return res.status(200).send({response: "Alternativa registrada com sucesso!" })
+    //     }
+    //     catch(e){
+    //         return res.status(500).send({response: "Ocorreu erro no servidor"})
+    //     }
+    // }
 
     static async showAnswers(req: Request, res:Response){
             try {
-                await findAnswers()
-                return res.status(404).send({response: "Nenhum  encontrado"})
+                const answer = await findAnswers()
+                return res.status(200).send(answer)
+
             } catch (error) {
+                return res.status(404).send({response: "Nenhum  encontrado"})
                 
             }
     }
@@ -26,11 +28,12 @@ export default class AnswerController {
     static async getAnswerById(req: Request, res: Response){
         const {id} = req.params
         try{
-            await findAnswersById(Number(id))
+            const answer = await findAnswersById(Number(id))
+            return res.status(200).send(answer)
         }
         catch(error){
             return res.status(404).send({response:"nenhuma alternativa encontrada!"})
-            
+        
         }
 
     }

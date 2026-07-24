@@ -24,7 +24,6 @@ export default class TestController {
             return res.status(200).send(test)
 
         }
-        
         catch(e){
             return res.status(500).send({ response: 'Ocorreu algum erro no servidor'})
         }

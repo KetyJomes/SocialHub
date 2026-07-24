@@ -10,7 +10,8 @@ export const  createUserTest = async(data: createUsertestDTO)=>{
     data:{
         idTest:data.idTest,
         idEvaluated:data.idEvaluated,
-        idEvaluator:data.idEvaluator
+        idEvaluator:data.idEvaluator,
+        feedback: data.feedback
     }
   })
     for(const answer of data.answers){
@@ -28,23 +29,63 @@ export const  createUserTest = async(data: createUsertestDTO)=>{
 
 
 export const getUserTest = async(id: number) =>{
+  return await prisma.user_Test.findUnique({
+    where:{
+      id
+    },
+    include: {
+      Evaluated: true,
+      Evaluator: true,
+      Tests: true,
+      userTestAnswer:{
+        include: {
+          skill: true
+        }
+      }
+    }
+  })
+  
+}
+
+export const findByEvaluated = async(id: number)=>{
+
+    return await prisma.user_Test.findMany({
+
+        where:{
+            idEvaluated:id
+        },
+        include:{
+            Evaluator:true,
+            Tests:true
+        }
+
+    });
 
 }
 
-export const findByEvaluated = async() =>{
+export const findByEvaluator = async(id: number)=>{
+  return await prisma.user_Test.findMany({
+
+        where:{
+          idEvaluator:id
+        },
+        include:{
+            Evaluated: true,
+            Tests: true
+        }
+
+    });
 }
 
-export const findByEvaluator = async() =>{
-}
+
+
+// export const updateUserTest = async(id:number )=>{
+
+// }
 
 
 
-export const updateUserTest = async(id:number )=>{
-
-}
-
-
-
-export const SumbmitUserTest = async(id: number)=>{
+// export const SumbmitUserTest = async(id: number)=>{
  
-}
+// }
+

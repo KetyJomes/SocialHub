@@ -17,9 +17,11 @@ export default class alternativeController {
 
     static async showAlternatives(req: Request, res:Response){
             try {
-                await findAlternatives()
-                return res.status(404).send({response: "Nenhum  encontrado"})
+                const alternative = await findAlternatives()
+                return res.status(404).send(alternative)
+
             } catch (error) {
+                return res.status(404).send({response: "Nenhuma alternative encontrada"})
                 
             }
     }

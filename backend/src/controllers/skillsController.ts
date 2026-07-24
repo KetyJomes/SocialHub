@@ -10,8 +10,11 @@ import { createSkillDTO, updateSkillDTO } from "../DTOS/skillDTO.ts";
 export default class SkillController {
     static async create(req: Request, res: Response){
         const data: createSkillDTO = req.body
+        const {id} = req.params
+
         try{
-            await createSkill(data)
+
+            await createSkill(Number(id),data)
             return res.status(200).send({response: "Competência registrada com sucesso!" })
         }
         catch(e){
@@ -21,9 +24,11 @@ export default class SkillController {
 
     static async showSkill(req: Request, res:Response){
             try {
-                await getSkills()
-                return res.status(404).send({response: "Nenhuma competencia encontrada"})
+                const skills = await getSkills()
+                return res.status(200).send(skills)
+
             } catch (error) {
+                return res.status(404).send({response: "Nenhuma competencia encontrada"})
                 
             }
     }

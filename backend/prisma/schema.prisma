@@ -129,8 +129,6 @@ enum Frequency {
   Anual
 }
 
-
-
 enum Role {
   Student
   Leader

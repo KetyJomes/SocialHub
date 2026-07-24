@@ -35,7 +35,6 @@ export default class ClassController {
         
         return res.status(200).send(classes);
     }
-
     catch(e) {
         return res.status(500).send({ rewsponse: "Ocorreu algum erro no servidor"})
         }
