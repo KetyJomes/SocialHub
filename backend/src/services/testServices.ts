@@ -162,8 +162,26 @@ switch (test.Frequency){
         break;
 
     case Frequency.Semestral:
-        nextStart.setMonth(nextStart.getMonth() +4);
+        nextStart.setMonth(nextStart.getMonth() +6);
         break;
+
+    case Frequency.Anual:
+            nextStart.setMonth(nextStart.getMonth() +12);
+    
+    default:
+        return null;   
     } 
+const nextEnd = new Date(nextStart.getTime() + duration);
+
+
+return await prisma.test.update({
+        where: { id: testeId },
+        data: {
+            startDate: nextStart,
+            finalDate: nextEnd
+        }
+    });
+
+    
 
 } 
