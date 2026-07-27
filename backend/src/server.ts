@@ -18,3 +18,5 @@ app.get('/getTeste', (req, res) => {
 
 
 app.listen(port, () => console.log(`Acesse: http://localhost:${port}/`));
+
+
