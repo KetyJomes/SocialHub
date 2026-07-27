@@ -1,3 +1,49 @@
+// colocar no select do tipo isso aqui:
+//<div>
+//
+//    <label className="font-medium text-gray-800">
+//        Tipo
+//    </label>
+//
+//    <select
+//        value={test.type}
+//        onChange={(e) =>
+//            setTest({
+//                ...test,
+//                type: e.target.value
+//            })
+//        }
+//        className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 outline-none focus:ring-2 focus:ring-[#0291F7]"
+//    >
+//
+//        <option value="">
+//            Selecione
+//        </option>
+//
+//        <option value="Instructor">
+//            Gestor → Aluno
+//        </option>
+//
+//        <option value="Self">
+//            Autoavaliação
+//        </option>
+//
+//        <option value="Group">
+//            360°
+//        </option>
+//
+//        <option value="Lider">
+//            Líder → Turma
+//        </option>
+//
+//        <option value="Class">
+//            Aluno → Líder
+//        </option>
+//
+//    </select>
+//</div>
+
+
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation, data } from "react-router-dom";
 
@@ -17,7 +63,7 @@ export const CreateTest = () => {
         finalDate: "",
         grade: "",
         type: "",
-        AvailableResult: false, 
+        AvailableResult: false,
         frequency: "",
         skills: []
     });
@@ -30,64 +76,53 @@ export const CreateTest = () => {
 
     const create = async () => {
 
-        try {
+    try {
 
-            const responseTest = await api.post("/test/create", {
-                content: test.content,
-                startDate: test.startDate,
-                finalDate: test.finalDate,
-                grade: Number(grade),
-                type: test.type,
-                AvailableResult: false,
-                frequency: test.frequency,
-                skills: [
-                    name: ''
-                    alternatives: []
-                ]
-            });
+        const response = await api.post("/test/create", {
 
-            const idTest = responseTest.data.id;
+            content: test.content,
+            startDate: test.startDate,
+            finalDate: test.finalDate,
+            grade: Number(test.grade),
+            type: test.type,
+            AvailableResult: false,
+            frequency: test.frequency,
 
-            for (const topic of topics) {
+            skills: secoes.map(secao => ({
+                Title: secao.titulo,
+                Description: secao.descricao,
+                alternatives: secao.perguntas.map(pergunta => ({
 
-                const responseSkill = await api.post("/skill/create", {
-                    Title: skill.,
-                    Description: skill.descricao,
-                    idTest: idTest
-                });
+                    Content: pergunta.texto,
 
-                const idSkill = responseSkill.data.id;
+                    Scale: Number(pergunta.escala)
 
-                for (const pergunta of secao.perguntas) {
+                }))
 
-                    await api.post("/alternative/create", {
-                        Content: skill.,
-                        Scale: pergunta.escala,
-                        idSkill: idSkill
-                    });
+            }))
 
-                }
+        });
 
-            }
 
-            console.log(test)
+        console.log(
+            "Teste criado:",
+            response.data
+        );
 
-            const response = api.post('/test/create', test)
 
-            console.log(
-                "Teste Criado:",
-                response.data
-            )
+        navigate("/management-test");
 
-            navigate('/management-test')
-        } catch(error) {
-            console.log(
-                "Erro ao criar avaliação",
-                error
-            )
-        }
-    
+
+    } catch(error){
+
+        console.log(
+            "Erro:",
+            error
+        );
+
     }
+
+};
     
 
     const [isOpen, setIsOpen] = useState(false);
@@ -99,15 +134,6 @@ export const CreateTest = () => {
     const modeloOrigemId = location.state?.modeloOrigemId;
     const [showAlert, setShowAlert] = useState(false);
     const [mensagemAlert, setMensagemAlert] = useState("");
-
-    // const [dados, setDados] = useState({
-    //     titulo: modelo?.titulo || "",
-    //     tipo: modelo?.tipo || "",
-    //     publico: modelo?.publico || "",
-    //     disponibilidade: modelo?.disponibilidade || "",
-    //     prazo: modelo?.prazo || "",
-    //     recorrencia: modelo?.recorrencia || "uma-vez"
-    // });
 
     const [turma, setTurma] = useState(
         modelo?.turma || ""
@@ -150,15 +176,6 @@ export const CreateTest = () => {
     useEffect(() => {
 
         if (!modelo) return;
-
-        setDados({
-            titulo: modelo.titulo || "",
-            tipo: modelo.tipo || "",
-            publico: modelo.publico || "",
-            disponibilidade: modelo.disponibilidade || "",
-            prazo: modelo.prazo || "",
-            recorrencia: modelo.recorrencia || "uma-vez"
-        });
 
         setTurma(modelo.turma || "");
 
@@ -485,8 +502,15 @@ export const CreateTest = () => {
                                 <input
                                     type="text"
                                     placeholder="Ex: Avaliação 2º Trimestre"
-                                    value={dados.titulo}
-                                    onChange={(e) => atualizarCampo("titulo", e.target.value)}
+
+                                    value={test.content}
+                                    onChange={
+                                        (e) => setTest({
+                                            ...test,
+                                            content: e.target.value    
+                                        })
+                                    }
+                                    
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 />
 
@@ -499,8 +523,13 @@ export const CreateTest = () => {
                                 </label>
 
                                 <select
-                                    value={dados.tipo}
-                                    onChange={(e) => atualizarCampo("tipo", e.target.value)}
+                                    value={test.type}
+                                    onChange={
+                                        (e) => setTest({
+                                            ...test,
+                                            type: e.target.value
+                                        })
+                                    }
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 >
 
