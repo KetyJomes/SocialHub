@@ -28,7 +28,6 @@ export const validateCreate = (req: Request,res: Response,next: NextFunction)=>{
 
     if(typeof EDV !== "number" || EDV < 1000000 || EDV > 999999999 ){
         return res.status(400).json({response: "Insira um EDV válido" })
-
     }
     return next();
 }
