@@ -246,51 +246,6 @@ export const ManagementClasses = () => {
 
 
 
-
-                    <div
-                        className="
-                            flex
-                            justify-center
-                            mt-8
-                        "
-                    >
-
-
-                        <div
-                            className="
-                                flex
-                                items-center
-                                gap-2
-                                bg-gray-50
-                                border
-                                border-gray-200
-                                rounded-lg
-                                px-6
-                                py-3
-                            "
-                        >
-
-
-                            <Info
-                                size={18}
-                                className="text-[#0291F7]"
-                            />
-
-
-                            <span className="text-sm text-gray-600">
-
-                                Clique em uma turma para visualizar seu desempenho detalhado.
-
-                            </span>
-
-
-                        </div>
-
-
-                    </div>
-
-
-
                 </div>
 
 

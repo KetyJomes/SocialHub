@@ -323,52 +323,6 @@ export const ManagementClassDetails = () => {
                     </section>
 
 
-
-
-
-                    <div
-                        className="
-                            flex
-                            justify-center
-                            mt-8
-                        "
-                    >
-
-
-                        <div
-                            className="
-                                flex
-                                items-center
-                                gap-2
-                                bg-gray-50
-                                border
-                                border-gray-200
-                                rounded-lg
-                                px-6
-                                py-3
-                            "
-                        >
-
-
-                            <Info
-                                size={18}
-                                className="text-[#0291F7]"
-                            />
-
-
-                            <span className="text-sm text-gray-600">
-
-                                Clique em um aluno para visualizar informações detalhadas.
-
-                            </span>
-
-
-                        </div>
-
-
-                    </div>
-
-
                 </div>
 
 
