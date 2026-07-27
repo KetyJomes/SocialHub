@@ -3,10 +3,14 @@ import { createSkillDTO, updateSkillDTO } from "../DTOS/skillDTO.ts"
 import {prisma} from "../lib/prisma.ts"
 
 export const createSkill = async(Id: number , data: createSkillDTO)=>{
-    const { Title, Description, idTest} = data
+    const { Title, Description, idTest, alternatives} = data
 
     return await prisma.skill.create({
-        data: { Title, Description, idTest}
+        data: { Title, Description, idTest,
+            alternatives:{
+                create:alternatives
+            }
+        }
     })
 }
 

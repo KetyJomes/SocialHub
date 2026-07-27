@@ -13,18 +13,59 @@ export const CreateTest = () => {
     // Integração
     const [test, setTest] = useState({
         content: "",
-        finalDate: "",
         startDate: "",
-        AvailableResult: false,
+        finalDate: "",
         grade: "",
-        frequency: "",
         type: "",
-        questions: []
+        AvailableResult: false, 
+        frequency: "",
+        skills: []
+    });
+
+    const [skill, setSkill] = useState({
+        title: "",
+        description: "",
+        idTest: ""
     });
 
     const create = async () => {
 
         try {
+
+            const responseTest = await api.post("/test/create", {
+                content: test.content,
+                startDate: test.startDate,
+                finalDate: test.finalDate,
+                grade: Number(grade),
+                type: test.type,
+                AvailableResult: false,
+                frequency: test.frequency
+            });
+
+            const idTest = responseTest.data.id;
+
+            for (const topic of topics) {
+
+                const responseSkill = await api.post("/skill/create", {
+                    Title: skill.,
+                    Description: skill.descricao,
+                    idTest: idTest
+                });
+
+                const idSkill = responseSkill.data.id;
+
+                for (const pergunta of secao.perguntas) {
+
+                    await api.post("/alternative/create", {
+                        Content: skill.,
+                        Scale: pergunta.escala,
+                        idSkill: idSkill
+                    });
+
+                }
+
+            }
+
             console.log(test)
 
             const response = api.post('/test/create', test)
