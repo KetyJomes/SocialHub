@@ -19,7 +19,7 @@ export const createTest = async(data: createTestDTO)=>{
             
             questions: {
                 create: questions
-        }
+            }
     }
     });
 }

@@ -5,9 +5,7 @@ import * as bcrypt from "bcrypt";
 
 export const  createUser = async(data: createUserDTO)=>{
     
-    const {name, email, password, EDV, classId, role} = data
-    
-    console.log(data)
+    const {name, email, password, EDV, classId, role} = data;
 
     const userExists = await prisma.user.findUnique({
         where: {EDV:EDV}

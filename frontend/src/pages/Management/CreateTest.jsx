@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, data } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
@@ -9,6 +9,41 @@ import { testsMock } from "../../data/testsMock";
 import { modelsMock } from "../../data/modelsMock";
 
 export const CreateTest = () => {
+
+    // Integração
+    const [test, setTest] = useState({
+        content: "",
+        finalDate: "",
+        startDate: "",
+        AvailableResult: false,
+        grade: "",
+        frequency: "",
+        type: "",
+        questions: []
+    });
+
+    const create = async () => {
+
+        try {
+            console.log(test)
+
+            const response = api.post('/test/create', test)
+
+            console.log(
+                "Teste Criado:",
+                response.data
+            )
+
+            navigate('/management-test')
+        } catch(error) {
+            console.log(
+                "Erro ao criar avaliação",
+                error
+            )
+        }
+    
+    }
+    
 
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
@@ -20,14 +55,14 @@ export const CreateTest = () => {
     const [showAlert, setShowAlert] = useState(false);
     const [mensagemAlert, setMensagemAlert] = useState("");
 
-    const [dados, setDados] = useState({
-        titulo: modelo?.titulo || "",
-        tipo: modelo?.tipo || "",
-        publico: modelo?.publico || "",
-        disponibilidade: modelo?.disponibilidade || "",
-        prazo: modelo?.prazo || "",
-        recorrencia: modelo?.recorrencia || "uma-vez"
-    });
+    // const [dados, setDados] = useState({
+    //     titulo: modelo?.titulo || "",
+    //     tipo: modelo?.tipo || "",
+    //     publico: modelo?.publico || "",
+    //     disponibilidade: modelo?.disponibilidade || "",
+    //     prazo: modelo?.prazo || "",
+    //     recorrencia: modelo?.recorrencia || "uma-vez"
+    // });
 
     const [turma, setTurma] = useState(
         modelo?.turma || ""

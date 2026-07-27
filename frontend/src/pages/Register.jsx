@@ -44,11 +44,6 @@ export const Register = () => {
 
   }
 
-
-  function handleRegister() {
-    navigateRegister("/login");
-  }
-
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-center bg-cover"
