@@ -123,7 +123,7 @@ export const ManagementAnswer360Evaluation = () => {
                                 className="
                                     text-2xl
                                     font-semibold
-                                    text-[#21528A]
+                                    text-[#0291F7]
                                 "
                             >
 

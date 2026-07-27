@@ -131,7 +131,7 @@ EvaluationTableRow = ({
                   name={`topic-${topic.id}`}
                   checked={selected}
                   onChange={() => onSelect(topic.id, option.value)}
-                  className="mt-1 accent-[#21528A]"
+                  className="mt-1 accent-[#0291F7]"
                 />
 
                 <div className="flex-1">

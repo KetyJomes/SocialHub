@@ -108,7 +108,7 @@ export const ManagementViewEvaluation = () => {
 
 
 
-                            <h2 className="text-2xl font-semibold text-[#21528A]">
+                            <h2 className="text-2xl font-semibold text-[#0291F7]">
 
                                 {aluno}
 

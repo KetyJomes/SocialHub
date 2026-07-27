@@ -181,7 +181,7 @@ export const ManagementFeedbackStudents = () => {
                                                 className="
                                                     border-b
                                                     border-gray-200
-                                                    hover:bg-[#21528A]/5
+                                                    hover:bg-[#0291F7]/5
                                                     hover:shadow-sm
                                                     cursor-pointer
                                                     transition-all

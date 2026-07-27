@@ -704,7 +704,7 @@ export const CreateTest = () => {
 
                             <button
                                 onClick={() => setShowAlert(false)}
-                                className="bg-[#0291F7] text-white rounded-lg px-5 py-2 hover:opacity-90 transition"
+                                className="bg-[#0291F7] text-white rounded-lg px-5 py-2  hover:bg-blue-700 transition"
                             >
                                 Entendi
                             </button>

@@ -194,7 +194,7 @@ export const EvaluationPreview = ({
                             px-8
                             py-3
                             rounded-lg
-                            hover:opacity-90
+                             hover:bg-blue-700
                             transition
                             font-medium
                         "
@@ -210,7 +210,7 @@ export const EvaluationPreview = ({
                             px-8
                             py-3
                             rounded-lg
-                            hover:opacity-90
+                             hover:bg-blue-700
                             transition
                             font-medium
                         "
