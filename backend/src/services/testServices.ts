@@ -15,8 +15,8 @@ export const createTest = async(data: createTestDTO)=>{
             AvailableResult: AvailableResult,
             grade: grade,
             Frequency: frequency,
-            TestType: type,
-            skill: skill,
+            type: type
+            
             questions: {
                 create: questions
         }

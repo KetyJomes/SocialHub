@@ -1,3 +1,4 @@
+import { Frequency } from "../generated/prisma/enums.ts";
 
 export interface alternativeInputDTO {
     content: string,
@@ -22,7 +23,7 @@ export interface createTestDTO {
     grade: number,
     AvailableResult: boolean,
     type: string,
-    frequency: string,
+    frequency: Frequency
     skill:skillListDTO[],
     questions: questionInputDTO[],
 }
