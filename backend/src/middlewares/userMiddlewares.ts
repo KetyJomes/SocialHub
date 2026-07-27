@@ -3,14 +3,9 @@ import {prisma} from '../lib/prisma.ts'
 import {z} from "zod"
 
 export const validateCreate = (req: Request,res: Response,next: NextFunction)=>{
-    const {name, email,password, EDV, role} = req.body
-    if (!name || !email || !password || !EDV ||!role ){
+    const {name, password, EDV, role} = req.body
+    if (!name || !password || !EDV ||!role ){
         return res.status(400).send({response: 'Dados incorretos'})
-    }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)){
-        return res.status(400).json({response: "Email invalido"})
     }
 
     if (password.lenght < 8){

@@ -23,8 +23,6 @@ export const  createUserTest = async(data: createUsertestDTO)=>{
         
       })
     }
-
-
 };
 
 
