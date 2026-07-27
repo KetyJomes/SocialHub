@@ -17,7 +17,7 @@ model User {
   email String @unique
   password String
   EDV Int @unique
-  role Role
+  role RoleEnum
 
   class Class? @relation("StudentClass",fields: [idClass], references: id)
   idClass Int?
@@ -54,9 +54,9 @@ model Test{
   startDate DateTime
   finalDate DateTime
   grade Int
-  type TestType
+  type TestTypeEnum
   AvailableResult Boolean
-  Frequency Frequency
+  Frequency FrequencyEnum
   Feedback String
 
   Skills Skill[]
@@ -112,7 +112,7 @@ model Alternatives {
 
 
 
-enum TestType {
+enum TestTypeEnum {
   Self
   Instructor
   Group
@@ -120,7 +120,7 @@ enum TestType {
   Class
 }
 
-enum Frequency {
+enum FrequencyEnum {
   unique
   Mensal 
   Bimestral
@@ -129,7 +129,7 @@ enum Frequency {
   Anual
 }
 
-enum Role {
+enum RoleEnum {
   Student
   Leader
   ADM

@@ -39,7 +39,11 @@ export const CreateTest = () => {
                 grade: Number(grade),
                 type: test.type,
                 AvailableResult: false,
-                frequency: test.frequency
+                frequency: test.frequency,
+                skills: [
+                    name: ''
+                    alternatives: []
+                ]
             });
 
             const idTest = responseTest.data.id;
