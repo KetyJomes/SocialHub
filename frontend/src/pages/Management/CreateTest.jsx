@@ -1,6 +1,6 @@
+// Criar avaliação
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
 import { TopicsEditor } from "../../components/Management/TopicsEditor";
@@ -9,7 +9,6 @@ import { testsMock } from "../../data/testsMock";
 import { modelsMock } from "../../data/modelsMock";
 
 export const CreateTest = () => {
-
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -47,9 +46,7 @@ export const CreateTest = () => {
     ];
 
     const [secoes, setSecoes] = useState(
-
         modelo?.secoes || [
-
             {
                 id: 1,
                 titulo: "",
@@ -67,10 +64,10 @@ export const CreateTest = () => {
 
     );
 
+    // Carrega os dados do modelo para edição
     useEffect(() => {
 
         if (!modelo) return;
-
         setDados({
             titulo: modelo.titulo || "",
             tipo: modelo.tipo || "",
@@ -79,21 +76,18 @@ export const CreateTest = () => {
             prazo: modelo.prazo || "",
             recorrencia: modelo.recorrencia || "uma-vez"
         });
-
         setTurma(modelo.turma || "");
-
         setTipoPublico(
         modelo.tipoPublico || "todos"
         );
-
         setAlunosSelecionados(
             modelo.alunosSelecionados || []
         );
-
         setSecoes(modelo.secoes || []);
 
     }, [modelo]);
 
+    // Atualiza um campo específico do formulário
     function atualizarCampo(campo, valor) {
 
         setDados(prev => ({
@@ -103,7 +97,8 @@ export const CreateTest = () => {
 
     }
 
-    function adicionarSecao() {
+    // Adicionar tópicos
+    function adicionarTopico() {
 
         setSecoes(prev => ([
             ...prev,
@@ -122,12 +117,10 @@ export const CreateTest = () => {
 
     }
 
+    //Validações de criar avaliações
     function criarAvaliacao() {
 
-        // ============================
         // Informações da avaliação
-        // ============================
-
         if (
             !dados.titulo ||
             !dados.tipo ||
@@ -135,7 +128,6 @@ export const CreateTest = () => {
             !dados.prazo ||
             !turma
         ) {
-
             setMensagemAlert(
                 "Preencha todos os campos obrigatórios em Informações da Avaliação antes de continuar."
             );
@@ -143,18 +135,13 @@ export const CreateTest = () => {
             setShowAlert(true);
 
             return;
-
         }
 
-        // ============================
         // Destinatários
-        // ============================
-
         if (
             tipoPublico === "alguns" &&
             alunosSelecionados.length === 0
         ) {
-
             setMensagemAlert(
                 "Selecione pelo menos um aluno como destinatário da avaliação."
             );
@@ -162,33 +149,23 @@ export const CreateTest = () => {
             setShowAlert(true);
 
             return;
-
         }
 
-        // ============================
         // Tópicos
-        // ============================
-
         if (secoes.length < 1) {
-
             setMensagemAlert(
                 "Crie pelo menos um tópico para a avaliação."
             );
 
             setShowAlert(true);
-
             return;
 
         }
 
-        // ============================
         // Validação dos tópicos
-        // ============================
-
         for (const secao of secoes) {
 
             if (!secao.titulo.trim()) {
-
                 setMensagemAlert(
                     "Todos os tópicos devem possuir um título."
                 );
@@ -200,7 +177,6 @@ export const CreateTest = () => {
             }
 
             if (secao.perguntas.length === 0) {
-
                 setMensagemAlert(
                     "Todos os tópicos devem possuir pelo menos uma questão."
                 );
@@ -227,11 +203,9 @@ export const CreateTest = () => {
             );
 
             if (!possuiTodasEscalas) {
-
                 setMensagemAlert(
                     `O tópico "${secao.titulo}" deve conter questões utilizando todas as escalas: Crítico, Abaixo do esperado, Dentro do esperado e Acima do esperado.`
                 );
-
                 setShowAlert(true);
 
                 return;
@@ -259,24 +233,14 @@ export const CreateTest = () => {
 
         }
 
-        // ============================
         // Criar avaliação
-        // ============================
-
         const novaAvaliacao = {
-
             id: Date.now(),
-
             ...dados,
-
             turma,
-
             tipoPublico,
-
             alunosSelecionados,
-
             secoes,
-
             status:"Pendente"
 
         };
@@ -284,14 +248,11 @@ export const CreateTest = () => {
 
         testsMock.push(novaAvaliacao);
 
-        navigate("/management-test", {
-            state: {
-                abaInicial: "avaliacoes"
-            }
-        });
+        navigate("/management-test", {state:{abaInicial:"avaliacoes" }});
 
     }
 
+    // Validações para salvar o modelo
     function salvarModelo() {
 
         if (
@@ -309,52 +270,34 @@ export const CreateTest = () => {
 
         }
 
-
         const modeloAtualizado = {
 
-        id: modeloOrigemId || Date.now(),
+            id: modeloOrigemId || Date.now(),
+            ...dados,
+            turma,
+            tipoPublico,
+            alunosSelecionados,
+            secoes
 
-        ...dados,
+        };
 
-        turma,
-
-        tipoPublico,
-
-        alunosSelecionados,
-
-        secoes
-
-    };
-
-
-    const index = modelsMock.findIndex(
-        item => item.id === modeloOrigemId
-    );
-
+        const index = modelsMock.findIndex(
+            item => item.id === modeloOrigemId
+        );
 
         if(index !== -1){
-
             modelsMock[index] = modeloAtualizado;
-
         } else {
-
             modelsMock.push(modeloAtualizado);
-
         }
 
-
-        navigate("/management-test", {
-            state:{
-                abaInicial:"modelos"
-            }
-        });
+        navigate("/management-test", {state:{abaInicial:"modelos"}});
 
     }
 
     return (
 
         <>
-
             <SidebarManagement
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
@@ -366,7 +309,6 @@ export const CreateTest = () => {
             />
 
             <main className="mt-[8vh] p-10 bg-gray-50 min-h-screen">
-
                 <div className="max-w-7xl mx-auto">
 
                     <h1 className="text-3xl font-bold text-gray-800">
@@ -379,15 +321,13 @@ export const CreateTest = () => {
                                         : "Editar Modelo"
                                 : "Nova Avaliação"
                         }
-
                     </h1>
 
                     <p className="text-gray-500 mt-2">
                         Configure as informações gerais e monte a avaliação.
                     </p>
 
-                    {/* INFORMAÇÕES DA AVALIAÇÃO */}
-
+                    {/* Informações da Avaliação*/}
                     <section className="mt-8 bg-white border border-gray-200 rounded-xl p-6 hover:shadow-sm transition">
 
                         <h2 className="text-xl font-semibold text-gray-800 mb-6">
@@ -395,7 +335,6 @@ export const CreateTest = () => {
                         </h2>
 
                         <div className="grid grid-cols-2 gap-6">
-
                             <div>
 
                                 <label className="font-medium text-gray-800">
@@ -409,7 +348,6 @@ export const CreateTest = () => {
                                     onChange={(e) => atualizarCampo("titulo", e.target.value)}
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 />
-
                             </div>
 
                             <div>
@@ -423,7 +361,6 @@ export const CreateTest = () => {
                                     onChange={(e) => atualizarCampo("tipo", e.target.value)}
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 >
-
                                     <option value="">
                                         Selecione
                                     </option>
@@ -451,9 +388,7 @@ export const CreateTest = () => {
                                     <option>
                                         360°
                                     </option>
-
                                 </select>
-
                             </div>
 
                             <div>
@@ -486,7 +421,6 @@ export const CreateTest = () => {
                                     }
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 />
-
                             </div>
 
                             <div>
@@ -500,7 +434,6 @@ export const CreateTest = () => {
                                     onChange={(e) => setTurma(e.target.value)}
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 >
-
                                     <option value="">
                                         Selecione uma turma
                                     </option>
@@ -524,9 +457,7 @@ export const CreateTest = () => {
                                     <option value="3A">
                                         3º EM A
                                     </option>
-
                                 </select>
-
                             </div>
 
                             <div>
@@ -540,7 +471,6 @@ export const CreateTest = () => {
                                     onChange={(e) => atualizarCampo("recorrencia", e.target.value)}
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 >
-
                                     <option value="uma-vez">
                                         Apenas uma vez
                                     </option>
@@ -564,11 +494,8 @@ export const CreateTest = () => {
                                     <option value="anual">
                                         Anual
                                     </option>
-
                                 </select>
-
                             </div>
-
                         </div>
 
                         <div className="col-span-2 mt-6">
@@ -578,22 +505,17 @@ export const CreateTest = () => {
                             </label>
 
                             <div className="mt-3 space-y-3">
-
                                 <label className="flex items-center gap-2 cursor-pointer">
-
                                     <input
                                         type="radio"
                                         value="todos"
                                         checked={tipoPublico === "todos"}
                                         onChange={(e) => setTipoPublico(e.target.value)}
                                     />
-
                                     Todos os alunos da turma
-
                                 </label>
 
                                 <label className="flex items-center gap-2 cursor-pointer">
-
                                     <input
                                         type="radio"
                                         value="alguns"
@@ -602,14 +524,11 @@ export const CreateTest = () => {
                                     />
 
                                     Apenas alguns alunos
-
                                 </label>
-
                             </div>
 
                             {
                                 tipoPublico === "alguns" && (
-
                                     <div className="mt-5 bg-[#F8F8FB] border border-gray-200 rounded-xl p-5">
 
                                         <p className="font-medium text-gray-800 mb-4">
@@ -617,29 +536,24 @@ export const CreateTest = () => {
                                         </p>
 
                                         <div className="space-y-3">
-
                                             {
                                                 alunos.map((aluno) => (
-
                                                     <label
                                                         key={aluno.id}
                                                         className="flex items-center gap-3 cursor-pointer"
                                                     >
-
                                                         <input
                                                             type="checkbox"
                                                             checked={alunosSelecionados.includes(aluno.id)}
                                                             onChange={(e) => {
 
                                                                 if (e.target.checked) {
-
                                                                     setAlunosSelecionados(prev => [
                                                                         ...prev,
                                                                         aluno.id
                                                                     ]);
 
                                                                 } else {
-
                                                                     setAlunosSelecionados(prev =>
                                                                         prev.filter(id => id !== aluno.id)
                                                                     );
@@ -648,31 +562,23 @@ export const CreateTest = () => {
 
                                                             }}
                                                         />
-
                                                         <span className="text-gray-700">
                                                             {aluno.nome}
                                                         </span>
-
                                                     </label>
-
                                                 ))
                                             }
-
                                         </div>
-
                                     </div>
-
                                 )
                             }
-
                         </div>
-
                     </section>
                     
                     <TopicsEditor
                         secoes={secoes}
                         setSecoes={setSecoes}
-                        adicionarSecao={adicionarSecao}
+                        adicionarTopico={adicionarTopico}
                     />
 
                     <EvaluationPreview
@@ -683,36 +589,27 @@ export const CreateTest = () => {
                     />
 
                 </div>
-
             </main>
-            {
+        {
             showAlert && (
             
                 <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-
                     <div className="bg-white rounded-2xl shadow-xl p-8 w-[420px]">
-
                         <h2 className="text-2xl font-bold mb-4">
                             Atenção
                         </h2>
-
                         <p className="text-gray-600 mb-8">
                             {mensagemAlert}
                         </p>
-
                         <div className="flex justify-end">
-
                             <button
                                 onClick={() => setShowAlert(false)}
                                 className="bg-[#0291F7] text-white rounded-lg px-5 py-2  hover:bg-blue-700 transition"
                             >
                                 Entendi
                             </button>
-
                         </div>
-
                     </div>
-
                 </div>
 
             )
