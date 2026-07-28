@@ -921,7 +921,6 @@ export const UserScalarFieldEnum = {
   id: 'id',
   pfp: 'pfp',
   name: 'name',
-  email: 'email',
   password: 'password',
   EDV: 'EDV',
   role: 'role',
@@ -1019,7 +1018,6 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 export const UserOrderByRelevanceFieldEnum = {
   pfp: 'pfp',
   name: 'name',
-  email: 'email',
   password: 'password'
 } as const
 
@@ -1092,9 +1090,9 @@ export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 
 
 
 /**
- * Reference to a field of type 'Role'
+ * Reference to a field of type 'RoleEnum'
  */
-export type EnumRoleFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Role'>
+export type EnumRoleEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleEnum'>
     
 
 
@@ -1106,9 +1104,9 @@ export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel
 
 
 /**
- * Reference to a field of type 'TestType'
+ * Reference to a field of type 'TestTypeEnum'
  */
-export type EnumTestTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TestType'>
+export type EnumTestTypeEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'TestTypeEnum'>
     
 
 
@@ -1120,9 +1118,9 @@ export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
- * Reference to a field of type 'Frequency'
+ * Reference to a field of type 'FrequencyEnum'
  */
-export type EnumFrequencyFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Frequency'>
+export type EnumFrequencyEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'FrequencyEnum'>
     
 
 

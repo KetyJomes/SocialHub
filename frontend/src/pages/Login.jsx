@@ -7,6 +7,8 @@ export const Login = () => {
   function handleLogin() {
     navigateLogin("/register");
   }
+
+
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-center bg-cover"
@@ -14,11 +16,15 @@ export const Login = () => {
         backgroundImage: `url(${background})`,
       }}
     >
+
       <div className="bg-white w-[90%] max-w-6xl h-[650px] rounded-lg shadow-lg flex">
+        
         <div className="w-1/2 flex items-center justify-center">
+
           <h1 className="text-6xl font-bold text-black">
             SocialHub
           </h1>
+
         </div>
 
         <div className="w-px bg-gray-300 my-16"></div>
@@ -62,7 +68,9 @@ export const Login = () => {
           </button>
 
         </div>
+
       </div>
+
     </div>
   );
 }

@@ -1,12 +1,49 @@
+// Integração
+import { api } from "../services/apiService";
+
+import {Link, Navigate, useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 import background from "../assets/supergraphic.svg";
-import {Link, useNavigate } from "react-router-dom";
 
 export const Register = () => {
-  const navigateRegister = useNavigate();
+  const navigate = useNavigate();
+  
+  // Integração
+  const [user, setUser] = useState({
+    name: "", 
+    email: "", 
+    password: "", 
+    EDV: "",
+    role: ""
+  })
 
-  function handleRegister() {
-    navigateRegister("/login");
+  const create = async () => {
+
+    try {
+
+      console.log(user)
+
+      const response = api.post('/user/create', user)
+
+      console.log(
+        "Usuário criado:",
+        response.data
+      );
+
+      navigate('/login')
+
+    } catch(error) {
+
+      console.log(
+        "Erro ao criar usuário",
+        error
+      );
+
+    }
+
   }
+
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-center bg-cover"
@@ -36,6 +73,16 @@ export const Register = () => {
             </label>
 
             <input
+
+              value={user.name}
+              onChange={
+                (e) =>
+                  setUser({
+                    ...user,
+                    name:e.target.value
+                  }) 
+              }
+
               type="text"
               placeholder="Digite seu nome completo"
               className="w-full border-b border-gray-400 outline-none py-2 text-gray-800 placeholder:text-gray-300"
@@ -48,6 +95,16 @@ export const Register = () => {
             </label>
 
             <input
+
+              value={user.EDV}
+              onChange={
+                (e) =>
+                  setUser({
+                    ...user,
+                    EDV:e.target.value
+                  }) 
+              }
+
               type="text"
               placeholder="Digite seu EDV"
               className="w-full border-b border-gray-400 outline-none py-2 text-gray-800 placeholder:text-gray-300"
@@ -60,6 +117,16 @@ export const Register = () => {
             </label>
 
             <input
+            
+              value={user.password}
+              onChange={
+                (e) =>
+                  setUser({
+                    ...user,
+                    password:e.target.value
+                  }) 
+              }
+
               type="password"
               placeholder="Digite sua senha"
               className="w-full border-b border-gray-400 outline-none py-2 text-gray-800 placeholder:text-gray-300"
@@ -72,6 +139,16 @@ export const Register = () => {
             </label>
 
             <input
+
+              value={user.password}
+              onChange={
+                (e) =>
+                  setUser({
+                    ...user,
+                    password:e.target.value
+                  }) 
+              }
+
               type="password"
               placeholder="Confirme sua senha"
               className="w-full border-b border-gray-400 outline-none py-2 text-gray-800 placeholder:text-gray-300"
@@ -87,7 +164,7 @@ export const Register = () => {
 
 
           <button
-            onClick={handleRegister}
+            onClick={create}
             className="bg-gray-300 hover:bg-gray-400 text-white font-bold py-3 rounded-xl transition"
           >
             Cadastrar

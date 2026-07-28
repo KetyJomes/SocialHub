@@ -68,7 +68,7 @@ export const CardNotificacaoAvaliacao = () => {
                     flex
                     items-center
                     gap-2
-                    bg-[#2563EB]
+                    bg-[#0291F7]
                     hover:bg-bg-blue-700
                     transition
                     text-white

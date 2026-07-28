@@ -5,20 +5,19 @@ import { useNavigate } from "react-router-dom";
 // Componentes
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
-
 import { CardNotificacaoAvaliacao } from "../../components/CardNotificacaoAvaliacao";
 import { GraficoPessoal } from "../../components/GraficoPessoal";
 
-// Imagens
-import bars from "../../assets/bars.png";
-import people from "../../assets/people.png";
-import exam from "../../assets/exam.png";
-import bar_chart from "../../assets/bar-chart.png";
-import people_purple from "../../assets/people-purple.png";
 
 import blue from "../../assets/blue arrow.png";
 import green from "../../assets/green arrow.png";
-import purple from "../../assets/purple arrow.png";
+
+import {
+    BarChart3,
+    Users,
+    ClipboardCheck,
+    ChartColumn
+} from "lucide-react";
 
 export const UserMain = () => {
 
@@ -59,11 +58,19 @@ export const UserMain = () => {
 
                 {/* CONTEÚDO DA TELA */}
 
-                <div className="user-container p-10">
+                <div className="p-10">
 
-                    <h1 className="font-bold text-3xl mb-8">
-                        Bem-Vindo, Usuário!
-                    </h1>
+                    <div>
+
+                        <h1 className="font-bold text-3xl">
+                            Bem-vindo(a), Usuário!
+                        </h1>
+
+                        <p className="text-gray-500">
+                            Acompanhe seu desempenho e evolução nas avaliações.
+                        </p>
+
+                    </div>
 
                     <div className="flex justify-center">
                         <CardNotificacaoAvaliacao />
@@ -75,9 +82,9 @@ export const UserMain = () => {
                     <div className="mt-15 flex items-center gap-4 mb-8">
 
                         {/* Linha azul */}
-                        <div className="w-1 h-10 bg-[#2563EB] rounded-full"></div>
+                        <div className="w-1 h-10 bg-[#0291F7] rounded-full"></div>
 
-                        <h1 className="font-bold text-3xl">
+                        <h1 className="font-bold text-2xl">
                             Meu Desempenho
                         </h1>
 
@@ -92,10 +99,22 @@ export const UserMain = () => {
 
                             <div className="flex items-center gap-5 mb-6">
 
-                                <div className="w-16 h-16 bg-[#0291F7]/15 rounded-xl flex items-center justify-center">
+                                <div
+                                    className="
+                                        w-10
+                                        h-10
+                                        rounded-full
+                                        bg-[#0291F7]/15
+                                        flex
+                                        items-center
+                                        justify-center
+                                    "
+                                >
 
-                                    <img
-                                        src={bars} alt="" className="w-10 h-10"
+                                    <BarChart3
+                                        size={20}
+                                        className="text-[#0291F7]"
+                                        strokeWidth={2}
                                     />
 
                                 </div>
@@ -124,10 +143,10 @@ export const UserMain = () => {
                                     <div className="flex justify-center mt-5">
 
 
-                                        <div className="w-36 h-36 rounded-full border-8 border-[#2563EB] flex flex-col justify-center items-center">
+                                        <div className="w-36 h-36 rounded-full border-8 border-[#0291F7] flex flex-col justify-center items-center">
 
 
-                                            <h1 className="text-5xl font-bold text-[#2563EB]">
+                                            <h1 className="text-5xl font-bold text-[#0291F7]">
 
                                                 90%
 
@@ -189,17 +208,23 @@ export const UserMain = () => {
                             <div className="flex items-center gap-5 mb-6">
 
 
-                                <div className="w-16 h-16 bg-[#0291F7]/15 rounded-xl flex items-center justify-center">
+                                <div
+                                    className="
+                                        w-10
+                                        h-10
+                                        rounded-full
+                                        bg-[#0291F7]/15
+                                        flex
+                                        items-center
+                                        justify-center
+                                    "
+                                >
 
 
-                                    <img
-
-                                        src={people}
-
-                                        alt=""
-
-                                        className="w-10 h-8 scale-110"
-
+                                    <Users
+                                        size={20}
+                                        className="text-[#0291F7]"
+                                        strokeWidth={2}
                                     />
 
 
@@ -234,10 +259,10 @@ export const UserMain = () => {
                                     <div className="flex justify-center mt-5">
 
 
-                                        <div className="w-36 h-36 rounded-full border-8 border-[#2563EB] flex flex-col justify-center items-center">
+                                        <div className="w-36 h-36 rounded-full border-8 border-[#0291F7] flex flex-col justify-center items-center">
 
 
-                                            <h1 className="text-5xl font-bold text-[#2563EB]">
+                                            <h1 className="text-5xl font-bold text-[#0291F7]">
 
                                                 90%
 
@@ -299,10 +324,10 @@ export const UserMain = () => {
                     <div className="mt-15 flex items-start gap-4 mb-8">
 
 
-                        <div className="w-1 h-10 bg-[#2563EB] rounded-full"></div>
+                        <div className="w-1 h-10 bg-[#0291F7] rounded-full"></div>
 
 
-                        <h1 className="font-bold text-3xl">
+                        <h1 className="font-bold text-2xl">
 
                             Acesso Rápido
 
@@ -329,17 +354,22 @@ export const UserMain = () => {
                             >
 
 
-                                <div className="w-30 h-20 bg-[#2563EB]/20 rounded-2xl flex items-center justify-center">
+                                <div
+                                    className="
+                                        w-10
+                                        h-10
+                                        rounded-full
+                                        bg-[#0291F7]/15
+                                        flex
+                                        items-center
+                                        justify-center
+                                    "
+                                >
 
-
-                                    <img
-
-                                        src={exam}
-
-                                        alt=""
-
-                                        className="w-12 h-12 object-contain"
-
+                                    <ClipboardCheck
+                                        size={20}
+                                        className="text-[#0291F7]"
+                                        strokeWidth={2}
                                     />
 
 
@@ -349,7 +379,7 @@ export const UserMain = () => {
                                 <div className="ml-5">
 
 
-                                    <h1 className="text-[#2563EB] font-bold text-2xl">
+                                    <h1 className="text-[#0291F7] font-bold text-2xl">
 
                                         Avaliações
 
@@ -391,17 +421,23 @@ export const UserMain = () => {
                             >
 
 
-                                <div className="w-30 h-20 bg-[#31A74E]/20 rounded-2xl flex items-center justify-center">
+                                    <div
+                                        className="
+                                            w-10
+                                            h-10
+                                            rounded-full
+                                            bg-[#0291F7]/15
+                                            flex
+                                            items-center
+                                            justify-center
+                                        "
+                                    >
 
 
-                                    <img
-
-                                        src={bar_chart}
-
-                                        alt=""
-
-                                        className="w-12 h-12 object-contain"
-
+                                    <ChartColumn
+                                        size={20}
+                                        className="text-[#0291F7]"
+                                        strokeWidth={2}
                                     />
 
 
@@ -411,7 +447,7 @@ export const UserMain = () => {
                                 <div className="ml-5">
 
 
-                                    <h1 className="text-[#31A74E] font-bold text-2xl">
+                                    <h1 className="text-[#0291F7] font-bold text-2xl">
 
                                         Resultados
 

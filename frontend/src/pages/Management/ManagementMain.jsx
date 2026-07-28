@@ -314,7 +314,7 @@ export const ManagementMain = () => {
                     <section className="mt-8">
 
 
-                        <h2 className="text-xl font-bold mb-4">
+                        <h2 className="font-bold text-2xl">
 
                             Turmas
 
@@ -464,7 +464,7 @@ export const ManagementMain = () => {
 
                                     </div>
 
-                                    <h2 className="text-xl font-bold">
+                                    <h2 className="font-bold text-2xl">
 
                                         Avaliações Pendentes
 
@@ -650,7 +650,7 @@ export const ManagementMain = () => {
 
                                     </div>
 
-                                    <h2 className="text-xl font-bold">
+                                    <h2 className="font-bold text-2xl">
 
                                         Feedbacks Pendentes
 
