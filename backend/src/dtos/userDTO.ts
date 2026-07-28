@@ -1,6 +1,5 @@
-export interface createUserDTO{
+export interface registerDTO{
     name: string,
-    email: string,
     password: string,
     role: "Student" | "ADM" | "Leader" | "Manager"
     EDV: number,
