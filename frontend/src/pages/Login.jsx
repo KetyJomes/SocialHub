@@ -5,41 +5,24 @@ import { Link, useNavigate } from "react-router-dom";
 export const Login = () => {
   const navigateLogin = useNavigate();
 
-  function handleLogin() {
-    navigateLogin("/register");
-  }
+  const [EDV, setEDV] = useState("")
+  const [password, setPassword] = useState("")
 
 
+  const handleLogin = async () => {
   
-  // const [user, setUser] = useState({
-  //   name: "", 
-  //   email: "", 
-  //   password: "", 
-  //   EDV: "",
-  //   role: ""
-  // })
+    try {
+    const response = await api.post('/auth/login',{ EDV, password});
+    
+    localStorage.setItem("token",response.data.token);
+    console.log("Usuário logado:", response.data);
+    navigateLogin("/home");
 
-  // const create = async () => {
-
-  //   try {
-
-  //     console.log(user)
-
-  //     const response = api.post('/user/create', user)
-
-  //     console.log(
-  //       "Usuário criado:",
-  //       response.data
-  //     );
-
-  //     navigate('/login')
-
-  //   } catch(error) {
-
-  //     console.log(
-  //       "Erro ao criar usuário",
-  //       error
-  //     ); 
+  } catch (error) {
+    console.log(error);
+    alert("EDV ou Senha invalidos");
+  }
+}
 
   return (
     <div
@@ -72,6 +55,8 @@ export const Login = () => {
             <input
               type="text"
               placeholder="Digite seu EDV"
+              value={EDV}
+              onChange={(e) => setEDV(e.target.value)}
               className="w-full border-b border-gray-400 outline-none py-2 placeholder:text-gray-300"
             />
           </div>
@@ -81,6 +66,8 @@ export const Login = () => {
               <input
                 type="password"
                 placeholder="Digite sua senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full border-b border-gray-400 outline-none py-2 placeholder:text-gray-300"
               />
           </div>

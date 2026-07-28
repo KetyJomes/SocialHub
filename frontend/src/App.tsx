@@ -42,6 +42,7 @@ function App() {
           <Route path="/realizar-avaliacao" element={<UserRealizarAvaliacao />} />
           <Route path="/comparacao" element={<UserComparacao />} />
           <Route path="/360" element={<UserAvaliacao360 />} />
+
           <Route path="/management-main" element={<ManagementMain />} />
           <Route path="/management-classes" element={<ManagementClasses />} />
           <Route path="/management-class/:turma" element={<ManagementClassDetails />} />
@@ -53,13 +54,15 @@ function App() {
           <Route path="/management-test/create" element={<CreateTest />}/>
           <Route path="/management-avaliacoes-turmas" element={<ManagementEvaluationClasses />}/>
           <Route path="/management-avaliacoes-turmas-alunos" element={<ManagementEvaluationClassDetails />}/>
-          <Route path="/adm-main" element={<Admin /> } />
-          <Route path="/adm-control-user" element={<AdminUsuarios /> } />
-          <Route path="/admin/turmas" element={<AdminTurmas /> } />
           <Route path="/management-answer-360-evaluation/:turma/:aluno/:avaliacaoId/:colega" element={<ManagementAnswer360Evaluation />}/>
           <Route path="/management-view-360-evaluation/:turma/:aluno/:avaliacaoId/:colega" element={<ManagementView360Evaluation />} />
           <Route path="/management-feedbacks"element={<ManagementFeedbackStudents />} />
           <Route path="/management-comparison/:turma/:aluno" element={<ManagementComparison />}/>
+          
+          <Route path="/adm-main" element={<Admin /> } />
+          <Route path="/adm-control-user" element={<AdminUsuarios /> } />
+          <Route path="/admin/turmas" element={<AdminTurmas /> } />
+          
         </Routes>
       </BrowserRouter>
     </>
