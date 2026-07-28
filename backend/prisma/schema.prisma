@@ -14,7 +14,7 @@ model User {
   pfp String?
   name String 
   password String
-  EDV Int @unique
+  EDV String @unique
   role RoleEnum
 
   class Class? @relation("StudentClass",fields: [idClass], references: id)

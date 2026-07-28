@@ -2,7 +2,7 @@ export interface registerDTO{
     name: string,
     password: string,
     role: "Student" | "ADM" | "Leader" | "Manager"
-    EDV: number,
+    EDV: string,
     classId: number
 }
 
@@ -12,6 +12,6 @@ export interface updateUserDTO{
 }
 
 export interface loginDTO{
-    EDV: number,
+    EDV: string,
     password: string
 }

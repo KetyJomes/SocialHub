@@ -1,5 +1,7 @@
+import { useState } from "react";
 import background from "../assets/supergraphic.svg";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../services/apiService";
 
 // // Integração
 export const Login = () => {
@@ -12,11 +14,25 @@ export const Login = () => {
   const handleLogin = async () => {
   
     try {
+      console.log(EDV,password)
     const response = await api.post('/auth/login',{ EDV, password});
     
-    localStorage.setItem("token",response.data.token);
-    console.log("Usuário logado:", response.data);
-    navigateLogin("/home");
+    const { token, user } = response.data;
+
+    localStorage.setItem("token", token);
+
+    localStorage.setItem("role", user.role);
+    localStorage.setItem("name", user.name);
+
+    if (user.role === "Adm") {
+      navigateLogin("/user-main");
+    } else if (user.role === "Instructor") {
+      navigateLogin("/user-main");
+    } else if (user.role === "Student") {
+      navigateLogin("/user-main");
+    } else {
+      navigateLogin("/");
+    }
 
   } catch (error) {
     console.log(error);
