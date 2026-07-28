@@ -24,7 +24,7 @@ export const Register = () => {
 
       console.log(user)
 
-      const response = api.post('/user/create', user)
+      const response = api.post('/auth/register', user)
 
       console.log(
         "Usuário criado:",
