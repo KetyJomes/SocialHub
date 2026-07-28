@@ -6,10 +6,10 @@ const route = express.Router();
 
 route
     .post('/create', authRequired, checkRole, SkillController.create)
-    .get('/findAll',SkillController.showSkill)
-    .patch('/update/:id',SkillController.updateSkill)
-    .delete('/delete/:id',SkillController.deleteSkills)
-    .get('/findById/:id',SkillController.getSkillById)
+    .get('/findAll',authRequired,SkillController.showSkill)
+    .patch('/update/:id',authRequired,checkRole,SkillController.updateSkill)
+    .delete('/delete/:id',authRequired,checkRole,SkillController.deleteSkills)
+    .get('/findById/:id',authRequired,SkillController.getSkillById)
     // .get('/find/alternative/:id',SkillController.)
 
 export default route;
