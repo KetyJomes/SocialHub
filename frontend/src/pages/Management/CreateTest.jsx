@@ -1,51 +1,5 @@
-// colocar no select do tipo isso aqui:
-//<div>
-//
-//    <label className="font-medium text-gray-800">
-//        Tipo
-//    </label>
-//
-//    <select
-//        value={test.type}
-//        onChange={(e) =>
-//            setTest({
-//                ...test,
-//                type: e.target.value
-//            })
-//        }
-//        className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 outline-none focus:ring-2 focus:ring-[#0291F7]"
-//    >
-//
-//        <option value="">
-//            Selecione
-//        </option>
-//
-//        <option value="Instructor">
-//            Gestor → Aluno
-//        </option>
-//
-//        <option value="Self">
-//            Autoavaliação
-//        </option>
-//
-//        <option value="Group">
-//            360°
-//        </option>
-//
-//        <option value="Lider">
-//            Líder → Turma
-//        </option>
-//
-//        <option value="Class">
-//            Aluno → Líder
-//        </option>
-//
-//    </select>
-//</div>
-
-
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation, data } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
@@ -56,75 +10,6 @@ import { modelsMock } from "../../data/modelsMock";
 
 export const CreateTest = () => {
 
-    // Integração
-    const [test, setTest] = useState({
-        content: "",
-        startDate: "",
-        finalDate: "",
-        grade: "",
-        type: "",
-        AvailableResult: false,
-        frequency: "",
-        skills: []
-    });
-
-    const [skill, setSkill] = useState({
-        title: "",
-        description: "",
-        idTest: ""
-    });
-
-    const create = async () => {
-
-    try {
-
-        const response = await api.post("/test/create", {
-
-            content: test.content,
-            startDate: test.startDate,
-            finalDate: test.finalDate,
-            grade: Number(test.grade),
-            type: test.type,
-            AvailableResult: false,
-            frequency: test.frequency,
-
-            skills: secoes.map(secao => ({
-                Title: secao.titulo,
-                Description: secao.descricao,
-                alternatives: secao.perguntas.map(pergunta => ({
-
-                    Content: pergunta.texto,
-
-                    Scale: Number(pergunta.escala)
-
-                }))
-
-            }))
-
-        });
-
-
-        console.log(
-            "Teste criado:",
-            response.data
-        );
-
-
-        navigate("/management-test");
-
-
-    } catch(error){
-
-        console.log(
-            "Erro:",
-            error
-        );
-
-    }
-
-};
-    
-
     const [isOpen, setIsOpen] = useState(false);
     const navigate = useNavigate();
     const location = useLocation();
@@ -134,6 +19,15 @@ export const CreateTest = () => {
     const modeloOrigemId = location.state?.modeloOrigemId;
     const [showAlert, setShowAlert] = useState(false);
     const [mensagemAlert, setMensagemAlert] = useState("");
+
+    const [dados, setDados] = useState({
+        titulo: modelo?.titulo || "",
+        tipo: modelo?.tipo || "",
+        publico: modelo?.publico || "",
+        disponibilidade: modelo?.disponibilidade || "",
+        prazo: modelo?.prazo || "",
+        recorrencia: modelo?.recorrencia || "uma-vez"
+    });
 
     const [turma, setTurma] = useState(
         modelo?.turma || ""
@@ -176,6 +70,15 @@ export const CreateTest = () => {
     useEffect(() => {
 
         if (!modelo) return;
+
+        setDados({
+            titulo: modelo.titulo || "",
+            tipo: modelo.tipo || "",
+            publico: modelo.publico || "",
+            disponibilidade: modelo.disponibilidade || "",
+            prazo: modelo.prazo || "",
+            recorrencia: modelo.recorrencia || "uma-vez"
+        });
 
         setTurma(modelo.turma || "");
 
@@ -502,15 +405,8 @@ export const CreateTest = () => {
                                 <input
                                     type="text"
                                     placeholder="Ex: Avaliação 2º Trimestre"
-
-                                    value={test.content}
-                                    onChange={
-                                        (e) => setTest({
-                                            ...test,
-                                            content: e.target.value    
-                                        })
-                                    }
-                                    
+                                    value={dados.titulo}
+                                    onChange={(e) => atualizarCampo("titulo", e.target.value)}
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 />
 
@@ -523,13 +419,8 @@ export const CreateTest = () => {
                                 </label>
 
                                 <select
-                                    value={test.type}
-                                    onChange={
-                                        (e) => setTest({
-                                            ...test,
-                                            type: e.target.value
-                                        })
-                                    }
+                                    value={dados.tipo}
+                                    onChange={(e) => atualizarCampo("tipo", e.target.value)}
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 >
 
@@ -832,4 +723,3 @@ export const CreateTest = () => {
     );
 
 };
-

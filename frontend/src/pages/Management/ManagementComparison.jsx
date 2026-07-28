@@ -1,34 +1,17 @@
+//Comparação
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
-
 import { SummaryCards } from "../../components/SummaryCards";
 import { EvaluationCard } from "../../components/EvaluationCard";
-
-import {
-  Award,
-  Target,
-  Users,
-  TrendingUp,
-  MessageCircle,
-  Lightbulb,
-  Download,
-  Save,
-  Pencil,
-  Info
-} from "lucide-react";
+import {Award,Target,Users,TrendingUp,MessageCircle,Lightbulb,Download,Save,Pencil,Info} from "lucide-react";
 
 export const ManagementComparison = () => {
-
   const [isOpen, setIsOpen] = useState(false);
   const [editando, setEditando] = useState(false);
-
   const { turma, aluno } = useParams();
-
   const [feedback, setFeedback] = useState("");
-
   const selfEvaluation = [
     {
       icon: Award,
@@ -144,11 +127,8 @@ export const ManagementComparison = () => {
       />
 
       <main className="mt-[8vh] p-8">
-
         <div className="max-w-[1700px] mx-auto">
-
           <div className="flex justify-between items-start">
-
             <div>
 
               <h1 className="text-3xl font-bold">
@@ -171,107 +151,42 @@ export const ManagementComparison = () => {
 
             <div className="flex items-center gap-4">
 
+            {/* Exportar */}
 
-            {/* INFORMAÇÃO */}
-
-            <button
-              className="
-                w-9
-                h-9
-                rounded-full
-                border
-                border-gray-200
-                flex
-                items-center
-                justify-center
-                hover:bg-gray-100
-                transition
-              "
-            >
-
-              <Info
-                size={18}
-                className="text-gray-500"
-              />
-
-            </button>
-
-
-
-            {/* EXPORTAR */}
-
-            <button
-
-              className="
-                flex
-                items-center
-                gap-3
-                px-5
-                py-3
-                rounded-xl
-                bg-white
-                border
-                bg-[#0291F7]
-                text-[#0291F7]
-                font-semibold
-                hover:bg-blue-50
-                transition
-                shadow-sm
-              "
-
-            >
+            <button className=" flex items-center gap-3 px-5 py-3 rounded-xl bg-white border bg-[#0291F7] text-[#0291F7] font-semibold hover:bg-blue-50 transition shadow-sm " >
 
               <Download size={18}/>
-
               Exportar relatório
 
             </button>
 
-            {/* EDITAR */}
+            {/* Editar */}
 
             <button
               onClick={() => setEditando(!editando)}
-              className="
-                flex
-                items-center
-                gap-3
-                px-5
-                py-3
-                rounded-xl
-                bg-[#0291F7]
-                text-white
-                font-semibold
-                hover:bg-blue-700
-                transition
-                shadow-sm
-              "
+              className=" flex items-center gap-3 px-5 py-3 rounded-xl bg-[#0291F7] text-white font-semibold hover:bg-blue-700 transition shadow-sm " >
 
-            >
-
-                          {
-              editando ? (
-                <>
-                  <Save size={18}/>
-                  Salvar
-                </>
-              ) : (
-                <>
-                  <Pencil size={18}/>
-                  Editar
-                </>
-              )
-            }
+              {
+                editando ? (
+                  <>
+                    <Save size={18}/>
+                    Salvar
+                  </>
+                ) : (
+                  <>
+                    <Pencil size={18}/>
+                    Editar
+                  </>
+                )
+              }
 
             </button>
-
-
           </div>
-
-          </div>
+        </div>
 
           <div className="flex gap-6 mt-8 items-start">
 
-            {/* Cards de resumo (os gráficos iguais ao do aluno) */}
+            {/* Gráficos*/}
             <div className="w-[22%] min-w-[300px]">
 
               <SummaryCards />
@@ -279,19 +194,7 @@ export const ManagementComparison = () => {
             </div>
 
             {/* Comparação */}
-            <div
-              className="
-                flex
-                flex-1
-                gap-6
-                max-h-[72vh]
-                overflow-y-auto
-                pr-2
-                scrollbar-thin
-                scrollbar-thumb-gray-300
-                scrollbar-track-transparent
-              "
-            >
+            <div className=" flex flex-1 gap-6 max-h-[72vh] overflow-y-auto pr-2 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent " >
 
               <div className="flex-1">
 
@@ -314,24 +217,12 @@ export const ManagementComparison = () => {
                 />
 
               </div>
-
             </div>
-
           </div>
 
           {/* Feedback */}
 
-          <div
-            className="
-              bg-white
-              rounded-2xl
-              border
-              border-gray-200
-              shadow-sm
-              p-6
-              mt-8
-            "
-          >
+          <div className=" bg-white rounded-2xl border border-gray-200 shadow-sm p-6 mt-8 ">
 
             <h2 className="text-2xl font-bold">
               Feedback do Gestor
@@ -346,52 +237,19 @@ export const ManagementComparison = () => {
               onChange={(e) => setFeedback(e.target.value)}
               rows={8}
               placeholder="Digite o feedback..."
-              className="
-                w-full
-                mt-6
-                rounded-xl
-                border
-                border-gray-300
-                p-4
-                resize-none
-                focus:outline-none
-                focus:ring-2
-                focus:ring-[#0291F7]
-              "
-            />
+              className=" w-full mt-6 rounded-xl border border-gray-300 p-4 resize-none focus:outline-none focus:ring-2 focus:ring-[#0291F7] "/>
 
             <div className="flex justify-end mt-6">
-
-              <button
-                className="
-                  flex
-                  items-center
-                  gap-2
-                  bg-[#0291F7]
-                  text-white
-                  px-6
-                  py-3
-                  rounded-xl
-                  font-semibold
-                  hover:bg-[#0278d2]
-                  transition
-                "
-              >
+              <button className=" flex items-center gap-2 bg-[#0291F7] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#0278d2] transition ">
 
                 <Save size={18} />
-
                 Salvar Feedback
 
               </button>
-
             </div>
-
           </div>
-
         </div>
-
       </main>
     </>
   );
-
 };

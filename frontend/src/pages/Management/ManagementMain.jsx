@@ -312,13 +312,17 @@ export const ManagementMain = () => {
 
 
                     <section className="mt-8">
+                        <div className="mt-15 flex items-center gap-4 mb-8">
 
+                        <div className="w-1 h-10 bg-[#0291F7] rounded-full"></div>
 
                         <h2 className="font-bold text-2xl">
 
                             Turmas
 
                         </h2>
+
+                        </div>
 
 
                         <div className="relative">
@@ -783,46 +787,6 @@ export const ManagementMain = () => {
                         </div>
 
                     </section>
-
-                    {/* Informação */}
-
-                    <div
-                        className="
-                            flex
-                            justify-center
-                            mt-8
-                        "
-                    >
-
-                        <div
-                            className="
-                                flex
-                                items-center
-                                gap-2
-                                bg-gray-50
-                                border
-                                border-gray-200
-                                rounded-lg
-                                px-6
-                                py-3
-                            "
-                        >
-
-                            <Info
-                                size={18}
-                                className="text-[#0291F7]"
-                                strokeWidth={2}
-                            />
-
-                            <span className="text-sm text-gray-600">
-
-                                Clique em uma avaliação pendente para iniciar a avaliação do aluno.
-
-                            </span>
-
-                        </div>
-
-                    </div>
 
                 </div>
 

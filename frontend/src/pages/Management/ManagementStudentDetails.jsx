@@ -751,61 +751,6 @@ export const ManagementStudentDetails = () => {
 
 
 
-
-
-                    {/* AVISO */}
-
-
-
-                    <div
-                        className="
-                            flex
-                            justify-center
-                            mt-8
-                        "
-                    >
-
-
-
-                        <div
-                            className="
-                                flex
-                                items-center
-                                gap-2
-                                bg-gray-50
-                                border
-                                border-gray-200
-                                rounded-lg
-                                px-6
-                                py-3
-                            "
-                        >
-
-
-
-                            <Info
-                                size={18}
-                                className="text-[#0291F7]"
-                            />
-
-
-
-                            <span className="text-sm text-gray-600">
-
-                                Visualize a evolução do aluno e acompanhe as avaliações disponíveis e concluídas.
-
-                            </span>
-
-
-
-                        </div>
-
-
-
-                    </div>
-
-
-
                 </div>
 
 

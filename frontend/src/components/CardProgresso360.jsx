@@ -95,7 +95,7 @@ export const CardProgresso360 = ({ colaboradores }) => {
                                     264 - (264 * porcentagem) / 100
                                 }
                                 strokeLinecap="round"
-                                className="text-[#7C3AED] transition-all duration-700"
+                                className="text-[#8B5CF6] transition-all duration-700"
                             />
 
 
@@ -108,7 +108,7 @@ export const CardProgresso360 = ({ colaboradores }) => {
                         <div className="text-center">
 
 
-                            <p className="text-2xl font-bold text-[#7C3AED]">
+                            <p className="text-2xl font-bold text-[#8B5CF6]">
 
                                 {porcentagem}%
 

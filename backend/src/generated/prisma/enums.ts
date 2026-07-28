@@ -11,7 +11,6 @@
 
 export const TestTypeEnum = {
   Self: 'Self',
-  Instructor: 'Instructor',
   Group: 'Group',
   Lider: 'Lider',
   Class: 'Class'

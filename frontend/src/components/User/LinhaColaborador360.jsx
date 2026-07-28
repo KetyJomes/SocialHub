@@ -258,7 +258,7 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                                 rounded-xl
                                 bg-[#0291F7]
                                 text-white
-                                hover:opacity-90
+                                hover:bg-blue-700
                                 transition
                             "
 

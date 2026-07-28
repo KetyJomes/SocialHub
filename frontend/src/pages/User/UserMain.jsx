@@ -346,8 +346,7 @@ export const UserMain = () => {
                             {/* AVALIAÇÕES */}
 
                             <section
-
-                                className="flex items-start w-[20%] gap-4 cursor-pointer"
+                                className="flex items-center justify-between w-[20%] cursor-pointer"
 
                                 onClick={() => navigate("/user-avaliacoes")}
 
@@ -466,7 +465,7 @@ export const UserMain = () => {
 
                                 <img
 
-                                    src={green}
+                                    src={blue}
 
                                     alt=""
 

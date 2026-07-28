@@ -196,24 +196,22 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
 
                 <button
                     onClick={visualizarComparacao}
-
                     className="
                         w-9
                         h-9
-                        rounded-full
-                        bg-[#0291F7]
-                        text-white
                         flex
                         items-center
                         justify-center
                         mx-auto
-                        hover:bg-[#027bd1]
+                        hover:bg-[#D6EBFF]
                         transition
                     "
                 >
-
-                    <ChevronRight size={18}/>
-
+                    <ChevronRight
+                        size={18}
+                        className="text-[#0291F7]"
+                        strokeWidth={2.5}
+                    />
                 </button>
 
             </td>

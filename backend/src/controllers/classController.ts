@@ -1,6 +1,6 @@
 
 import { createClassDTO, updateClassDTO } from '../DTOS/classDTO.ts';
-import { createClass, updateClass, deleteClass, showClass, showClasses, addStudentToClass, removeStudentFromClass } from '../services/classServices.ts';
+import { createClass, updateClass, deleteClass, showClass, showClasses, addStudentToClass, removeStudentFromClass, archiveClass } from '../services/classServices.ts';
 import { Request, Response } from "express";
 
 export default class ClassController {
@@ -90,6 +90,20 @@ export default class ClassController {
             return res.status(200).send({ response:  "Aluno removido com sucesso"})
         }catch (e){
             return res.status(500).send({ Response: "Não foi possivel remover o aluno da sala"})
+        }
+    }
+
+    static async ArchiveClass(req: Request, res: Response){
+        const id = Number(req.params.id);
+
+        if (isNaN(id)){
+            return res.status(400).send({response: "Turma não encontrada"})
+        }
+        try{
+            await archiveClass(id);
+            return res.status(200).send({response: "Sala arquivada"})
+        }catch(e){
+            return res.status(500).send({ Response: "Não foi possivel arquivar a sala"})
         }
     }
 }

@@ -15,18 +15,18 @@ export const GraficoTurmas = ({ dados }) => {
     function corDesempenho(nota) {
 
         if (nota >= 90) {
-            return "#93C5FD";
+            return "#0291F7";
         }
 
         if (nota >= 75) {
-            return "#86EFAC";
+            return "#10B981";
         }
 
         if (nota >= 60) {
-            return "#FDE68A";
+            return "#FACC15";
         }
 
-        return "#FCA5A5";
+        return "#EF4444";
     }
 
 

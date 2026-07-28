@@ -1,30 +1,14 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {
-    GraduationCap,
-    Info,
-    CheckCircle,
-    Clock,
-    AlertCircle,
-    Eye
-} from "lucide-react";
-
+import {GraduationCap, Info, CheckCircle, Clock, AlertCircle, Eye} from "lucide-react";
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
 
-
 export const ManagementEvaluationClassDetails = () => {
-
     const navigate = useNavigate();
-
     const [isOpen, setIsOpen] = useState(false);
-
     const { turma } = useParams();
-
-
-
     const alunos = [
-
         {
             nome: "Ana Souza",
             status: "Finalizada",
@@ -62,8 +46,6 @@ export const ManagementEvaluationClassDetails = () => {
 
     ];
 
-
-
     const statusClasses = {
 
         "Finalizada":
@@ -76,8 +58,6 @@ export const ManagementEvaluationClassDetails = () => {
             "bg-red-100 text-red-700"
 
     };
-
-
 
     const statusIcons = {
 
@@ -92,106 +72,57 @@ export const ManagementEvaluationClassDetails = () => {
 
     };
 
-
-
     const finalizadas = alunos.filter(
         aluno => aluno.status === "Finalizada"
     ).length;
-
 
     const andamento = alunos.filter(
         aluno => aluno.status === "Em andamento"
     ).length;
 
-
     const pendentes = alunos.filter(
         aluno => aluno.status === "Pendente"
     ).length;
-
-
 
     const progressoGeral = Math.round(
         (finalizadas / alunos.length) * 100
     );
 
-
-
     return (
 
         <>
-
-
             <SidebarManagement
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
 
-
-
             {
                 isOpen && (
-
-                    <div
-                        className="
-                            fixed
-                            inset-0
-                            bg-black/20
-                            z-40
-                        "
+                    <div className=" fixed inset-0 bg-black/20 z-40 "
                         onClick={() => setIsOpen(false)}
                     />
-
                 )
             }
 
-
-
-
             <main className="mt-[10vh]">
-
 
                 <Header
                     isOpen={isOpen}
                     setIsOpen={setIsOpen}
                 />
 
-
-
-                <div
-                    className="
-                        p-10
-                    "
-                >
-
-
+                <div className=" p-10 " >
 
                     <h1 className="text-3xl font-bold">
                         {turma}
                     </h1>
 
-
                     <p className="text-gray-500">
                         Acompanhe o andamento da avaliação selecionada nesta turma.
                     </p>
 
-
-
-
-
-                    {/* RESUMO */}
-
-
-                    <section
-                        className="
-                            mt-8
-                            bg-white
-                            rounded-xl
-                            border
-                            border-gray-100
-                            shadow-sm
-                            p-6
-                        "
-                    >
+                    {/* Resumo*/}
+                    <section className=" mt-8 bg-white rounded-xl border border-gray-100 shadow-sm p-6 " >
 
 
                         <div
