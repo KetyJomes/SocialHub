@@ -1,4 +1,4 @@
-import express from 'express';
+    import express from 'express';
 import ClassController from '../controllers/classController.ts';
 
 const route = express.Router();
