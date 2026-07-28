@@ -1791,60 +1791,6 @@ const confirmarExcluir = (turma) => {
 
                             </select>
 
-
-
-
-
-
-
-                            <select
-
-                                value={novaTurma.lider}
-
-                                onChange={(e)=>
-                                    setNovaTurma({
-                                        ...novaTurma,
-                                        lider: e.target.value
-                                    })
-                                }
-
-                                className="
-                                    h-12
-                                    border
-                                    rounded-xl
-                                    px-4
-                                "
-
-                            >
-
-                                <option value="">
-
-                                    Selecione o líder da turma
-
-                                </option>
-
-                                {
-                                    alunosDisponiveis.map(aluno => (
-
-                                        <option
-                                            key={aluno.id}
-                                            value={aluno.nome}
-                                        >
-
-                                            {aluno.nome}
-
-                                        </option>
-
-                                    ))
-                                }
-
-                            </select>
-
-
-
-
-
-
                             <select
 
                                 value={novaTurma.status}
