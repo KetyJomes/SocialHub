@@ -42,9 +42,9 @@ export type TestMinAggregateOutputType = {
   startDate: Date | null
   finalDate: Date | null
   grade: number | null
-  type: $Enums.TestType | null
+  type: $Enums.TestTypeEnum | null
   AvailableResult: boolean | null
-  Frequency: $Enums.Frequency | null
+  Frequency: $Enums.FrequencyEnum | null
   Feedback: string | null
 }
 
@@ -54,9 +54,9 @@ export type TestMaxAggregateOutputType = {
   startDate: Date | null
   finalDate: Date | null
   grade: number | null
-  type: $Enums.TestType | null
+  type: $Enums.TestTypeEnum | null
   AvailableResult: boolean | null
-  Frequency: $Enums.Frequency | null
+  Frequency: $Enums.FrequencyEnum | null
   Feedback: string | null
 }
 
@@ -213,9 +213,9 @@ export type TestGroupByOutputType = {
   startDate: Date
   finalDate: Date
   grade: number
-  type: $Enums.TestType
+  type: $Enums.TestTypeEnum
   AvailableResult: boolean
-  Frequency: $Enums.Frequency
+  Frequency: $Enums.FrequencyEnum
   Feedback: string
   _count: TestCountAggregateOutputType | null
   _avg: TestAvgAggregateOutputType | null
@@ -248,9 +248,9 @@ export type TestWhereInput = {
   startDate?: Prisma.DateTimeFilter<"Test"> | Date | string
   finalDate?: Prisma.DateTimeFilter<"Test"> | Date | string
   grade?: Prisma.IntFilter<"Test"> | number
-  type?: Prisma.EnumTestTypeFilter<"Test"> | $Enums.TestType
+  type?: Prisma.EnumTestTypeEnumFilter<"Test"> | $Enums.TestTypeEnum
   AvailableResult?: Prisma.BoolFilter<"Test"> | boolean
-  Frequency?: Prisma.EnumFrequencyFilter<"Test"> | $Enums.Frequency
+  Frequency?: Prisma.EnumFrequencyEnumFilter<"Test"> | $Enums.FrequencyEnum
   Feedback?: Prisma.StringFilter<"Test"> | string
   Skills?: Prisma.SkillListRelationFilter
   user?: Prisma.User_TestListRelationFilter
@@ -280,9 +280,9 @@ export type TestWhereUniqueInput = Prisma.AtLeast<{
   startDate?: Prisma.DateTimeFilter<"Test"> | Date | string
   finalDate?: Prisma.DateTimeFilter<"Test"> | Date | string
   grade?: Prisma.IntFilter<"Test"> | number
-  type?: Prisma.EnumTestTypeFilter<"Test"> | $Enums.TestType
+  type?: Prisma.EnumTestTypeEnumFilter<"Test"> | $Enums.TestTypeEnum
   AvailableResult?: Prisma.BoolFilter<"Test"> | boolean
-  Frequency?: Prisma.EnumFrequencyFilter<"Test"> | $Enums.Frequency
+  Frequency?: Prisma.EnumFrequencyEnumFilter<"Test"> | $Enums.FrequencyEnum
   Feedback?: Prisma.StringFilter<"Test"> | string
   Skills?: Prisma.SkillListRelationFilter
   user?: Prisma.User_TestListRelationFilter
@@ -314,9 +314,9 @@ export type TestScalarWhereWithAggregatesInput = {
   startDate?: Prisma.DateTimeWithAggregatesFilter<"Test"> | Date | string
   finalDate?: Prisma.DateTimeWithAggregatesFilter<"Test"> | Date | string
   grade?: Prisma.IntWithAggregatesFilter<"Test"> | number
-  type?: Prisma.EnumTestTypeWithAggregatesFilter<"Test"> | $Enums.TestType
+  type?: Prisma.EnumTestTypeEnumWithAggregatesFilter<"Test"> | $Enums.TestTypeEnum
   AvailableResult?: Prisma.BoolWithAggregatesFilter<"Test"> | boolean
-  Frequency?: Prisma.EnumFrequencyWithAggregatesFilter<"Test"> | $Enums.Frequency
+  Frequency?: Prisma.EnumFrequencyEnumWithAggregatesFilter<"Test"> | $Enums.FrequencyEnum
   Feedback?: Prisma.StringWithAggregatesFilter<"Test"> | string
 }
 
@@ -325,9 +325,9 @@ export type TestCreateInput = {
   startDate: Date | string
   finalDate: Date | string
   grade: number
-  type: $Enums.TestType
+  type: $Enums.TestTypeEnum
   AvailableResult: boolean
-  Frequency: $Enums.Frequency
+  Frequency: $Enums.FrequencyEnum
   Feedback: string
   Skills?: Prisma.SkillCreateNestedManyWithoutTestsInput
   user?: Prisma.User_TestCreateNestedManyWithoutTestsInput
@@ -339,9 +339,9 @@ export type TestUncheckedCreateInput = {
   startDate: Date | string
   finalDate: Date | string
   grade: number
-  type: $Enums.TestType
+  type: $Enums.TestTypeEnum
   AvailableResult: boolean
-  Frequency: $Enums.Frequency
+  Frequency: $Enums.FrequencyEnum
   Feedback: string
   Skills?: Prisma.SkillUncheckedCreateNestedManyWithoutTestsInput
   user?: Prisma.User_TestUncheckedCreateNestedManyWithoutTestsInput
@@ -352,9 +352,9 @@ export type TestUpdateInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finalDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grade?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
+  type?: Prisma.EnumTestTypeEnumFieldUpdateOperationsInput | $Enums.TestTypeEnum
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Frequency?: Prisma.EnumFrequencyEnumFieldUpdateOperationsInput | $Enums.FrequencyEnum
   Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Skills?: Prisma.SkillUpdateManyWithoutTestsNestedInput
   user?: Prisma.User_TestUpdateManyWithoutTestsNestedInput
@@ -366,9 +366,9 @@ export type TestUncheckedUpdateInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finalDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grade?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
+  type?: Prisma.EnumTestTypeEnumFieldUpdateOperationsInput | $Enums.TestTypeEnum
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Frequency?: Prisma.EnumFrequencyEnumFieldUpdateOperationsInput | $Enums.FrequencyEnum
   Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Skills?: Prisma.SkillUncheckedUpdateManyWithoutTestsNestedInput
   user?: Prisma.User_TestUncheckedUpdateManyWithoutTestsNestedInput
@@ -380,9 +380,9 @@ export type TestCreateManyInput = {
   startDate: Date | string
   finalDate: Date | string
   grade: number
-  type: $Enums.TestType
+  type: $Enums.TestTypeEnum
   AvailableResult: boolean
-  Frequency: $Enums.Frequency
+  Frequency: $Enums.FrequencyEnum
   Feedback: string
 }
 
@@ -391,9 +391,9 @@ export type TestUpdateManyMutationInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finalDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grade?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
+  type?: Prisma.EnumTestTypeEnumFieldUpdateOperationsInput | $Enums.TestTypeEnum
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Frequency?: Prisma.EnumFrequencyEnumFieldUpdateOperationsInput | $Enums.FrequencyEnum
   Feedback?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -403,9 +403,9 @@ export type TestUncheckedUpdateManyInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finalDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grade?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
+  type?: Prisma.EnumTestTypeEnumFieldUpdateOperationsInput | $Enums.TestTypeEnum
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Frequency?: Prisma.EnumFrequencyEnumFieldUpdateOperationsInput | $Enums.FrequencyEnum
   Feedback?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
@@ -484,16 +484,16 @@ export type DateTimeFieldUpdateOperationsInput = {
   set?: Date | string
 }
 
-export type EnumTestTypeFieldUpdateOperationsInput = {
-  set?: $Enums.TestType
+export type EnumTestTypeEnumFieldUpdateOperationsInput = {
+  set?: $Enums.TestTypeEnum
 }
 
 export type BoolFieldUpdateOperationsInput = {
   set?: boolean
 }
 
-export type EnumFrequencyFieldUpdateOperationsInput = {
-  set?: $Enums.Frequency
+export type EnumFrequencyEnumFieldUpdateOperationsInput = {
+  set?: $Enums.FrequencyEnum
 }
 
 export type TestCreateNestedOneWithoutSkillsInput = {
@@ -515,9 +515,9 @@ export type TestCreateWithoutUserInput = {
   startDate: Date | string
   finalDate: Date | string
   grade: number
-  type: $Enums.TestType
+  type: $Enums.TestTypeEnum
   AvailableResult: boolean
-  Frequency: $Enums.Frequency
+  Frequency: $Enums.FrequencyEnum
   Feedback: string
   Skills?: Prisma.SkillCreateNestedManyWithoutTestsInput
 }
@@ -528,9 +528,9 @@ export type TestUncheckedCreateWithoutUserInput = {
   startDate: Date | string
   finalDate: Date | string
   grade: number
-  type: $Enums.TestType
+  type: $Enums.TestTypeEnum
   AvailableResult: boolean
-  Frequency: $Enums.Frequency
+  Frequency: $Enums.FrequencyEnum
   Feedback: string
   Skills?: Prisma.SkillUncheckedCreateNestedManyWithoutTestsInput
 }
@@ -556,9 +556,9 @@ export type TestUpdateWithoutUserInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finalDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grade?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
+  type?: Prisma.EnumTestTypeEnumFieldUpdateOperationsInput | $Enums.TestTypeEnum
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Frequency?: Prisma.EnumFrequencyEnumFieldUpdateOperationsInput | $Enums.FrequencyEnum
   Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Skills?: Prisma.SkillUpdateManyWithoutTestsNestedInput
 }
@@ -569,9 +569,9 @@ export type TestUncheckedUpdateWithoutUserInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finalDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grade?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
+  type?: Prisma.EnumTestTypeEnumFieldUpdateOperationsInput | $Enums.TestTypeEnum
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Frequency?: Prisma.EnumFrequencyEnumFieldUpdateOperationsInput | $Enums.FrequencyEnum
   Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   Skills?: Prisma.SkillUncheckedUpdateManyWithoutTestsNestedInput
 }
@@ -581,9 +581,9 @@ export type TestCreateWithoutSkillsInput = {
   startDate: Date | string
   finalDate: Date | string
   grade: number
-  type: $Enums.TestType
+  type: $Enums.TestTypeEnum
   AvailableResult: boolean
-  Frequency: $Enums.Frequency
+  Frequency: $Enums.FrequencyEnum
   Feedback: string
   user?: Prisma.User_TestCreateNestedManyWithoutTestsInput
 }
@@ -594,9 +594,9 @@ export type TestUncheckedCreateWithoutSkillsInput = {
   startDate: Date | string
   finalDate: Date | string
   grade: number
-  type: $Enums.TestType
+  type: $Enums.TestTypeEnum
   AvailableResult: boolean
-  Frequency: $Enums.Frequency
+  Frequency: $Enums.FrequencyEnum
   Feedback: string
   user?: Prisma.User_TestUncheckedCreateNestedManyWithoutTestsInput
 }
@@ -622,9 +622,9 @@ export type TestUpdateWithoutSkillsInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finalDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grade?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
+  type?: Prisma.EnumTestTypeEnumFieldUpdateOperationsInput | $Enums.TestTypeEnum
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Frequency?: Prisma.EnumFrequencyEnumFieldUpdateOperationsInput | $Enums.FrequencyEnum
   Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   user?: Prisma.User_TestUpdateManyWithoutTestsNestedInput
 }
@@ -635,9 +635,9 @@ export type TestUncheckedUpdateWithoutSkillsInput = {
   startDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   finalDate?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   grade?: Prisma.IntFieldUpdateOperationsInput | number
-  type?: Prisma.EnumTestTypeFieldUpdateOperationsInput | $Enums.TestType
+  type?: Prisma.EnumTestTypeEnumFieldUpdateOperationsInput | $Enums.TestTypeEnum
   AvailableResult?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  Frequency?: Prisma.EnumFrequencyFieldUpdateOperationsInput | $Enums.Frequency
+  Frequency?: Prisma.EnumFrequencyEnumFieldUpdateOperationsInput | $Enums.FrequencyEnum
   Feedback?: Prisma.StringFieldUpdateOperationsInput | string
   user?: Prisma.User_TestUncheckedUpdateManyWithoutTestsNestedInput
 }
@@ -730,9 +730,9 @@ export type $TestPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     startDate: Date
     finalDate: Date
     grade: number
-    type: $Enums.TestType
+    type: $Enums.TestTypeEnum
     AvailableResult: boolean
-    Frequency: $Enums.Frequency
+    Frequency: $Enums.FrequencyEnum
     Feedback: string
   }, ExtArgs["result"]["test"]>
   composites: {}
@@ -1110,9 +1110,9 @@ export interface TestFieldRefs {
   readonly startDate: Prisma.FieldRef<"Test", 'DateTime'>
   readonly finalDate: Prisma.FieldRef<"Test", 'DateTime'>
   readonly grade: Prisma.FieldRef<"Test", 'Int'>
-  readonly type: Prisma.FieldRef<"Test", 'TestType'>
+  readonly type: Prisma.FieldRef<"Test", 'TestTypeEnum'>
   readonly AvailableResult: Prisma.FieldRef<"Test", 'Boolean'>
-  readonly Frequency: Prisma.FieldRef<"Test", 'Frequency'>
+  readonly Frequency: Prisma.FieldRef<"Test", 'FrequencyEnum'>
   readonly Feedback: Prisma.FieldRef<"Test", 'String'>
 }
     

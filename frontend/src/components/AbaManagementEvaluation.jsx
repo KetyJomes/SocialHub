@@ -1,7 +1,9 @@
 import { CardManagementEvaluation } from "./CardManagementEvaluation";
 
 export const AbaManagementEvaluation = ({
-    avaliacoes
+    avaliacoes,
+    responderAvaliacao,
+    podeAvaliar = true
 }) => {
 
     return (
@@ -49,6 +51,8 @@ export const AbaManagementEvaluation = ({
                         <CardManagementEvaluation
                             key={avaliacao.id}
                             avaliacao={avaliacao}
+                            responderAvaliacao={responderAvaliacao}
+                            podeAvaliar={podeAvaliar}
                         />
 
                     ))}

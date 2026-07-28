@@ -127,7 +127,7 @@ export const CardAlunoRanking = ({
                     className={`
                         text-2xl
                         font-bold
-                        text-[#B8A4FF]
+                        text-[#0291F7]
                         transition
                         duration-200
                         ${clicado ? "scale-125" : ""}

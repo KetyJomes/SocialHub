@@ -1,13 +1,15 @@
-import { createAlternativeDTO, updateAlternativeDTO } from "../DTOS/alternativeDTO.ts"
+
+import { updateAlternativeDTO } from "../DTOS/alternativeDTO.ts"
+import { createAlternativeDTO } from "../DTOS/testDTO.ts"
 import {prisma} from "../lib/prisma.ts"
 
-export const createAlternative = async(data: createAlternativeDTO) =>{
-    const {Content, Scale, idSkill} = data
+// export const createAlternative = async(data: createAlternativeDTO) =>{
+//     const {Content, Scale, idSkill} = data
 
-    return await prisma.alternatives.create({
-        data: { Content, Scale, idSkill}
-    })
-}
+//     return await prisma.alternatives.create({
+//         data: { Content, Scale, idSkill}
+//     })
+// }
 
 export const findAlternatives = async() => {
     return await prisma.alternatives.findMany()

@@ -55,7 +55,7 @@ export const CardAvaliacao360 = ({ tipo, descricao, status }) => {
                         h-10
                         rounded-full
                         bg-[#F1EDFF]
-                        text-[#B8A4FF]
+                        text-[#0291F7]
                         flex
                         items-center
                         justify-center
@@ -107,7 +107,7 @@ export const CardAvaliacao360 = ({ tipo, descricao, status }) => {
                     className={`
                         text-2xl
                         font-bold
-                        text-[#B8A4FF]
+                        text-[#0291F7]
                         transition
 
                         ${

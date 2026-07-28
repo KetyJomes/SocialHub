@@ -41,7 +41,7 @@ export const GraficoCompetencias = () => {
 
     const cores = [
 
-        "#B8A4FF",
+        "#0291F7",
         "#93C5FD",
         "#86EFAC",
         "#FDE68A",

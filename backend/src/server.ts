@@ -1,10 +1,14 @@
 import express from 'express';
-import routes from './routes/routes.ts';
+import cors from "cors";
+import routes from "./routes/routes.ts";
 
 const app = express();
-routes(app);
+app.use(cors({
+    origin: "http://localhost:5173"
+}))
 
 const port = 8080;
+routes(app)
 
 // app.listen(port, () => console.log(`Acesse: http://localhost:${port}/`));
 

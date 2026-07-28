@@ -5,7 +5,7 @@ export const avaliacoes = [
         subtitulo: "Ciclo Semestral",
         tipo: "360°",
         data: "20/06/2024",
-        situacao: "Concluída",
+        status: "Concluída",
         desempenho: 55,
         conceito: "Bom"
     },
@@ -15,7 +15,7 @@ export const avaliacoes = [
         subtitulo: "Ciclo Semestral",
         tipo: "Gestão",
         data: "18/06/2024",
-        situacao: "Concluída",
+        status: "Concluída",
         desempenho: 68,
         conceito: "Bom"
     },
@@ -25,7 +25,7 @@ export const avaliacoes = [
         subtitulo: "Ciclo Semestral",
         tipo: "Autoavaliação",
         data: "15/06/2024",
-        situacao: "Concluída",
+        status: "Concluída",
         desempenho: 72,
         conceito: "Muito bom"
     },
@@ -35,7 +35,7 @@ export const avaliacoes = [
         subtitulo: "Ciclo Semestral",
         tipo: "360°",
         data: "05/12/2023",
-        situacao: "Concluída",
+        status: "Concluída",
         desempenho: 48,
         conceito: "Regular"
     },
@@ -45,7 +45,7 @@ export const avaliacoes = [
         subtitulo: "Ciclo Semestral",
         tipo: "Gestão",
         data: "01/12/2023",
-        situacao: "Concluída",
+        status: "Concluída",
         desempenho: 62,
         conceito: "Bom"
     }
