@@ -146,7 +146,7 @@ export const ManagementPerformEvaluation = () => {
                             Você está avaliando
                         </p>
 
-                        <h2 className="text-2xl font-semibold text-[#21528A]">
+                        <h2 className="text-2xl font-semibold text-[#0291F7]">
                             {aluno}
                         </h2>
 
@@ -206,12 +206,12 @@ export const ManagementPerformEvaluation = () => {
                         <button
                             onClick={handleEnviar}
                             className="
-                                bg-[#21528A]
+                                bg-[#0291F7]
                                 text-white
                                 px-10
                                 py-3
                                 rounded-xl
-                                hover:bg-[#1b4471]
+                                 hover:bg-blue-700
                                 transition
                             "
                         >
@@ -275,12 +275,12 @@ export const ManagementPerformEvaluation = () => {
                                     onClick={confirmarEnvio}
 
                                     className="
-                                        bg-[#21528A]
+                                        bg-[#0291F7]
                                         text-white
                                         px-5
                                         py-2
                                         rounded-lg
-                                        hover:bg-[#1b4471]
+                                        hover:bg-blue-700
                                         transition
                                     "
 

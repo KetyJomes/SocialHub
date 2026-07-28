@@ -152,7 +152,7 @@ export const UserRealizarAvaliacao = () => {
                                     Você está avaliando
                                 </p>
 
-                                <h2 className="text-2xl font-semibold text-[#21528A]">
+                                <h2 className="text-2xl font-semibold text-[#0291F7]">
                                     {alunoAvaliado}
                                 </h2>
 
@@ -198,7 +198,7 @@ export const UserRealizarAvaliacao = () => {
 
                         <button
                             onClick={() => setShowConfirm(true)}
-                            className="bg-[#21528A] text-white rounded-xl px-12 py-4 hover:bg-[#1b4471] transition"
+                            className="bg-[#0291F7] text-white rounded-xl px-12 py-4  hover:bg-blue-700 transition"
                         >
                             Enviar Avaliação
                         </button>
@@ -253,7 +253,7 @@ export const UserRealizarAvaliacao = () => {
 
                                             <button
                                                 onClick={confirmarEnvio}
-                                                className="bg-[#21528A] text-white rounded-lg px-5 py-2 hover:bg-[#1b4471] transition"
+                                                className="bg-[#0291F7] text-white rounded-lg px-5 py-2 hover:bg-blue-700 transition"
                                             >
                                                 Confirmar
                                             </button>
@@ -297,7 +297,7 @@ export const UserRealizarAvaliacao = () => {
 
                                             <button
                                                 onClick={salvarEContinuarDepois}
-                                                className="bg-[#21528A] text-white rounded-lg px-5 py-2 hover:bg-[#1b4471] transition"
+                                                className="bg-[#0291F7] text-white rounded-lg px-5 py-2 hover:bg-blue-700 transition"
                                             >
                                                 Salvar e sair
                                             </button>

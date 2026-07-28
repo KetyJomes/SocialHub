@@ -177,7 +177,7 @@ export const ManagementEvaluationTableRow = ({
 
                                     }}
 
-                                    className="mt-1 accent-[#21528A]"
+                                    className="mt-1 accent-[#0291F7]"
 
                                 />
 

@@ -202,7 +202,7 @@ export const TestControl = () => {
 
                                     <button
                                         onClick={() => navigate("/management-test/create")}
-                                        className="bg-[#0291F7] text-white px-5 py-2.5 rounded-lg hover:opacity-90 transition font-medium"
+                                        className="bg-[#0291F7] text-white px-5 py-2.5 rounded-lg  hover:bg-blue-700 transition font-medium"
                                     >
                                         + Nova avaliação
                                     </button>
@@ -337,7 +337,7 @@ export const TestControl = () => {
                                                                     px-5
                                                                     py-2.5
                                                                     rounded-lg
-                                                                    hover:opacity-90
+                                                                     hover:bg-blue-700
                                                                     transition
                                                                     font-medium
                                                                 "
@@ -619,7 +619,7 @@ export const TestControl = () => {
                                                     );
 
                                                 }}
-                                                className="bg-[#0291F7] text-white rounded-lg px-5 py-2 hover:opacity-90 transition"
+                                                className="bg-[#0291F7] text-white rounded-lg px-5 py-2  hover:bg-blue-700 transition"
                                             >
                                                 Editar modelo
                                             </button>

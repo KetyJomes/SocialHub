@@ -73,10 +73,10 @@ export const GraficoCompetenciasAluno = () => {
     const cores = [
 
         "#0291F7",
-        "#93C5FD",
-        "#86EFAC",
-        "#FDE68A",
-        "#FCA5A5"
+        "#10B981",
+        "#8B5CF6",
+        "#F59E0B",
+        "#FACC15"
 
     ];
 

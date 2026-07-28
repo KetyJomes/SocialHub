@@ -1,52 +1,7 @@
-// colocar no select do tipo isso aqui:
-//<div>
-//
-//    <label className="font-medium text-gray-800">
-//        Tipo
-//    </label>
-//
-//    <select
-//        value={test.type}
-//        onChange={(e) =>
-//            setTest({
-//                ...test,
-//                type: e.target.value
-//            })
-//        }
-//        className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 outline-none focus:ring-2 focus:ring-[#0291F7]"
-//    >
-//
-//        <option value="">
-//            Selecione
-//        </option>
-//
-//        <option value="Instructor">
-//            Gestor → Aluno
-//        </option>
-//
-//        <option value="Self">
-//            Autoavaliação
-//        </option>
-//
-//        <option value="Group">
-//            360°
-//        </option>
-//
-//        <option value="Lider">
-//            Líder → Turma
-//        </option>
-//
-//        <option value="Class">
-//            Aluno → Líder
-//        </option>
-//
-//    </select>
-//</div>
 
-
+// Criar avaliação
 import { useState, useEffect } from "react";
-import { useNavigate, useLocation, data } from "react-router-dom";
-
+import { useNavigate, useLocation } from "react-router-dom";
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
 import { TopicsEditor } from "../../components/Management/TopicsEditor";
@@ -153,9 +108,7 @@ export const CreateTest = () => {
     ];
 
     const [secoes, setSecoes] = useState(
-
         modelo?.secoes || [
-
             {
                 id: 1,
                 titulo: "",
@@ -173,34 +126,33 @@ export const CreateTest = () => {
 
     );
 
+    // Carrega os dados do modelo para edição
     useEffect(() => {
 
         if (!modelo) return;
-
         setTurma(modelo.turma || "");
-
         setTipoPublico(
         modelo.tipoPublico || "todos"
         );
-
         setAlunosSelecionados(
             modelo.alunosSelecionados || []
         );
-
         setSecoes(modelo.secoes || []);
 
     }, [modelo]);
 
-    function atualizarCampo(campo, valor) {
+    // Atualiza um campo específico do formulário
+    // function atualizarCampo(campo, valor) {
 
-        setDados(prev => ({
-            ...prev,
-            [campo]: valor
-        }));
+    //     setDados(prev => ({
+    //         ...prev,
+    //         [campo]: valor
+    //     }));
 
-    }
+    // }
 
-    function adicionarSecao() {
+    // Adicionar tópicos
+    function adicionarTopico() {
 
         setSecoes(prev => ([
             ...prev,
@@ -219,239 +171,187 @@ export const CreateTest = () => {
 
     }
 
-    function criarAvaliacao() {
+    //Validações de criar avaliações
+    // function criarAvaliacao() {
 
-        // ============================
-        // Informações da avaliação
-        // ============================
+    //     // Informações da avaliação
+    //     if (
+    //         !dados.titulo ||
+    //         !dados.tipo ||
+    //         !dados.disponibilidade ||
+    //         !dados.prazo ||
+    //         !turma
+    //     ) {
+    //         setMensagemAlert(
+    //             "Preencha todos os campos obrigatórios em Informações da Avaliação antes de continuar."
+    //         );
 
-        if (
-            !dados.titulo ||
-            !dados.tipo ||
-            !dados.disponibilidade ||
-            !dados.prazo ||
-            !turma
-        ) {
+    //         setShowAlert(true);
 
-            setMensagemAlert(
-                "Preencha todos os campos obrigatórios em Informações da Avaliação antes de continuar."
-            );
+    //         return;
+    //     }
 
-            setShowAlert(true);
+    //     // Destinatários
+    //     if (
+    //         tipoPublico === "alguns" &&
+    //         alunosSelecionados.length === 0
+    //     ) {
+    //         setMensagemAlert(
+    //             "Selecione pelo menos um aluno como destinatário da avaliação."
+    //         );
 
-            return;
+    //         setShowAlert(true);
 
-        }
+    //         return;
+    //     }
 
-        // ============================
-        // Destinatários
-        // ============================
+    //     // Tópicos
+    //     if (secoes.length < 1) {
+    //         setMensagemAlert(
+    //             "Crie pelo menos um tópico para a avaliação."
+    //         );
 
-        if (
-            tipoPublico === "alguns" &&
-            alunosSelecionados.length === 0
-        ) {
+    //         setShowAlert(true);
+    //         return;
 
-            setMensagemAlert(
-                "Selecione pelo menos um aluno como destinatário da avaliação."
-            );
+    //     }
 
-            setShowAlert(true);
+    //     // Validação dos tópicos
+    //     for (const secao of secoes) {
 
-            return;
+    //         if (!secao.titulo.trim()) {
+    //             setMensagemAlert(
+    //                 "Todos os tópicos devem possuir um título."
+    //             );
 
-        }
+    //             setShowAlert(true);
 
-        // ============================
-        // Tópicos
-        // ============================
+    //             return;
 
-        if (secoes.length < 1) {
+    //         }
 
-            setMensagemAlert(
-                "Crie pelo menos um tópico para a avaliação."
-            );
+    //         if (secao.perguntas.length === 0) {
+    //             setMensagemAlert(
+    //                 "Todos os tópicos devem possuir pelo menos uma questão."
+    //             );
 
-            setShowAlert(true);
+    //             setShowAlert(true);
 
-            return;
+    //             return;
 
-        }
+    //         }
 
-        // ============================
-        // Validação dos tópicos
-        // ============================
+    //         const escalasUtilizadas = secao.perguntas
+    //             .map(pergunta => pergunta.escala)
+    //             .filter(Boolean);
 
-        for (const secao of secoes) {
+    //         const escalasObrigatorias = [
+    //             "Crítico",
+    //             "Abaixo do esperado",
+    //             "Dentro do esperado",
+    //             "Acima do esperado"
+    //         ];
 
-            if (!secao.titulo.trim()) {
+    //         const possuiTodasEscalas = escalasObrigatorias.every(
+    //             escala => escalasUtilizadas.includes(escala)
+    //         );
 
-                setMensagemAlert(
-                    "Todos os tópicos devem possuir um título."
-                );
+    //         if (!possuiTodasEscalas) {
+    //             setMensagemAlert(
+    //                 `O tópico "${secao.titulo}" deve conter questões utilizando todas as escalas: Crítico, Abaixo do esperado, Dentro do esperado e Acima do esperado.`
+    //             );
+    //             setShowAlert(true);
 
-                setShowAlert(true);
+    //             return;
 
-                return;
+    //         }
 
-            }
+    //         for (const pergunta of secao.perguntas) {
 
-            if (secao.perguntas.length === 0) {
+    //             if (
+    //                 !pergunta.texto.trim() ||
+    //                 !pergunta.escala
+    //             ) {
 
-                setMensagemAlert(
-                    "Todos os tópicos devem possuir pelo menos uma questão."
-                );
+    //                 setMensagemAlert(
+    //                     "Todas as questões devem possuir um texto e uma escala."
+    //                 );
 
-                setShowAlert(true);
+    //                 setShowAlert(true);
 
-                return;
+    //                 return;
 
-            }
+    //             }
 
-            const escalasUtilizadas = secao.perguntas
-                .map(pergunta => pergunta.escala)
-                .filter(Boolean);
+    //         }
 
-            const escalasObrigatorias = [
-                "Crítico",
-                "Abaixo do esperado",
-                "Dentro do esperado",
-                "Acima do esperado"
-            ];
+    //     }
 
-            const possuiTodasEscalas = escalasObrigatorias.every(
-                escala => escalasUtilizadas.includes(escala)
-            );
+    //     // Criar avaliação
+    //     const novaAvaliacao = {
+    //         id: Date.now(),
+    //         ...dados,
+    //         turma,
+    //         tipoPublico,
+    //         alunosSelecionados,
+    //         secoes,
+    //         status:"Pendente"
 
-            if (!possuiTodasEscalas) {
+    //     };
 
-                setMensagemAlert(
-                    `O tópico "${secao.titulo}" deve conter questões utilizando todas as escalas: Crítico, Abaixo do esperado, Dentro do esperado e Acima do esperado.`
-                );
 
-                setShowAlert(true);
+    //     testsMock.push(novaAvaliacao);
 
-                return;
+    //     navigate("/management-test", {state:{abaInicial:"avaliacoes" }});
 
-            }
+    // }
 
-            for (const pergunta of secao.perguntas) {
+    // Validações para salvar o modelo
+    // function salvarModelo() {
 
-                if (
-                    !pergunta.texto.trim() ||
-                    !pergunta.escala
-                ) {
+    //     if (
+    //         !dados.titulo ||
+    //         !dados.tipo
+    //     ) {
 
-                    setMensagemAlert(
-                        "Todas as questões devem possuir um texto e uma escala."
-                    );
+    //         setMensagemAlert(
+    //             "Informe pelo menos o título e o tipo antes de salvar um modelo."
+    //         );
 
-                    setShowAlert(true);
+    //         setShowAlert(true);
 
-                    return;
+    //         return;
 
-                }
+    //     }
 
-            }
+    //     const modeloAtualizado = {
 
-        }
+    //         id: modeloOrigemId || Date.now(),
+    //         ...dados,
+    //         turma,
+    //         tipoPublico,
+    //         alunosSelecionados,
+    //         secoes
 
-        // ============================
-        // Criar avaliação
-        // ============================
+    //     };
 
-        const novaAvaliacao = {
+    //     const index = modelsMock.findIndex(
+    //         item => item.id === modeloOrigemId
+    //     );
 
-            id: Date.now(),
+    //     if(index !== -1){
+    //         modelsMock[index] = modeloAtualizado;
+    //     } else {
+    //         modelsMock.push(modeloAtualizado);
+    //     }
 
-            ...dados,
+    //     navigate("/management-test", {state:{abaInicial:"modelos"}});
 
-            turma,
-
-            tipoPublico,
-
-            alunosSelecionados,
-
-            secoes,
-
-            status:"Pendente"
-
-        };
-
-
-        testsMock.push(novaAvaliacao);
-
-        navigate("/management-test", {
-            state: {
-                abaInicial: "avaliacoes"
-            }
-        });
-
-    }
-
-    function salvarModelo() {
-
-        if (
-            !dados.titulo ||
-            !dados.tipo
-        ) {
-
-            setMensagemAlert(
-                "Informe pelo menos o título e o tipo antes de salvar um modelo."
-            );
-
-            setShowAlert(true);
-
-            return;
-
-        }
-
-
-        const modeloAtualizado = {
-
-        id: modeloOrigemId || Date.now(),
-
-        ...dados,
-
-        turma,
-
-        tipoPublico,
-
-        alunosSelecionados,
-
-        secoes
-
-    };
-
-
-    const index = modelsMock.findIndex(
-        item => item.id === modeloOrigemId
-    );
-
-
-        if(index !== -1){
-
-            modelsMock[index] = modeloAtualizado;
-
-        } else {
-
-            modelsMock.push(modeloAtualizado);
-
-        }
-
-
-        navigate("/management-test", {
-            state:{
-                abaInicial:"modelos"
-            }
-        });
-
-    }
+    // }
 
     return (
 
         <>
-
             <SidebarManagement
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
@@ -463,7 +363,6 @@ export const CreateTest = () => {
             />
 
             <main className="mt-[8vh] p-10 bg-gray-50 min-h-screen">
-
                 <div className="max-w-7xl mx-auto">
 
                     <h1 className="text-3xl font-bold text-gray-800">
@@ -476,15 +375,13 @@ export const CreateTest = () => {
                                         : "Editar Modelo"
                                 : "Nova Avaliação"
                         }
-
                     </h1>
 
                     <p className="text-gray-500 mt-2">
                         Configure as informações gerais e monte a avaliação.
                     </p>
 
-                    {/* INFORMAÇÕES DA AVALIAÇÃO */}
-
+                    {/* Informações da Avaliação*/}
                     <section className="mt-8 bg-white border border-gray-200 rounded-xl p-6 hover:shadow-sm transition">
 
                         <h2 className="text-xl font-semibold text-gray-800 mb-6">
@@ -492,7 +389,6 @@ export const CreateTest = () => {
                         </h2>
 
                         <div className="grid grid-cols-2 gap-6">
-
                             <div>
 
                                 <label className="font-medium text-gray-800">
@@ -513,56 +409,50 @@ export const CreateTest = () => {
                                     
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 />
-
                             </div>
 
                             <div>
-
+                            
                                 <label className="font-medium text-gray-800">
-                                    Tipo
+                                   Tipo
                                 </label>
-
+                            
                                 <select
-                                    value={test.type}
-                                    onChange={
-                                        (e) => setTest({
-                                            ...test,
-                                            type: e.target.value
-                                        })
-                                    }
-                                    className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
-                                >
-
-                                    <option value="">
-                                        Selecione
-                                    </option>
-
-                                    <option>
-                                        Gestor → Aluno
-                                    </option>
-
-                                    <option>
-                                        Aluno → Gestor
-                                    </option>
-
-                                    <option>
-                                        Autoavaliação
-                                    </option>
-
-                                    <option>
-                                        Líder → Turma
-                                    </option>
-
-                                    <option>
-                                        Aluno → Líder
-                                    </option>
-
-                                    <option>
-                                        360°
-                                    </option>
-
-                                </select>
-
+                                   value={test.type}
+                                   onChange={(e) =>
+                                       setTest({
+                                           ...test,
+                                           type: e.target.value
+                                       })
+                                   }
+                                   className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 outline-none focus:ring-2 focus:ring-[#0291F7]"
+                               >
+                            
+                                   <option value="">
+                                       Selecione
+                                   </option>
+                            
+                                   <option value="Instructor">
+                                       Gestor → Aluno
+                                   </option>
+                            
+                                   <option value="Self">
+                                       Autoavaliação
+                                   </option>
+                            
+                                   <option value="Group">
+                                       360°
+                                   </option>
+                            
+                                   <option value="Lider">
+                                       Turma → Líder
+                                   </option>
+                            
+                                   <option value="Class">
+                                       Aluno → Líder
+                                   </option>
+                            
+                               </select>
                             </div>
 
                             <div>
@@ -595,7 +485,6 @@ export const CreateTest = () => {
                                     }
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 />
-
                             </div>
 
                             <div>
@@ -609,7 +498,6 @@ export const CreateTest = () => {
                                     onChange={(e) => setTurma(e.target.value)}
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 >
-
                                     <option value="">
                                         Selecione uma turma
                                     </option>
@@ -633,9 +521,7 @@ export const CreateTest = () => {
                                     <option value="3A">
                                         3º EM A
                                     </option>
-
                                 </select>
-
                             </div>
 
                             <div>
@@ -649,7 +535,6 @@ export const CreateTest = () => {
                                     onChange={(e) => atualizarCampo("recorrencia", e.target.value)}
                                     className="w-full mt-2 bg-[#F8F8FB] border border-gray-200 rounded-lg px-4 py-3 text-gray-500 placeholder:text-gray-400 outline-none focus:ring-2 focus:ring-[#0291F7] focus:border-[#0291F7]"
                                 >
-
                                     <option value="uma-vez">
                                         Apenas uma vez
                                     </option>
@@ -673,11 +558,8 @@ export const CreateTest = () => {
                                     <option value="anual">
                                         Anual
                                     </option>
-
                                 </select>
-
                             </div>
-
                         </div>
 
                         <div className="col-span-2 mt-6">
@@ -687,22 +569,17 @@ export const CreateTest = () => {
                             </label>
 
                             <div className="mt-3 space-y-3">
-
                                 <label className="flex items-center gap-2 cursor-pointer">
-
                                     <input
                                         type="radio"
                                         value="todos"
                                         checked={tipoPublico === "todos"}
                                         onChange={(e) => setTipoPublico(e.target.value)}
                                     />
-
                                     Todos os alunos da turma
-
                                 </label>
 
                                 <label className="flex items-center gap-2 cursor-pointer">
-
                                     <input
                                         type="radio"
                                         value="alguns"
@@ -711,14 +588,11 @@ export const CreateTest = () => {
                                     />
 
                                     Apenas alguns alunos
-
                                 </label>
-
                             </div>
 
                             {
                                 tipoPublico === "alguns" && (
-
                                     <div className="mt-5 bg-[#F8F8FB] border border-gray-200 rounded-xl p-5">
 
                                         <p className="font-medium text-gray-800 mb-4">
@@ -726,29 +600,24 @@ export const CreateTest = () => {
                                         </p>
 
                                         <div className="space-y-3">
-
                                             {
                                                 alunos.map((aluno) => (
-
                                                     <label
                                                         key={aluno.id}
                                                         className="flex items-center gap-3 cursor-pointer"
                                                     >
-
                                                         <input
                                                             type="checkbox"
                                                             checked={alunosSelecionados.includes(aluno.id)}
                                                             onChange={(e) => {
 
                                                                 if (e.target.checked) {
-
                                                                     setAlunosSelecionados(prev => [
                                                                         ...prev,
                                                                         aluno.id
                                                                     ]);
 
                                                                 } else {
-
                                                                     setAlunosSelecionados(prev =>
                                                                         prev.filter(id => id !== aluno.id)
                                                                     );
@@ -757,31 +626,23 @@ export const CreateTest = () => {
 
                                                             }}
                                                         />
-
                                                         <span className="text-gray-700">
                                                             {aluno.nome}
                                                         </span>
-
                                                     </label>
-
                                                 ))
                                             }
-
                                         </div>
-
                                     </div>
-
                                 )
                             }
-
                         </div>
-
                     </section>
                     
                     <TopicsEditor
                         secoes={secoes}
                         setSecoes={setSecoes}
-                        adicionarSecao={adicionarSecao}
+                        adicionarTopico={adicionarTopico}
                     />
 
                     <EvaluationPreview
@@ -792,36 +653,27 @@ export const CreateTest = () => {
                     />
 
                 </div>
-
             </main>
-            {
+        {
             showAlert && (
             
                 <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
-
                     <div className="bg-white rounded-2xl shadow-xl p-8 w-[420px]">
-
                         <h2 className="text-2xl font-bold mb-4">
                             Atenção
                         </h2>
-
                         <p className="text-gray-600 mb-8">
                             {mensagemAlert}
                         </p>
-
                         <div className="flex justify-end">
-
                             <button
                                 onClick={() => setShowAlert(false)}
-                                className="bg-[#0291F7] text-white rounded-lg px-5 py-2 hover:opacity-90 transition"
+                                className="bg-[#0291F7] text-white rounded-lg px-5 py-2  hover:bg-blue-700 transition"
                             >
                                 Entendi
                             </button>
-
                         </div>
-
                     </div>
-
                 </div>
 
             )
