@@ -432,10 +432,6 @@ export const CreateTest = () => {
                                        Selecione
                                    </option>
                             
-                                   <option value="Instructor">
-                                       Gestor → Aluno
-                                   </option>
-                            
                                    <option value="Self">
                                        Autoavaliação
                                    </option>
