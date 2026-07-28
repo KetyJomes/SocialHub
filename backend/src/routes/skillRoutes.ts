@@ -5,7 +5,6 @@ import { authRequired, checkRole } from '../middlewares/authMiddleware.ts';
 const route = express.Router();
 
 route
-    .post('/create', authRequired, checkRole, SkillController.create)
     .get('/findAll',authRequired,SkillController.showSkill)
     .patch('/update/:id',authRequired,checkRole,SkillController.updateSkill)
     .delete('/delete/:id',authRequired,checkRole,SkillController.deleteSkills)

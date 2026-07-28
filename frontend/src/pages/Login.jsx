@@ -1,6 +1,7 @@
 import background from "../assets/supergraphic.svg";
 import { Link, useNavigate } from "react-router-dom";
 
+// // Integração
 export const Login = () => {
   const navigateLogin = useNavigate();
 
@@ -8,6 +9,37 @@ export const Login = () => {
     navigateLogin("/register");
   }
 
+
+  
+  // const [user, setUser] = useState({
+  //   name: "", 
+  //   email: "", 
+  //   password: "", 
+  //   EDV: "",
+  //   role: ""
+  // })
+
+  // const create = async () => {
+
+  //   try {
+
+  //     console.log(user)
+
+  //     const response = api.post('/user/create', user)
+
+  //     console.log(
+  //       "Usuário criado:",
+  //       response.data
+  //     );
+
+  //     navigate('/login')
+
+  //   } catch(error) {
+
+  //     console.log(
+  //       "Erro ao criar usuário",
+  //       error
+  //     ); 
 
   return (
     <div

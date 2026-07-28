@@ -1,6 +1,5 @@
 
 import { updateAlternativeDTO } from "../DTOS/alternativeDTO.ts"
-import { createAlternativeDTO } from "../DTOS/testDTO.ts"
 import {prisma} from "../lib/prisma.ts"
 
 // export const createAlternative = async(data: createAlternativeDTO) =>{
