@@ -112,7 +112,6 @@ model Alternatives {
 
 enum TestTypeEnum {
   Self
-  Instructor
   Group
   Lider
   Class
