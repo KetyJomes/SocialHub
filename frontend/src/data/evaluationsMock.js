@@ -25,7 +25,15 @@ export const evaluationsMock = [
 
         icon: FileText,
 
-        bgIcon: "bg-[#EAF4FF]"
+        bgIcon: "bg-[#EAF4FF]",
+
+        finalizada: false,
+
+        respondidaEm: null,
+
+        nota: null,
+
+        respostas: {}
     },
 
     {
@@ -51,7 +59,15 @@ export const evaluationsMock = [
 
         icon: FileText,
 
-        bgIcon: "bg-red-100"
+        bgIcon: "bg-red-100",
+
+        finalizada: false,
+
+        respondidaEm: null,
+
+        nota: null,
+
+        respostas: {}
     },
 
     {
@@ -69,7 +85,7 @@ export const evaluationsMock = [
 
         prazo: "20/03/2026",
 
-        infoPrazo: "Pendente",
+        infoPrazo: "Concluída",
 
         status: "Respondida",
 
@@ -77,7 +93,21 @@ export const evaluationsMock = [
 
         icon: FileText,
 
-        bgIcon: "bg-green-100"
+        bgIcon: "bg-green-100",
+
+        finalizada: true,
+
+        respondidaEm: "20/03/2026",
+
+        nota: 86,
+
+        respostas: {
+            1: 4,
+            2: 3,
+            3: 4,
+            4: 2,
+            5: 4
+        }
     },
 
     {
@@ -95,15 +125,29 @@ export const evaluationsMock = [
 
         prazo: "25/04/2026",
 
-        infoPrazo: "Pendente",
+        infoPrazo: "Concluída",
 
         status: "Respondida",
 
-        acao: "Responder",
+        acao: "Visualizar",
 
         icon: FileText,
 
-        bgIcon: "bg-green-100"
+        bgIcon: "bg-green-100",
+
+        finalizada: true,
+
+        respondidaEm: "24/04/2026",
+
+        nota: 92,
+
+        respostas: {
+            1: 4,
+            2: 4,
+            3: 4,
+            4: 3,
+            5: 4
+        }
     },
 
     {
@@ -129,7 +173,15 @@ export const evaluationsMock = [
 
         icon: FileText,
 
-        bgIcon: "bg-yellow-100"
+        bgIcon: "bg-yellow-100",
+
+        finalizada: false,
+
+        respondidaEm: null,
+
+        nota: null,
+
+        respostas: {}
     }
 
 ];

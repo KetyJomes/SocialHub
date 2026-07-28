@@ -101,10 +101,10 @@ export const EvaluationTable = ({
             {data.map((topic) => (
 
               <EvaluationTableRow
-                key={topic.id}
-                topic={topic}
-                answer={answers[topic.id]}
-                onSelect={onSelect}
+                  key={topic.id}
+                  topic={topic}
+                  answer={answers[topic.id]}
+                  onSelect={onSelect}
               />
 
             ))}
