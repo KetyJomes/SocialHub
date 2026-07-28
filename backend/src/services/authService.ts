@@ -51,9 +51,27 @@ export const login = async(data: loginDTO)=>{
     }
 
     //jwt
+    const token = jwt.sign(
+        {
+            id: user.id,
+            role: user.role
+        },
+        process.env.JWT_SECRET as string,
+        {
+            expiresIn: "2d"
+        }
+    );
 
+    return {
+        token,
+        user: {
+            id: user.id,
+            name: user.name,
+            role: user.role
+        }
+    };
 
     //return token;
 
-    return user;
 };
+
