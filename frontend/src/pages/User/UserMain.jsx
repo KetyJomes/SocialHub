@@ -46,7 +46,6 @@ export const UserMain = () => {
                 setIsOpen={setIsOpen}
             />
 
-
             <Header
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
@@ -55,15 +54,13 @@ export const UserMain = () => {
 
             <main className="mt-[8vh]">
 
-
                 {/* CONTEÚDO DA TELA */}
-
                 <div className="p-10">
 
                     <div>
 
                         <h1 className="font-bold text-3xl">
-                            Bem-vindo(a), Usuário!
+                            Bem-vindo(a), Rebeca!
                         </h1>
 
                         <p className="text-gray-500">
@@ -94,7 +91,6 @@ export const UserMain = () => {
 
 
                         {/* Resultado comparativo */}
-
                         <section className="w-[48%]">
 
                             <div className="flex items-center gap-5 mb-6">
@@ -128,85 +124,65 @@ export const UserMain = () => {
 
                             <div className="flex items-center justify-between">
 
-                                {/* Card de porcentagem
-                                 */}
+                                {/* Card de porcentagem */}
                                 <section className="w-70 bg-white rounded-3xl shadow-lg border border-gray-100 p-6">
 
-
                                     <p className="text-gray-500 text-center font-medium">
-
                                         Resultado Atual
-
                                     </p>
 
 
                                     <div className="flex justify-center mt-5">
 
-
                                         <div className="w-36 h-36 rounded-full border-8 border-[#0291F7] flex flex-col justify-center items-center">
 
-
                                             <h1 className="text-5xl font-bold text-[#0291F7]">
-
-                                                90%
-
+                                                85%
                                             </h1>
 
-
                                             <span className="text-green-600 font-semibold text-sm">
-
                                                 Excelente
-
                                             </span>
-
 
                                         </div>
 
-
                                     </div>
-
 
                                     <div className="text-center mt-5">
 
-
                                         <p className="text-green-600 font-bold text-lg">
-
                                             ▲ +5%
-
                                         </p>
-
 
                                         <p className="text-gray-400 text-sm">
-
                                             em relação ao último ciclo
-
                                         </p>
-
 
                                     </div>
 
-
                                 </section>
 
-
-                                <GraficoPessoal />
-
+                                <GraficoPessoal
+                                    labels={[
+                                        "2025 T2",
+                                        "2025 T3",
+                                        "2025 T4",
+                                        "2026 T1",
+                                        "2026 T2"
+                                    ]}
+                                    values={[70, 65, 82, 75, 85]}
+                                />
 
                             </div>
 
 
                         </section>
 
-
-                        {/* =================================
-                            DESEMPENHO 360
-                        ================================== */}
+                        {/* Resultado 360 */}
 
                         <section className="w-[48%]">
 
-
                             <div className="flex items-center gap-5 mb-6">
-
 
                                 <div
                                     className="
@@ -220,23 +196,17 @@ export const UserMain = () => {
                                     "
                                 >
 
-
                                     <Users
                                         size={20}
                                         className="text-[#0291F7]"
                                         strokeWidth={2}
                                     />
 
-
                                 </div>
 
-
                                 <h1 className="font-bold text-xl">
-
                                     Desempenho 360
-
                                 </h1>
-
 
                             </div>
 
@@ -245,68 +215,52 @@ export const UserMain = () => {
 
 
                                 {/* RESULTADO */}
-
                                 <section className="w-70 bg-white rounded-3xl shadow-lg border border-gray-100 p-6">
 
-
                                     <p className="text-gray-500 text-center font-medium">
-
                                         Resultado Atual
-
                                     </p>
-
 
                                     <div className="flex justify-center mt-5">
 
-
                                         <div className="w-36 h-36 rounded-full border-8 border-[#0291F7] flex flex-col justify-center items-center">
 
-
                                             <h1 className="text-5xl font-bold text-[#0291F7]">
-
-                                                90%
-
+                                                80%
                                             </h1>
 
-
                                             <span className="text-green-600 font-semibold text-sm">
-
-                                                Excelente
-
+                                                Bom
                                             </span>
 
-
                                         </div>
-
 
                                     </div>
 
 
                                     <div className="text-center mt-5">
 
-
                                         <p className="text-green-600 font-bold text-lg">
-
                                             ▲ +5%
-
                                         </p>
 
 
                                         <p className="text-gray-400 text-sm">
-
                                             em relação ao último ciclo
-
                                         </p>
-
 
                                     </div>
 
-
                                 </section>
 
-
-                                <GraficoPessoal />
-
+                                <GraficoPessoal
+                                    labels={[
+                                        "2025 S1",
+                                        "2025 S2",
+                                        "2026 S1"
+                                    ]}
+                                    values={[70, 65, 80]}
+                                />
 
                             </div>
 
