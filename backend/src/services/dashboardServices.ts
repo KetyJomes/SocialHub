@@ -1,23 +1,6 @@
 import { prisma } from '../lib/prisma.ts'
 import { User_Test, Answers } from '../../src/generated/prisma/client.ts';
 
-export const getGeneral = async () => {
-    const [totalStudents, totalClasses, totalTests] = await Promise.all([
-        prisma.user.count({
-            where: {
-                Evaluated: {some: {}}
-            }
-        }),
-        prisma.class.count(),
-        prisma.test.count()
-    ]);
-    return {
-        totalStudents,
-        totalClasses,
-        totalTests
-    };
-};
-
 export const getStudent = async (studentId: number) => {
     const studentData = await prisma.user.findUnique({
         where: { id: studentId },
@@ -131,7 +114,7 @@ export const getSkills = async (studentId: number) =>{
 };
 
 
-//é pra comparar aluno com aluno? qual cpmparassion é essa
+
 export const getComparison = async (classId: number) =>{
     const targetClass = await prisma.class.findUnique({
         where: {id: classId},

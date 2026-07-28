@@ -1,10 +1,11 @@
 import express from 'express';
 import ClassController from '../controllers/classController.ts';
+import { validateClass } from '../middlewares/classMiddlewares.ts';
 
 const route = express.Router();
 
 route
-    .post('/create', ClassController.create)
+    .post('/create',validateClass, ClassController.create)
     // .post('/archive',ClassController.)
     .get('/findAll',ClassController.showClasses)
     .put('/update/:id',ClassController.updateClass)

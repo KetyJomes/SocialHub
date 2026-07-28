@@ -1,5 +1,5 @@
 import {Request, Response} from 'express';
-import { getClassAvarage, getComparison,getClass, getRangking, getEvolution, getSkills } from '../services/dashboardServices.ts';
+import { getClassAvarage, getComparison,getClass, getRangking, getEvolution, getSkills, getStudent } from '../services/dashboardServices.ts';
 
 export default class dashboardController {
     static async showAverage (req:Request, res: Response){
@@ -72,6 +72,32 @@ export default class dashboardController {
         }
     }
 
+    static async getStudent  (req: Request, res: Response){
+    
+    const studentId = Number(req.params.id);
 
+    try {
+       
+        const studentDashboard = await getStudent(studentId);
+        if (!studentDashboard) {
+            return res.status(404).json({ 
+                response: "Estudante não encontrado no sistema." 
+            });
+        }
+
+      
+        return res.status(200).json({
+            response: "Dados do estudante carregados com sucesso.",
+            data: studentDashboard
+        });
+
+    } catch (error: any) {
+        
+        return res.status(500).json({ 
+            response: "Erro interno ao buscar dados do estudante.",
+            error: error.message 
+        });
+    }
+};
         
 }
