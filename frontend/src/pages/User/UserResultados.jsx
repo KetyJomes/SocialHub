@@ -6,7 +6,7 @@ import { Sidebar } from "../../components/Sidebar";
 import { TabelaAvaliacoes } from "../../components/TabelaAvaliacoes";
 import { UserGraficoCompetencias } from "../../components/UserGraficoCompetencias";
 import { ProgressCircle } from "../../components/ProgressCircle";
-import { avaliacoes } from "../../data/avaliacoes";
+// import { avaliacoes } from "../../data/avaliacoes";
 import {
     ClipboardCheck,
     Users,

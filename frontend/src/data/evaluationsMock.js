@@ -43,23 +43,23 @@ export const evaluationsMock = [
 
         descricao: "Avaliação da liderança",
 
-        tipo: "Semestral",
+        tipo: "Trimestral",
 
-        disponibilizada: "01/01/2026",
+        disponibilizada: "01/07/2026",
 
         infoDisponibilizada: "Disponível",
 
-        prazo: "30/01/2026",
+        prazo: "20/07/2026",
 
-        infoPrazo: "Vencido",
+        infoPrazo: "10 dias restantes",
 
-        status: "Em atraso",
+        status: "Pendente",
 
         acao: "Responder",
 
         icon: FileText,
 
-        bgIcon: "bg-red-100",
+        bgIcon: "bg-[#EAF4FF]",
 
         finalizada: false,
 
@@ -71,46 +71,6 @@ export const evaluationsMock = [
     },
 
     {
-        id: 3,
-
-        nome: "Avaliação Técnica",
-
-        descricao: "Avaliação de competências",
-
-        tipo: "Anual",
-
-        disponibilizada: "01/03/2026",
-
-        infoDisponibilizada: "Finalizada",
-
-        prazo: "20/03/2026",
-
-        infoPrazo: "Concluída",
-
-        status: "Respondida",
-
-        acao: "Visualizar",
-
-        icon: FileText,
-
-        bgIcon: "bg-green-100",
-
-        finalizada: true,
-
-        respondidaEm: "20/03/2026",
-
-        nota: 86,
-
-        respostas: {
-            1: 4,
-            2: 3,
-            3: 4,
-            4: 2,
-            5: 4
-        }
-    },
-
-    {
         id: 4,
 
         nome: "Avaliação Comportamental",
@@ -119,53 +79,13 @@ export const evaluationsMock = [
 
         tipo: "Trimestral",
 
-        disponibilizada: "10/04/2026",
+        disponibilizada: "01/07/2026",
 
         infoDisponibilizada: "Disponível",
 
-        prazo: "25/04/2026",
+        prazo: "20/07/2026",
 
-        infoPrazo: "Concluída",
-
-        status: "Respondida",
-
-        acao: "Visualizar",
-
-        icon: FileText,
-
-        bgIcon: "bg-green-100",
-
-        finalizada: true,
-
-        respondidaEm: "24/04/2026",
-
-        nota: 92,
-
-        respostas: {
-            1: 4,
-            2: 4,
-            3: 4,
-            4: 3,
-            5: 4
-        }
-    },
-
-    {
-        id: 5,
-
-        nome: "Avaliação de Clima Organizacional",
-
-        descricao: "Pesquisa sobre o ambiente de trabalho",
-
-        tipo: "Anual",
-
-        disponibilizada: "15/07/2026",
-
-        infoDisponibilizada: "Disponível",
-
-        prazo: "30/07/2026",
-
-        infoPrazo: "7 dias restantes",
+        infoPrazo: "10 dias restantes",
 
         status: "Pendente",
 
@@ -173,7 +93,7 @@ export const evaluationsMock = [
 
         icon: FileText,
 
-        bgIcon: "bg-yellow-100",
+        bgIcon: "bg-[#EAF4FF]",
 
         finalizada: false,
 

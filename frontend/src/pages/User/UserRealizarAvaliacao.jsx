@@ -6,6 +6,7 @@ import { Sidebar } from "../../components/Sidebar";
 import { EvaluationTable } from "../../components/EvaluationTable";
 
 import { evaluationsCompleteMock } from "../../data/evaluationsCompleteMock";
+import { evaluationsMock } from "../../data/evaluationsMock";
 
 export const UserRealizarAvaliacao = () => {
 
@@ -17,8 +18,12 @@ export const UserRealizarAvaliacao = () => {
     const alunoAvaliado = params.get("avaliado");
     const turma = params.get("turma");
     const idAvaliacao = params.get("id");
+    const teste = params.get("perguntas");
 
-    
+    const avaliacaoInfo =
+        evaluationsMock.find(
+        item => item.id === Number(idAvaliacao)
+    );    
     
     const avaliacaoAtual =
     evaluationsCompleteMock.find(
@@ -27,15 +32,14 @@ export const UserRealizarAvaliacao = () => {
     
     console.log("ID AVALIACAO:", idAvaliacao);
     console.log("AVALIACAO:", avaliacaoAtual);
+    console.log("aaa:", avaliacaoAtual.perguntas.length);
     
     const [answers, setAnswers] = useState({});
     const [isOpen, setIsOpen] = useState(false);
-    const [showConfirm, setShowConfirm] = useState(false);
-    
+    const [showConfirm, setShowConfirm] = useState(false); 
     
 
     /* Pega as respostas salvas */
-
     useEffect(() => {
 
         if (!idAvaliacao) return;
@@ -81,13 +85,7 @@ export const UserRealizarAvaliacao = () => {
         }
     };
 
-    /*
-    =====================================================
-    SALVAR AVALIAÇÃO COMPLETA
-    =====================================================
-    */
-
-
+    /* SALVAR AVALIAÇÃO COMPLETA */
     const salvarAvaliacao = (finalizada) => {
 
         const avaliacoesSalvas =
@@ -107,40 +105,44 @@ export const UserRealizarAvaliacao = () => {
                 "Respondida"
                 :
                 "Em andamento"
+            };
+            
+            localStorage.setItem(
+                "avaliacoesRespondidas",
+                JSON.stringify(
+                    avaliacoesSalvas
+                )
+                
+            );
         };
-
-        localStorage.setItem(
-            "avaliacoesRespondidas",
-            JSON.stringify(
-                avaliacoesSalvas
-            )
-
-        );
-    };
-
-    const confirmarEnvio = () => {
-
-        salvarAvaliacao(true);
-        setShowConfirm(false);
-
-        navigate(
-            "/user-avaliacoes"
-        );
-    };
-
-    const salvarEContinuarDepois = () => {
-
-        salvarAvaliacao(false);
-        setShowConfirm(false);
-
-        navigate(
-            "/user-avaliacoes"
-        );
-    };
-
-    const totalQuestoes = avaliacaoAtual?.perguntas.length || 0;
-    const respondidas = Object.keys(answers).length;
-    const avaliacaoCompleta = respondidas === totalQuestoes;
+        
+        const confirmarEnvio = () => {
+            
+            salvarAvaliacao(true);
+            setShowConfirm(false);
+            
+            navigate(
+                "/user-avaliacoes"
+            );
+        };
+        
+        const salvarEContinuarDepois = () => {
+            
+            salvarAvaliacao(false);
+            setShowConfirm(false);
+            
+            navigate(
+                "/user-avaliacoes"
+            );
+        };
+        
+        const totalQuestoes = avaliacaoAtual?.perguntas.length || 0;
+        const respondidas = Object.keys(answers).length;
+        const avaliacaoCompleta = respondidas === totalQuestoes;
+        
+        const avaliacaoFinalizada = avaliacaoAtual.perguntas.length > 0
+        console.log(avaliacaoFinalizada)
+        
 
     return (
         <>
@@ -206,24 +208,26 @@ export const UserRealizarAvaliacao = () => {
                         )
                     }
 
-                    <div className="flex justify-center gap-4 mt-10">
-                        <button
-                            onClick={limparRespostas}
-                            className="border border-red-500 text-red-500 rounded-xl px-10 py-4 hover:bg-red-50 transition"
-                        >
-                            Limpar respostas
-                        </button>
+                    {
+                        !avaliacaoFinalizada && (
 
+                            <div className="flex justify-center gap-4 mt-10">
+                                <button
+                                    onClick={limparRespostas}
+                                    className="border border-red-500 text-red-500 rounded-xl px-10 py-4 hover:bg-red-50 transition"
+                                >
+                                    Limpar respostas
+                                </button>
 
-
-
-                        <button
-                            onClick={() => setShowConfirm(true)}
-                            className="bg-[#0291F7] text-white rounded-xl px-12 py-4 hover:bg-blue-700 transition"
-                        >
-                            Enviar Avaliação
-                        </button>
-                    </div>
+                                <button
+                                    onClick={() => setShowConfirm(true)}
+                                    className="bg-[#0291F7] text-white rounded-xl px-12 py-4 hover:bg-blue-700 transition"
+                                >
+                                    Enviar Avaliação
+                                </button>
+                            </div>
+                        )
+                    }
                 </div>
             </main>
 
