@@ -1,35 +1,41 @@
-import {Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken'
 
-const JWT_SECRET = process.env.JWT_SECRET || "chavesupersecretaeindecifravel"
+const JWT_SECRET = process.env.JWT_SECRET || "helo_linda_123"
 
 declare global {
     namespace Express {
         interface Request {
-            user?: {id:number; role: string};
+            user?: { id: number; role: string };
         }
     }
 }
 
-export const authRequired = (req: Request, res: Response, next: NextFunction) =>{
+export const authRequired = (req: Request, res: Response, next: NextFunction) => {
     const authHeader = req.headers.authorization;
 
-    if (!authHeader || !authHeader.startsWith('Barer')){
-        return res.status(401).json({response: "Acesso negado, Token não fornecido"})
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        return res.status(401).json({
+            response: "Acesso negado, token não fornecido."
+        });
     }
 
-    const token = authHeader.split('')[1];
+    const token = authHeader.split(" ")[1];
 
     try {
-        const decoded = jwt.verify(token, JWT_SECRET) as {id: number;role: string};
+        const decoded = jwt.verify(token, JWT_SECRET) as {
+            id: number;
+            role: string;
+        };
 
         req.user = decoded;
 
-        return next();
-    }catch(error){
-        return res.status(401).json({response: "Token invalido"})
+        next();
+    } catch (error) {
+        return res.status(401).json({
+            response: "Token inválido."
+        });
     }
-    
 };
 
 export const checkRole = (allowedRoles: string[]) => {
@@ -41,8 +47,8 @@ export const checkRole = (allowedRoles: string[]) => {
 
         // 2. Verifica se a role do usuário logado está na lista de permissões da rota
         if (!allowedRoles.includes(req.user.role)) {
-            return res.status(403).json({ 
-                response: "Acesso negado. Você não tem permissão para executar esta ação." 
+            return res.status(403).json({
+                response: "Acesso negado. Você não tem permissão para executar esta ação."
             });
         }
 

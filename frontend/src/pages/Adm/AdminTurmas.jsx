@@ -1,3 +1,4 @@
+import  api  from "../../services/apiService";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
@@ -398,38 +399,50 @@ const confirmarExcluir = (turma) => {
 
 
 
-    const criarTurma = () => {
+    const criarTurma = async () => {
 
-
+        try {
         const nova = {
 
 
             id: turmas.length + 1,
 
 
-            nome: novaTurma.nome,
+            course: novaTurma.nome,
 
 
-            lider: novaTurma.lider,
+            period: novaTurma.turno ,
 
-
-            alunos: [],
-
-
-            status: novaTurma.status,
-
-            turno: novaTurma.turno 
-
-
+            idPIC: Number(novaTurma.professorId)
         };
+
+        const response = await api.post("/class/create",nova)
+
+        console.log(response.data);
+
+        Swal.fire({
+            icon:"success",
+            tittle: "Turma criada!",
+            text: "A turma foi cadastrada com sucesso"
+        });
 
 
 
         setTurmas([
 
             ...turmas,
+            {
+                id: response.data.id,
+                nome: nova.course,
+                turno: body.period,
+                lider:
+                    professores.find(
+                        p => p.id === Number(body.idPIC)
+                    )?.nome || "",
+                    alunos: [],
+                    status: "Ativa"
 
-            nova
+            }
 
         ]);
 
@@ -454,7 +467,16 @@ const confirmarExcluir = (turma) => {
         });
 
 
+    } catch(error){
+        console.log(error);
+
+        Swal.fire({
+            icon: "error",
+            title: 'Erro',
+            text: "Não foi possivel criar  a turma"
+        })
     };
+    }
 
 
 
@@ -1790,59 +1812,6 @@ const confirmarExcluir = (turma) => {
 
 
                             </select>
-
-
-
-
-
-
-
-                            <select
-
-                                value={novaTurma.lider}
-
-                                onChange={(e)=>
-                                    setNovaTurma({
-                                        ...novaTurma,
-                                        lider: e.target.value
-                                    })
-                                }
-
-                                className="
-                                    h-12
-                                    border
-                                    rounded-xl
-                                    px-4
-                                "
-
-                            >
-
-                                <option value="">
-
-                                    Selecione o líder da turma
-
-                                </option>
-
-                                {
-                                    alunosDisponiveis.map(aluno => (
-
-                                        <option
-                                            key={aluno.id}
-                                            value={aluno.nome}
-                                        >
-
-                                            {aluno.nome}
-
-                                        </option>
-
-                                    ))
-                                }
-
-                            </select>
-
-
-
-
 
 
                             <select
