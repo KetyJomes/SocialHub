@@ -52,12 +52,9 @@ export const UserResultados = () => {
                         status: "Respondida",
                         acao: "Visualizar",
                         finalizada: true,
-                        respostas:
-                            avaliacaoSalva.respostas,
-                        respondidaEm:
-                            avaliacaoSalva.respondidaEm || "30/07/2026",
-                        nota:
-                            avaliacaoSalva.nota || 0
+                        respostas: avaliacaoSalva.respostas,
+                        respondidaEm: avaliacaoSalva.respondidaEm || "30/07/2026",
+                        media: avaliacaoSalva.media ?? 0
                     };
 
                 }
@@ -68,6 +65,7 @@ export const UserResultados = () => {
             avaliacoesFinalizadas
         );
     }, []);
+    console.log(avaliacoes);
 
     return (
         <>

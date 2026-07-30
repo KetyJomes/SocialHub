@@ -13,9 +13,7 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
 
     }
 
-
     return (
-
         <tr
             className="
                 border-b
@@ -24,7 +22,6 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
                 transition
             "
         >
-
 
             {/* AVALIAÇÃO */}
             <td className="px-6 py-5">
@@ -41,7 +38,6 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
                         {avaliacao.nome}
                     </h3>
 
-
                     <p
                         className="
                             text-sm
@@ -54,9 +50,6 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
                 </div>
 
             </td>
-
-
-
 
             {/* TIPO */}
             <td className="text-center py-5 px-4">
@@ -71,10 +64,6 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
                 </span>
 
             </td>
-
-
-
-
 
             {/* DATA */}
             <td className="text-center py-5 px-4">
@@ -96,12 +85,6 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
 
             </td>
 
-
-
-
-
-
-
             {/* STATUS */}
             <td className="text-center py-5 px-4">
 
@@ -120,32 +103,17 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
                         ${
                             avaliacao.status === "Concluída" ||
                             avaliacao.status === "Respondida"
-
                             ?
-
                             "bg-green-100 text-green-700"
-
-
                             :
-
                             avaliacao.status === "Pendente"
-
                             ?
-
                             "bg-yellow-100 text-yellow-700"
-
-
                             :
-
                             avaliacao.status === "Em atraso"
-
                             ?
-
                             "bg-red-100 text-red-700"
-
-
                             :
-
                             "bg-gray-100 text-gray-700"
 
                         }
@@ -158,38 +126,31 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
 
             </td>
 
-
-
-
-
-
-
             {/* DESEMPENHO */}
             <td className="text-center py-5 px-4">
 
                 <span
                     className="
+                        inline-flex
+                        items-center
+                        justify-center
+                        px-3
+                        py-1
+                        rounded-full
+                        bg-blue-50
+                        text-[#0291F7]
                         text-sm
-                        font-semibold
-                        text-gray-800
+                        font-bold
                     "
                 >
-
                     {
-                        avaliacao.desempenho
-                        ||
-                        "-"
+                        avaliacao.media !== undefined
+                            ? `${avaliacao.media}%`
+                            : "-"
                     }
-
                 </span>
 
             </td>
-
-
-
-
-
-
 
             {/* AÇÃO */}
             <td className="text-center py-5 px-4">
@@ -216,9 +177,6 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
 
             </td>
 
-
         </tr>
-
     );
-
 };

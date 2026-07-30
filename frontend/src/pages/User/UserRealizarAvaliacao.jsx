@@ -100,8 +100,30 @@ export const UserRealizarAvaliacao = () => {
         }
     };
 
+    const calcularMedia = () => {
+
+        const valores = Object.values(answers)
+            .map(resposta => resposta.valor)
+            .filter(valor => valor !== undefined);
+
+        if (valores.length === 0) {
+            return 0;
+        }
+
+        const soma = valores.reduce(
+            (total, valor) => total + valor,
+            0
+        );
+
+        return Number(
+            ((soma / valores.length) * 25).toFixed(2)
+        );
+
+    };
     /* SALVAR AVALIAÇÃO COMPLETA */
     const salvarAvaliacao = (finalizada) => {
+
+        const media = calcularMedia();
 
         const avaliacoesSalvas =
             JSON.parse(
@@ -114,6 +136,7 @@ export const UserRealizarAvaliacao = () => {
             ...avaliacaoAtual,
             respostas: answers,
             finalizada,
+            media,
             status:
                 finalizada
                 ?
@@ -132,6 +155,9 @@ export const UserRealizarAvaliacao = () => {
         };
 
         const salvarAvaliacao360 = (finalizada) => {
+
+            const media = calcularMedia();
+
             const avaliacoesSalvas =
                 JSON.parse(
                     localStorage.getItem(
@@ -142,6 +168,7 @@ export const UserRealizarAvaliacao = () => {
             avaliacoesSalvas[idColaborador] = {
                 colaboradorId: idColaborador,
                 respostas: answers,
+                media,
                 finalizada,
                 status:
                     finalizada
