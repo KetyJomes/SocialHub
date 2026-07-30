@@ -14,11 +14,9 @@ export const LinhaColaborador360 = ({ colaborador }) => {
     const avaliado = colaborador.status === "Avaliado";
 
     const abrirAvaliacao = () => {
-
         navigate(
-            `/realizar-avaliacao?tipo=360&avaliado=${encodeURIComponent(colaborador.nome)}`
+            `/realizar-avaliacao?tipo=360&idColaborador=${colaborador.id}&id=1&avaliado=${encodeURIComponent(colaborador.nome)}`
         );
-
     };
 
     return (

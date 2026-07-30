@@ -17,6 +17,9 @@ export const UserRealizarAvaliacao = () => {
     const alunoAvaliado = params.get("avaliado");
     const turma = params.get("turma");
     const idAvaliacao = params.get("id");
+
+    const idColaborador = params.get("idColaborador");
+    const tipo = params.get("tipo");
     
     const avaliacaoAtual =
     evaluationsCompleteMock.find(
@@ -34,6 +37,24 @@ export const UserRealizarAvaliacao = () => {
 
     /* Pega as respostas salvas */
     useEffect(() => {
+        
+        if (tipo === "360") {
+            const salvas =
+                JSON.parse(
+                    localStorage.getItem(
+                        "colaboradores360Respondidos"
+                    )
+                ) || {};
+
+            const colaboradorSalvo = salvas[idColaborador];
+
+            if (colaboradorSalvo) {
+                setAnswers(
+                    colaboradorSalvo.respostas || {}
+                );
+            }
+            return;
+        }
 
         if (!idAvaliacao) return;
 
@@ -104,26 +125,64 @@ export const UserRealizarAvaliacao = () => {
                 
             );
         };
-        
-        const confirmarEnvio = () => {
-            
-            salvarAvaliacao(true);
-            setShowConfirm(false);
-            setAvaliacaoFinalizada(true);
-            
-            navigate(
-                "/user-avaliacoes"
+
+        const salvarAvaliacao360 = (finalizada) => {
+            const avaliacoesSalvas =
+                JSON.parse(
+                    localStorage.getItem(
+                        "colaboradores360Respondidos"
+                    )
+                ) || {};
+
+            avaliacoesSalvas[idColaborador] = {
+                colaboradorId: idColaborador,
+                respostas: answers,
+                finalizada,
+                status:
+                    finalizada
+                        ? "Avaliado"
+                        : "Em andamento"
+            };
+            localStorage.setItem(
+                "colaboradores360Respondidos",
+                JSON.stringify(avaliacoesSalvas)
             );
         };
         
+        const confirmarEnvio = () => {
+
+            if (tipo === "360") {
+
+                salvarAvaliacao360(true);
+                setShowConfirm(false);
+
+                navigate("/user-avaliacao-360");
+                return;
+
+            }
+
+            salvarAvaliacao(true);
+            setShowConfirm(false);
+
+            navigate("/user-avaliacoes");
+        };
+        
         const salvarEContinuarDepois = () => {
-            
+
+            if (tipo === "360") {
+
+                salvarAvaliacao360(false);
+                setShowConfirm(false);
+
+                navigate("/user-avaliacao-360");
+                return;
+
+            }
+
             salvarAvaliacao(false);
             setShowConfirm(false);
-            
-            navigate(
-                "/user-avaliacoes"
-            );
+
+            navigate("/user-avaliacoes");
         };
         
         const totalQuestoes = avaliacaoAtual?.perguntas.length || 0;
