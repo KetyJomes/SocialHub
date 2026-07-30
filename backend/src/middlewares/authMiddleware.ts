@@ -13,15 +13,18 @@ declare global {
 
 export const authRequired = (req: Request, res: Response, next: NextFunction) =>{
     const authHeader = req.headers.authorization;
+    console.log(authHeader)
 
-    if (!authHeader || !authHeader.startsWith('Barer')){
+    if (!authHeader || !authHeader.startsWith('Bearer')){
         return res.status(401).json({response: "Acesso negado, Token não fornecido"})
     }
 
     const token = authHeader.split('')[1];
 
+    console.log(token)
+
     try {
-        const decoded = jwt.verify(token, JWT_SECRET) as {id: number;role: string};
+        const decoded = jwt.verify(token, JWT_SECRET) as {id: number;role: string};    
 
         req.user = decoded;
 
