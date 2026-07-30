@@ -11,7 +11,7 @@ import {
 export const LinhaColaborador360 = ({ colaborador }) => {
 
     const navigate = useNavigate();
-    const avaliado = colaborador.status === "Avaliado";
+    const status = colaborador.status;
 
     const abrirAvaliacao = () => {
         navigate(
@@ -93,7 +93,7 @@ export const LinhaColaborador360 = ({ colaborador }) => {
             {/* Status */}
             <div className="col-span-2 flex justify-center">
                 {
-                    avaliado ?
+                    status ?
                         <span
                             className="
                                 flex
@@ -143,9 +143,9 @@ export const LinhaColaborador360 = ({ colaborador }) => {
             {/* Ação */}
             <div className="col-span-3 flex justify-center">
                 {
-                    avaliado ?
+                    status === "Avaliado" ?
                         <button
-                            onClick={() => navigate('/realizar-avaliacao')}
+                            onClick={abrirAvaliacao}
                             className="
                                 flex
                                 items-center
@@ -167,8 +167,30 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                             Visualizar
                         </button>
                     :
+                    status === "Em andamento" ?
                         <button
-
+                            onClick={abrirAvaliacao}
+                            className="
+                                flex
+                                items-center
+                                gap-2
+                                px-5
+                                py-2.5
+                                rounded-xl
+                                bg-[#F59E0B]
+                                text-white
+                                hover:bg-orange-600
+                                transition
+                            "
+                        >
+                            <ClipboardPen
+                                size={20}
+                                strokeWidth={2}
+                            />
+                            Continuar
+                        </button>
+                    :
+                        <button
                             onClick={abrirAvaliacao}
                             className="
                                 flex

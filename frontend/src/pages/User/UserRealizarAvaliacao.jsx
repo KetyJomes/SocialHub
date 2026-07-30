@@ -39,6 +39,7 @@ export const UserRealizarAvaliacao = () => {
     useEffect(() => {
         
         if (tipo === "360") {
+
             const salvas =
                 JSON.parse(
                     localStorage.getItem(
@@ -46,11 +47,15 @@ export const UserRealizarAvaliacao = () => {
                     )
                 ) || {};
 
-            const colaboradorSalvo = salvas[idColaborador];
+            const colaboradorSalvo =
+                salvas[idColaborador];
 
             if (colaboradorSalvo) {
                 setAnswers(
                     colaboradorSalvo.respostas || {}
+                );
+                setAvaliacaoFinalizada(
+                    colaboradorSalvo.finalizada || false
                 );
             }
             return;
@@ -156,7 +161,7 @@ export const UserRealizarAvaliacao = () => {
                 salvarAvaliacao360(true);
                 setShowConfirm(false);
 
-                navigate("/user-avaliacao-360");
+                navigate("/360");
                 return;
 
             }
@@ -174,7 +179,7 @@ export const UserRealizarAvaliacao = () => {
                 salvarAvaliacao360(false);
                 setShowConfirm(false);
 
-                navigate("/user-avaliacao-360");
+                navigate("/360");
                 return;
 
             }
@@ -213,7 +218,11 @@ export const UserRealizarAvaliacao = () => {
                             <div className="mt-5 mb-8 rounded-2xl border border-blue-200 bg-blue-50 px-6 py-5">
 
                                 <p className="text-sm text-gray-500">
-                                    Você está avaliando
+                                    {
+                                        avaliacaoFinalizada
+                                            ? "Você avaliou"
+                                            : "Você está avaliando"
+                                    }
                                 </p>
 
                                 <h2 className="text-2xl font-semibold text-[#0291F7]">
@@ -342,9 +351,6 @@ export const UserRealizarAvaliacao = () => {
                                             >
                                                 Continuar avaliação
                                             </button>
-
-
-
 
                                             <button
                                                 onClick={salvarEContinuarDepois}
