@@ -4,7 +4,7 @@
 
 Antes de executar o projeto, é necessário ter instalado:
 
-- Node.js (versão 18 ou superior)
+- Node.js (versão 24)
 - MySQL
 - Git
 
