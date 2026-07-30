@@ -60,12 +60,27 @@ Após iniciar, acesse:
 http://localhost:5173
 ```
 
-## Tecnologias utilizadas
+## Tecnologias utilizadas backend
 
-- React
 - TypeScript
-- Tailwind
 - Node.js
 - Prisma ORM
 - MySQL
 - Chart.js
+- Express
+- Bycript
+- JWT
+
+ ## Tecnologias utilizadas frontend
+
+ - React
+ - Tailwind
+ - JavaScript
+ - Vite
+ - React Router DOM
+ - Axios
+ - jsPDF
+ - Recharts
+ - Chart.js
+ - Lucide React
+ - SweetAlert2
