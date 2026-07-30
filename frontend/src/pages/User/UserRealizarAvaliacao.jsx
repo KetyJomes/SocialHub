@@ -6,7 +6,6 @@ import { Sidebar } from "../../components/Sidebar";
 import { EvaluationTable } from "../../components/EvaluationTable";
 
 import { evaluationsCompleteMock } from "../../data/evaluationsCompleteMock";
-import { evaluationsMock } from "../../data/evaluationsMock";
 
 export const UserRealizarAvaliacao = () => {
 
@@ -18,12 +17,6 @@ export const UserRealizarAvaliacao = () => {
     const alunoAvaliado = params.get("avaliado");
     const turma = params.get("turma");
     const idAvaliacao = params.get("id");
-    const teste = params.get("perguntas");
-
-    const avaliacaoInfo =
-        evaluationsMock.find(
-        item => item.id === Number(idAvaliacao)
-    );    
     
     const avaliacaoAtual =
     evaluationsCompleteMock.find(
@@ -32,12 +25,12 @@ export const UserRealizarAvaliacao = () => {
     
     console.log("ID AVALIACAO:", idAvaliacao);
     console.log("AVALIACAO:", avaliacaoAtual);
-    console.log("aaa:", avaliacaoAtual.perguntas.length);
+    console.log("Qtd Perguntas:", avaliacaoAtual.perguntas.length);
     
     const [answers, setAnswers] = useState({});
     const [isOpen, setIsOpen] = useState(false);
-    const [showConfirm, setShowConfirm] = useState(false); 
-    
+    const [showConfirm, setShowConfirm] = useState(false);
+    const [avaliacaoFinalizada, setAvaliacaoFinalizada] = useState(false);    
 
     /* Pega as respostas salvas */
     useEffect(() => {
@@ -55,16 +48,12 @@ export const UserRealizarAvaliacao = () => {
 
         if (avaliacaoSalva) {
 
-            setAnswers(
-                avaliacaoSalva.respostas || {}
-            );
+            setAvaliacaoFinalizada(avaliacaoSalva.finalizada || false);
+            setAnswers(avaliacaoSalva.respostas || {});
 
         }
 
     }, [idAvaliacao]);
-
-
-
 
     /* Seleciona resposta */
     const handleSelect = (questionId, nivel) => {
@@ -120,6 +109,7 @@ export const UserRealizarAvaliacao = () => {
             
             salvarAvaliacao(true);
             setShowConfirm(false);
+            setAvaliacaoFinalizada(true);
             
             navigate(
                 "/user-avaliacoes"
@@ -139,11 +129,6 @@ export const UserRealizarAvaliacao = () => {
         const totalQuestoes = avaliacaoAtual?.perguntas.length || 0;
         const respondidas = Object.keys(answers).length;
         const avaliacaoCompleta = respondidas === totalQuestoes;
-        
-        const avaliacaoFinalizada = avaliacaoAtual.perguntas.length > 0
-        console.log(avaliacaoFinalizada)
-        
-
     return (
         <>
             <Sidebar
@@ -155,9 +140,6 @@ export const UserRealizarAvaliacao = () => {
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
-
-
-
 
             <main className="p-8 overflow-y-auto mt-[8vh]">
 
@@ -231,6 +213,7 @@ export const UserRealizarAvaliacao = () => {
                 </div>
             </main>
 
+            {/* Modal de Confirmação */}
             {
 
                 showConfirm && (

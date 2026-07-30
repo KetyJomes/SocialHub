@@ -5,12 +5,13 @@ import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { CardProgresso360 } from "../../components/CardProgresso360";
 import { TabelaColaboradores360 } from "../../components/User/TabelaColaboradores360";
+import { colaboradores360Mock } from "../../data/colaboradores360Mock";
 
 
 export const UserAvaliacao360 = () => {
 
     const [isOpen, setIsOpen] = useState(false);
-
+    const [colaboradores, setColaboradores] = useState(colaboradores360Mock);
 
     useEffect(() => {
 
@@ -20,81 +21,52 @@ export const UserAvaliacao360 = () => {
             behavior: "instant"
         });
 
+        const salvos =
+            JSON.parse(
+                localStorage.getItem(
+                    "colaboradores360Respondidos"
+                )
+            ) || {};
+
+        setColaboradores(prev =>
+            prev.map(colaborador => {
+
+                const colaboradorSalvo = salvos[colaborador.id];
+
+                if (colaboradorSalvo) {
+
+                    return {
+                        ...colaborador,
+                        status:
+                            colaboradorSalvo.finalizada
+                                ? "Avaliado"
+                                : "Em andamento",
+                        finalizada:
+                            colaboradorSalvo.finalizada,
+                        respostas:
+                            colaboradorSalvo.respostas
+                    };
+                }
+
+                return colaborador;
+
+            })
+        );
+
     }, []);
-
-
-
-    const colaboradores = [
-
-        {
-            id: 1,
-            nome: "João Silva",
-            email: "joao.silva@empresa.com",
-            cargo: "Analista de Produção",
-            status: "Avaliado"
-        },
-
-        {
-            id: 2,
-            nome: "Maria Souza",
-            email: "maria.souza@empresa.com",
-            cargo: "Engenharia",
-            status: "Pendente"
-        },
-
-        {
-            id: 3,
-            nome: "Carlos Oliveira",
-            email: "carlos@empresa.com",
-            cargo: "Técnico",
-            status: "Avaliado"
-        },
-
-        {
-            id: 4,
-            nome: "Ana Lima",
-            email: "ana@empresa.com",
-            cargo: "Qualidade",
-            status: "Pendente"
-        },
-
-        {
-            id: 5,
-            nome: "Lucas Santos",
-            email: "lucas@empresa.com",
-            cargo: "RH",
-            status: "Pendente"
-        },
-
-        {
-            id: 6,
-            nome: "Fernanda Costa",
-            email: "fernanda@empresa.com",
-            cargo: "Produção",
-            status: "Avaliado"
-        }
-
-    ];
-
-
 
     return (
 
         <>
-
             <Sidebar
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
-
-
             <Header
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
-
-
-
+x
             <main
                 className="
                     min-h-screen
@@ -103,20 +75,11 @@ export const UserAvaliacao360 = () => {
                     mt-[8vh]
                 "
             >
-
-
                 <div className="mx-auto pb-12">
 
-
-
                     {/* TÍTULO */}
-
                     <div>
-
-
                         <div className="flex items-center gap-3">
-
-
                             <div
                                 className="
                                     w-10
@@ -137,8 +100,6 @@ export const UserAvaliacao360 = () => {
 
                             </div>
 
-
-
                             <h1
                                 className="
                                     text-4xl
@@ -146,15 +107,10 @@ export const UserAvaliacao360 = () => {
                                     text-gray-800
                                 "
                             >
-
                                 Avaliação 360°
-
                             </h1>
 
-
                         </div>
-
-
 
                         <p
                             className="
@@ -162,17 +118,9 @@ export const UserAvaliacao360 = () => {
                                 mt-2
                             "
                         >
-
                             Acompanhe o andamento das avaliações e responda os colaboradores pendentes.
-
                         </p>
-
-
                     </div>
-
-
-
-
 
                     {/* CARD PROGRESSO */}
 
@@ -184,28 +132,15 @@ export const UserAvaliacao360 = () => {
 
                     </div>
 
-
-
-
-
                     {/* TABELA */}
 
                     <section className="mt-10">
-
                         <TabelaColaboradores360
                             colaboradores={colaboradores}
                         />
-
                     </section>
-
-
-
                 </div>
-
-
             </main>
-
-
         </>
 
     );
