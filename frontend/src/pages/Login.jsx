@@ -17,17 +17,21 @@ export const Login = () => {
       console.log(EDV,password)
     const response = await api.post('/auth/login',{ EDV, password});
     
+console.log(response)
+
     const { token, user } = response.data;
+
+      console.log(token,user)
 
     localStorage.setItem("token", token);
 
     localStorage.setItem("role", user.role);
     localStorage.setItem("name", user.name);
 
-    if (user.role === "Adm") {
-      navigateLogin("/user-main");
+    if (user.role === "ADM") {
+      navigateLogin("/adm-main");
     } else if (user.role === "Instructor") {
-      navigateLogin("/user-main");
+      navigateLogin("/Instructor-main");
     } else if (user.role === "Student") {
       navigateLogin("/user-main");
     } else {

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import {api} from "../services/apiService";
+import api from "../services/apiService";
 import { useState } from "react";
 
 export const registerClass = () => {

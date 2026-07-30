@@ -156,7 +156,7 @@ export const Register = () => {
           </div>
 
           <Link
-            to="/login"
+            to="/"
             className="block text-center underline mb-10"
           >
             Já possui conta?

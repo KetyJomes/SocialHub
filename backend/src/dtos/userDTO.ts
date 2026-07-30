@@ -15,3 +15,7 @@ export interface loginDTO{
     EDV: string,
     password: string
 }
+
+export interface updateRoleDTO{
+    role: "Student" | "ADM" | "Leader" | "Manager"
+}

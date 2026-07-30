@@ -1,4 +1,4 @@
-import { registerDTO, loginDTO, updateUserDTO } from "../DTOS/userDTO.ts";
+import { registerDTO, loginDTO, updateUserDTO, updateRoleDTO } from "../DTOS/userDTO.ts";
 import { prisma } from "../lib/prisma.ts";
 import * as bcrypt from "bcrypt";
 
@@ -23,6 +23,15 @@ export const updateUser = async(id:number, data: updateUserDTO)=>{
         data: {role}
     })
 }
+
+export const updateRole = async(id:number, data: updateRoleDTO)=>{
+    const { role } = data;
+    return await prisma.user.update({
+        where: {id:id},
+        data: {role: role}
+    })
+}
+
 
 
 
