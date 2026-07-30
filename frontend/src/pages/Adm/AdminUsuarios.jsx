@@ -20,8 +20,6 @@ export const AdminUsuarios = () => {
 
     const [usuarios, setUsuarios] = useState([]);
 
-    const [role, setRole] = useState("");
-
     const fetchAlunos = async () => {
         const response = await api.get("/user/findAll");
 
@@ -57,7 +55,6 @@ export const AdminUsuarios = () => {
 
             console.log(response)
 
-            // Atualiza a lista local
             setUsuarios(
                 usuarios.map((usuario) =>
                     usuario.id === usuarioEditando.id
@@ -128,6 +125,8 @@ export const AdminUsuarios = () => {
                             <span>• Líder de turma</span>
 
                             <span>• Usuário padrão</span>
+
+                            <span>• ADM </span>
                         </div>
                     </div>
                 </div>
@@ -142,7 +141,7 @@ export const AdminUsuarios = () => {
 
                             <input
                                 type="text"
-                                placeholder="Pesquisar usuário..."
+                                placeholder="Pesquisar nome de usuário..."
                                 value={pesquisa}
                                 onChange={(e) => setPesquisa(e.target.value)}
                                 className="w-full h-12 rounded-xl border border-gray-200 pl-12 pr-4 outline-none focus:border-[#007BC0]"
@@ -155,9 +154,7 @@ export const AdminUsuarios = () => {
                             <tr className="border-b border-gray-200 text-gray-600">
                                 <th className="text-left py-4">Usuário</th>
 
-                                <th className="text-center">Email</th>
-
-                                <th className="text-center">Acesso</th>
+                                <th className="text-center">EDV</th>
 
                                 <th className="text-center">Ações</th>
                             </tr>
