@@ -10,7 +10,6 @@ import { GraficoPessoal } from "../../components/GraficoPessoal";
 
 
 import blue from "../../assets/blue arrow.png";
-import green from "../../assets/green arrow.png";
 
 import {
     BarChart3,
@@ -21,10 +20,9 @@ import {
 
 export const UserMain = () => {
 
+    const [usuario, setUsuario] = useState(null);
     const navigate = useNavigate();
-
     const [isOpen, setIsOpen] = useState(false);
-
     // Função que faz a página começar sempre do início
     useEffect(() => {
 
@@ -34,23 +32,46 @@ export const UserMain = () => {
             behavior: "instant"
         });
 
-    }, []);
+
+        const role = localStorage.getItem("role");
+        const name = localStorage.getItem("name");
+
+
+        console.log("ROLE:", role);
+        console.log("NOME:", name);
+
+
+        if (!role) {
+            navigate("/");
+            return;
+        }
+
+
+        if (role !== "Student") {
+            navigate("/");
+            return;
+        }
+
+
+        setUsuario({
+            name,
+            role
+        });
+
+
+    }, [navigate]);
 
 
     return (
-
         <>
-
             <Sidebar
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
-
             <Header
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
             />
-
 
             <main className="mt-[8vh]">
 
@@ -60,7 +81,7 @@ export const UserMain = () => {
                     <div>
 
                         <h1 className="font-bold text-3xl">
-                            Bem-vindo(a), Rebeca!
+                            Bem-vindo(a), {usuario?.name}
                         </h1>
 
                         <p className="text-gray-500">
@@ -131,7 +152,6 @@ export const UserMain = () => {
                                         Resultado Atual
                                     </p>
 
-
                                     <div className="flex justify-center mt-5">
 
                                         <div className="w-36 h-36 rounded-full border-8 border-[#0291F7] flex flex-col justify-center items-center">
@@ -179,7 +199,6 @@ export const UserMain = () => {
                         </section>
 
                         {/* Resultado 360 */}
-
                         <section className="w-[48%]">
 
                             <div className="flex items-center gap-5 mb-6">
@@ -195,7 +214,6 @@ export const UserMain = () => {
                                         justify-center
                                     "
                                 >
-
                                     <Users
                                         size={20}
                                         className="text-[#0291F7]"
@@ -212,7 +230,6 @@ export const UserMain = () => {
 
 
                             <div className="flex items-center justify-between">
-
 
                                 {/* RESULTADO */}
                                 <section className="w-70 bg-white rounded-3xl shadow-lg border border-gray-100 p-6">
@@ -236,7 +253,6 @@ export const UserMain = () => {
                                         </div>
 
                                     </div>
-
 
                                     <div className="text-center mt-5">
 
@@ -264,48 +280,32 @@ export const UserMain = () => {
 
                             </div>
 
-
                         </section>
-
 
                     </div>
 
 
-                    {/* ================================
-                        ACESSO RÁPIDO
-                    ================================= */}
+                    {/* Acesso rápido */}
 
                     <div className="mt-15 flex items-start gap-4 mb-8">
 
-
                         <div className="w-1 h-10 bg-[#0291F7] rounded-full"></div>
 
-
                         <h1 className="font-bold text-2xl">
-
                             Acesso Rápido
-
                         </h1>
-
 
                     </div>
 
-
                     <section className="w-full p-2">
-
 
                         <div className="flex flex-row gap-50 justify-center">
 
-
                             {/* AVALIAÇÕES */}
-
                             <section
                                 className="flex items-center justify-between w-[20%] cursor-pointer"
-
                                 onClick={() => navigate("/user-avaliacoes")}
-
                             >
-
 
                                 <div
                                     className="
@@ -325,54 +325,29 @@ export const UserMain = () => {
                                         strokeWidth={2}
                                     />
 
-
                                 </div>
-
 
                                 <div className="ml-5">
 
-
                                     <h1 className="text-[#0291F7] font-bold text-2xl">
-
                                         Avaliações
-
                                     </h1>
 
-
                                     <p className="mt-2 text-gray-500">
-
                                         Acompanhe e gerencie suas avaliações
-
                                     </p>
-
 
                                 </div>
 
-
-                                <img
-
-                                    src={blue}
-
-                                    alt=""
-
-                                    className="w-5"
-
-                                />
-
+                                <img src={blue} alt="" className="w-5"/>
 
                             </section>
 
-
                             {/* RESULTADOS */}
-
                             <section
-
                                 className="flex items-center w-[20%] gap-4 cursor-pointer"
-
                                 onClick={() => navigate("/resultados")}
-
                             >
-
 
                                     <div
                                         className="
@@ -386,63 +361,37 @@ export const UserMain = () => {
                                         "
                                     >
 
-
                                     <ChartColumn
                                         size={20}
                                         className="text-[#0291F7]"
                                         strokeWidth={2}
                                     />
 
-
                                 </div>
-
 
                                 <div className="ml-5">
 
-
                                     <h1 className="text-[#0291F7] font-bold text-2xl">
-
                                         Resultados
-
                                     </h1>
 
-
                                     <p className="mt-2 text-gray-500">
-
                                         Visualize seus resultados e indicadores
-
                                     </p>
-
 
                                 </div>
 
-
-                                <img
-
-                                    src={blue}
-
-                                    alt=""
-
-                                    className="w-5"
-
-                                />
-
+                                <img src={blue} alt="" className="w-5"/>
 
                             </section>
                             
                         </div>
 
-
                     </section>
-
 
                 </div>
 
-
             </main>
-
         </>
-
     );
-
 };
