@@ -86,7 +86,7 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
                     "
                 >
                     {
-                        avaliacao.dataConclusao
+                        avaliacao.disponibilizada
                         ||
                         avaliacao.data
                         ||
