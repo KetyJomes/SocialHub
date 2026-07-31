@@ -13,8 +13,6 @@ export const Login = () => {
 
   const handleLogin = async () => {
 
-      console.log("CLICOU NO LOGIN");
-
       try {
         console.log(EDV,password)
       const response = await api.post('/auth/login',{ EDV, password});
