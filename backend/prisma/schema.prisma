@@ -6,18 +6,16 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:root@localhost:3307/socialhub_db"
+  url      = "mysql://root:root@localhost:3306/socialhub_db"
 }
 
 model User {
   id Int @id @default (autoincrement())
-  // // a discutir o formato
   pfp String?
   name String 
-  email String @unique
   password String
-  EDV Int @unique
-  role Role
+  EDV String @unique
+  role RoleEnum @default(Student)
 
   class Class? @relation("StudentClass",fields: [idClass], references: id)
   idClass Int?
@@ -54,9 +52,9 @@ model Test{
   startDate DateTime
   finalDate DateTime
   grade Int
-  type TestType
+  type TestTypeEnum
   AvailableResult Boolean
-  Frequency Frequency
+  Frequency FrequencyEnum
   Feedback String
 
   Skills Skill[]
@@ -112,15 +110,14 @@ model Alternatives {
 
 
 
-enum TestType {
+enum TestTypeEnum {
   Self
-  Instructor
   Group
   Lider
   Class
 }
 
-enum Frequency {
+enum FrequencyEnum {
   unique
   Mensal 
   Bimestral
@@ -129,7 +126,7 @@ enum Frequency {
   Anual
 }
 
-enum Role {
+enum RoleEnum {
   Student
   Leader
   ADM

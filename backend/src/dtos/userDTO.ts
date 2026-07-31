@@ -1,9 +1,8 @@
-export interface createUserDTO{
+export interface registerDTO{
     name: string,
-    email: string,
     password: string,
     role: "Student" | "ADM" | "Leader" | "Manager"
-    EDV: number,
+    EDV: string,
     classId: number
 }
 
@@ -13,6 +12,10 @@ export interface updateUserDTO{
 }
 
 export interface loginDTO{
-    EDV: number,
+    EDV: string,
     password: string
+}
+
+export interface updateRoleDTO{
+    role: "Student" | "ADM" | "Leader" | "Manager"
 }

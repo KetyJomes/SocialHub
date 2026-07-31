@@ -55,11 +55,11 @@ export type StringFilter<$PrismaModel = never> = {
   not?: Prisma.NestedStringFilter<$PrismaModel> | string
 }
 
-export type EnumRoleFilter<$PrismaModel = never> = {
-  equals?: $Enums.Role | Prisma.EnumRoleFieldRefInput<$PrismaModel>
-  in?: $Enums.Role[]
-  notIn?: $Enums.Role[]
-  not?: Prisma.NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+export type EnumRoleEnumFilter<$PrismaModel = never> = {
+  equals?: $Enums.RoleEnum | Prisma.EnumRoleEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.RoleEnum[]
+  notIn?: $Enums.RoleEnum[]
+  not?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel> | $Enums.RoleEnum
 }
 
 export type IntNullableFilter<$PrismaModel = never> = {
@@ -130,14 +130,14 @@ export type StringWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedStringFilter<$PrismaModel>
 }
 
-export type EnumRoleWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.Role | Prisma.EnumRoleFieldRefInput<$PrismaModel>
-  in?: $Enums.Role[]
-  notIn?: $Enums.Role[]
-  not?: Prisma.NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+export type EnumRoleEnumWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.RoleEnum | Prisma.EnumRoleEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.RoleEnum[]
+  notIn?: $Enums.RoleEnum[]
+  not?: Prisma.NestedEnumRoleEnumWithAggregatesFilter<$PrismaModel> | $Enums.RoleEnum
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumRoleFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumRoleFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel>
 }
 
 export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -167,11 +167,11 @@ export type DateTimeFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDateTimeFilter<$PrismaModel> | Date | string
 }
 
-export type EnumTestTypeFilter<$PrismaModel = never> = {
-  equals?: $Enums.TestType | Prisma.EnumTestTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.TestType[]
-  notIn?: $Enums.TestType[]
-  not?: Prisma.NestedEnumTestTypeFilter<$PrismaModel> | $Enums.TestType
+export type EnumTestTypeEnumFilter<$PrismaModel = never> = {
+  equals?: $Enums.TestTypeEnum | Prisma.EnumTestTypeEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.TestTypeEnum[]
+  notIn?: $Enums.TestTypeEnum[]
+  not?: Prisma.NestedEnumTestTypeEnumFilter<$PrismaModel> | $Enums.TestTypeEnum
 }
 
 export type BoolFilter<$PrismaModel = never> = {
@@ -179,11 +179,11 @@ export type BoolFilter<$PrismaModel = never> = {
   not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
 }
 
-export type EnumFrequencyFilter<$PrismaModel = never> = {
-  equals?: $Enums.Frequency | Prisma.EnumFrequencyFieldRefInput<$PrismaModel>
-  in?: $Enums.Frequency[]
-  notIn?: $Enums.Frequency[]
-  not?: Prisma.NestedEnumFrequencyFilter<$PrismaModel> | $Enums.Frequency
+export type EnumFrequencyEnumFilter<$PrismaModel = never> = {
+  equals?: $Enums.FrequencyEnum | Prisma.EnumFrequencyEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.FrequencyEnum[]
+  notIn?: $Enums.FrequencyEnum[]
+  not?: Prisma.NestedEnumFrequencyEnumFilter<$PrismaModel> | $Enums.FrequencyEnum
 }
 
 export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -200,14 +200,14 @@ export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
 }
 
-export type EnumTestTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.TestType | Prisma.EnumTestTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.TestType[]
-  notIn?: $Enums.TestType[]
-  not?: Prisma.NestedEnumTestTypeWithAggregatesFilter<$PrismaModel> | $Enums.TestType
+export type EnumTestTypeEnumWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TestTypeEnum | Prisma.EnumTestTypeEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.TestTypeEnum[]
+  notIn?: $Enums.TestTypeEnum[]
+  not?: Prisma.NestedEnumTestTypeEnumWithAggregatesFilter<$PrismaModel> | $Enums.TestTypeEnum
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumTestTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumTestTypeFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTestTypeEnumFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTestTypeEnumFilter<$PrismaModel>
 }
 
 export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -218,14 +218,14 @@ export type BoolWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedBoolFilter<$PrismaModel>
 }
 
-export type EnumFrequencyWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.Frequency | Prisma.EnumFrequencyFieldRefInput<$PrismaModel>
-  in?: $Enums.Frequency[]
-  notIn?: $Enums.Frequency[]
-  not?: Prisma.NestedEnumFrequencyWithAggregatesFilter<$PrismaModel> | $Enums.Frequency
+export type EnumFrequencyEnumWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.FrequencyEnum | Prisma.EnumFrequencyEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.FrequencyEnum[]
+  notIn?: $Enums.FrequencyEnum[]
+  not?: Prisma.NestedEnumFrequencyEnumWithAggregatesFilter<$PrismaModel> | $Enums.FrequencyEnum
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumFrequencyFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumFrequencyFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumFrequencyEnumFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumFrequencyEnumFilter<$PrismaModel>
 }
 
 export type NestedIntFilter<$PrismaModel = never> = {
@@ -269,11 +269,11 @@ export type NestedStringFilter<$PrismaModel = never> = {
   not?: Prisma.NestedStringFilter<$PrismaModel> | string
 }
 
-export type NestedEnumRoleFilter<$PrismaModel = never> = {
-  equals?: $Enums.Role | Prisma.EnumRoleFieldRefInput<$PrismaModel>
-  in?: $Enums.Role[]
-  notIn?: $Enums.Role[]
-  not?: Prisma.NestedEnumRoleFilter<$PrismaModel> | $Enums.Role
+export type NestedEnumRoleEnumFilter<$PrismaModel = never> = {
+  equals?: $Enums.RoleEnum | Prisma.EnumRoleEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.RoleEnum[]
+  notIn?: $Enums.RoleEnum[]
+  not?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel> | $Enums.RoleEnum
 }
 
 export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -350,14 +350,14 @@ export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedStringFilter<$PrismaModel>
 }
 
-export type NestedEnumRoleWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.Role | Prisma.EnumRoleFieldRefInput<$PrismaModel>
-  in?: $Enums.Role[]
-  notIn?: $Enums.Role[]
-  not?: Prisma.NestedEnumRoleWithAggregatesFilter<$PrismaModel> | $Enums.Role
+export type NestedEnumRoleEnumWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.RoleEnum | Prisma.EnumRoleEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.RoleEnum[]
+  notIn?: $Enums.RoleEnum[]
+  not?: Prisma.NestedEnumRoleEnumWithAggregatesFilter<$PrismaModel> | $Enums.RoleEnum
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumRoleFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumRoleFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumRoleEnumFilter<$PrismaModel>
 }
 
 export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -398,11 +398,11 @@ export type NestedDateTimeFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDateTimeFilter<$PrismaModel> | Date | string
 }
 
-export type NestedEnumTestTypeFilter<$PrismaModel = never> = {
-  equals?: $Enums.TestType | Prisma.EnumTestTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.TestType[]
-  notIn?: $Enums.TestType[]
-  not?: Prisma.NestedEnumTestTypeFilter<$PrismaModel> | $Enums.TestType
+export type NestedEnumTestTypeEnumFilter<$PrismaModel = never> = {
+  equals?: $Enums.TestTypeEnum | Prisma.EnumTestTypeEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.TestTypeEnum[]
+  notIn?: $Enums.TestTypeEnum[]
+  not?: Prisma.NestedEnumTestTypeEnumFilter<$PrismaModel> | $Enums.TestTypeEnum
 }
 
 export type NestedBoolFilter<$PrismaModel = never> = {
@@ -410,11 +410,11 @@ export type NestedBoolFilter<$PrismaModel = never> = {
   not?: Prisma.NestedBoolFilter<$PrismaModel> | boolean
 }
 
-export type NestedEnumFrequencyFilter<$PrismaModel = never> = {
-  equals?: $Enums.Frequency | Prisma.EnumFrequencyFieldRefInput<$PrismaModel>
-  in?: $Enums.Frequency[]
-  notIn?: $Enums.Frequency[]
-  not?: Prisma.NestedEnumFrequencyFilter<$PrismaModel> | $Enums.Frequency
+export type NestedEnumFrequencyEnumFilter<$PrismaModel = never> = {
+  equals?: $Enums.FrequencyEnum | Prisma.EnumFrequencyEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.FrequencyEnum[]
+  notIn?: $Enums.FrequencyEnum[]
+  not?: Prisma.NestedEnumFrequencyEnumFilter<$PrismaModel> | $Enums.FrequencyEnum
 }
 
 export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -431,14 +431,14 @@ export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeFilter<$PrismaModel>
 }
 
-export type NestedEnumTestTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.TestType | Prisma.EnumTestTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.TestType[]
-  notIn?: $Enums.TestType[]
-  not?: Prisma.NestedEnumTestTypeWithAggregatesFilter<$PrismaModel> | $Enums.TestType
+export type NestedEnumTestTypeEnumWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.TestTypeEnum | Prisma.EnumTestTypeEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.TestTypeEnum[]
+  notIn?: $Enums.TestTypeEnum[]
+  not?: Prisma.NestedEnumTestTypeEnumWithAggregatesFilter<$PrismaModel> | $Enums.TestTypeEnum
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumTestTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumTestTypeFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumTestTypeEnumFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumTestTypeEnumFilter<$PrismaModel>
 }
 
 export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -449,14 +449,14 @@ export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedBoolFilter<$PrismaModel>
 }
 
-export type NestedEnumFrequencyWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.Frequency | Prisma.EnumFrequencyFieldRefInput<$PrismaModel>
-  in?: $Enums.Frequency[]
-  notIn?: $Enums.Frequency[]
-  not?: Prisma.NestedEnumFrequencyWithAggregatesFilter<$PrismaModel> | $Enums.Frequency
+export type NestedEnumFrequencyEnumWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.FrequencyEnum | Prisma.EnumFrequencyEnumFieldRefInput<$PrismaModel>
+  in?: $Enums.FrequencyEnum[]
+  notIn?: $Enums.FrequencyEnum[]
+  not?: Prisma.NestedEnumFrequencyEnumWithAggregatesFilter<$PrismaModel> | $Enums.FrequencyEnum
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumFrequencyFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumFrequencyFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumFrequencyEnumFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumFrequencyEnumFilter<$PrismaModel>
 }
 
 

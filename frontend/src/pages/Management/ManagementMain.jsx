@@ -1,4 +1,6 @@
-import { useRef, useState } from "react";
+// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+import { useEffect, useRef, useState } from "react";
 import { Info, ClipboardCheck, RotateCcw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -13,11 +15,30 @@ export const ManagementMain = () => {
     const [turmaSelecionada, setTurmaSelecionada] = useState(null);
     const [turmaFiltroAvaliacao, setTurmaFiltroAvaliacao] = useState("");
     const [turmaFiltroFeedback, setTurmaFiltroFeedback] = useState("");
-
+    
     const listaTurmas = useRef();
 
-    // Turmas
+    const [usuario, setUsuario] = useState({
+        nome: "",
+        role: ""
+    });
 
+    useEffect(() => {
+
+        const usuarioSalvo = localStorage.getItem("usuario");
+
+        if(!usuarioSalvo){
+            console.log("SEM USUARIO");
+            return;
+        }
+
+        const usuarioLogado = JSON.parse(usuarioSalvo);
+
+        setUsuario(usuarioLogado);
+
+    }, []);
+
+    // Turmas
     const turmas = [
 
         {
@@ -297,9 +318,7 @@ export const ManagementMain = () => {
 
 
                     <h1 className="font-bold text-3xl">
-
-                        Bem-vindo(a), Instrutor!
-
+                        Bem-vindo(a), {usuario.nome || "Instrutor"}!
                     </h1>
 
                     <p className="text-gray-500">

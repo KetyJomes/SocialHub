@@ -2,25 +2,25 @@ import { Request, Response} from "express";
 
 
 // import { createAlternative, deleteAlternatives, findAlternatives, findAlternativesById, findByskillId, updateAlternative } from "../services/alternativeService.ts";
-import { createSkill, deleteSkill, getSkillById, getSkills, updateSkill } from "../services/skillService.ts";
-import { createSkillDTO, updateSkillDTO } from "../DTOS/skillDTO.ts";
+import {  deleteSkill, getSkillById, getSkills, updateSkill } from "../services/skillService.ts";
+import {  updateSkillDTO } from "../DTOS/skillDTO.ts";
 
 
 
 export default class SkillController {
-    static async create(req: Request, res: Response){
-        const data: createSkillDTO = req.body
-        const {id} = req.params
+    // static async create(req: Request, res: Response){
+    //     const data: createSkillDTO = req.body
+    //     const {id} = req.params
 
-        try{
+    //     try{
 
-            await createSkill(Number(id),data)
-            return res.status(200).send({response: "Competência registrada com sucesso!" })
-        }
-        catch(e){
-            return res.status(500).send({response: "Ocorreu erro no servidor"})
-        }
-    }
+    //         await createSkill(Number(id),data)
+    //         return res.status(200).send({response: "Competência registrada com sucesso!" })
+    //     }
+    //     catch(e){
+    //         return res.status(500).send({response: "Ocorreu erro no servidor"})
+    //     }
+    // }
 
     static async showSkill(req: Request, res:Response){
             try {

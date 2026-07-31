@@ -1,11 +1,12 @@
 
 import express from "express";
-import UserController from "../controllers/userController.ts";
+import authController from "../controllers/authController.ts";
+import { checkRole } from "../middlewares/authMiddleware.ts";
 
 const route = express.Router()
 
 route 
-    .post('/login',UserController.login)
-    // .post('/logout',UserController.)
+    .post('/register',authController.register)
+    .post('/login',authController.login)
 
 export default route;

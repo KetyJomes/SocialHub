@@ -1,34 +1,9 @@
 import { Request, response, Response} from "express";
-import { createUserDTO, loginDTO, updateUserDTO } from "../DTOS/userDTO.ts";
-import { createUser, getUser, login, getUsers, updateUser, deleteUser  } from "../services/userServices.ts";
+import {  getUser, getUsers, updateUser, deleteUser, updateRole  } from "../services/userServices.ts";
+import { updateRoleDTO, updateUserDTO } from "../DTOS/userDTO.ts";
 
 export default class UserController {
-    static async create(req: Request, res: Response){
-        const data: createUserDTO = req.body;
-        try{
-            await createUser(data);
-
-            return res.status(201).send({ response: "User cadastrado"});
-        }
-        catch (e) {
-            console.log(e)
-            return res.status(500).send({ response: "Ocorreu algum erro no servidor."})
-        }
-
-    }
-
-    static async login(req: Request, res: Response){
-        const data: loginDTO = req.body
-        
-        try{
-            const user = await login(data);
-
-            return res.status(200).send({ response: "Bem vindo!"});
-        }
-        catch(e){
-            return res.status(500).send({ response: "Ocorreu algum erro no servidor."})
-        }
-    }
+   
 
     static async showUser(req: Request, res: Response){
         const id = Number(req.params.id);
@@ -74,6 +49,21 @@ export default class UserController {
         }
         catch (e){
             return res.status(500).send({ response: 'Usuário não pode ser deletado'})
+        }
+    }
+
+    static async updateRole(req: Request, res: Response){
+        const id = Number(req.params.id);
+        const data: updateRoleDTO = req.body
+        try{
+            const user = await updateRole(id, data);
+            if (!user){
+                return res.status(404).send({ response: "usuario não encontrado"});
+            }
+            return res.status(200).send(user);
+        }
+        catch(e){
+            return res.status(500).send({ response: 'Ocorreu algum erro no servidor'});
         }
     }
 

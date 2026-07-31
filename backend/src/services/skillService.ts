@@ -1,24 +1,22 @@
 
-import { createSkillDTO, updateSkillDTO } from "../DTOS/skillDTO.ts"
+import { updateSkillDTO } from "../DTOS/skillDTO.ts"
+import { createSkillDTO } from "../DTOS/testDTO.ts"
 import {prisma} from "../lib/prisma.ts"
 
-export const createSkill = async(Id: number , data: createSkillDTO)=>{
-    const { Title, Description, idTest} = data
-    
-    const skill = await prisma.skill.findUnique({
-        where: {
-            id: Number(Id)
-        }
-    });
+// export const createSkill = async(Id: number , data: createSkillDTO)=>{
+//     const { Title, Description, idTest, alternatives} = data
 
-    if (!skill) {
-        throw new Error("Skill nao existe")
-    }
-
-    return await prisma.skill.create({
-        data: { Title, Description, idTest}
-    })
-}
+//     return await prisma.skill.create({
+//         data: {
+//              Title,
+//              Description,
+//              idTest,
+//             alternatives:{
+//                 create:alternatives
+//             }
+//         }
+//     })
+// }
 
 export const getSkills = async () => {
     return await prisma.skill.findMany()

@@ -4,7 +4,7 @@
 
 Antes de executar o projeto, é necessário ter instalado:
 
-- Node.js (versão 18 ou superior)
+- Node.js (versão 24)
 - MySQL
 - Git
 
@@ -33,7 +33,7 @@ npm install
 Crie um arquivo `.env` na raiz do projeto e configure a variável:
 
 ```env
-DATABASE_URL="mysql://usuario:senha@localhost:3306/nome_do_banco"
+DATABASE_URL="mysql://usuario:senha@localhost:3307/nome_do_banco"
 ```
 
 ### 5. Executar as migrations do Prisma
@@ -60,12 +60,27 @@ Após iniciar, acesse:
 http://localhost:5173
 ```
 
-## Tecnologias utilizadas
+## Tecnologias utilizadas backend
 
-- React
 - TypeScript
-- Tailwind
 - Node.js
 - Prisma ORM
 - MySQL
 - Chart.js
+- Express
+- Bycript
+- JWT
+
+ ## Tecnologias utilizadas frontend
+
+ - React
+ - Tailwind
+ - JavaScript
+ - Vite
+ - React Router DOM
+ - Axios
+ - jsPDF
+ - Recharts
+ - Chart.js
+ - Lucide React
+ - SweetAlert2

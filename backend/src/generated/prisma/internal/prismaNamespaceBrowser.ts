@@ -78,7 +78,6 @@ export const UserScalarFieldEnum = {
   id: 'id',
   pfp: 'pfp',
   name: 'name',
-  email: 'email',
   password: 'password',
   EDV: 'EDV',
   role: 'role',
@@ -176,8 +175,8 @@ export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 export const UserOrderByRelevanceFieldEnum = {
   pfp: 'pfp',
   name: 'name',
-  email: 'email',
-  password: 'password'
+  password: 'password',
+  EDV: 'EDV'
 } as const
 
 export type UserOrderByRelevanceFieldEnum = (typeof UserOrderByRelevanceFieldEnum)[keyof typeof UserOrderByRelevanceFieldEnum]

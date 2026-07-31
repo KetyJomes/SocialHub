@@ -11,18 +11,13 @@ import {
 export const LinhaColaborador360 = ({ colaborador }) => {
 
     const navigate = useNavigate();
-
-    const avaliado = colaborador.status === "Avaliado";
-
+    const status = colaborador.status;
 
     const abrirAvaliacao = () => {
-
         navigate(
-            `/realizar-avaliacao?tipo=360&avaliado=${encodeURIComponent(colaborador.nome)}`
+            `/realizar-avaliacao?tipo=360&idColaborador=${colaborador.id}&id=1&avaliado=${encodeURIComponent(colaborador.nome)}`
         );
-
     };
-
 
     return (
 
@@ -39,13 +34,8 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                 transition
             "
         >
-
-
             {/* Colaborador */}
-
             <div className="col-span-5 flex items-center gap-4">
-
-
                 <div
                     className="
                         w-10
@@ -75,63 +65,35 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                         }
 
                     </span>
-
-
                 </div>
-
-
 
                 <div>
 
                     <p className="font-semibold text-gray-800">
-
                         {colaborador.nome}
-
                     </p>
-
 
                     <p className="text-sm text-gray-400">
-
                         {colaborador.email}
-
                     </p>
-
 
                 </div>
 
-
             </div>
 
-
-
-
-
             {/* Cargo */}
-
             <div className="col-span-2">
 
                 <p className="text-gray-600">
-
                     {colaborador.cargo}
-
                 </p>
 
             </div>
 
-
-
-
-
             {/* Status */}
-
             <div className="col-span-2 flex justify-center">
-
-
                 {
-
-                    avaliado ?
-
-
+                    status ?
                         <span
                             className="
                                 flex
@@ -151,17 +113,9 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                                 size={20}
                                 strokeWidth={2}
                             />
-
-
                             Avaliado
-
-
                         </span>
-
-
                     :
-
-
                         <span
                             className="
                                 flex
@@ -181,37 +135,17 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                                 size={20}
                                 strokeWidth={2}
                             />
-
-
                             Pendente
-
-
                         </span>
-
-
                 }
-
-
             </div>
 
-
-
-
-
             {/* Ação */}
-
             <div className="col-span-3 flex justify-center">
-
-
                 {
-
-                    avaliado ?
-
-
+                    status === "Avaliado" ?
                         <button
-
-                            onClick={() => navigate('/realizar-avaliacao')}
-
+                            onClick={abrirAvaliacao}
                             className="
                                 flex
                                 items-center
@@ -225,30 +159,39 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                                 hover:bg-gray-100
                                 transition
                             "
-
                         >
-
-
                             <Eye
                                 size={20}
                                 strokeWidth={2}
                             />
-
-
                             Visualizar
-
-
                         </button>
-
-
-
                     :
-
-
+                    status === "Em andamento" ?
                         <button
-
                             onClick={abrirAvaliacao}
-
+                            className="
+                                flex
+                                items-center
+                                gap-2
+                                px-5
+                                py-2.5
+                                rounded-xl
+                                bg-[#F59E0B]
+                                text-white
+                                hover:bg-orange-600
+                                transition
+                            "
+                        >
+                            <ClipboardPen
+                                size={20}
+                                strokeWidth={2}
+                            />
+                            Continuar
+                        </button>
+                    :
+                        <button
+                            onClick={abrirAvaliacao}
                             className="
                                 flex
                                 items-center
@@ -261,31 +204,15 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                                 hover:bg-blue-700
                                 transition
                             "
-
                         >
-
-
                             <ClipboardPen
                                 size={20}
                                 strokeWidth={2}
                             />
-
-
                             Avaliar
-
-
                         </button>
-
-
                 }
-
-
             </div>
-
-
-
         </div>
-
     );
-
 };

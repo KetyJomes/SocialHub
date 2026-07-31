@@ -9,18 +9,17 @@
 * 🟢 You can import this file directly.
 */
 
-export const TestType = {
+export const TestTypeEnum = {
   Self: 'Self',
-  Instructor: 'Instructor',
   Group: 'Group',
   Lider: 'Lider',
   Class: 'Class'
 } as const
 
-export type TestType = (typeof TestType)[keyof typeof TestType]
+export type TestTypeEnum = (typeof TestTypeEnum)[keyof typeof TestTypeEnum]
 
 
-export const Frequency = {
+export const FrequencyEnum = {
   unique: 'unique',
   Mensal: 'Mensal',
   Bimestral: 'Bimestral',
@@ -29,14 +28,14 @@ export const Frequency = {
   Anual: 'Anual'
 } as const
 
-export type Frequency = (typeof Frequency)[keyof typeof Frequency]
+export type FrequencyEnum = (typeof FrequencyEnum)[keyof typeof FrequencyEnum]
 
 
-export const Role = {
+export const RoleEnum = {
   Student: 'Student',
   Leader: 'Leader',
   ADM: 'ADM',
   Manager: 'Manager'
 } as const
 
-export type Role = (typeof Role)[keyof typeof Role]
+export type RoleEnum = (typeof RoleEnum)[keyof typeof RoleEnum]

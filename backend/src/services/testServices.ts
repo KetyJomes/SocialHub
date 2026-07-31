@@ -1,31 +1,91 @@
 import { createTestDTO, updateTestDTO } from "../DTOS/testDTO.ts";
-import { Frequency } from "../generated/prisma/enums.ts";
+import {  FrequencyEnum } from "../generated/prisma/enums.ts";
 // import { Test } from "@prisma/client"
 import { prisma } from "../lib/prisma.ts"
 
+export const createTest = async (data: createTestDTO ) => {
 
-export const createTest = async(data: createTestDTO)=>{
-    const {  content, finalDate, startdate, grade, type, skill, questions, AvailableResult, frequency} = data;
+    const {
+        content,
+        finalDate,
+        startDate,
+        grade,
+        type,
+        AvailableResult,
+        frequency,
+        feedback,
+        skills
+    } = data;
 
     return await prisma.test.create({
-        data:{
-            Content:content,
-            finalDate:finalDate,
-            startDate:startdate,
+
+        data: {
+
+            Content: content,
+
+            finalDate: finalDate,
+
+            startDate: startDate,
+
             AvailableResult: AvailableResult,
+
             grade: grade,
+
             Frequency: frequency,
-            TestType: type,
-            skill: skill,
-            questions: {
-                create: questions
+
+            Feedback:feedback,
+
+            type: type,
+
+
+            Skills: {
+
+                create: skills.map(skill => ({
+                    
+                    Title: skill.Title,
+
+                    Description: skill.Description,
+
+
+                    Alternative: {
+
+                        create: skill.alternatives.map(alternative => ({
+
+                            Content: alternative.Content,
+
+                            Scale: alternative.Scale
+
+                        }))
+
+                    }
+
+                }))
+
+            }
+
+        },
+
+
+        include: {
+
+            Skills: {
+
+                include: {
+
+                    Alternative: true
+
+                }
+
+            }
+
         }
-    }
+
     });
-}
+
+};
 
 export const updateTest = async(id:number,data: updateTestDTO)=>{
-    const {content , finalDate, startdate, grade, type, skill, questions, AvailableResult, frequency} = data;
+    const {content , finalDate, startdate, grade, type, skills, AvailableResult, feedback, frequency } = data;
     return await prisma.test.update({
         where:{id:id},
         data: {
@@ -35,14 +95,14 @@ export const updateTest = async(id:number,data: updateTestDTO)=>{
             AvailableResult: AvailableResult,
             grade: grade,
             Frequency: frequency,
-            TestType: type,
-            skill: skill,
-            questions: {
-                create: questions
+            Feedback:feedback,
+            type: type,
+            Skills: {
+                create: skills
         }
     }
     })
-// 
+
 }
 
 export const showTests = async()=>{
@@ -136,7 +196,7 @@ const test = await prisma.test.findUnique({
     },
 });
 
-if (!test || test.Frequency == Frequency.unique){
+if (!test || test.Frequency == FrequencyEnum.unique){
     return null;
 }
 
@@ -149,23 +209,23 @@ const duration = currentEnd.getTime() - currentStart.getTime();
 let nextStart = new Date(currentStart);
 
 switch (test.Frequency){
-    case Frequency.Mensal:
+    case FrequencyEnum.Mensal:
         nextStart.setMonth(nextStart.getMonth() +1);
         break;
     
-    case Frequency.Bimestral:
+    case FrequencyEnum.Bimestral:
         nextStart.setMonth(nextStart.getMonth() +2);
         break;
     
-    case Frequency.Trimestral:
+    case FrequencyEnum.Trimestral:
         nextStart.setMonth(nextStart.getMonth() +3);
         break;
 
-    case Frequency.Semestral:
+    case FrequencyEnum.Semestral:
         nextStart.setMonth(nextStart.getMonth() +6);
         break;
 
-    case Frequency.Anual:
+    case FrequencyEnum.Anual:
             nextStart.setMonth(nextStart.getMonth() +12);
             break;
     

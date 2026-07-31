@@ -1,13 +1,50 @@
+import { useState } from "react";
 import background from "../assets/supergraphic.svg";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../services/apiService";
 
+// // Integração
 export const Login = () => {
   const navigateLogin = useNavigate();
 
-  function handleLogin() {
-    navigateLogin("/register");
-  }
+  const [EDV, setEDV] = useState("")
+  const [password, setPassword] = useState("")
 
+
+  const handleLogin = async () => {
+
+      try {
+        console.log(EDV,password)
+      const response = await api.post('/auth/login',{ EDV, password});
+      
+      console.log(response)
+
+      const { token, user } = response.data;
+
+        console.log(token,user)
+
+      localStorage.setItem("token", token);
+
+      localStorage.setItem("role", user.role);
+      localStorage.setItem("name", user.name);
+
+      if (user.role === "ADM") {
+        navigateLogin("/adm-main");
+      } else if (user.role === "Leader") {
+        navigateLogin("/management-main");
+      } else if (user.role === "Student") {
+        navigateLogin("/user-main");
+      } else if (user.role === "Manager") {
+        navigateLogin("/management-main");
+      } else {
+        navigateLogin("/");
+      }
+
+    } catch (error) {
+      console.log(error);
+      alert("EDV ou Senha invalidos");
+    }
+  }
 
   return (
     <div
@@ -40,6 +77,8 @@ export const Login = () => {
             <input
               type="text"
               placeholder="Digite seu EDV"
+              value={EDV}
+              onChange={(e) => setEDV(e.target.value)}
               className="w-full border-b border-gray-400 outline-none py-2 placeholder:text-gray-300"
             />
           </div>
@@ -49,6 +88,8 @@ export const Login = () => {
               <input
                 type="password"
                 placeholder="Digite sua senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full border-b border-gray-400 outline-none py-2 placeholder:text-gray-300"
               />
           </div>
