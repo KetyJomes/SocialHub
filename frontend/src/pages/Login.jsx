@@ -34,6 +34,8 @@ export const Login = () => {
         navigateLogin("/management-main");
       } else if (user.role === "Student") {
         navigateLogin("/user-main");
+      } else if (user.role === "Manager") {
+        navigateLogin("/management-main");
       } else {
         navigateLogin("/");
       }

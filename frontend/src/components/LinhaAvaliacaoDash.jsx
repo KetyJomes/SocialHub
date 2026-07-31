@@ -10,9 +10,7 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
     console.log("conclusao",avaliacao.dataConclusao);
 
     function visualizarComparacao() {
-
-        navigate("/comparacao");
-
+        navigate(`/comparacao?id=${avaliacao.id}`);
     }
 
     return (

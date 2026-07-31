@@ -9,6 +9,13 @@ import { evaluationsCompleteMock } from "../../data/evaluationsCompleteMock";
 
 export const UserRealizarAvaliacao = () => {
 
+    const usuarioLogado = {
+        nome: localStorage.getItem("name"),
+        tipo: localStorage.getItem("role")
+    };
+
+    console.log("Usuário logado:", usuarioLogado);
+
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -29,6 +36,7 @@ export const UserRealizarAvaliacao = () => {
     console.log("ID AVALIACAO:", idAvaliacao);
     console.log("AVALIACAO:", avaliacaoAtual);
     console.log("Qtd Perguntas:", avaliacaoAtual.perguntas.length);
+    console.log("usuario", usuarioLogado);
     
     const [answers, setAnswers] = useState({});
     const [isOpen, setIsOpen] = useState(false);
@@ -136,11 +144,16 @@ export const UserRealizarAvaliacao = () => {
             finalizada,
             media,
             dataConclusao: new Date().toISOString(),
+            user: usuarioLogado,
             status:
                 finalizada
                     ? "Respondida"
                     : "Em andamento"
         };
+
+
+        console.log("SALVANDO AVALIAÇÃO:", avaliacoesSalvas[idAvaliacao]);
+
 
         localStorage.setItem(
             "avaliacoesRespondidas",
@@ -159,15 +172,16 @@ export const UserRealizarAvaliacao = () => {
                     )
                 ) || {};
 
-            avaliacoesSalvas[idColaborador] = {
-                colaboradorId: idColaborador,
+            avaliacoesSalvas[idAvaliacao] = {
+                ...avaliacaoAtual,
                 respostas: answers,
-                media,
                 finalizada,
+                media,
                 dataConclusao: new Date().toISOString(),
+                user: usuarioLogado,
                 status:
                     finalizada
-                        ? "Avaliado"
+                        ? "Respondida"
                         : "Em andamento"
             };
             localStorage.setItem(

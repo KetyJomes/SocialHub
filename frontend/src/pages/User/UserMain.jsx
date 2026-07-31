@@ -37,10 +37,6 @@ export const UserMain = () => {
         const name = localStorage.getItem("name");
 
 
-        console.log("ROLE:", role);
-        console.log("NOME:", name);
-
-
         if (!role) {
             navigate("/");
             return;

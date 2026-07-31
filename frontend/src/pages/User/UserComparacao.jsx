@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
@@ -29,129 +30,25 @@ export const UserComparacao = () => {
     const [feedback, setFeedback] = useState("");
     const [abrirFeedback, setAbrirFeedback] = useState(false);
 
-    const selfEvaluation = [
+    const [selfEvaluation, setSelfEvaluation] = useState([]);
+    const [managerEvaluation, setManagerEvaluation] = useState([]);
 
-        {
-            icon: Award,
-            title: "Foco no Cliente",
-            description:
-                "Demonstra capacidade de compreender as necessidades dos clientes internos e externos, buscando entregar soluções que agreguem valor.",
-            status: "Dentro",
-            color: "green",
-        },
-        {
-            icon: Target,
-            title: "Qualidade",
-            description:
-                "Executa suas atividades seguindo padrões definidos, buscando excelência e melhoria contínua nos processos.",
-            status: "Dentro",
-            color: "green",
-        },
-        {
-            icon: Users,
-            title: "Trabalho em Equipe",
-            description:
-                "Colabora com colegas, compartilha conhecimento e contribui para um ambiente de cooperação.",
-            status: "Dentro",
-            color: "green",
-        },
+    const location = useLocation();
+    const params = new URLSearchParams(location.search);
+    const idAvaliacao = params.get("id");
 
+    useEffect(() => {
 
-        {
-            icon: TrendingUp,
-            title: "Resultados",
-            description:
-                "Entrega resultados alinhados aos objetivos definidos e acompanha indicadores para evolução contínua.",
-            status: "Dentro",
-            color: "green",
-        },
+        const avaliacoes =
+            JSON.parse(
+                localStorage.getItem("avaliacoesRespondidas")
+            ) || {};
 
+        const avaliacao = avaliacoes[idAvaliacao];
 
-        {
-            icon: MessageCircle,
-            title: "Comunicação",
-            description:
-                "Comunica informações e ideias de forma clara, mantendo alinhamento com diferentes públicos.",
-            status: "Acima",
-            color: "blue",
-        },
+        if (!avaliacao) return;
 
-
-        {
-            icon: Lightbulb,
-            title: "Inovação",
-            description:
-                "Propõe melhorias e identifica oportunidades para evolução dos processos.",
-            status: "Abaixo",
-            color: "yellow",
-        },
-
-
-    ];
-
-    const managerEvaluation = [
-
-        {
-            icon: Award,
-            title: "Foco no Cliente",
-            description:
-                "Apresenta foco nas necessidades dos clientes buscando gerar valor através das suas entregas.",
-            status: "Dentro",
-            color: "green",
-        },
-
-
-        {
-            icon: Target,
-            title: "Qualidade",
-            description:
-                "Mantém atenção aos detalhes e busca garantir qualidade nas atividades realizadas.",
-            status: "Acima",
-            color: "blue",
-        },
-
-
-        {
-            icon: Users,
-            title: "Trabalho em Equipe",
-            description:
-                "Contribui com o time, compartilha conhecimento e incentiva a colaboração.",
-            status: "Dentro",
-            color: "green",
-        },
-
-
-        {
-            icon: TrendingUp,
-            title: "Resultados",
-            description:
-                "Entrega suas responsabilidades e busca alcançar os resultados esperados.",
-            status: "Acima",
-            color: "blue",
-        },
-
-
-        {
-            icon: MessageCircle,
-            title: "Comunicação",
-            description:
-                "Pode desenvolver ainda mais a clareza na comunicação e o alinhamento das informações compartilhadas.",
-            status: "Abaixo",
-            color: "yellow",
-        },
-
-
-        {
-            icon: Lightbulb,
-            title: "Inovação",
-            description:
-                "Demonstra abertura para novas ideias e melhorias.",
-            status: "Dentro",
-            color: "green",
-        },
-
-
-    ];
+    }, [idAvaliacao]);
 
     const handleExportar = () => {
 
@@ -160,6 +57,7 @@ export const UserComparacao = () => {
             managerEvaluation
         );
     };
+    
         return (
         <div className="min-h-screen bg-white">
 
