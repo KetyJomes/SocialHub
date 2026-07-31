@@ -4,3 +4,6 @@ npm install lucide-react
 npm run dev -- --force
 npm install jspdf jspdf-autotable
 npm install sweetalert2
+
+
+// user para entrar 12345678 @12345678T -> Student

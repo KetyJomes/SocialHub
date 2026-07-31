@@ -12,37 +12,39 @@ export const Login = () => {
 
 
   const handleLogin = async () => {
-  
-    try {
-      console.log(EDV,password)
-    const response = await api.post('/auth/login',{ EDV, password});
-    
-console.log(response)
 
-    const { token, user } = response.data;
+      try {
+        console.log(EDV,password)
+      const response = await api.post('/auth/login',{ EDV, password});
+      
+      console.log(response)
 
-      console.log(token,user)
+      const { token, user } = response.data;
 
-    localStorage.setItem("token", token);
+        console.log(token,user)
 
-    localStorage.setItem("role", user.role);
-    localStorage.setItem("name", user.name);
+      localStorage.setItem("token", token);
 
-    if (user.role === "ADM") {
-      navigateLogin("/adm-main");
-    } else if (user.role === "Instructor") {
-      navigateLogin("/Instructor-main");
-    } else if (user.role === "Student") {
-      navigateLogin("/user-main");
-    } else {
-      navigateLogin("/");
+      localStorage.setItem("role", user.role);
+      localStorage.setItem("name", user.name);
+
+      if (user.role === "ADM") {
+        navigateLogin("/adm-main");
+      } else if (user.role === "Leader") {
+        navigateLogin("/management-main");
+      } else if (user.role === "Student") {
+        navigateLogin("/user-main");
+      } else if (user.role === "Manager") {
+        navigateLogin("/management-main");
+      } else {
+        navigateLogin("/");
+      }
+
+    } catch (error) {
+      console.log(error);
+      alert("EDV ou Senha invalidos");
     }
-
-  } catch (error) {
-    console.log(error);
-    alert("EDV ou Senha invalidos");
   }
-}
 
   return (
     <div

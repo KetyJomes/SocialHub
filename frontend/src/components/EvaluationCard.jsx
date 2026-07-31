@@ -8,32 +8,19 @@ export const EvaluationCard = ({
     editando
 }) => {
 
-
     const [avaliacoes, setAvaliacoes] = useState(data);
-
-
 
     const titleColor =
         color === "purple"
             ? "text-purple-400"
             : "text-[#0291F7]";
 
-
-
-
-
     const alterarResultado = (index, valor) => {
 
-
         const novaLista = [...avaliacoes];
-
-
         novaLista[index] = {
-
             ...novaLista[index],
-
             status: valor,
-
             color:
                 valor === "Crítico"
                     ? "red"
@@ -42,84 +29,38 @@ export const EvaluationCard = ({
                     : valor === "Dentro"
                     ? "green"
                     : "blue"
-
         };
-
 
         setAvaliacoes(novaLista);
 
-
     };
 
-
-
-
-
-
-
     return (
-
-
         <div className="bg-white rounded-3xl shadow-sm border border-gray-100 flex flex-col h-full">
 
-
-
-
-
             {/* CABEÇALHO */}
-
-
             <div className="px-8 py-6 border-b border-gray-100">
-
-
 
                 <div>
 
-
                     <h2 className={`text-2xl font-bold ${titleColor}`}>
-
                         {title}
-
                     </h2>
 
-
-
                     <p className="text-gray-500 mt-1">
-
                         Resultado por competência
-
                     </p>
-
-
 
                 </div>
 
-
-
             </div>
-
-
-
-
-
-
-
-
 
             {/* CONTEÚDO */}
 
-
-
             <div className="px-8 py-3 flex-1">
 
-
-
                 {avaliacoes.map((item, index) => (
-
-
-
                     <div
-
                         className="
                             py-7
                             border-b
@@ -128,35 +69,15 @@ export const EvaluationCard = ({
                             flex
                             flex-col
                         "
-
                         key={index}
-
                     >
 
-
-
-
-
-
                         {/* COMPETÊNCIA */}
-
-
                         <h3 className="text-lg font-bold text-gray-800">
-
                             {item.title}
-
                         </h3>
 
-
-
-
-
-
-
-
                         {/* DESCRIÇÃO */}
-
-
                         <div className="
                             mt-4
                             bg-gray-50
@@ -166,39 +87,19 @@ export const EvaluationCard = ({
                             p-5
                         ">
 
-
                             <p className="
                                 text-[15px]
                                 leading-6
                                 text-gray-700
                                 text-justify
                             ">
-
-
                                 {item.description}
-
-
                             </p>
-
-
 
                         </div>
 
-
-
-
-
-
-
-
-
                         {/* RESULTADO */}
-
-
-
                         <div className="mt-5 flex flex-col gap-3">
-
-
 
                             <p className="
                                 text-xs
@@ -207,44 +108,21 @@ export const EvaluationCard = ({
                                 text-gray-400
                                 font-semibold
                             ">
-
                                 Resultado da avaliação
-
                             </p>
-
-
-
-
-
-
-
 
                             {
                                 editando
-
                                 ?
-
-
-
                                 (
-
                                     <select
-
                                         value={item.status}
-
-
                                         onChange={(e) =>
-
                                             alterarResultado(
-
                                                 index,
-
                                                 e.target.value
-
                                             )
-
                                         }
-
 
                                         className="
                                             w-full
@@ -261,59 +139,29 @@ export const EvaluationCard = ({
                                             focus:ring-2
                                             focus:ring-blue-300
                                         "
-
                                     >
 
-
                                         <option>
-
                                             Crítico                                                      
-
                                         </option>
-
 
                                         <option>
-
-                                            
-                                                
-                                                Abaixo
-                                            
-
+                                            Abaixo
                                         </option>
-
 
                                         <option>
-
-                                                Dentro
-                                            
+                                            Dentro
                                         </option>
-
 
                                         <option>
-
-                                            
-                                                Acima
-
+                                            Acima
                                         </option>
-
 
                                     </select>
-
-
                                 )
-
-
-
-
                                 :
-
-
-
                                 (
-
-
                                     <div
-
                                         className={`
                                             flex
                                             items-center
@@ -326,7 +174,6 @@ export const EvaluationCard = ({
                                             text-sm
 
                                             ${
-
                                                 item.color === "blue"
                                                 ? "bg-blue-50 text-blue-700 border border-blue-200"
 
@@ -339,14 +186,8 @@ export const EvaluationCard = ({
                                                 : "bg-red-50 text-red-700 border border-red-200"
                                                 }
                                         `}
-
                                     >
-
-
-
-
                                         <span
-
                                             className={`
                                                 w-3
                                                 h-3
@@ -364,56 +205,23 @@ export const EvaluationCard = ({
 
                                                     : "bg-red-500"
                                                     }
-
                                             `}
 
                                         />
-
-
-
-
                                         {item.status}
 
-
-
                                     </div>
-
-
                                 )
-
-
                             }
-
-
-
 
                         </div>
 
-
-
-
-
                     </div>
-
-
-
 
                 ))}
 
-
-
-
             </div>
 
-
-
-
-
-
         </div>
-
-
-
     );
-
 };

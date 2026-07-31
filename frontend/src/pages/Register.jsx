@@ -31,7 +31,7 @@ export const Register = () => {
         response.data
       );
 
-      navigate('/user-main')
+      navigate('/')
 
     } catch(error) {
 
