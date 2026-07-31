@@ -6,7 +6,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = "mysql://root:root@localhost:3307/socialhub_db"
+  url      = "mysql://root:root@localhost:3306/socialhub_db"
 }
 
 model User {
@@ -15,7 +15,7 @@ model User {
   name String 
   password String
   EDV String @unique
-  role RoleEnum
+  role RoleEnum @default(Student)
 
   class Class? @relation("StudentClass",fields: [idClass], references: id)
   idClass Int?

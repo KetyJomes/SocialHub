@@ -33,7 +33,7 @@ npm install
 Crie um arquivo `.env` na raiz do projeto e configure a variável:
 
 ```env
-DATABASE_URL="mysql://usuario:senha@localhost:3306/nome_do_banco"
+DATABASE_URL="mysql://usuario:senha@localhost:3307/nome_do_banco"
 ```
 
 ### 5. Executar as migrations do Prisma

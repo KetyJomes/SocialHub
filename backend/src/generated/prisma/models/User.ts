@@ -307,7 +307,7 @@ export type UserCreateInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
   class?: Prisma.ClassCreateNestedOneWithoutStudentsInput
   PICs?: Prisma.ClassCreateNestedManyWithoutPICInput
   Evaluated?: Prisma.User_TestCreateNestedManyWithoutEvaluatedInput
@@ -320,7 +320,7 @@ export type UserUncheckedCreateInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
   idClass?: number | null
   PICs?: Prisma.ClassUncheckedCreateNestedManyWithoutPICInput
   Evaluated?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatedInput
@@ -358,7 +358,7 @@ export type UserCreateManyInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
   idClass?: number | null
 }
 
@@ -558,7 +558,7 @@ export type UserCreateWithoutEvaluatedInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
   class?: Prisma.ClassCreateNestedOneWithoutStudentsInput
   PICs?: Prisma.ClassCreateNestedManyWithoutPICInput
   Evaluator?: Prisma.User_TestCreateNestedManyWithoutEvaluatorInput
@@ -570,7 +570,7 @@ export type UserUncheckedCreateWithoutEvaluatedInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
   idClass?: number | null
   PICs?: Prisma.ClassUncheckedCreateNestedManyWithoutPICInput
   Evaluator?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatorInput
@@ -586,7 +586,7 @@ export type UserCreateWithoutEvaluatorInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
   class?: Prisma.ClassCreateNestedOneWithoutStudentsInput
   PICs?: Prisma.ClassCreateNestedManyWithoutPICInput
   Evaluated?: Prisma.User_TestCreateNestedManyWithoutEvaluatedInput
@@ -598,7 +598,7 @@ export type UserUncheckedCreateWithoutEvaluatorInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
   idClass?: number | null
   PICs?: Prisma.ClassUncheckedCreateNestedManyWithoutPICInput
   Evaluated?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatedInput
@@ -682,7 +682,7 @@ export type UserCreateWithoutPICsInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
   class?: Prisma.ClassCreateNestedOneWithoutStudentsInput
   Evaluated?: Prisma.User_TestCreateNestedManyWithoutEvaluatedInput
   Evaluator?: Prisma.User_TestCreateNestedManyWithoutEvaluatorInput
@@ -694,7 +694,7 @@ export type UserUncheckedCreateWithoutPICsInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
   idClass?: number | null
   Evaluated?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatedInput
   Evaluator?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatorInput
@@ -710,7 +710,7 @@ export type UserCreateWithoutClassInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
   PICs?: Prisma.ClassCreateNestedManyWithoutPICInput
   Evaluated?: Prisma.User_TestCreateNestedManyWithoutEvaluatedInput
   Evaluator?: Prisma.User_TestCreateNestedManyWithoutEvaluatorInput
@@ -722,7 +722,7 @@ export type UserUncheckedCreateWithoutClassInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
   PICs?: Prisma.ClassUncheckedCreateNestedManyWithoutPICInput
   Evaluated?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatedInput
   Evaluator?: Prisma.User_TestUncheckedCreateNestedManyWithoutEvaluatorInput
@@ -807,7 +807,7 @@ export type UserCreateManyClassInput = {
   name: string
   password: string
   EDV: string
-  role: $Enums.RoleEnum
+  role?: $Enums.RoleEnum
 }
 
 export type UserUpdateWithoutClassInput = {

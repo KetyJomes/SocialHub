@@ -9,6 +9,7 @@ export const  register = async(data: registerDTO)=>{
     
     const {name, password, EDV, classId, role} = data
     
+    
     const userExists = await prisma.user.findUnique({
         where: {EDV:EDV}
     });

@@ -2,6 +2,9 @@ import api from "../../services/apiService";
 import { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
+import { Header } from "../../components/Header";
+import { SidebarAdmin } from "../../components/SidebarAdmin";
+
 import {
   Users,
   Search,
@@ -12,9 +15,6 @@ import {
   UserPlus,
   X,
 } from "lucide-react";
-
-import { Header } from "../../components/Header";
-import { SidebarAdmin } from "../../components/SidebarAdmin";
 
 export const AdminTurmas = () => {
 
@@ -192,7 +192,7 @@ export const AdminTurmas = () => {
     fetchTurmas();
   }, []);
 
-  console.log(turmas.name);
+  console.log(turmas);
 
   const [alunosDisponiveis, setAlunosDisponiveis] = useState([
     {
