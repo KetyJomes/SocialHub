@@ -1,13 +1,15 @@
-import { createAnswerDTO, updateAnswerDTO } from "../DTOS/answersDTO.ts"
+
+import {  updateAnswerDTO } from "../DTOS/answersDTO.ts"
+import { registerDTO } from "../DTOS/userDTO.ts"
 import {prisma} from "../lib/prisma.ts"
 
-export const createAnswer = async(data: createAnswerDTO) =>{
-    const {value, scale, idSkill, idUserTest} = data
+// export const createAnswer = async(data: registerDTO) =>{
+//     const {value, scale, idSkill, idUserTest} = data
 
-    return await prisma.answers.create({
-        data: { value, scale, idSkill, idUserTest}
-    })
-}
+//     return await prisma.answers.create({
+//         data: { value, scale, idSkill, idUserTest}
+//     })
+// }
 
 export const findAnswers = async() => {
     return await prisma.answers.findMany()
