@@ -141,23 +141,16 @@ export const ManagementMain = () => {
     const alunosPendentesFiltrados =
 
         turmaFiltroAvaliacao === ""
-
             ?
-
             alunosPendentes
-
             :
-
             alunosPendentes.filter(
                 (aluno) =>
                     aluno.turma === turmaFiltroAvaliacao
             );
 
-
     // Feedbacks pendentes
-
     const feedbackPendentes = [
-
         {
             id: 1,
             avaliacao: "Avaliação pelos Alunos",
@@ -245,13 +238,9 @@ export const ManagementMain = () => {
     const feedbacksPendentesFiltrados =
 
     turmaFiltroFeedback === ""
-
         ?
-
         feedbackPendentes
-
         :
-
         feedbackPendentes.filter(
             (feedback) =>
                 feedback.turma === turmaFiltroFeedback
@@ -562,40 +551,38 @@ export const ManagementMain = () => {
                                         alunosPendentesFiltrados.map((aluno)=>(
 
 
-                                            <div
-                                                key={aluno.id}
+                                                <div
+                                                    key={aluno.id}
 
-                                                onClick={()=>
+                                                    onClick={() =>
+                                                        navigate(
+                                                            `/realizar-avaliacao?id=${aluno.avaliacaoId}`
+                                                        )
+                                                    }
 
-                                                    navigate(
-                                                        `/management-perform-evaluation/${encodeURIComponent(aluno.turma)}/${encodeURIComponent(aluno.nome)}/${aluno.avaliacaoId}`
-                                                    )
+                                                    className="
+                                                        cursor-pointer
+                                                        rounded-lg
+                                                        transition
+                                                        hover:bg-[#0291F7]/5
+                                                    "
+                                                >
 
-                                                }
+                                                    <CardAvaliacao
 
-                                                className="
-                                                    cursor-pointer
-                                                    rounded-lg
-                                                    transition
-                                                    hover:bg-[#0291F7]/5
-                                                "
-                                            >
+                                                        tipoCard="avaliacao"
 
-                                                <CardAvaliacao
+                                                        nome={`${aluno.avaliacao} - ${aluno.nome}`}
 
-                                                    tipoCard="avaliacao"
+                                                        turma={aluno.turma}
 
-                                                    nome={`${aluno.avaliacao} - ${aluno.nome}`}
+                                                        tipo="Gestor → Aluno"
 
-                                                    turma={aluno.turma}
+                                                        status={aluno.status}
 
-                                                    tipo="Gestor → Aluno"
+                                                    />
 
-                                                    status={aluno.status}
-
-                                                />
-
-                                            </div>
+                                                </div>
 
                                         ))
 

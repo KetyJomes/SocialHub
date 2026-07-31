@@ -10,11 +10,7 @@ export const AbaAvaliacoes = ({
 
     const acessarAvaliacao = (avaliacao) => {
 
-        /*
-        =====================================================
-        AVALIAÇÃO JÁ RESPONDIDA
-        =====================================================
-        */
+        /* AVALIAÇÃO JÁ RESPONDIDA  */
 
         if (modoVisualizacao) {
 

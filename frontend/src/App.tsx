@@ -13,7 +13,6 @@ import {ManagementMain} from "./pages/Management/ManagementMain.jsx"
 import {ManagementClasses} from "./pages/Management/ManagementClasses.jsx"
 import {ManagementClassDetails} from "./pages/Management/ManagementClassDetails.jsx"
 import {ManagementStudentDetails} from "./pages/Management/ManagementStudentDetails.jsx"
-import {ManagementPerformEvaluation} from "./pages/Management/ManagementPerformEvaluation.jsx";
 import { ManagementViewEvaluation } from "./pages/Management/ManagementViewEvaluation.jsx";
 import {ManagementAnswerEvaluation } from "./pages/Management/ManagementAnswerEvaluation.jsx";
 import { TestControl } from "./pages/Management/TestControl.jsx";
@@ -47,7 +46,6 @@ function App() {
           <Route path="/management-classes" element={<ManagementClasses />} />
           <Route path="/management-class/:turma" element={<ManagementClassDetails />} />
           <Route path="/management-student/:turma/:aluno" element={<ManagementStudentDetails />} />
-          <Route path="/management-perform-evaluation/:turma/:aluno/:id"element={<ManagementPerformEvaluation />}/>
           <Route path="/management-answer-evaluation/:turma/:aluno/:avaliacaoId"element={<ManagementAnswerEvaluation />}/>
           <Route path="/management-view-evaluation/:turma/:aluno/:avaliacaoId" element={<ManagementViewEvaluation />}/>
           <Route path="/management-test"  element={<TestControl />}/>

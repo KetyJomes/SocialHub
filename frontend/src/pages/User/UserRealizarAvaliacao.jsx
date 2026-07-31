@@ -199,13 +199,16 @@ export const UserRealizarAvaliacao = () => {
 
                 navigate("/360");
                 return;
-
             }
 
             salvarAvaliacao(true);
             setShowConfirm(false);
 
-            navigate("/user-avaliacoes");
+            if (usuarioLogado.tipo === "Manager") {
+                navigate("/management-main");
+            } else {
+                navigate("/user-avaliacoes");
+            }
         };
         
         const salvarEContinuarDepois = () => {
