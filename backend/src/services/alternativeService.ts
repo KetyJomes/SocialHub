@@ -8,7 +8,7 @@ export const createAlternative = async(data: createAlternativeDTO) =>{
         data: { Content, Scale, idSkill}
     })
 }
-
+//
 export const findAlternatives = async() => {
     return await prisma.alternatives.findMany()
 }
