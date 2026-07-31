@@ -2,32 +2,25 @@ import { createClassDTO, updateClassDTO } from "../DTOS/classDTO.ts";
 import {prisma} from "../lib/prisma.ts"
 
 export const createClass = async(data: createClassDTO)=>{
-    const {course, period, avarageScore, students, PIC} = data;
+    const {course, period, avarageScore, idPIC} = data;
 
     return await prisma.class.create({
         data:{
             Course:course,
             period:period,
             avarageScore:avarageScore,
-            idPIC: PIC
-        },
-        include: {
-            students:true
-
+            idPIC: idPIC
         }
     })
 }
 
 export const updateClass = async(id: number, data: updateClassDTO)=>{
-    const { period, avarageScore, students} = data;
+    const { period, avarageScore} = data;
     return await prisma.class.update({
         where: {id: id},
         data: {
             period, 
             avarageScore,
-        },
-        include: {
-            students: true
         }
 
     })
@@ -57,7 +50,12 @@ export const removeStudentFromClass = async (classId: number, studentId: number)
 }
 
 export const showClasses = async()=>{
-    return await prisma.class.findMany();
+    return await prisma.class.findMany({
+        include: {
+            idPIC: true,
+            students: true
+        }
+    });
 }
 
 export const showClass = async(id:number)=>{

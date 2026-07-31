@@ -1,5 +1,5 @@
 // Integração
-import { api } from "../services/apiService";
+import  api  from "../services/apiService";
 
 import {Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -15,7 +15,7 @@ export const Register = () => {
     email: "", 
     password: "", 
     EDV: "",
-    role: ""
+    role: "Student"
   })
 
   const create = async () => {
@@ -24,14 +24,14 @@ export const Register = () => {
 
       console.log(user)
 
-      const response = api.post('/user/create', user)
-
+      const response = api.post('/auth/register', user)
+        console.log(response)
       console.log(
         "Usuário criado:",
         response.data
       );
 
-      navigate('/login')
+      navigate('/user-main')
 
     } catch(error) {
 
@@ -156,7 +156,7 @@ export const Register = () => {
           </div>
 
           <Link
-            to="/login"
+            to="/"
             className="block text-center underline mb-10"
           >
             Já possui conta?

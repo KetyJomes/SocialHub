@@ -9,6 +9,7 @@ export const  register = async(data: registerDTO)=>{
     
     const {name, password, EDV, classId, role} = data
     
+    
     const userExists = await prisma.user.findUnique({
         where: {EDV:EDV}
     });
@@ -40,6 +41,8 @@ export const login = async(data: loginDTO)=>{
             EDV:EDV
         }
     });
+    console.log(user)
+
     if (!user){
         throw new Error("EDV ou senha incorretos!");
     }
@@ -56,7 +59,7 @@ export const login = async(data: loginDTO)=>{
             id: user.id,
             role: user.role
         },
-        process.env.JWT_SECRET as string,
+        "helo_linda_123",
         {
             expiresIn: "2d"
         }
@@ -71,7 +74,6 @@ export const login = async(data: loginDTO)=>{
         }
     };
 
-    //return token;
 
 };
 

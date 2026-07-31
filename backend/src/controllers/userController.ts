@@ -1,6 +1,6 @@
 import { Request, response, Response} from "express";
-import {  getUser, getUsers, updateUser, deleteUser  } from "../services/userServices.ts";
-import { updateUserDTO } from "../DTOS/userDTO.ts";
+import {  getUser, getUsers, updateUser, deleteUser, updateRole  } from "../services/userServices.ts";
+import { updateRoleDTO, updateUserDTO } from "../DTOS/userDTO.ts";
 
 export default class UserController {
    
@@ -49,6 +49,21 @@ export default class UserController {
         }
         catch (e){
             return res.status(500).send({ response: 'Usuário não pode ser deletado'})
+        }
+    }
+
+    static async updateRole(req: Request, res: Response){
+        const id = Number(req.params.id);
+        const data: updateRoleDTO = req.body
+        try{
+            const user = await updateRole(id, data);
+            if (!user){
+                return res.status(404).send({ response: "usuario não encontrado"});
+            }
+            return res.status(200).send(user);
+        }
+        catch(e){
+            return res.status(500).send({ response: 'Ocorreu algum erro no servidor'});
         }
     }
 

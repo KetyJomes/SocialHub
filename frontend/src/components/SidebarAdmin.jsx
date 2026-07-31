@@ -236,7 +236,7 @@ export const SidebarAdmin = ({ isOpen, setIsOpen }) => {
 
                     <button
 
-                        onClick={() => navigate("/login")}
+                        onClick={() => navigate("/")}
 
                         className="
                             flex

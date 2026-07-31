@@ -138,7 +138,7 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                 <div className="px-4 pb-6">
 
                     <button
-                        onClick={() => navigate("/login")}
+                        onClick={() => navigate("/")}
                         className="
                             flex
                             items-center

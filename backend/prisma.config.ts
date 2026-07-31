@@ -11,6 +11,6 @@ export default defineConfig({
   },
   engine: "classic",
   datasource: {
-    url: "mysql://root:root@localhost:3307/socialhub_db",
+    url: "mysql://root:root@localhost:3306/socialhub_db",
   },
 });

@@ -1,45 +1,48 @@
+import { useState } from "react";
 import background from "../assets/supergraphic.svg";
 import { Link, useNavigate } from "react-router-dom";
+import api from "../services/apiService";
 
 // // Integração
 export const Login = () => {
   const navigateLogin = useNavigate();
 
-  function handleLogin() {
-    navigateLogin("/register");
-  }
+  const [EDV, setEDV] = useState("")
+  const [password, setPassword] = useState("")
 
 
+  const handleLogin = async () => {
   
-  // const [user, setUser] = useState({
-  //   name: "", 
-  //   email: "", 
-  //   password: "", 
-  //   EDV: "",
-  //   role: ""
-  // })
+    try {
+      console.log(EDV,password)
+    const response = await api.post('/auth/login',{ EDV, password});
+    
+console.log(response)
 
-  // const create = async () => {
+    const { token, user } = response.data;
 
-  //   try {
+      console.log(token,user)
 
-  //     console.log(user)
+    localStorage.setItem("token", token);
 
-  //     const response = api.post('/user/create', user)
+    localStorage.setItem("role", user.role);
+    localStorage.setItem("name", user.name);
 
-  //     console.log(
-  //       "Usuário criado:",
-  //       response.data
-  //     );
+    if (user.role === "ADM") {
+      navigateLogin("/adm-main");
+    } else if (user.role === "Instructor") {
+      navigateLogin("/Instructor-main");
+    } else if (user.role === "Student") {
+      navigateLogin("/user-main");
+    } else {
+      navigateLogin("/");
+    }
 
-  //     navigate('/login')
-
-  //   } catch(error) {
-
-  //     console.log(
-  //       "Erro ao criar usuário",
-  //       error
-  //     ); 
+  } catch (error) {
+    console.log(error);
+    alert("EDV ou Senha invalidos");
+  }
+}
 
   return (
     <div
@@ -72,6 +75,8 @@ export const Login = () => {
             <input
               type="text"
               placeholder="Digite seu EDV"
+              value={EDV}
+              onChange={(e) => setEDV(e.target.value)}
               className="w-full border-b border-gray-400 outline-none py-2 placeholder:text-gray-300"
             />
           </div>
@@ -81,6 +86,8 @@ export const Login = () => {
               <input
                 type="password"
                 placeholder="Digite sua senha"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full border-b border-gray-400 outline-none py-2 placeholder:text-gray-300"
               />
           </div>
