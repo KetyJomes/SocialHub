@@ -6,6 +6,8 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
 
     const navigate = useNavigate();
 
+    console.log(avaliacao);
+    console.log("conclusao",avaliacao.dataConclusao);
 
     function visualizarComparacao() {
 
@@ -68,21 +70,14 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
             {/* DATA */}
             <td className="text-center py-5 px-4">
 
-                <span
-                    className="
-                        text-sm
-                        text-gray-700
-                    "
-                >
+                <span className="text-sm text-gray-700">
                     {
-                        avaliacao.disponibilizada
-                        ||
-                        avaliacao.data
-                        ||
-                        "-"
+                        avaliacao.dataConclusao
+                            ? new Date(avaliacao.dataConclusao).toLocaleDateString("pt-BR")
+                            : "-"
                     }
                 </span>
-
+                
             </td>
 
             {/* STATUS */}

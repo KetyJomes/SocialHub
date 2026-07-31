@@ -46,6 +46,7 @@ export const UserResultados = () => {
                     avaliacaoSalva &&
                     avaliacaoSalva.finalizada
                 ) {
+                    console.log("avaliacaoSalva:", avaliacaoSalva);
 
                     return {
                         ...avaliacao,
@@ -53,7 +54,7 @@ export const UserResultados = () => {
                         acao: "Visualizar",
                         finalizada: true,
                         respostas: avaliacaoSalva.respostas,
-                        respondidaEm: avaliacaoSalva.respondidaEm || "30/07/2026",
+                        dataConclusao: avaliacaoSalva.dataConclusao,
                         media: avaliacaoSalva.media ?? 0
                     };
 

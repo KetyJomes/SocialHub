@@ -127,9 +127,7 @@ export const UserRealizarAvaliacao = () => {
 
         const avaliacoesSalvas =
             JSON.parse(
-                localStorage.getItem(
-                    "avaliacoesRespondidas"
-                )
+                localStorage.getItem("avaliacoesRespondidas")
             ) || {};
 
         avaliacoesSalvas[idAvaliacao] = {
@@ -137,22 +135,18 @@ export const UserRealizarAvaliacao = () => {
             respostas: answers,
             finalizada,
             media,
+            dataConclusao: new Date().toISOString(),
             status:
                 finalizada
-                ?
-                "Respondida"
-                :
-                "Em andamento"
-            };
-            
-            localStorage.setItem(
-                "avaliacoesRespondidas",
-                JSON.stringify(
-                    avaliacoesSalvas
-                )
-                
-            );
+                    ? "Respondida"
+                    : "Em andamento"
         };
+
+        localStorage.setItem(
+            "avaliacoesRespondidas",
+            JSON.stringify(avaliacoesSalvas)
+        );
+    };
 
         const salvarAvaliacao360 = (finalizada) => {
 
@@ -170,6 +164,7 @@ export const UserRealizarAvaliacao = () => {
                 respostas: answers,
                 media,
                 finalizada,
+                dataConclusao: new Date().toISOString(),
                 status:
                     finalizada
                         ? "Avaliado"
