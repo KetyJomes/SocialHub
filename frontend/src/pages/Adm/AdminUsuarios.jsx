@@ -5,8 +5,6 @@ import { SidebarAdmin } from "../../components/SidebarAdmin";
 import api from "../../services/apiService";
 import Swal from "sweetalert2";
 
-// import { GetUers } from "../../services/userService";
-
 import { Users, Search, Pencil, ShieldCheck, X } from "lucide-react";
 
 export const AdminUsuarios = () => {

@@ -189,7 +189,7 @@ export const UserRealizarAvaliacao = () => {
 
       <main className="p-8 overflow-y-auto mt-[8vh]">
         <div className="w-[80vw] mx-auto">
-          <h1 className="text-3xl font-bold">{avaliacaoAtual?.nome}</h1>
+          <h1 className="text-3xl font-bold">Realizar Avaliação</h1>
 
           {alunoAvaliado && (
             <div className="mt-5 mb-8 rounded-2xl border border-blue-200 bg-blue-50 px-6 py-5">
