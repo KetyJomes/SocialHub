@@ -11,16 +11,9 @@ import { FeedbackModal } from "../../components/FeedbackModal";
 import { exportarAvaliacaoPDF } from "../../export/exportarAvaliacaoPDF.js";
 
 import {
-    Award,
-    Target,
-    Users,
-    TrendingUp,
-    MessageCircle,
-    Lightbulb,
     Pencil,
     Save,
-    Download,
-    Info
+    Download
 } from "lucide-react";
 
 export const UserComparacao = () => {
@@ -91,29 +84,6 @@ export const UserComparacao = () => {
                         </div>
 
                         <div className="flex items-center gap-4">
-
-                            <button
-
-                                className="
-                                    w-9
-                                    h-9
-                                    rounded-full
-                                    border
-                                    border-gray-200
-                                    flex
-                                    items-center
-                                    justify-center
-                                    hover:bg-gray-100
-                                    transition
-                                "
-                            >
-
-                                <Info
-                                    size={18}
-                                    className="text-gray-500"
-                                />
-
-                            </button>
 
                             {/* EXPORTAR */}
 
