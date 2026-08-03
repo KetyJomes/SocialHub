@@ -5,6 +5,8 @@ import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { EvaluationTable } from "../../components/EvaluationTable";
 
+import { SidebarManagement } from "../../components/SidebarManagement";
+
 import { evaluationsCompleteMock } from "../../data/evaluationsCompleteMock";
 
 export const UserRealizarAvaliacao = () => {
@@ -183,7 +185,19 @@ export const UserRealizarAvaliacao = () => {
   const avaliacaoCompleta = respondidas === totalQuestoes;
   return (
     <>
-      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
+      {
+        usuarioLogado.tipo === "Manager" ? (
+          <SidebarManagement 
+            isOpen={isOpen} 
+            setIsOpen={setIsOpen} 
+          />
+        ) : (
+          <Sidebar 
+            isOpen={isOpen} 
+            setIsOpen={setIsOpen} 
+          />
+        )
+      }
 
       <Header isOpen={isOpen} setIsOpen={setIsOpen} />
 
