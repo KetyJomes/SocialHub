@@ -5,6 +5,8 @@ import { Header } from "../../components/Header";
 import { Sidebar } from "../../components/Sidebar";
 import { CardProgresso360 } from "../../components/CardProgresso360";
 import { TabelaColaboradores360 } from "../../components/User/TabelaColaboradores360";
+
+
 import { colaboradores360Mock } from "../../data/colaboradores360Mock";
 
 export const UserAvaliacao360 = () => {

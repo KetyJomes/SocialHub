@@ -3,8 +3,7 @@ export const colaboradores360Mock = [
     {
         id: 1,
         nome: "João Silva",
-        email: "joao.silva@empresa.com",
-        cargo: "Analista de Produção",
+        edv: 92906877,
         status: "Pendente",
         finalizada: false,
         respostas: {}
@@ -13,8 +12,7 @@ export const colaboradores360Mock = [
     {
         id: 2,
         nome: "Maria Souza",
-        email: "maria.souza@empresa.com",
-        cargo: "Engenharia",
+        edv: 92906888,
         status: "Pendente",
         finalizada: false,
         respostas: {}
@@ -23,8 +21,7 @@ export const colaboradores360Mock = [
     {
         id: 3,
         nome: "Carlos Oliveira",
-        email: "carlos@empresa.com",
-        cargo: "Técnico",
+        edv: 92906812,
         status: "Pendente",
         finalizada: false,
         respostas: {}
@@ -33,8 +30,7 @@ export const colaboradores360Mock = [
     {
         id: 4,
         nome: "Ana Lima",
-        email: "ana@empresa.com",
-        cargo: "Qualidade",
+        edv: 92906822,
         status: "Pendente",
         finalizada: false,
         respostas: {}
@@ -43,8 +39,7 @@ export const colaboradores360Mock = [
     {
         id: 5,
         nome: "Lucas Santos",
-        email: "lucas@empresa.com",
-        cargo: "RH",
+        edv: 92906868,
         status: "Pendente",
         finalizada: false,
         respostas: {}
@@ -53,8 +48,7 @@ export const colaboradores360Mock = [
     {
         id: 6,
         nome: "Fernanda Costa",
-        email: "fernanda@empresa.com",
-        cargo: "Produção",
+        edv: 92906826,
         status: "Pendente",
         finalizada: false,
         respostas: {}

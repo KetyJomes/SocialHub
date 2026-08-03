@@ -48,7 +48,9 @@ export const TabelaColaboradores360 = ({ colaboradores }) => {
       <div className="grid grid-cols-12 px-8 py-4 text-sm font-semibold uppercase tracking-wide text-gray-500 bg-gray-50">
         <div className="col-span-5">Colaborador</div>
 
-        <div className="col-span-2">Cargo</div>
+                <div className="col-span-2">
+                    EDV
+                </div>
 
         <div className="col-span-2 text-center">Status</div>
 
