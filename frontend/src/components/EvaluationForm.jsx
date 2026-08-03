@@ -67,9 +67,9 @@ export const EvaluationForm = () => {
             >
               <option value="">Selecione</option>
 
-              <option>Gestor → Aluno</option>
+              <option>Intrutor → Aluno</option>
 
-              <option>Aluno → Gestor</option>
+              <option>Aluno → Intrustor</option>
 
               <option>Autoavaliação</option>
 

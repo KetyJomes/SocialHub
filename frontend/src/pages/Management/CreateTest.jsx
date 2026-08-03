@@ -334,9 +334,9 @@ export const CreateTest = () => {
                 >
                   <option value="">Selecione</option>
 
-                  <option>Gestor → Aluno</option>
+                  <option>Instrutor → Aluno</option>
 
-                  <option>Aluno → Gestor</option>
+                  <option>Aluno → Instrutor</option>
 
                   <option>Autoavaliação</option>
 

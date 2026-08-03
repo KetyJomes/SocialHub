@@ -142,7 +142,7 @@ export const ManagementComparison = () => {
 
               <p className="text-gray-500 mt-2">
                 Compare a autoavaliação do aluno com a avaliação realizada pelo
-                gestor e registre um feedback.
+                Instrutor e registre um feedback.
               </p>
             </div>
 
