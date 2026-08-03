@@ -137,7 +137,7 @@ export const TestControl = () => {
               Modelos
             </button>
 
-            <button
+            {/* <button
               onClick={() => setAbaAtiva("agendamentos")}
               className={`px-2 py-3 text-lg border-b-2 cursor-pointer ${
                 abaAtiva === "agendamentos"
@@ -146,7 +146,7 @@ export const TestControl = () => {
               }`}
             >
               Agendamentos
-            </button>
+            </button> */}
           </section>
 
           {/* ================= AVALIAÇÕES ================= */}

@@ -26,7 +26,7 @@ export const StudentTestsControlTable = ({ avaliacoes, tipoAba }) => {
     // Gestor → Aluno
     // ==================================
 
-    if (avaliacao.tipo === "Gestor → Aluno") {
+    if (avaliacao.tipo === "Instrutor → Aluno") {
       navigate(
         `/management-perform-evaluation/${encodeURIComponent(
           turma

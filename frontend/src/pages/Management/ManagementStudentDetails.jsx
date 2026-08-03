@@ -25,8 +25,8 @@ export const ManagementStudentDetails = () => {
     {
       id: 1,
       nome: "1º Trimestre",
-      descricao: "Avaliação do gestor realizada pelo instrutor",
-      tipo: "Gestor → Aluno",
+      descricao: "Avaliação do Instrutor realizada pelo instrutor",
+      tipo: "Instrutor → Aluno",
       disponibilizada: "01/07/2026",
       infoDisponibilizada: "Disponível",
       prazo: "20/07/2026",
@@ -322,7 +322,7 @@ export const ManagementStudentDetails = () => {
                 >
                   <option value="Todos">Todos os tipos</option>
 
-                  <option value="Gestor → Aluno">Gestor → Aluno</option>
+                  <option value="Instrutor → Aluno">Intrustor → Aluno</option>
 
                   <option value="Aluno → Instrutor">Aluno → Instrutor</option>
 

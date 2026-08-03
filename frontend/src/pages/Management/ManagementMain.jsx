@@ -1,5 +1,3 @@
-// AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
 import { useEffect, useRef, useState } from "react";
 import { Info, ClipboardCheck, RotateCcw } from "lucide-react";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +6,7 @@ import { Header } from "../../components/Header";
 import { CardTurma } from "../../components/CardTurma";
 import { CardAvaliacao } from "../../components/CardAvaliacao";
 import { SidebarManagement } from "../../components/SidebarManagement";
+
 
 export const ManagementMain = () => {
   const navigate = useNavigate();
@@ -39,61 +38,42 @@ export const ManagementMain = () => {
   // Turmas
   const turmas = [
     {
-      nome: "Turma 1EM",
-      alunos: 35,
+      nome: "DTA 3",
+      alunos: 16,
       nota: 98,
     },
 
     {
-      nome: "Turma 9A",
-      alunos: 32,
+      nome: "MAN 8",
+      alunos: 18,
       nota: 96,
     },
 
     {
-      nome: "Turma 9B",
-      alunos: 28,
+      nome: "TDS 6",
+      alunos: 16,
       nota: 90,
     },
 
     {
-      nome: "Turma 5A",
-      alunos: 29,
+      nome: "MEC 12",
+      alunos: 14,
       nota: 86,
     },
 
     {
-      nome: "Turma 4A",
-      alunos: 30,
+      nome: "DTA 2",
+      alunos: 18,
       nota: 80,
-    },
+    }
 
-    {
-      nome: "Turma 3EM",
-      alunos: 33,
-      nota: 70,
-    },
-
-    {
-      nome: "Turma 8A",
-      alunos: 27,
-      nota: 68,
-    },
-
-    {
-      nome: "Turma 2EM",
-      alunos: 30,
-      nota: 59,
-    },
   ];
-
-  // Avaliações Gestor → Aluno pendentes
 
   const alunosPendentes = [
     {
       id: 1,
       nome: "João Silva",
-      turma: "Turma 9A",
+      turma: "DTA 2",
       avaliacao: "1º Trimestre",
       avaliacaoId: 1,
       status: "Pendente",
@@ -101,8 +81,8 @@ export const ManagementMain = () => {
 
     {
       id: 2,
-      nome: "Maria Souza",
-      turma: "Turma 9A",
+      nome: "Maria Luisa",
+      turma: "DTA 3",
       avaliacao: "1º Trimestre",
       avaliacaoId: 1,
       status: "Pendente",
@@ -111,7 +91,7 @@ export const ManagementMain = () => {
     {
       id: 3,
       nome: "Pedro Oliveira",
-      turma: "Turma 1EM",
+      turma: "MAN 8",
       avaliacao: "1º Trimestre",
       avaliacaoId: 1,
       status: "Pendente",
@@ -120,7 +100,7 @@ export const ManagementMain = () => {
     {
       id: 4,
       nome: "Ana Costa",
-      turma: "Turma 2EM",
+      turma: "MEC 12",
       avaliacao: "2º Trimestre",
       avaliacaoId: 2,
       status: "Pendente",
@@ -134,21 +114,15 @@ export const ManagementMain = () => {
       ? alunosPendentes
       : alunosPendentes.filter((aluno) => aluno.turma === turmaFiltroAvaliacao);
 
+
+
   // Feedbacks pendentes
   const feedbackPendentes = [
     {
       id: 1,
       avaliacao: "Avaliação pelos Alunos",
       nome: "João Silva",
-      turma: "Turma 9A",
-      status: "Pendente",
-    },
-
-    {
-      id: 2,
-      avaliacao: "Avaliação pelos Pares",
-      nome: "Maria Souza",
-      turma: "Turma 9A",
+      turma: "DTA 2",
       status: "Pendente",
     },
 
@@ -156,7 +130,7 @@ export const ManagementMain = () => {
       id: 3,
       avaliacao: "Avaliação pela Equipe",
       nome: "Pedro Oliveira",
-      turma: "Turma 1EM",
+      turma: "MAN 8",
       status: "Em atraso",
     },
 
@@ -164,7 +138,7 @@ export const ManagementMain = () => {
       id: 4,
       avaliacao: "Avaliação 360°",
       nome: "Ana Costa",
-      turma: "Turma 2EM",
+      turma: "MEC 12",
       status: "Pendente",
     },
 
@@ -172,7 +146,7 @@ export const ManagementMain = () => {
       id: 5,
       avaliacao: "Feedback de Liderança",
       nome: "Lucas Ferreira",
-      turma: "Turma 5A",
+      turma: "DTA 3",
       status: "Pendente",
     },
 
@@ -180,7 +154,7 @@ export const ManagementMain = () => {
       id: 6,
       avaliacao: "Avaliação Comportamental",
       nome: "Mariana Alves",
-      turma: "Turma 8A",
+      turma: "TDS 6",
       status: "Em atraso",
     },
 
@@ -188,7 +162,7 @@ export const ManagementMain = () => {
       id: 7,
       avaliacao: "Feedback de Desenvolvimento",
       nome: "Carlos Eduardo",
-      turma: "Turma 3EM",
+      turma: "DTA 2",
       status: "Pendente",
     },
 
@@ -196,7 +170,7 @@ export const ManagementMain = () => {
       id: 8,
       avaliacao: "Avaliação de Competências",
       nome: "Beatriz Lima",
-      turma: "Turma 4A",
+      turma: "MEC 12",
       status: "Pendente",
     },
 
@@ -204,7 +178,7 @@ export const ManagementMain = () => {
       id: 9,
       avaliacao: "Feedback de Trabalho em Equipe",
       nome: "Rafael Martins",
-      turma: "Turma 9B",
+      turma: "MAN 8",
       status: "Respondida",
     },
 
@@ -212,9 +186,9 @@ export const ManagementMain = () => {
       id: 10,
       avaliacao: "Avaliação de Comunicação",
       nome: "Juliana Rocha",
-      turma: "Turma 1EM",
+      turma: "DTA 3",
       status: "Pendente",
-    },
+    }
   ];
 
   // Filtro feedbacks pendentes
@@ -223,8 +197,8 @@ export const ManagementMain = () => {
     turmaFiltroFeedback === ""
       ? feedbackPendentes
       : feedbackPendentes.filter(
-          (feedback) => feedback.turma === turmaFiltroFeedback
-        );
+        (feedback) => feedback.turma === turmaFiltroFeedback
+      );
 
   function moverCards(direcao) {
     if (direcao === "direita") {
@@ -436,7 +410,7 @@ export const ManagementMain = () => {
                         tipoCard="avaliacao"
                         nome={`${aluno.avaliacao} - ${aluno.nome}`}
                         turma={aluno.turma}
-                        tipo="Gestor → Aluno"
+
                         status={aluno.status}
                       />
                     </div>
@@ -535,39 +509,41 @@ export const ManagementMain = () => {
                                     pr-2
                                 "
               >
-                {feedbacksPendentesFiltrados.length > 0 ? (
-                  feedbacksPendentesFiltrados.map((feedback) => (
-                    <div
-                      key={feedback.id}
-                      className="
-                                                    cursor-pointer
-                                                    rounded-lg
-                                                    transition
-                                                    hover:bg-[#0291F7]/5
-                                                "
-                    >
-                      <CardAvaliacao
-                        tipoCard="feedback"
-                        nome={`${feedback.avaliacao} - ${feedback.nome}`}
-                        turma={feedback.turma}
-                        status={feedback.status}
-                      />
-                    </div>
-                  ))
-                ) : (
+                {feedbacksPendentesFiltrados.map((feedback) => (
                   <div
+                    key={feedback.id}
+                    onClick={() =>
+                      navigate(`/management-comparison/${feedback.turma}/${feedback.nome}`)
+                    }
                     className="
-                                                flex
-                                                justify-center
-                                                items-center
-                                                h-full
-                                                text-gray-500
-                                                text-sm
-                                            "
+                    cursor-pointer
+                    rounded-lg
+                    transition
+                    hover:bg-[#0291F7]/5
+                  "
                   >
-                    Nenhuma feedback pendente encontrada.
+                    <CardAvaliacao
+                      tipoCard="feedback"
+                      nome={`${feedback.avaliacao} - ${feedback.nome}`}
+                      turma={feedback.turma}
+                      status={feedback.status}
+                    />
                   </div>
-                )}
+                ))}
+                ) : (
+                <div
+                  className="
+                          flex
+                          justify-center
+                          items-center
+                          h-full
+                          text-gray-500
+                          text-sm
+                      "
+                >
+                  Nenhuma feedback pendente encontrada.
+                </div>
+                )
               </div>
             </div>
           </section>

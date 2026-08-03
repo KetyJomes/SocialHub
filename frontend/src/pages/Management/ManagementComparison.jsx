@@ -193,9 +193,13 @@ export const ManagementComparison = () => {
                 Comparativo de Resultados
               </h1>
 
-              <p className="text-gray-500 mt-2 text-[15px]">
-                Acompanhe o desempenho das avaliações e identifique
-                oportunidades de melhoria.
+              <p className="text-lg font-semibold mt-2">{aluno}</p>
+
+              <p className="text-gray-500">{turma}</p>
+
+              <p className="text-gray-500 mt-2">
+                Compare a autoavaliação do aluno com a avaliação realizada pelo
+                Instrutor e registre um feedback.
               </p>
             </div>
 

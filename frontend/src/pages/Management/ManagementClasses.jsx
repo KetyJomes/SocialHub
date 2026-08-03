@@ -10,54 +10,29 @@ export const ManagementClasses = () => {
   const [isOpen, setIsOpen] = useState(false);
   const turmas = [
     {
-      nome: "Turma 1EM",
+      nome: "DTA 3",
       nota: 98,
     },
 
     {
-      nome: "Turma 9A",
+      nome: "MAN 8",
       nota: 96,
     },
 
     {
-      nome: "Turma 2EM",
-      nota: 59,
-    },
-
-    {
-      nome: "Turma 3EM",
-      nota: 70,
-    },
-
-    {
-      nome: "Turma 9B",
+      nome: "TDS 6",
       nota: 90,
     },
 
     {
-      nome: "Turma 8A",
-      nota: 68,
-    },
-
-    {
-      nome: "Turma 7B",
-      nota: 50,
-    },
-
-    {
-      nome: "Turma 6A",
-      nota: 14,
-    },
-
-    {
-      nome: "Turma 5A",
+      nome: "MEC 12",
       nota: 86,
     },
 
     {
-      nome: "Turma 4A",
+      nome: "DTA 2",
       nota: 80,
-    },
+    }
   ];
 
   return (
