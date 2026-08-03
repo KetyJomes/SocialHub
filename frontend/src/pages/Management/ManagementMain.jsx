@@ -114,81 +114,81 @@ export const ManagementMain = () => {
       ? alunosPendentes
       : alunosPendentes.filter((aluno) => aluno.turma === turmaFiltroAvaliacao);
 
-  
+
 
   // Feedbacks pendentes
   const feedbackPendentes = [
-   {
-    id: 1,
-    avaliacao: "Avaliação pelos Alunos",
-    nome: "João Silva",
-    turma: "DTA 2",
-    status: "Pendente",
-  },
+    {
+      id: 1,
+      avaliacao: "Avaliação pelos Alunos",
+      nome: "João Silva",
+      turma: "DTA 2",
+      status: "Pendente",
+    },
 
-  {
-    id: 3,
-    avaliacao: "Avaliação pela Equipe",
-    nome: "Pedro Oliveira",
-    turma: "MAN 8",
-    status: "Em atraso",
-  },
+    {
+      id: 3,
+      avaliacao: "Avaliação pela Equipe",
+      nome: "Pedro Oliveira",
+      turma: "MAN 8",
+      status: "Em atraso",
+    },
 
-  {
-    id: 4,
-    avaliacao: "Avaliação 360°",
-    nome: "Ana Costa",
-    turma: "MEC 12",
-    status: "Pendente",
-  },
+    {
+      id: 4,
+      avaliacao: "Avaliação 360°",
+      nome: "Ana Costa",
+      turma: "MEC 12",
+      status: "Pendente",
+    },
 
-  {
-    id: 5,
-    avaliacao: "Feedback de Liderança",
-    nome: "Lucas Ferreira",
-    turma: "DTA 3",
-    status: "Pendente",
-  },
+    {
+      id: 5,
+      avaliacao: "Feedback de Liderança",
+      nome: "Lucas Ferreira",
+      turma: "DTA 3",
+      status: "Pendente",
+    },
 
-  {
-    id: 6,
-    avaliacao: "Avaliação Comportamental",
-    nome: "Mariana Alves",
-    turma: "TDS 6",
-    status: "Em atraso",
-  },
+    {
+      id: 6,
+      avaliacao: "Avaliação Comportamental",
+      nome: "Mariana Alves",
+      turma: "TDS 6",
+      status: "Em atraso",
+    },
 
-  {
-    id: 7,
-    avaliacao: "Feedback de Desenvolvimento",
-    nome: "Carlos Eduardo",
-    turma: "DTA 2",
-    status: "Pendente",
-  },
+    {
+      id: 7,
+      avaliacao: "Feedback de Desenvolvimento",
+      nome: "Carlos Eduardo",
+      turma: "DTA 2",
+      status: "Pendente",
+    },
 
-  {
-    id: 8,
-    avaliacao: "Avaliação de Competências",
-    nome: "Beatriz Lima",
-    turma: "MEC 12",
-    status: "Pendente",
-  },
+    {
+      id: 8,
+      avaliacao: "Avaliação de Competências",
+      nome: "Beatriz Lima",
+      turma: "MEC 12",
+      status: "Pendente",
+    },
 
-  {
-    id: 9,
-    avaliacao: "Feedback de Trabalho em Equipe",
-    nome: "Rafael Martins",
-    turma: "MAN 8",
-    status: "Respondida",
-  },
+    {
+      id: 9,
+      avaliacao: "Feedback de Trabalho em Equipe",
+      nome: "Rafael Martins",
+      turma: "MAN 8",
+      status: "Respondida",
+    },
 
-  {
-    id: 10,
-    avaliacao: "Avaliação de Comunicação",
-    nome: "Juliana Rocha",
-    turma: "DTA 3",
-    status: "Pendente",
-  }
+    {
+      id: 10,
+      avaliacao: "Avaliação de Comunicação",
+      nome: "Juliana Rocha",
+      turma: "DTA 3",
+      status: "Pendente",
+    }
   ];
 
   // Filtro feedbacks pendentes
@@ -197,8 +197,8 @@ export const ManagementMain = () => {
     turmaFiltroFeedback === ""
       ? feedbackPendentes
       : feedbackPendentes.filter(
-          (feedback) => feedback.turma === turmaFiltroFeedback
-        );
+        (feedback) => feedback.turma === turmaFiltroFeedback
+      );
 
   function moverCards(direcao) {
     if (direcao === "direita") {
@@ -410,7 +410,7 @@ export const ManagementMain = () => {
                         tipoCard="avaliacao"
                         nome={`${aluno.avaliacao} - ${aluno.nome}`}
                         turma={aluno.turma}
-                     
+
                         status={aluno.status}
                       />
                     </div>
@@ -475,7 +475,7 @@ export const ManagementMain = () => {
                 </div>
 
                 {/* Filtro turma */}
-               
+
                 <select
                   value={turmaFiltroFeedback}
                   onChange={(e) => setTurmaFiltroFeedback(e.target.value)}
@@ -510,29 +510,29 @@ export const ManagementMain = () => {
                                 "
               >
                 {feedbacksPendentesFiltrados.map((feedback) => (
-                <div
-                  key={feedback.id}
-                  onClick={() =>
-                    navigate(`/management-comparison/${feedback.turma}/${feedback.nome}`)
-                  }
-                  className="
+                  <div
+                    key={feedback.id}
+                    onClick={() =>
+                      navigate(`/management-comparison/${feedback.turma}/${feedback.nome}`)
+                    }
+                    className="
                     cursor-pointer
                     rounded-lg
                     transition
                     hover:bg-[#0291F7]/5
                   "
-                >
-                  <CardAvaliacao
-                    tipoCard="feedback"
-                    nome={`${feedback.avaliacao} - ${feedback.nome}`}
-                    turma={feedback.turma}
-                    status={feedback.status}
-                  />
-                </div>
+                  >
+                    <CardAvaliacao
+                      tipoCard="feedback"
+                      nome={`${feedback.avaliacao} - ${feedback.nome}`}
+                      turma={feedback.turma}
+                      status={feedback.status}
+                    />
+                  </div>
                 ))}
-              ) : (
-                  <div
-                    className="
+                ) : (
+                <div
+                  className="
                           flex
                           justify-center
                           items-center
@@ -540,9 +540,9 @@ export const ManagementMain = () => {
                           text-gray-500
                           text-sm
                       "
-                  >
-                    Nenhuma feedback pendente encontrada.
-                  </div>
+                >
+                  Nenhuma feedback pendente encontrada.
+                </div>
                 )
               </div>
             </div>
