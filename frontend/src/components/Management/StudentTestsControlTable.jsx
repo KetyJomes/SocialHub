@@ -27,11 +27,9 @@ export const StudentTestsControlTable = ({ avaliacoes, tipoAba }) => {
     // ==================================
 
     if (avaliacao.tipo === "Instrutor → Aluno") {
-      navigate(
-        `/management-perform-evaluation/${encodeURIComponent(
-          turma
-        )}/${encodeURIComponent(aluno)}/${avaliacao.id}`
-      );
+      
+        navigate(`/management-comparison/${feedback.turma}/${feedback.nome}`)
+    
 
       return;
     }
