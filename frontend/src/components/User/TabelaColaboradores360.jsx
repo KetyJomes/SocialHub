@@ -60,7 +60,7 @@ export const TabelaColaboradores360 = ({ colaboradores }) => {
                 </div>
 
                 <div className="col-span-2">
-                    Cargo
+                    EDV
                 </div>
 
                 <div className="col-span-2 text-center">

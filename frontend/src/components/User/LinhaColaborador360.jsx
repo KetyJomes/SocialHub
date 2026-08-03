@@ -85,7 +85,7 @@ export const LinhaColaborador360 = ({ colaborador }) => {
             <div className="col-span-2">
 
                 <p className="text-gray-600">
-                    {colaborador.cargo}
+                    {colaborador.edv}
                 </p>
 
             </div>
