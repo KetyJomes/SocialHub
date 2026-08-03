@@ -24,6 +24,13 @@ export const UserComparacao = () => {
 
   const [selfEvaluation, setSelfEvaluation] = useState([]);
   const [managerEvaluation, setManagerEvaluation] = useState([]);
+  
+  const usuarioLogado = {
+    nome: localStorage.getItem("name"),
+    tipo: localStorage.getItem("role")
+  };
+
+  const isGestor = usuarioLogado.tipo === "Manager";
 
   const location = useLocation();
   const params = new URLSearchParams(location.search);
@@ -192,6 +199,8 @@ export const UserComparacao = () => {
               </p>
             </div>
 
+            {
+              isGestor && (
             <div className="flex items-center gap-4">
 
               {/* EXPORTAR */}
@@ -275,6 +284,7 @@ export const UserComparacao = () => {
                 )}
               </button>
             </div>
+          )}
           </div>
 
           {/* CONTEÚDO */}

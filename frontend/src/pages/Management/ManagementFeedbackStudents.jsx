@@ -143,13 +143,13 @@ export const ManagementFeedbackStudents = () => {
                       key={aluno.id}
                       onClick={() => abrirFeedback(aluno)}
                       className="
-                                                    border-b
-                                                    border-gray-200
-                                                    hover:bg-[#0291F7]/5
-                                                    hover:shadow-sm
-                                                    cursor-pointer
-                                                    transition-all
-                                                "
+                                  border-b
+                                  border-gray-200
+                                  hover:bg-[#0291F7]/5
+                                  hover:shadow-sm
+                                  cursor-pointer
+                                  transition-all
+                              "
                     >
                       <td className="px-6 py-5">
                         <div>
@@ -168,22 +168,22 @@ export const ManagementFeedbackStudents = () => {
                       <td className="text-center">
                         <span
                           className={`
-                                                            px-3
-                                                            py-1
-                                                            rounded-full
-                                                            text-sm
-                                                            font-medium
+                                      px-3
+                                      py-1
+                                      rounded-full
+                                      text-sm
+                                      font-medium
 
-                                                            ${
-                                                              aluno.status ===
-                                                              "Respondido"
-                                                                ? "bg-green-100 text-green-700"
-                                                                : aluno.status ===
-                                                                  "Em atraso"
-                                                                ? "bg-red-100 text-red-700"
-                                                                : "bg-yellow-100 text-yellow-700"
-                                                            }
-                                                        `}
+                                      ${
+                                        aluno.status ===
+                                        "Respondido"
+                                          ? "bg-green-100 text-green-700"
+                                          : aluno.status ===
+                                            "Em atraso"
+                                          ? "bg-red-100 text-red-700"
+                                          : "bg-yellow-100 text-yellow-700"
+                                      }
+                                  `}
                         >
                           {aluno.status}
                         </span>
@@ -195,10 +195,10 @@ export const ManagementFeedbackStudents = () => {
                     <td
                       colSpan="4"
                       className="
-                                                    text-center
-                                                    py-12
-                                                    text-gray-500
-                                                "
+                                text-center
+                                py-12
+                                text-gray-500
+                            "
                     >
                       Nenhum feedback encontrado.
                     </td>

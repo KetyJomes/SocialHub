@@ -54,21 +54,6 @@ export const FeedbackModal = ({ isOpen, fechar, feedback, setFeedback }) => {
           </button>
         </div>
 
-        {/* INFORMAÇÕES */}
-
-        <div
-          className="
-                        bg-[#F7F8FC]
-                        rounded-2xl
-                        p-5
-                        mb-6
-                    "
-        >
-          <p className="text-sm text-gray-500">Avaliado</p>
-
-          <h3 className="font-bold text-lg">Colaborador selecionado</h3>
-        </div>
-
         {/* CAMPO */}
 
         <textarea

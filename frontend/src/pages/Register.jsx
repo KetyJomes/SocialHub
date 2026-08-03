@@ -100,7 +100,7 @@ export const Register = () => {
             />
           </div>
 
-          <div className="mb-8">
+          <div className="mb-8 hidden">
             <label className="block mb-2 text-lg">Confirmar senha:</label>
 
             <input
