@@ -7,68 +7,48 @@ import { ManagementEvaluationTable } from "../../components/ManagementEvaluation
 import { evaluation } from "../../data/evaluation";
 
 export const ManagementAnswerEvaluation = () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const { turma, aluno } = useParams();
-    const answers = {};
-    const respondidas = Object.keys(answers).length;
-    const totalQuestoes = evaluation.length;
+  const [isOpen, setIsOpen] = useState(false);
+  const { turma, aluno } = useParams();
+  const answers = {};
+  const respondidas = Object.keys(answers).length;
+  const totalQuestoes = evaluation.length;
 
-    return (
-        <>
-            <SidebarManagement
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
+  return (
+    <>
+      <SidebarManagement isOpen={isOpen} setIsOpen={setIsOpen} />
 
-            <Header
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
+      <Header isOpen={isOpen} setIsOpen={setIsOpen} />
 
-            <main className="mt-[8vh] p-8 overflow-y-auto">
-                <div className="w-[80vw] mx-auto">
-                    <h1 className="text-3xl font-bold">
-                        Avaliação de Desempenho
-                    </h1>
+      <main className="mt-[8vh] p-8 overflow-y-auto">
+        <div className="w-[80vw] mx-auto">
+          <h1 className="text-3xl font-bold">Avaliação de Desempenho</h1>
 
-                    <div className="mt-5 mb-8">
-                        <div className=" rounded-2xl border border-blue-200 bg-blue-50 px-6 py-5 " >
+          <div className="mt-5 mb-8">
+            <div className=" rounded-2xl border border-blue-200 bg-blue-50 px-6 py-5 ">
+              <p className="text-sm text-gray-500">Avaliação para</p>
 
-                            <p className="text-sm text-gray-500">
-                                Avaliação para
-                            </p>
+              <h2 className="text-2xl font-semibold text-[#0291F7]">{aluno}</h2>
 
-                            <h2 className="text-2xl font-semibold text-[#0291F7]">
-                                {aluno}
-                            </h2>
+              <p className="text-gray-500 mt-1">{turma}</p>
+            </div>
+          </div>
 
-                            <p className="text-gray-500 mt-1">
-                                {turma}
-                            </p>
+          <div className="flex justify-between items-center mb-8">
+            <p className="text-gray-500">Responda a avaliação abaixo.</p>
 
-                        </div>
-                    </div>
+            <span className=" bg-[#0291F7]/15 text-[#0291F7] px-4 py-2 rounded-full font-semibold ">
+              {respondidas}/{totalQuestoes} respondidas
+            </span>
+          </div>
 
-                    <div className="flex justify-between items-center mb-8">
-
-                        <p className="text-gray-500">
-                            Responda a avaliação abaixo.
-                        </p>
-
-                        <span className=" bg-[#0291F7]/15 text-[#0291F7] px-4 py-2 rounded-full font-semibold " >
-                            {respondidas}/{totalQuestoes} respondidas
-                        </span>
-                    </div>
-
-                    <ManagementEvaluationTable
-                        data={evaluation}
-                        answers={answers}
-                        onSelect={() => {}}
-                        readonly={false}
-                    />
-
-                </div>
-            </main>
-        </>
-    );
+          <ManagementEvaluationTable
+            data={evaluation}
+            answers={answers}
+            onSelect={() => {}}
+            readonly={false}
+          />
+        </div>
+      </main>
+    </>
+  );
 };

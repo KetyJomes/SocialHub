@@ -1,88 +1,74 @@
 import { ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-
 export const LinhaAvaliacaoDash = ({ avaliacao }) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  console.log(avaliacao);
+  console.log("conclusao", avaliacao.dataConclusao);
 
-    console.log(avaliacao);
-    console.log("conclusao",avaliacao.dataConclusao);
+  function visualizarComparacao() {
+    navigate(`/comparacao?id=${avaliacao.id}`);
+  }
 
-    function visualizarComparacao() {
-        navigate(`/comparacao?id=${avaliacao.id}`);
-    }
-
-    return (
-        <tr
-            className="
+  return (
+    <tr
+      className="
                 border-b
                 border-gray-200
                 hover:bg-gray-50
                 transition
             "
-        >
-
-            {/* AVALIAÇÃO */}
-            <td className="px-6 py-5">
-
-                <div className="flex flex-col gap-1">
-
-                    <h3
-                        className="
+    >
+      {/* AVALIAÇÃO */}
+      <td className="px-6 py-5">
+        <div className="flex flex-col gap-1">
+          <h3
+            className="
                             font-semibold
                             text-[15px]
                             text-gray-800
                         "
-                    >
-                        {avaliacao.nome}
-                    </h3>
+          >
+            {avaliacao.nome}
+          </h3>
 
-                    <p
-                        className="
+          <p
+            className="
                             text-sm
                             text-gray-500
                         "
-                    >
-                        {avaliacao.descricao}
-                    </p>
+          >
+            {avaliacao.descricao}
+          </p>
+        </div>
+      </td>
 
-                </div>
-
-            </td>
-
-            {/* TIPO */}
-            <td className="text-center py-5 px-4">
-
-                <span
-                    className="
+      {/* TIPO */}
+      <td className="text-center py-5 px-4">
+        <span
+          className="
                         text-sm
                         text-gray-700
                     "
-                >
-                    {avaliacao.tipo}
-                </span>
+        >
+          {avaliacao.tipo}
+        </span>
+      </td>
 
-            </td>
+      {/* DATA */}
+      <td className="text-center py-5 px-4">
+        <span className="text-sm text-gray-700">
+          {avaliacao.dataConclusao
+            ? new Date(avaliacao.dataConclusao).toLocaleDateString("pt-BR")
+            : "-"}
+        </span>
+      </td>
 
-            {/* DATA */}
-            <td className="text-center py-5 px-4">
-
-                <span className="text-sm text-gray-700">
-                    {
-                        avaliacao.dataConclusao
-                            ? new Date(avaliacao.dataConclusao).toLocaleDateString("pt-BR")
-                            : "-"
-                    }
-                </span>
-                
-            </td>
-
-            {/* STATUS */}
-            <td className="text-center py-5 px-4">
-
-                <span
-                    className={`
+      {/* STATUS */}
+      <td className="text-center py-5 px-4">
+        <span
+          className={`
                         inline-flex
                         justify-center
                         items-center
@@ -94,36 +80,25 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
                         font-semibold
 
                         ${
-                            avaliacao.status === "Concluída" ||
-                            avaliacao.status === "Respondida"
-                            ?
-                            "bg-green-100 text-green-700"
-                            :
-                            avaliacao.status === "Pendente"
-                            ?
-                            "bg-yellow-100 text-yellow-700"
-                            :
-                            avaliacao.status === "Em atraso"
-                            ?
-                            "bg-red-100 text-red-700"
-                            :
-                            "bg-gray-100 text-gray-700"
-
+                          avaliacao.status === "Concluída" ||
+                          avaliacao.status === "Respondida"
+                            ? "bg-green-100 text-green-700"
+                            : avaliacao.status === "Pendente"
+                            ? "bg-yellow-100 text-yellow-700"
+                            : avaliacao.status === "Em atraso"
+                            ? "bg-red-100 text-red-700"
+                            : "bg-gray-100 text-gray-700"
                         }
                     `}
-                >
+        >
+          {avaliacao.status}
+        </span>
+      </td>
 
-                    {avaliacao.status}
-
-                </span>
-
-            </td>
-
-            {/* DESEMPENHO */}
-            <td className="text-center py-5 px-4">
-
-                <span
-                    className="
+      {/* DESEMPENHO */}
+      <td className="text-center py-5 px-4">
+        <span
+          className="
                         inline-flex
                         items-center
                         justify-center
@@ -135,22 +110,16 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
                         text-sm
                         font-bold
                     "
-                >
-                    {
-                        avaliacao.media !== undefined
-                            ? `${avaliacao.media}%`
-                            : "-"
-                    }
-                </span>
+        >
+          {avaliacao.media !== undefined ? `${avaliacao.media}%` : "-"}
+        </span>
+      </td>
 
-            </td>
-
-            {/* AÇÃO */}
-            <td className="text-center py-5 px-4">
-
-                <button
-                    onClick={visualizarComparacao}
-                    className="
+      {/* AÇÃO */}
+      <td className="text-center py-5 px-4">
+        <button
+          onClick={visualizarComparacao}
+          className="
                         w-9
                         h-9
                         flex
@@ -160,16 +129,14 @@ export const LinhaAvaliacaoDash = ({ avaliacao }) => {
                         hover:bg-[#D6EBFF]
                         transition
                     "
-                >
-                    <ChevronRight
-                        size={18}
-                        className="text-[#0291F7]"
-                        strokeWidth={2.5}
-                    />
-                </button>
-
-            </td>
-
-        </tr>
-    );
+        >
+          <ChevronRight
+            size={18}
+            className="text-[#0291F7]"
+            strokeWidth={2.5}
+          />
+        </button>
+      </td>
+    </tr>
+  );
 };

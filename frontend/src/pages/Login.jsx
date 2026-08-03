@@ -7,21 +7,19 @@ import api from "../services/apiService";
 export const Login = () => {
   const navigateLogin = useNavigate();
 
-  const [EDV, setEDV] = useState("")
-  const [password, setPassword] = useState("")
-
+  const [EDV, setEDV] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
+    try {
+      console.log(EDV, password);
+      const response = await api.post("/auth/login", { EDV, password });
 
-      try {
-        console.log(EDV,password)
-      const response = await api.post('/auth/login',{ EDV, password});
-      
-      console.log(response)
+      console.log(response);
 
       const { token, user } = response.data;
 
-        console.log(token,user)
+      console.log(token, user);
 
       localStorage.setItem("token", token);
 
@@ -39,12 +37,11 @@ export const Login = () => {
       } else {
         navigateLogin("/");
       }
-
     } catch (error) {
       console.log(error);
       alert("EDV ou Senha invalidos");
     }
-  }
+  };
 
   return (
     <div
@@ -53,24 +50,15 @@ export const Login = () => {
         backgroundImage: `url(${background})`,
       }}
     >
-
       <div className="bg-white w-[90%] max-w-6xl h-[650px] rounded-lg shadow-lg flex">
-        
         <div className="w-1/2 flex items-center justify-center">
-
-          <h1 className="text-6xl font-bold text-black">
-            SocialHub
-          </h1>
-
+          <h1 className="text-6xl font-bold text-black">SocialHub</h1>
         </div>
 
         <div className="w-px bg-gray-300 my-16"></div>
 
         <div className="w-1/2 flex flex-col justify-center px-16">
-
-          <h2 className="text-5xl font-bold text-center mb-10">
-            Bem-Vindo!
-          </h2>
+          <h2 className="text-5xl font-bold text-center mb-10">Bem-Vindo!</h2>
 
           <div className="mb-8">
             <label className="block mb-2 text-lg">EDV:</label>
@@ -85,19 +73,16 @@ export const Login = () => {
 
           <div className="mb-8">
             <label className="block mb-2 text-lg">Senha:</label>
-              <input
-                type="password"
-                placeholder="Digite sua senha"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                className="w-full border-b border-gray-400 outline-none py-2 placeholder:text-gray-300"
-              />
+            <input
+              type="password"
+              placeholder="Digite sua senha"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full border-b border-gray-400 outline-none py-2 placeholder:text-gray-300"
+            />
           </div>
 
-          <Link
-            to="/register"
-            className="block text-center underline mb-10"
-          >
+          <Link to="/register" className="block text-center underline mb-10">
             Se Cadastrar
           </Link>
 
@@ -107,11 +92,8 @@ export const Login = () => {
           >
             Entrar
           </button>
-
         </div>
-
       </div>
-
     </div>
   );
-}
+};

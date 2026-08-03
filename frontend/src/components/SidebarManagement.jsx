@@ -1,20 +1,19 @@
 import {
-    House,
-    ClipboardCheck,
-    GraduationCap,
-    MessageSquareQuote,
-    LogOut
+  House,
+  ClipboardCheck,
+  GraduationCap,
+  MessageSquareQuote,
+  LogOut,
 } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 
 export const SidebarManagement = ({ isOpen }) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    return (
-        <aside
-            className={`
+  return (
+    <aside
+      className={`
                 fixed
                 top-[72px]
                 left-0
@@ -31,20 +30,36 @@ export const SidebarManagement = ({ isOpen }) => {
                 flex-col
                 ${isOpen ? "translate-x-0" : "-translate-x-full"}
             `}
+    >
+      <nav className="mt-6 px-4 flex-1">
+        {isOpen && (
+          <h2 className="text-xl font-bold text-gray-800 text-center mb-2">
+            Menu
+          </h2>
+        )}
+
+        {/* HOME */}
+        <button
+          onClick={() => navigate("/management-main")}
+          className="
+                        flex
+                        items-center
+                        gap-3
+                        w-full
+                        p-3
+                        rounded-lg
+                        hover:bg-gray-100
+                    "
         >
+          <House size={20} />
 
-            <nav className="mt-6 px-4 flex-1">
+          {isOpen && <span>Home</span>}
+        </button>
 
-                {isOpen && (
-                    <h2 className="text-xl font-bold text-gray-800 text-center mb-2">
-                        Menu
-                    </h2>
-                )}
-
-                {/* HOME */}
-                <button
-                    onClick={() => navigate("/management-main")}
-                    className="
+        {/* GERENCIAR AVALIAÇÕES */}
+        <button
+          onClick={() => navigate("/management-test")}
+          className="
                         flex
                         items-center
                         gap-3
@@ -53,16 +68,16 @@ export const SidebarManagement = ({ isOpen }) => {
                         rounded-lg
                         hover:bg-gray-100
                     "
-                >
-                    <House size={20} />
+        >
+          <ClipboardCheck size={20} />
 
-                    {isOpen && <span>Home</span>}
-                </button>
+          {isOpen && <span>Gerenciar Avaliações</span>}
+        </button>
 
-                {/* GERENCIAR AVALIAÇÕES */}
-                <button
-                    onClick={() => navigate("/management-test")}
-                    className="
+        {/* TURMAS */}
+        <button
+          onClick={() => navigate("/management-classes")}
+          className="
                         flex
                         items-center
                         gap-3
@@ -71,39 +86,17 @@ export const SidebarManagement = ({ isOpen }) => {
                         rounded-lg
                         hover:bg-gray-100
                     "
-                >
-                    <ClipboardCheck size={20} />
+        >
+          <GraduationCap size={20} />
 
-                    {isOpen && (
-                        <span>
-                            Gerenciar Avaliações
-                        </span>
-                    )}
-                </button>
+          {isOpen && <span>Turmas</span>}
+        </button>
 
-                {/* TURMAS */}
-                <button
-                    onClick={() => navigate("/management-classes")}
-                    className="
-                        flex
-                        items-center
-                        gap-3
-                        w-full
-                        p-3
-                        rounded-lg
-                        hover:bg-gray-100
-                    "
-                >
-                    <GraduationCap size={20} />
+        {/* FEEDBACKS */}
 
-                    {isOpen && <span>Turmas</span>}
-                </button>
-
-               {/* FEEDBACKS */}
-
-                <button
-                    onClick={() => navigate("/management-feedbacks")}
-                    className="
+        <button
+          onClick={() => navigate("/management-feedbacks")}
+          className="
                         flex
                         items-center
                         gap-3
@@ -113,20 +106,18 @@ export const SidebarManagement = ({ isOpen }) => {
                         hover:bg-gray-100
                         transition
                     "
-                >
-                    <MessageSquareQuote size={20} />
+        >
+          <MessageSquareQuote size={20} />
 
-                    {isOpen && <span>Feedback</span>}
-                </button>
+          {isOpen && <span>Feedback</span>}
+        </button>
+      </nav>
 
-            </nav>
-
-            {/* SAIR */}
-            <div className="px-4 pb-6">
-
-                <button
-                    onClick={() => navigate("/")}
-                    className="
+      {/* SAIR */}
+      <div className="px-4 pb-6">
+        <button
+          onClick={() => navigate("/")}
+          className="
                         flex
                         items-center
                         justify-center
@@ -138,18 +129,12 @@ export const SidebarManagement = ({ isOpen }) => {
                         hover:bg-gray-100
                         transition
                     "
-                >
-                    <LogOut size={20} />
+        >
+          <LogOut size={20} />
 
-                    {isOpen && (
-                        <span>
-                            Sair
-                        </span>
-                    )}
-                </button>
-
-            </div>
-
-        </aside>
-    );
+          {isOpen && <span>Sair</span>}
+        </button>
+      </div>
+    </aside>
+  );
 };
