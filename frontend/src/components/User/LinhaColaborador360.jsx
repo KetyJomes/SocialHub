@@ -17,6 +17,7 @@ export const LinhaColaborador360 = ({ colaborador }) => {
             `/realizar-avaliacao?tipo=360&idColaborador=${colaborador.id}&id=1&avaliado=${encodeURIComponent(colaborador.nome)}`
         );
     };
+    console.log(colaborador);
 
     return (
 

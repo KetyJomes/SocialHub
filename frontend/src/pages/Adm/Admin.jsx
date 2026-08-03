@@ -12,11 +12,11 @@ export const Admin = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const dados = {
-    turmas: 12,
+    turmas: 5,
 
-    alunos: 356,
+    alunos: 90,
 
-    usuarios: 87,
+    usuarios: 103,
   };
 
   return (
