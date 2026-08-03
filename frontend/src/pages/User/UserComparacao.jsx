@@ -11,16 +11,9 @@ import { FeedbackModal } from "../../components/FeedbackModal";
 import { exportarAvaliacaoPDF } from "../../export/exportarAvaliacaoPDF.js";
 
 import {
-  Award,
-  Target,
-  Users,
-  TrendingUp,
-  MessageCircle,
-  Lightbulb,
   Pencil,
   Save,
-  Download,
-  Info,
+  Download
 } from "lucide-react";
 
 export const UserComparacao = () => {
@@ -93,21 +86,21 @@ export const UserComparacao = () => {
               <button
                 onClick={handleExportar}
                 className="
-                                    flex
-                                    items-center
-                                    gap-3
-                                    px-5
-                                    py-3
-                                    rounded-xl
-                                    bg-white
-                                    border
-                                    border-[#0291F7]
-                                    text-[#0291F7]
-                                    font-semibold
-                                    hover:bg-blue-50
-                                    transition
-                                    shadow-sm
-                                "
+                            flex
+                            items-center
+                            gap-3
+                            px-5
+                            py-3
+                            rounded-xl
+                            bg-white
+                            border
+                            border-[#0291F7]
+                            text-[#0291F7]
+                            font-semibold
+                            hover:bg-blue-50
+                            transition
+                            shadow-sm
+                        "
               >
                 <Download size={18} />
                 Exportar relatório
@@ -118,21 +111,21 @@ export const UserComparacao = () => {
               <button
                 onClick={() => setAbrirFeedback(true)}
                 className="
-                                    flex
-                                    items-center
-                                    gap-3
-                                    px-5
-                                    py-3
-                                    rounded-xl
-                                    bg-white
-                                    border
-                                    border-[#0291F7]
-                                    text-[#0291F7]
-                                    font-semibold
-                                    hover:bg-blue-50
-                                    transition
-                                    shadow-sm
-                                "
+                            flex
+                            items-center
+                            gap-3
+                            px-5
+                            py-3
+                            rounded-xl
+                            bg-white
+                            border
+                            border-[#0291F7]
+                            text-[#0291F7]
+                            font-semibold
+                            hover:bg-blue-50
+                            transition
+                            shadow-sm
+                        "
               >
                 Feedback do Gestor
               </button>
@@ -142,19 +135,19 @@ export const UserComparacao = () => {
               <button
                 onClick={() => setEditando(!editando)}
                 className="
-                                    flex
-                                    items-center
-                                    gap-3
-                                    px-5
-                                    py-3
-                                    rounded-xl
-                                    bg-[#0291F7]
-                                    text-white
-                                    font-semibold
-                                    hover:bg-blue-700
-                                    transition
-                                    shadow-sm
-                                "
+                            flex
+                            items-center
+                            gap-3
+                            px-5
+                            py-3
+                            rounded-xl
+                            bg-[#0291F7]
+                            text-white
+                            font-semibold
+                            hover:bg-blue-700
+                            transition
+                            shadow-sm
+                        "
               >
                 {editando ? (
                   <>
@@ -181,16 +174,16 @@ export const UserComparacao = () => {
             {/* AVALIAÇÕES */}
             <div
               className="
-                                flex
-                                flex-1
-                                gap-6
-                                max-h-[70vh]
-                                overflow-y-auto
-                                pr-2
-                                scrollbar-thin
-                                scrollbar-thumb-gray-300
-                                scrollbar-track-transparent
-                            "
+                        flex
+                        flex-1
+                        gap-6
+                        max-h-[70vh]
+                        overflow-y-auto
+                        pr-2
+                        scrollbar-thin
+                        scrollbar-thumb-gray-300
+                        scrollbar-track-transparent
+                    "
             >
               <div className="flex-1">
                 <EvaluationCard
