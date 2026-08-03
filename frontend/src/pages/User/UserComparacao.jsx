@@ -11,90 +11,68 @@ import { FeedbackModal } from "../../components/FeedbackModal";
 import { exportarAvaliacaoPDF } from "../../export/exportarAvaliacaoPDF.js";
 
 import {
-    Award,
-    Target,
-    Users,
-    TrendingUp,
-    MessageCircle,
-    Lightbulb,
-    Pencil,
-    Save,
-    Download,
-    Info
+  Award,
+  Target,
+  Users,
+  TrendingUp,
+  MessageCircle,
+  Lightbulb,
+  Pencil,
+  Save,
+  Download,
+  Info,
 } from "lucide-react";
 
 export const UserComparacao = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [editando, setEditando] = useState(false);
+  const [feedback, setFeedback] = useState("");
+  const [abrirFeedback, setAbrirFeedback] = useState(false);
 
-    const [isOpen, setIsOpen] = useState(false);
-    const [editando, setEditando] = useState(false);
-    const [feedback, setFeedback] = useState("");
-    const [abrirFeedback, setAbrirFeedback] = useState(false);
+  const [selfEvaluation, setSelfEvaluation] = useState([]);
+  const [managerEvaluation, setManagerEvaluation] = useState([]);
 
-    const [selfEvaluation, setSelfEvaluation] = useState([]);
-    const [managerEvaluation, setManagerEvaluation] = useState([]);
+  const location = useLocation();
+  const params = new URLSearchParams(location.search);
+  const idAvaliacao = params.get("id");
 
-    const location = useLocation();
-    const params = new URLSearchParams(location.search);
-    const idAvaliacao = params.get("id");
+  useEffect(() => {
+    const avaliacoes =
+      JSON.parse(localStorage.getItem("avaliacoesRespondidas")) || {};
 
-    useEffect(() => {
+    const avaliacao = avaliacoes[idAvaliacao];
 
-        const avaliacoes =
-            JSON.parse(
-                localStorage.getItem("avaliacoesRespondidas")
-            ) || {};
+    if (!avaliacao) return;
+  }, [idAvaliacao]);
 
-        const avaliacao = avaliacoes[idAvaliacao];
+  const handleExportar = () => {
+    exportarAvaliacaoPDF(selfEvaluation, managerEvaluation);
+  };
 
-        if (!avaliacao) return;
+  return (
+    <div className="min-h-screen bg-white">
+      <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />
 
-    }, [idAvaliacao]);
+      <Header isOpen={isOpen} setIsOpen={setIsOpen} />
 
-    const handleExportar = () => {
+      <main className="p-8 mt-16">
+        <div className="max-w-[1700px] mx-auto">
+          {/* CABEÇALHO */}
+          <div className="flex items-start justify-between mb-8">
+            <div>
+              <h1 className="text-4xl font-bold text-gray-900">
+                Comparativo de Resultados
+              </h1>
 
-        exportarAvaliacaoPDF(
-            selfEvaluation,
-            managerEvaluation
-        );
-    };
-    
-        return (
-        <div className="min-h-screen bg-white">
+              <p className="text-gray-500 mt-2 text-[15px]">
+                Acompanhe o desempenho das avaliações e identifique
+                oportunidades de melhoria.
+              </p>
+            </div>
 
-            <Sidebar
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
-
-            <Header
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
-
-            <main className="p-8 mt-16">
-
-                <div className="max-w-[1700px] mx-auto">
-
-                    {/* CABEÇALHO */}
-                    <div className="flex items-start justify-between mb-8">
-
-                        <div>
-
-                            <h1 className="text-4xl font-bold text-gray-900">
-                                Comparativo de Resultados
-                            </h1>
-
-                            <p className="text-gray-500 mt-2 text-[15px]">
-                                Acompanhe o desempenho das avaliações e identifique oportunidades de melhoria.
-                            </p>
-
-                        </div>
-
-                        <div className="flex items-center gap-4">
-
-                            <button
-
-                                className="
+            <div className="flex items-center gap-4">
+              <button
+                className="
                                     w-9
                                     h-9
                                     rounded-full
@@ -106,20 +84,15 @@ export const UserComparacao = () => {
                                     hover:bg-gray-100
                                     transition
                                 "
-                            >
+              >
+                <Info size={18} className="text-gray-500" />
+              </button>
 
-                                <Info
-                                    size={18}
-                                    className="text-gray-500"
-                                />
+              {/* EXPORTAR */}
 
-                            </button>
-
-                            {/* EXPORTAR */}
-
-                            <button
-                                onClick={handleExportar}
-                                className="
+              <button
+                onClick={handleExportar}
+                className="
                                     flex
                                     items-center
                                     gap-3
@@ -135,17 +108,16 @@ export const UserComparacao = () => {
                                     transition
                                     shadow-sm
                                 "
-                            >
-                                <Download size={18}/>
-                                Exportar relatório
-                            </button>
+              >
+                <Download size={18} />
+                Exportar relatório
+              </button>
 
-                            {/* FEEDBACK */}
+              {/* FEEDBACK */}
 
-                            <button
-
-                                onClick={() => setAbrirFeedback(true)}
-                                className="
+              <button
+                onClick={() => setAbrirFeedback(true)}
+                className="
                                     flex
                                     items-center
                                     gap-3
@@ -161,17 +133,15 @@ export const UserComparacao = () => {
                                     transition
                                     shadow-sm
                                 "
-                            >
-                                Feedback do Gestor
-                                
-                            </button>
+              >
+                Feedback do Gestor
+              </button>
 
-                            {/* EDITAR */}
+              {/* EDITAR */}
 
-                            <button
-
-                                onClick={() => setEditando(!editando)}
-                                className="
+              <button
+                onClick={() => setEditando(!editando)}
+                className="
                                     flex
                                     items-center
                                     gap-3
@@ -185,41 +155,32 @@ export const UserComparacao = () => {
                                     transition
                                     shadow-sm
                                 "
-                            >
-                                {
-                                    editando
-                                    ?
-                                    <>
-                                        <Save size={18}/>
-                                        Salvar
-                                    </>
-                                    :
-                                    <>
-                                        <Pencil size={18}/>
-                                        Editar
-                                    </>
-                                }
+              >
+                {editando ? (
+                  <>
+                    <Save size={18} />
+                    Salvar
+                  </>
+                ) : (
+                  <>
+                    <Pencil size={18} />
+                    Editar
+                  </>
+                )}
+              </button>
+            </div>
+          </div>
 
-                            </button>
+          {/* CONTEÚDO */}
+          <div className="flex gap-6 mt-8 items-start">
+            {/* RESUMO */}
+            <div className="w-[22%] min-w-[280px]">
+              <SummaryCards />
+            </div>
 
-                        </div>
-
-                    </div>
-
-                    {/* CONTEÚDO */}
-                    <div className="flex gap-6 mt-8 items-start">
-
-                        {/* RESUMO */}
-                        <div className="w-[22%] min-w-[280px]">
-
-                            <SummaryCards />
-
-                        </div>
-
-                        {/* AVALIAÇÕES */}
-                        <div
-
-                            className="
+            {/* AVALIAÇÕES */}
+            <div
+              className="
                                 flex
                                 flex-1
                                 gap-6
@@ -230,45 +191,35 @@ export const UserComparacao = () => {
                                 scrollbar-thumb-gray-300
                                 scrollbar-track-transparent
                             "
+            >
+              <div className="flex-1">
+                <EvaluationCard
+                  title="Autoavaliação"
+                  color="blue"
+                  data={selfEvaluation}
+                  editando={editando}
+                />
+              </div>
 
-                        >
+              <div className="flex-1">
+                <EvaluationCard
+                  title="Avaliação Gestão"
+                  color="purple"
+                  data={managerEvaluation}
+                  editando={editando}
+                />
+              </div>
+            </div>
+          </div>
 
-                            <div className="flex-1">
-
-                                <EvaluationCard
-                                    title="Autoavaliação"
-                                    color="blue"
-                                    data={selfEvaluation}
-                                    editando={editando}
-                                />
-
-                            </div>
-
-                            <div className="flex-1">
-
-                                <EvaluationCard
-                                    title="Avaliação Gestão"
-                                    color="purple"
-                                    data={managerEvaluation}
-                                    editando={editando}
-                                />
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                        <FeedbackModal
-                        isOpen={abrirFeedback}
-                        fechar={() => setAbrirFeedback(false)}
-                        feedback={feedback}
-                        setFeedback={setFeedback}
-
-                    />
-
-                </div>
-            </main>
+          <FeedbackModal
+            isOpen={abrirFeedback}
+            fechar={() => setAbrirFeedback(false)}
+            feedback={feedback}
+            setFeedback={setFeedback}
+          />
         </div>
-    );
+      </main>
+    </div>
+  );
 };

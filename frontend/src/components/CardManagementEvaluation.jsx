@@ -1,44 +1,35 @@
 import { useNavigate, useParams } from "react-router-dom";
-import {
-    Calendar,
-    Clock3,
-    Eye,
-    FileText
-} from "lucide-react";
+import { Calendar, Clock3, Eye, FileText } from "lucide-react";
 
 export const CardManagementEvaluation = ({ avaliacao }) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const { turma, aluno } = useParams();
 
-    const { turma, aluno } = useParams();
+  function abrirAvaliacao() {
+    if (avaliacao.acao === "Avaliar") {
+      navigate(
+        `/management-perform-evaluation/${encodeURIComponent(
+          turma
+        )}/${encodeURIComponent(aluno)}/${avaliacao.id}`
+      );
 
-    function abrirAvaliacao() {
-
-        if (avaliacao.acao === "Avaliar") {
-
-            navigate(
-                `/management-perform-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
-            );
-
-            return;
-        }
-
-        navigate(
-            `/management-view-evaluation/${encodeURIComponent(turma)}/${encodeURIComponent(aluno)}/${avaliacao.id}`
-        );
-
+      return;
     }
 
-    return (
+    navigate(
+      `/management-view-evaluation/${encodeURIComponent(
+        turma
+      )}/${encodeURIComponent(aluno)}/${avaliacao.id}`
+    );
+  }
 
-        <tr className="border-b hover:bg-gray-50 transition">
-
-            <td className="px-6 py-5">
-
-                <div className="flex items-center gap-3">
-
-                    <div
-                        className={`
+  return (
+    <tr className="border-b hover:bg-gray-50 transition">
+      <td className="px-6 py-5">
+        <div className="flex items-center gap-3">
+          <div
+            className={`
                             w-10
                             h-10
                             rounded-full
@@ -47,92 +38,55 @@ export const CardManagementEvaluation = ({ avaliacao }) => {
                             justify-center
                             ${avaliacao.bgIcon || "bg-[#F1EDFF]"}
                         `}
-                    >
+          >
+            <img src={avaliacao.icon} alt="" className="w-5 h-5" />
+          </div>
 
-                        <img
-                            src={avaliacao.icon}
-                            alt=""
-                            className="w-5 h-5"
-                        />
+          <div>
+            <h3 className="font-semibold">{avaliacao.nome}</h3>
 
-                    </div>
+            <p className="text-sm text-gray-500">{avaliacao.descricao}</p>
+          </div>
+        </div>
+      </td>
 
-                    <div>
+      <td className="text-center">
+        <div className="flex items-center justify-center gap-2">
+          <FileText size={16} />
 
-                        <h3 className="font-semibold">
-                            {avaliacao.nome}
-                        </h3>
+          {avaliacao.tipo}
+        </div>
+      </td>
 
-                        <p className="text-sm text-gray-500">
-                            {avaliacao.descricao}
-                        </p>
+      <td className="text-center">
+        <div className="flex flex-col items-center">
+          <div className="flex items-center gap-2">
+            <Calendar size={16} />
 
-                    </div>
+            {avaliacao.disponibilizada}
+          </div>
 
-                </div>
+          <span className="text-xs text-gray-500">
+            {avaliacao.infoDisponibilizada}
+          </span>
+        </div>
+      </td>
 
-            </td>
+      <td className="text-center">
+        <div className="flex flex-col items-center">
+          <div className="flex items-center gap-2">
+            <Clock3 size={16} />
 
-            <td className="text-center">
+            {avaliacao.prazo}
+          </div>
 
-                <div className="flex items-center justify-center gap-2">
+          <span className="text-xs text-gray-500">{avaliacao.infoPrazo}</span>
+        </div>
+      </td>
 
-                    <FileText size={16} />
-
-                    {avaliacao.tipo}
-
-                </div>
-
-            </td>
-
-            <td className="text-center">
-
-                <div className="flex flex-col items-center">
-
-                    <div className="flex items-center gap-2">
-
-                        <Calendar size={16} />
-
-                        {avaliacao.disponibilizada}
-
-                    </div>
-
-                    <span className="text-xs text-gray-500">
-
-                        {avaliacao.infoDisponibilizada}
-
-                    </span>
-
-                </div>
-
-            </td>
-
-            <td className="text-center">
-
-                <div className="flex flex-col items-center">
-
-                    <div className="flex items-center gap-2">
-
-                        <Clock3 size={16} />
-
-                        {avaliacao.prazo}
-
-                    </div>
-
-                    <span className="text-xs text-gray-500">
-
-                        {avaliacao.infoPrazo}
-
-                    </span>
-
-                </div>
-
-            </td>
-
-            <td className="text-center">
-
-                <span
-                    className={`
+      <td className="text-center">
+        <span
+          className={`
                         px-3
                         py-1
                         rounded-full
@@ -140,26 +94,22 @@ export const CardManagementEvaluation = ({ avaliacao }) => {
                         font-medium
 
                         ${
-                            avaliacao.status === "Respondida"
-                                ? "bg-green-100 text-green-700"
-                                : avaliacao.status === "Em atraso"
-                                ? "bg-red-100 text-red-700"
-                                : "bg-yellow-100 text-yellow-700"
+                          avaliacao.status === "Respondida"
+                            ? "bg-green-100 text-green-700"
+                            : avaliacao.status === "Em atraso"
+                            ? "bg-red-100 text-red-700"
+                            : "bg-yellow-100 text-yellow-700"
                         }
                     `}
-                >
+        >
+          {avaliacao.status}
+        </span>
+      </td>
 
-                    {avaliacao.status}
-
-                </span>
-
-            </td>
-
-            <td className="text-center">
-
-                <button
-                    onClick={abrirAvaliacao}
-                    className="
+      <td className="text-center">
+        <button
+          onClick={abrirAvaliacao}
+          className="
                         flex
                         items-center
                         gap-2
@@ -172,18 +122,12 @@ export const CardManagementEvaluation = ({ avaliacao }) => {
                         hover:opacity-90
                         transition
                     "
-                >
+        >
+          <Eye size={18} />
 
-                    <Eye size={18} />
-
-                    {avaliacao.acao}
-
-                </button>
-
-            </td>
-
-        </tr>
-
-    );
-
+          {avaliacao.acao}
+        </button>
+      </td>
+    </tr>
+  );
 };

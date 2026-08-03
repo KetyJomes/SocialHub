@@ -1,71 +1,60 @@
 import { Trash2 } from "lucide-react";
 
 export const EvaluationQuestionCard = ({
-    numero,
-    pergunta,
-    onChange,
-    onChangeEscala,
-    escalasDisponiveis,
-    onRemove,
-    podeRemover
+  numero,
+  pergunta,
+  onChange,
+  onChangeEscala,
+  escalasDisponiveis,
+  onRemove,
+  podeRemover,
 }) => {
-
-    return (
-
-        <div
-            className="
+  return (
+    <div
+      className="
                 bg-gray-50
                 border
                 border-gray-200
                 rounded-xl
                 p-5
             "
-        >
-
-            <div
-                className="
+    >
+      <div
+        className="
                     flex
                     justify-between
                     items-center
                     mb-4
                 "
-            >
-
-                <h3
-                    className="
+      >
+        <h3
+          className="
                         font-semibold
                         text-gray-800
                     "
-                >
-                    Questão {numero}
-                </h3>
-                {
-                    podeRemover && (
-                        <button
-                            onClick={onRemove}
-                            className="
+        >
+          Questão {numero}
+        </h3>
+        {podeRemover && (
+          <button
+            onClick={onRemove}
+            className="
                                 text-red-400
                                 hover:text-red-500
                                 transition
                             "
-                        >
-                            <Trash2 size={18} />
+          >
+            <Trash2 size={18} />
+          </button>
+        )}
+      </div>
 
-                        </button>
-                    )
-                }
-
-            </div>
-
-                        <textarea
-                            rows={3}
-                            value={pergunta.texto}
-                            onChange={(e) =>
-                                onChange(e.target.value)
-                            }
-
-                            placeholder="Ex: Demonstra responsabilidade nas atividades propostas."
-                            className="
+      <textarea
+        rows={3}
+        value={pergunta.texto}
+        onChange={(e) => onChange(e.target.value)}
+        placeholder="Ex: Demonstra responsabilidade nas atividades propostas."
+        className="
                                 w-full
                                 bg-white
                                 border
@@ -81,26 +70,22 @@ export const EvaluationQuestionCard = ({
                                 focus:ring-[#0291F7]
                                 focus:border-[#0291F7]
                             "
+      />
 
-                        />
-
-                        <div className="mt-4">
-
-                <label
-                    className="
+      <div className="mt-4">
+        <label
+          className="
                         font-medium
                         text-gray-700
                     "
-                >
-                    Escala utilizada
-                </label>
+        >
+          Escala utilizada
+        </label>
 
-                <select
-                    value={pergunta.escala}
-                    onChange={(e) =>
-                        onChangeEscala(e.target.value)
-                    }
-                    className="
+        <select
+          value={pergunta.escala}
+          onChange={(e) => onChangeEscala(e.target.value)}
+          className="
                         w-full
                         mt-2
                         bg-[#F8F8FB]
@@ -115,31 +100,16 @@ export const EvaluationQuestionCard = ({
                         focus:ring-[#0291F7]
                         focus:border-[#0291F7]
                     "
-                >
+        >
+          <option value="">Selecione a escala</option>
 
-                    <option value="">
-                        Selecione a escala
-                    </option>
-
-                    {
-                        escalasDisponiveis.map((escala) => (
-
-                            <option
-                                key={escala}
-                                value={escala}
-                            >
-                                {escala}
-                            </option>
-
-                        ))
-                    }
-
-                </select>
-
-            </div>
-
-        </div>
-
-    );
-
+          {escalasDisponiveis.map((escala) => (
+            <option key={escala} value={escala}>
+              {escala}
+            </option>
+          ))}
+        </select>
+      </div>
+    </div>
+  );
 };

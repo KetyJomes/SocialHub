@@ -1,25 +1,11 @@
-import {
-    X,
-    Save
-} from "lucide-react";
+import { X, Save } from "lucide-react";
 
+export const FeedbackModal = ({ isOpen, fechar, feedback, setFeedback }) => {
+  if (!isOpen) return null;
 
-export const FeedbackModal = ({
-    isOpen,
-    fechar,
-    feedback,
-    setFeedback
-}) => {
-
-
-    if (!isOpen) return null;
-
-
-
-    return (
-
-        <div
-            className="
+  return (
+    <div
+      className="
                 fixed
                 inset-0
                 bg-black/40
@@ -28,56 +14,32 @@ export const FeedbackModal = ({
                 justify-center
                 z-50
             "
-        >
-
-
-            <div
-
-                className="
+    >
+      <div
+        className="
                     bg-white
                     w-[650px]
                     rounded-3xl
                     shadow-2xl
                     p-8
                 "
+      >
+        {/* CABEÇALHO */}
 
-            >
+        <div className="flex justify-between items-center mb-6">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900">
+              Feedback do Gestor
+            </h2>
 
+            <p className="text-gray-500 mt-1">
+              Registre um feedback construtivo baseado na avaliação.
+            </p>
+          </div>
 
-
-                {/* CABEÇALHO */}
-
-                <div className="flex justify-between items-center mb-6">
-
-
-                    <div>
-
-
-                        <h2 className="text-2xl font-bold text-gray-900">
-
-                            Feedback do Gestor
-
-                        </h2>
-
-
-                        <p className="text-gray-500 mt-1">
-
-                            Registre um feedback construtivo baseado na avaliação.
-
-                        </p>
-
-
-                    </div>
-
-
-
-
-
-                    <button
-
-                        onClick={fechar}
-
-                        className="
+          <button
+            onClick={fechar}
+            className="
                             w-9
                             h-9
                             rounded-full
@@ -87,69 +49,34 @@ export const FeedbackModal = ({
                             hover:bg-gray-100
                             transition
                         "
+          >
+            <X size={20} />
+          </button>
+        </div>
 
-                    >
+        {/* INFORMAÇÕES */}
 
-                        <X size={20}/>
-
-                    </button>
-
-
-                </div>
-
-
-
-
-
-                {/* INFORMAÇÕES */}
-
-
-                <div
-
-                    className="
+        <div
+          className="
                         bg-[#F7F8FC]
                         rounded-2xl
                         p-5
                         mb-6
                     "
+        >
+          <p className="text-sm text-gray-500">Avaliado</p>
 
-                >
+          <h3 className="font-bold text-lg">Colaborador selecionado</h3>
+        </div>
 
-                    <p className="text-sm text-gray-500">
+        {/* CAMPO */}
 
-                        Avaliado
-
-                    </p>
-
-
-                    <h3 className="font-bold text-lg">
-
-                        Colaborador selecionado
-
-                    </h3>
-
-
-                </div>
-
-
-
-
-
-
-                {/* CAMPO */}
-
-
-                <textarea
-
-                    value={feedback}
-
-                    onChange={(e)=>setFeedback(e.target.value)}
-
-                    rows={7}
-
-                    placeholder="Digite o feedback..."
-
-                    className="
+        <textarea
+          value={feedback}
+          onChange={(e) => setFeedback(e.target.value)}
+          rows={7}
+          placeholder="Digite o feedback..."
+          className="
                         w-full
                         rounded-xl
                         border
@@ -160,25 +87,14 @@ export const FeedbackModal = ({
                         focus:ring-2
                         focus:ring-[#0291F7]
                     "
+        />
 
-                />
+        {/* BOTÕES */}
 
-
-
-
-
-
-                {/* BOTÕES */}
-
-
-                <div className="flex justify-end gap-4 mt-6">
-
-
-                    <button
-
-                        onClick={fechar}
-
-                        className="
+        <div className="flex justify-end gap-4 mt-6">
+          <button
+            onClick={fechar}
+            className="
                             px-5
                             py-3
                             rounded-xl
@@ -187,20 +103,12 @@ export const FeedbackModal = ({
                             font-semibold
                             hover:bg-gray-100
                         "
+          >
+            Cancelar
+          </button>
 
-                    >
-
-                        Cancelar
-
-                    </button>
-
-
-
-
-
-                    <button
-
-                        className="
+          <button
+            className="
                             flex
                             items-center
                             gap-2
@@ -212,31 +120,12 @@ export const FeedbackModal = ({
                             font-semibold
                             hover:bg-[#0278d2]
                         "
-
-                    >
-
-                        <Save size={18}/>
-
-                        Salvar Feedback
-
-
-                    </button>
-
-
-
-                </div>
-
-
-
-
-
-            </div>
-
-
-
+          >
+            <Save size={18} />
+            Salvar Feedback
+          </button>
         </div>
-
-
-    );
-
+      </div>
+    </div>
+  );
 };

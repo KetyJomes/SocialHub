@@ -1,185 +1,124 @@
 import {
-    PieChart,
-    Pie,
-    Cell,
-    ResponsiveContainer,
-    Tooltip,
-    Legend,
-    Label
+  PieChart,
+  Pie,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+  Legend,
+  Label,
 } from "recharts";
 
 export const GraficoCompetenciasAluno = () => {
+  const competencias = [
+    {
+      nome: "Comunicação",
+      gestor: 85,
+      auto: 92,
+    },
 
-    const competencias = [
+    {
+      nome: "Trabalho em Equipe",
+      gestor: 80,
+      auto: 88,
+    },
 
-        {
-            nome: "Comunicação",
-            gestor: 85,
-            auto: 92
-        },
+    {
+      nome: "Liderança",
+      gestor: 76,
+      auto: 84,
+    },
 
-        {
-            nome: "Trabalho em Equipe",
-            gestor: 80,
-            auto: 88
-        },
+    {
+      nome: "Proatividade",
+      gestor: 82,
+      auto: 79,
+    },
 
-        {
-            nome: "Liderança",
-            gestor: 76,
-            auto: 84
-        },
+    {
+      nome: "Resolução de Problemas",
+      gestor: 90,
+      auto: 95,
+    },
+  ];
 
-        {
-            nome: "Proatividade",
-            gestor: 82,
-            auto: 79
-        },
+  const dados = competencias.map((item) => ({
+    nome: item.nome,
 
-        {
-            nome: "Resolução de Problemas",
-            gestor: 90,
-            auto: 95
-        }
+    valor: Math.round((item.gestor + item.auto) / 2),
+  }));
 
-    ];
+  const media = Math.round(
+    dados.reduce(
+      (total, item) => total + item.valor,
 
-    const dados = competencias.map((item) => ({
+      0
+    ) / dados.length
+  );
 
-        nome: item.nome,
+  const cores = ["#0291F7", "#10B981", "#8B5CF6", "#F59E0B", "#FACC15"];
 
-        valor: Math.round(
+  return (
+    <div className="w-full h-[320px]">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={dados}
+            dataKey="valor"
+            nameKey="nome"
+            cx="50%"
+            cy="50%"
+            outerRadius={95}
+            innerRadius={62}
+            paddingAngle={3}
+          >
+            {dados.map((item, index) => (
+              <Cell key={index} fill={cores[index]} />
+            ))}
 
-            (item.gestor + item.auto) / 2
+            <Label
+              content={({ viewBox }) => {
+                const { cx, cy } = viewBox;
 
-        )
-
-    }));
-
-
-    const media = Math.round(
-
-        dados.reduce(
-
-            (total, item) => total + item.valor,
-
-            0
-
-        ) / dados.length
-
-    );
-
-
-    const cores = [
-
-        "#0291F7",
-        "#10B981",
-        "#8B5CF6",
-        "#F59E0B",
-        "#FACC15"
-
-    ];
-
-
-    return (
-
-        <div className="w-full h-[320px]">
-
-            <ResponsiveContainer
-                width="100%"
-                height="100%"
-            >
-
-                <PieChart>
-
-                    <Pie
-                        data={dados}
-                        dataKey="valor"
-                        nameKey="nome"
-                        cx="50%"
-                        cy="50%"
-                        outerRadius={95}
-                        innerRadius={62}
-                        paddingAngle={3}
+                return (
+                  <text
+                    x={cx}
+                    y={cy}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                  >
+                    <tspan
+                      x={cx}
+                      y={cy - 8}
+                      fill="#1F2937"
+                      style={{
+                        fontSize: "28px",
+                        fontWeight: 700,
+                      }}
                     >
+                      {media}%
+                    </tspan>
 
-                        {
+                    <tspan
+                      x={cx}
+                      y={cy + 16}
+                      fill="#6B7280"
+                      style={{
+                        fontSize: "12px",
+                      }}
+                    >
+                      Média Geral
+                    </tspan>
+                  </text>
+                );
+              }}
+            />
+          </Pie>
 
-                            dados.map((item, index) => (
+          <Tooltip />
 
-                                <Cell
-                                    key={index}
-                                    fill={cores[index]}
-                                />
-
-                            ))
-
-                        }
-
-                        <Label
-                            content={({ viewBox }) => {
-
-                                const { cx, cy } = viewBox;
-
-                                return (
-
-                                    <text
-                                        x={cx}
-                                        y={cy}
-                                        textAnchor="middle"
-                                        dominantBaseline="middle"
-                                    >
-
-                                        <tspan
-                                            x={cx}
-                                            y={cy - 8}
-                                            fill="#1F2937"
-                                            style={{
-                                                fontSize: "28px",
-                                                fontWeight: 700
-                                            }}
-                                        >
-
-                                            {media}%
-
-                                        </tspan>
-
-                                        <tspan
-                                            x={cx}
-                                            y={cy + 16}
-                                            fill="#6B7280"
-                                            style={{
-                                                fontSize: "12px"
-                                            }}
-                                        >
-
-                                            Média Geral
-
-                                        </tspan>
-
-                                    </text>
-
-                                );
-
-                            }}
-                        />
-
-                    </Pie>
-
-                    <Tooltip />
-
-                    <Legend
-                        verticalAlign="bottom"
-                        align="center"
-                        iconType="square"
-                    />
-
-                </PieChart>
-
-            </ResponsiveContainer>
-
-        </div>
-
-    );
-
+          <Legend verticalAlign="bottom" align="center" iconType="square" />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
+  );
 };

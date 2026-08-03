@@ -1,18 +1,11 @@
 // usado no UserComparacao
 
-import {
-  Chart as ChartJS,
-  ArcElement,
-  Tooltip,
-} from "chart.js";
+import { Chart as ChartJS, ArcElement, Tooltip } from "chart.js";
 
 import { Doughnut } from "react-chartjs-2";
 import { ArrowUpRight, ArrowDownRight, Info } from "lucide-react";
 
-ChartJS.register(
-  ArcElement,
-  Tooltip
-);
+ChartJS.register(ArcElement, Tooltip);
 
 const chartOptions = {
   responsive: true,
@@ -58,29 +51,19 @@ const cards = [
 export const SummaryCards = () => {
   return (
     <div className="flex flex-col gap-5">
-
       {cards.map((card) => (
         <div
           key={card.title}
           className="bg-white rounded-3xl shadow-sm border border-gray-100 p-6"
         >
           <div className="flex justify-between items-center mb-6">
+            <h3 className="font-semibold text-gray-800">{card.title}</h3>
 
-            <h3 className="font-semibold text-gray-800">
-              {card.title}
-            </h3>
-
-            <Info
-              size={16}
-              className="text-gray-400"
-            />
-
+            <Info size={16} className="text-gray-400" />
           </div>
 
           <div className="flex items-center gap-5">
-
             <div className="w-24 h-24">
-
               <Doughnut
                 data={{
                   labels: [],
@@ -94,11 +77,9 @@ export const SummaryCards = () => {
                 }}
                 options={chartOptions}
               />
-
             </div>
 
             <div>
-
               <h2 className="text-4xl font-bold text-[#0291F7]">
                 {card.percentage}%
               </h2>
@@ -119,16 +100,11 @@ export const SummaryCards = () => {
                 {card.variation}
               </div>
 
-              <p className="text-gray-400 text-xs mt-2">
-                vs. período anterior
-              </p>
-
+              <p className="text-gray-400 text-xs mt-2">vs. período anterior</p>
             </div>
-
           </div>
         </div>
       ))}
-
     </div>
   );
 };

@@ -1,19 +1,15 @@
 import { ClipboardCheck } from "lucide-react";
 
-
 export const CardAvaliacao = ({
-    nome,
-    turma,
-    tipo,
-    status,
-    tipoCard = "avaliacao"
+  nome,
+  turma,
+  tipo,
+  status,
+  tipoCard = "avaliacao",
 }) => {
-
-
-    return (
-
-        <div
-            className="
+  return (
+    <div
+      className="
                 flex
                 items-center
                 justify-between
@@ -26,13 +22,10 @@ export const CardAvaliacao = ({
                 hover:shadow-sm
                 cursor-pointer
             "
-        >
-
-            <div className="flex items-center gap-3">
-
-
-                <div
-                    className="
+    >
+      <div className="flex items-center gap-3">
+        <div
+          className="
                         w-9
                         h-9
                         rounded-full
@@ -41,83 +34,44 @@ export const CardAvaliacao = ({
                         items-center
                         justify-center
                     "
-                >
+        >
+          <ClipboardCheck size={18} className="text-[#0291F7]" />
+        </div>
 
-                    <ClipboardCheck
-                        size={18}
-                        className="text-[#0291F7]"
-                    />
+        <div>
+          <h3 className="font-semibold text-gray-800">{nome}</h3>
 
-                </div>
-
-
-
-                <div>
-
-                    <h3 className="font-semibold text-gray-800">
-
-                        {nome}
-
-                    </h3>
-
-
-                    <p
-                        className="
+          <p
+            className="
                             text-sm
                             text-gray-500
                             mt-1
                         "
-                    >
+          >
+            {tipoCard === "feedback" ? "Feedback 360°" : tipo}
+          </p>
+        </div>
+      </div>
 
-                        {
-                            tipoCard === "feedback"
-
-                            ?
-
-                            "Feedback 360°"
-
-                            :
-
-                            tipo
-
-                        }
-
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-
-            <div
-                className="
+      <div
+        className="
                     flex
                     items-center
                     gap-3
                 "
-            >
-
-                <span
-                    className="
+      >
+        <span
+          className="
                         text-sm
                         text-gray-500
                     "
-                >
+        >
+          {turma}
+        </span>
 
-                    {turma}
-
-                </span>
-
-
-
-                {
-                    status && (
-
-                        <span
-                            className={`
+        {status && (
+          <span
+            className={`
                                 px-3
                                 py-1
                                 rounded-full
@@ -125,62 +79,29 @@ export const CardAvaliacao = ({
                                 font-medium
 
                                 ${
-                                    status === "Em atraso"
-
-                                    ?
-
-                                    "bg-red-100 text-red-700"
-
-
-                                    :
-
-
-                                    status === "Respondida"
-
-                                    ?
-
-                                    "bg-green-100 text-green-700"
-
-
-                                    :
-
-
-                                    "bg-yellow-100 text-yellow-700"
-
+                                  status === "Em atraso"
+                                    ? "bg-red-100 text-red-700"
+                                    : status === "Respondida"
+                                    ? "bg-green-100 text-green-700"
+                                    : "bg-yellow-100 text-yellow-700"
                                 }
 
                             `}
-                        >
+          >
+            {status}
+          </span>
+        )}
 
-                            {status}
-
-                        </span>
-
-                    )
-                }
-
-
-
-                <button
-
-                    className="
+        <button
+          className="
                         text-[#0291F7]
                         text-2xl
                         font-bold
                     "
-
-                >
-
-                    ›
-
-                </button>
-
-
-            </div>
-
-
-        </div>
-
-    );
-
+        >
+          ›
+        </button>
+      </div>
+    </div>
+  );
 };
