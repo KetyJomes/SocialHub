@@ -63,44 +63,6 @@ export const UserComparacao = () => {
               </p>
             </div>
 
-<<<<<<< HEAD
-            <Sidebar
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
-
-            <Header
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
-
-            <main className="p-8 mt-16">
-
-                <div className="max-w-[1700px] mx-auto">
-
-                    {/* CABEÇALHO */}
-                    <div className="flex items-start justify-between mb-8">
-
-                        <div>
-
-                            <h1 className="text-4xl font-bold text-gray-900">
-                                Comparativo de Resultados
-                            </h1>
-
-                            <p className="text-gray-500 mt-2 text-[15px]">
-                                Acompanhe o desempenho das avaliações e identifique oportunidades de melhoria.
-                            </p>
-
-                        </div>
-
-                        <div className="flex items-center gap-4">
-
-                            {/* EXPORTAR */}
-
-                            <button
-                                onClick={handleExportar}
-                                className="
-=======
             <div className="flex items-center gap-4">
               <button
                 className="
@@ -124,22 +86,21 @@ export const UserComparacao = () => {
               <button
                 onClick={handleExportar}
                 className="
->>>>>>> 9d84088d832f73698a522f283032e0541611f1c5
-                                    flex
-                                    items-center
-                                    gap-3
-                                    px-5
-                                    py-3
-                                    rounded-xl
-                                    bg-white
-                                    border
-                                    border-[#0291F7]
-                                    text-[#0291F7]
-                                    font-semibold
-                                    hover:bg-blue-50
-                                    transition
-                                    shadow-sm
-                                "
+                            flex
+                            items-center
+                            gap-3
+                            px-5
+                            py-3
+                            rounded-xl
+                            bg-white
+                            border
+                            border-[#0291F7]
+                            text-[#0291F7]
+                            font-semibold
+                            hover:bg-blue-50
+                            transition
+                            shadow-sm
+                        "
               >
                 <Download size={18} />
                 Exportar relatório
@@ -150,21 +111,21 @@ export const UserComparacao = () => {
               <button
                 onClick={() => setAbrirFeedback(true)}
                 className="
-                                    flex
-                                    items-center
-                                    gap-3
-                                    px-5
-                                    py-3
-                                    rounded-xl
-                                    bg-white
-                                    border
-                                    border-[#0291F7]
-                                    text-[#0291F7]
-                                    font-semibold
-                                    hover:bg-blue-50
-                                    transition
-                                    shadow-sm
-                                "
+                            flex
+                            items-center
+                            gap-3
+                            px-5
+                            py-3
+                            rounded-xl
+                            bg-white
+                            border
+                            border-[#0291F7]
+                            text-[#0291F7]
+                            font-semibold
+                            hover:bg-blue-50
+                            transition
+                            shadow-sm
+                        "
               >
                 Feedback do Gestor
               </button>
@@ -174,19 +135,19 @@ export const UserComparacao = () => {
               <button
                 onClick={() => setEditando(!editando)}
                 className="
-                                    flex
-                                    items-center
-                                    gap-3
-                                    px-5
-                                    py-3
-                                    rounded-xl
-                                    bg-[#0291F7]
-                                    text-white
-                                    font-semibold
-                                    hover:bg-blue-700
-                                    transition
-                                    shadow-sm
-                                "
+                            flex
+                            items-center
+                            gap-3
+                            px-5
+                            py-3
+                            rounded-xl
+                            bg-[#0291F7]
+                            text-white
+                            font-semibold
+                            hover:bg-blue-700
+                            transition
+                            shadow-sm
+                        "
               >
                 {editando ? (
                   <>
@@ -213,16 +174,16 @@ export const UserComparacao = () => {
             {/* AVALIAÇÕES */}
             <div
               className="
-                                flex
-                                flex-1
-                                gap-6
-                                max-h-[70vh]
-                                overflow-y-auto
-                                pr-2
-                                scrollbar-thin
-                                scrollbar-thumb-gray-300
-                                scrollbar-track-transparent
-                            "
+                        flex
+                        flex-1
+                        gap-6
+                        max-h-[70vh]
+                        overflow-y-auto
+                        pr-2
+                        scrollbar-thin
+                        scrollbar-thumb-gray-300
+                        scrollbar-track-transparent
+                    "
             >
               <div className="flex-1">
                 <EvaluationCard
