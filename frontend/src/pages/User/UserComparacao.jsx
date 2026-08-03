@@ -30,17 +30,146 @@ export const UserComparacao = () => {
   const idAvaliacao = params.get("id");
 
   useEffect(() => {
-    const avaliacoes =
-      JSON.parse(localStorage.getItem("avaliacoesRespondidas")) || {};
 
-    const avaliacao = avaliacoes[idAvaliacao];
+    const mockResposta = [
+        {
+            title: "Tomada de decisão",
+            description: "Toma decisões de forma assertiva e responsável.",
+            status: "Abaixo",
+            color: "yellow"
+        },
+        {
+            title: "Desenvolvimento da equipe",
+            description: "Incentiva o crescimento e desenvolvimento dos colaboradores.",
+            status: "Dentro",
+            color: "green"
+        },
+        {
+            title: "Delegação",
+            description: "Distribui tarefas de forma equilibrada e eficiente.",
+            status: "Acima",
+            color: "blue"
+        },
+        {
+            title: "Gestão de conflitos",
+            description: "Lida com conflitos de forma imparcial e construtiva.",
+            status: "Crítico",
+            color: "red"
+        },
+        {
+            title: "Planejamento",
+            description: "Planeja atividades, prioridades e acompanha resultados.",
+            status: "Dentro",
+            color: "green"
+        },
+        {
+            title: "Gestão de resultados",
+            description: "Acompanha indicadores e busca o alcance das metas.",
+            status: "Abaixo",
+            color: "yellow"
+        }
+    ];
 
-    if (!avaliacao) return;
+    setSelfEvaluation(mockResposta);
+
+    setManagerEvaluation([
+        {
+            title: "Tomada de decisão",
+            description: "Toma decisões de forma assertiva e responsável.",
+            status: "Dentro",
+            color: "green"
+        },
+        {
+            title: "Desenvolvimento da equipe",
+            description: "Incentiva o crescimento e desenvolvimento dos colaboradores.",
+            status: "Acima",
+            color: "blue"
+        },
+        {
+            title: "Delegação",
+            description: "Distribui tarefas de forma equilibrada e eficiente.",
+            status: "Dentro",
+            color: "green"
+        },
+        {
+            title: "Gestão de conflitos",
+            description: "Lida com conflitos de forma imparcial e construtiva.",
+            status: "Abaixo",
+            color: "yellow"
+        },
+        {
+            title: "Planejamento",
+            description: "Planeja atividades, prioridades e acompanha resultados.",
+            status: "Acima",
+            color: "blue"
+        },
+        {
+            title: "Gestão de resultados",
+            description: "Acompanha indicadores e busca o alcance das metas.",
+            status: "Dentro",
+            color: "green"
+        }
+    ]);
+
+      setFeedback(
+          "Você demonstra boa evolução nas competências avaliadas. Continue desenvolvendo sua capacidade de planejamento e tomada de decisão para alcançar resultados ainda melhores."
+      );
+
+  }, []);
+
+    useEffect(() => {
+
+      if (!idAvaliacao) return;
+
+      const avaliacoesSalvas =
+          JSON.parse(
+              localStorage.getItem("avaliacoesRespondidas")
+          ) || {};
+
+      const avaliacaoSalva =
+          avaliacoesSalvas[idAvaliacao];
+
+      if (!avaliacaoSalva) return;
+
+      const perguntas = avaliacaoSalva.perguntas.map(pergunta => {
+
+          const resposta =
+              avaliacaoSalva.respostas?.[pergunta.id];
+
+          return {
+              title: pergunta.titulo,
+              description: pergunta.descricao,
+              status: resposta?.nome || "-",
+              color:
+                  resposta?.nome === "Crítico"
+                      ? "red"
+                      : resposta?.nome === "Abaixo do esperado"
+                      ? "yellow"
+                      : resposta?.nome === "Dentro do esperado"
+                      ? "green"
+                      : "blue"
+          };
+      });
+
+      if (avaliacaoSalva.user?.tipo === "User") {
+          setSelfEvaluation(perguntas);
+      }
+
+      if (avaliacaoSalva.user?.tipo === "Manager") {
+          setManagerEvaluation(perguntas);
+      }
+
+      setFeedback(avaliacaoSalva.feedback || "");
+      console.log("Avaliação salva:", avaliacaoSalva);
+      console.log("Perguntas:", avaliacaoSalva?.perguntas);
+      console.log("Respostas:", avaliacaoSalva?.respostas);
+
   }, [idAvaliacao]);
 
   const handleExportar = () => {
     exportarAvaliacaoPDF(selfEvaluation, managerEvaluation);
   };
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -64,22 +193,6 @@ export const UserComparacao = () => {
             </div>
 
             <div className="flex items-center gap-4">
-              <button
-                className="
-                                    w-9
-                                    h-9
-                                    rounded-full
-                                    border
-                                    border-gray-200
-                                    flex
-                                    items-center
-                                    justify-center
-                                    hover:bg-gray-100
-                                    transition
-                                "
-              >
-                <Info size={18} className="text-gray-500" />
-              </button>
 
               {/* EXPORTAR */}
 

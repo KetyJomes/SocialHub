@@ -92,7 +92,7 @@ export const LinhaColaborador360 = ({ colaborador }) => {
             {/* Status */}
             <div className="col-span-2 flex justify-center">
                 {
-                    status ?
+                    status =="Avaliado" ?
                         <span
                             className="
                                 flex
