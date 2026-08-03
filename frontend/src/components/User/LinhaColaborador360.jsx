@@ -1,28 +1,22 @@
 import { useNavigate } from "react-router-dom";
 
-import {
-    CheckCircle2,
-    Clock3,
-    Eye,
-    ClipboardPen
-} from "lucide-react";
-
+import { CheckCircle2, Clock3, Eye, ClipboardPen } from "lucide-react";
 
 export const LinhaColaborador360 = ({ colaborador }) => {
+  const navigate = useNavigate();
+  const status = colaborador.status;
 
-    const navigate = useNavigate();
-    const status = colaborador.status;
+  const abrirAvaliacao = () => {
+    navigate(
+      `/realizar-avaliacao?tipo=360&idColaborador=${
+        colaborador.id
+      }&id=1&avaliado=${encodeURIComponent(colaborador.nome)}`
+    );
+  };
 
-    const abrirAvaliacao = () => {
-        navigate(
-            `/realizar-avaliacao?tipo=360&idColaborador=${colaborador.id}&id=1&avaliado=${encodeURIComponent(colaborador.nome)}`
-        );
-    };
-
-    return (
-
-        <div
-            className="
+  return (
+    <div
+      className="
                 grid
                 grid-cols-12
                 items-center
@@ -33,11 +27,11 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                 hover:bg-gray-50
                 transition
             "
-        >
-            {/* Colaborador */}
-            <div className="col-span-5 flex items-center gap-4">
-                <div
-                    className="
+    >
+      {/* Colaborador */}
+      <div className="col-span-5 flex items-center gap-4">
+        <div
+          className="
                         w-10
                         h-10
                         rounded-full
@@ -46,56 +40,39 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                         items-center
                         justify-center
                     "
-                >
-
-                    <span
-                        className="
+        >
+          <span
+            className="
                             text-sm
                             font-semibold
                             text-[#0291F7]
                         "
-                    >
+          >
+            {colaborador.nome
+              .split(" ")
+              .map((nome) => nome[0])
+              .slice(0, 2)
+              .join("")}
+          </span>
+        </div>
 
-                        {
-                            colaborador.nome
-                                .split(" ")
-                                .map(nome => nome[0])
-                                .slice(0, 2)
-                                .join("")
-                        }
+        <div>
+          <p className="font-semibold text-gray-800">{colaborador.nome}</p>
 
-                    </span>
-                </div>
+          <p className="text-sm text-gray-400">{colaborador.email}</p>
+        </div>
+      </div>
 
-                <div>
+      {/* Cargo */}
+      <div className="col-span-2">
+        <p className="text-gray-600">{colaborador.cargo}</p>
+      </div>
 
-                    <p className="font-semibold text-gray-800">
-                        {colaborador.nome}
-                    </p>
-
-                    <p className="text-sm text-gray-400">
-                        {colaborador.email}
-                    </p>
-
-                </div>
-
-            </div>
-
-            {/* Cargo */}
-            <div className="col-span-2">
-
-                <p className="text-gray-600">
-                    {colaborador.cargo}
-                </p>
-
-            </div>
-
-            {/* Status */}
-            <div className="col-span-2 flex justify-center">
-                {
-                    status ?
-                        <span
-                            className="
+      {/* Status */}
+      <div className="col-span-2 flex justify-center">
+        {status ? (
+          <span
+            className="
                                 flex
                                 items-center
                                 gap-2
@@ -107,17 +84,13 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                                 text-sm
                                 font-medium
                             "
-                        >
-
-                            <CheckCircle2
-                                size={20}
-                                strokeWidth={2}
-                            />
-                            Avaliado
-                        </span>
-                    :
-                        <span
-                            className="
+          >
+            <CheckCircle2 size={20} strokeWidth={2} />
+            Avaliado
+          </span>
+        ) : (
+          <span
+            className="
                                 flex
                                 items-center
                                 gap-2
@@ -129,24 +102,19 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                                 text-sm
                                 font-medium
                             "
-                        >
+          >
+            <Clock3 size={20} strokeWidth={2} />
+            Pendente
+          </span>
+        )}
+      </div>
 
-                            <Clock3
-                                size={20}
-                                strokeWidth={2}
-                            />
-                            Pendente
-                        </span>
-                }
-            </div>
-
-            {/* Ação */}
-            <div className="col-span-3 flex justify-center">
-                {
-                    status === "Avaliado" ?
-                        <button
-                            onClick={abrirAvaliacao}
-                            className="
+      {/* Ação */}
+      <div className="col-span-3 flex justify-center">
+        {status === "Avaliado" ? (
+          <button
+            onClick={abrirAvaliacao}
+            className="
                                 flex
                                 items-center
                                 gap-2
@@ -159,18 +127,14 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                                 hover:bg-gray-100
                                 transition
                             "
-                        >
-                            <Eye
-                                size={20}
-                                strokeWidth={2}
-                            />
-                            Visualizar
-                        </button>
-                    :
-                    status === "Em andamento" ?
-                        <button
-                            onClick={abrirAvaliacao}
-                            className="
+          >
+            <Eye size={20} strokeWidth={2} />
+            Visualizar
+          </button>
+        ) : status === "Em andamento" ? (
+          <button
+            onClick={abrirAvaliacao}
+            className="
                                 flex
                                 items-center
                                 gap-2
@@ -182,17 +146,14 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                                 hover:bg-orange-600
                                 transition
                             "
-                        >
-                            <ClipboardPen
-                                size={20}
-                                strokeWidth={2}
-                            />
-                            Continuar
-                        </button>
-                    :
-                        <button
-                            onClick={abrirAvaliacao}
-                            className="
+          >
+            <ClipboardPen size={20} strokeWidth={2} />
+            Continuar
+          </button>
+        ) : (
+          <button
+            onClick={abrirAvaliacao}
+            className="
                                 flex
                                 items-center
                                 gap-2
@@ -204,15 +165,12 @@ export const LinhaColaborador360 = ({ colaborador }) => {
                                 hover:bg-blue-700
                                 transition
                             "
-                        >
-                            <ClipboardPen
-                                size={20}
-                                strokeWidth={2}
-                            />
-                            Avaliar
-                        </button>
-                }
-            </div>
-        </div>
-    );
+          >
+            <ClipboardPen size={20} strokeWidth={2} />
+            Avaliar
+          </button>
+        )}
+      </div>
+    </div>
+  );
 };

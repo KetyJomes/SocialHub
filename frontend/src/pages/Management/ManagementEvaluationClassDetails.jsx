@@ -1,141 +1,120 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import {GraduationCap, Info, CheckCircle, Clock, AlertCircle, Eye} from "lucide-react";
+import {
+  GraduationCap,
+  Info,
+  CheckCircle,
+  Clock,
+  AlertCircle,
+  Eye,
+} from "lucide-react";
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
 
 export const ManagementEvaluationClassDetails = () => {
-    const navigate = useNavigate();
-    const [isOpen, setIsOpen] = useState(false);
-    const { turma } = useParams();
-    const alunos = [
-        {
-            nome: "Ana Souza",
-            status: "Finalizada",
-            progresso: 100,
-            nota: 98
-        },
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
+  const { turma } = useParams();
+  const alunos = [
+    {
+      nome: "Ana Souza",
+      status: "Finalizada",
+      progresso: 100,
+      nota: 98,
+    },
 
-        {
-            nome: "João Silva",
-            status: "Em andamento",
-            progresso: 60,
-            nota: "-"
-        },
+    {
+      nome: "João Silva",
+      status: "Em andamento",
+      progresso: 60,
+      nota: "-",
+    },
 
-        {
-            nome: "Maria Oliveira",
-            status: "Pendente",
-            progresso: 0,
-            nota: "-"
-        },
+    {
+      nome: "Maria Oliveira",
+      status: "Pendente",
+      progresso: 0,
+      nota: "-",
+    },
 
-        {
-            nome: "Pedro Santos",
-            status: "Finalizada",
-            progresso: 100,
-            nota: 82
-        },
+    {
+      nome: "Pedro Santos",
+      status: "Finalizada",
+      progresso: 100,
+      nota: 82,
+    },
 
-        {
-            nome: "Lucas Mendes",
-            status: "Em andamento",
-            progresso: 40,
-            nota: "-"
-        }
+    {
+      nome: "Lucas Mendes",
+      status: "Em andamento",
+      progresso: 40,
+      nota: "-",
+    },
+  ];
 
-    ];
+  const statusClasses = {
+    Finalizada: "bg-green-100 text-green-700",
 
-    const statusClasses = {
+    "Em andamento": "bg-yellow-100 text-yellow-700",
 
-        "Finalizada":
-            "bg-green-100 text-green-700",
+    Pendente: "bg-red-100 text-red-700",
+  };
 
-        "Em andamento":
-            "bg-yellow-100 text-yellow-700",
+  const statusIcons = {
+    Finalizada: <CheckCircle size={16} />,
 
-        "Pendente":
-            "bg-red-100 text-red-700"
+    "Em andamento": <Clock size={16} />,
 
-    };
+    Pendente: <AlertCircle size={16} />,
+  };
 
-    const statusIcons = {
+  const finalizadas = alunos.filter(
+    (aluno) => aluno.status === "Finalizada"
+  ).length;
 
-        "Finalizada":
-            <CheckCircle size={16}/>,
+  const andamento = alunos.filter(
+    (aluno) => aluno.status === "Em andamento"
+  ).length;
 
-        "Em andamento":
-            <Clock size={16}/>,
+  const pendentes = alunos.filter(
+    (aluno) => aluno.status === "Pendente"
+  ).length;
 
-        "Pendente":
-            <AlertCircle size={16}/>
+  const progressoGeral = Math.round((finalizadas / alunos.length) * 100);
 
-    };
+  return (
+    <>
+      <SidebarManagement isOpen={isOpen} setIsOpen={setIsOpen} />
 
-    const finalizadas = alunos.filter(
-        aluno => aluno.status === "Finalizada"
-    ).length;
+      {isOpen && (
+        <div
+          className=" fixed inset-0 bg-black/20 z-40 "
+          onClick={() => setIsOpen(false)}
+        />
+      )}
 
-    const andamento = alunos.filter(
-        aluno => aluno.status === "Em andamento"
-    ).length;
+      <main className="mt-[10vh]">
+        <Header isOpen={isOpen} setIsOpen={setIsOpen} />
 
-    const pendentes = alunos.filter(
-        aluno => aluno.status === "Pendente"
-    ).length;
+        <div className=" p-10 ">
+          <h1 className="text-3xl font-bold">{turma}</h1>
 
-    const progressoGeral = Math.round(
-        (finalizadas / alunos.length) * 100
-    );
+          <p className="text-gray-500">
+            Acompanhe o andamento da avaliação selecionada nesta turma.
+          </p>
 
-    return (
-
-        <>
-            <SidebarManagement
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
-
-            {
-                isOpen && (
-                    <div className=" fixed inset-0 bg-black/20 z-40 "
-                        onClick={() => setIsOpen(false)}
-                    />
-                )
-            }
-
-            <main className="mt-[10vh]">
-
-                <Header
-                    isOpen={isOpen}
-                    setIsOpen={setIsOpen}
-                />
-
-                <div className=" p-10 " >
-
-                    <h1 className="text-3xl font-bold">
-                        {turma}
-                    </h1>
-
-                    <p className="text-gray-500">
-                        Acompanhe o andamento da avaliação selecionada nesta turma.
-                    </p>
-
-                    {/* Resumo*/}
-                    <section className=" mt-8 bg-white rounded-xl border border-gray-100 shadow-sm p-6 " >
-
-
-                        <div
-                            className="
+          {/* Resumo*/}
+          <section className=" mt-8 bg-white rounded-xl border border-gray-100 shadow-sm p-6 ">
+            <div
+              className="
                                 flex
                                 items-center
                                 gap-3
                                 mb-6
                             "
-                        >
-
-                            <div
-                                className="
+            >
+              <div
+                className="
                                     w-10
                                     h-10
                                     rounded-full
@@ -144,158 +123,88 @@ export const ManagementEvaluationClassDetails = () => {
                                     items-center
                                     justify-center
                                 "
-                            >
+              >
+                <GraduationCap size={20} className="text-[#0291F7]" />
+              </div>
 
-                                <GraduationCap
-                                    size={20}
-                                    className="text-[#0291F7]"
-                                />
+              <h2 className="text-xl font-bold">Andamento da Avaliação</h2>
+            </div>
 
-                            </div>
-
-
-                            <h2 className="text-xl font-bold">
-                                Andamento da Avaliação
-                            </h2>
-
-
-                        </div>
-
-
-
-
-                        <div
-                            className="
+            <div
+              className="
                                 grid
                                 grid-cols-4
                                 gap-6
                             "
-                        >
+            >
+              <div>
+                <p className="text-gray-500 text-sm">Total de alunos</p>
 
+                <p className="text-2xl font-bold">{alunos.length}</p>
+              </div>
 
-                            <div>
-                                <p className="text-gray-500 text-sm">
-                                    Total de alunos
-                                </p>
+              <div>
+                <p className="text-gray-500 text-sm">Finalizadas</p>
 
-                                <p className="text-2xl font-bold">
-                                    {alunos.length}
-                                </p>
-                            </div>
+                <p className="text-2xl font-bold text-green-600">
+                  {finalizadas}
+                </p>
+              </div>
 
+              <div>
+                <p className="text-gray-500 text-sm">Em andamento</p>
 
+                <p className="text-2xl font-bold text-yellow-600">
+                  {andamento}
+                </p>
+              </div>
 
-                            <div>
+              <div>
+                <p className="text-gray-500 text-sm">Pendentes</p>
 
-                                <p className="text-gray-500 text-sm">
-                                    Finalizadas
-                                </p>
+                <p className="text-2xl font-bold text-red-600">{pendentes}</p>
+              </div>
+            </div>
 
-                                <p className="text-2xl font-bold text-green-600">
-                                    {finalizadas}
-                                </p>
-
-                            </div>
-
-
-
-                            <div>
-
-                                <p className="text-gray-500 text-sm">
-                                    Em andamento
-                                </p>
-
-                                <p className="text-2xl font-bold text-yellow-600">
-                                    {andamento}
-                                </p>
-
-                            </div>
-
-
-
-                            <div>
-
-                                <p className="text-gray-500 text-sm">
-                                    Pendentes
-                                </p>
-
-                                <p className="text-2xl font-bold text-red-600">
-                                    {pendentes}
-                                </p>
-
-                            </div>
-
-
-                        </div>
-
-
-
-                        <div className="mt-6">
-
-
-                            <div
-                                className="
+            <div className="mt-6">
+              <div
+                className="
                                     flex
                                     justify-between
                                     mb-2
                                 "
-                            >
+              >
+                <span className="text-sm text-gray-500">Progresso geral</span>
 
-                                <span className="text-sm text-gray-500">
-                                    Progresso geral
-                                </span>
+                <span className="font-semibold">{progressoGeral}%</span>
+              </div>
 
-
-                                <span className="font-semibold">
-                                    {progressoGeral}%
-                                </span>
-
-
-                            </div>
-
-
-
-                            <div
-                                className="
+              <div
+                className="
                                     w-full
                                     h-3
                                     bg-gray-200
                                     rounded-full
                                     overflow-hidden
                                 "
-                            >
-
-                                <div
-                                    className="
+              >
+                <div
+                  className="
                                         h-full
                                         bg-[#0291F7]
                                     "
-                                    style={{
-                                        width: `${progressoGeral}%`
-                                    }}
-                                />
+                  style={{
+                    width: `${progressoGeral}%`,
+                  }}
+                />
+              </div>
+            </div>
+          </section>
 
-                            </div>
+          {/* TABELA */}
 
-
-                        </div>
-
-
-
-                    </section>
-
-
-
-
-
-
-
-                    {/* TABELA */}
-
-
-
-                    <section
-                        className="
+          <section
+            className="
                             mt-8
                             bg-white
                             rounded-xl
@@ -304,85 +213,49 @@ export const ManagementEvaluationClassDetails = () => {
                             shadow-sm
                             p-6
                         "
-                    >
+          >
+            <h2 className="text-xl font-bold mb-5">Alunos</h2>
 
-
-
-                        <h2 className="text-xl font-bold mb-5">
-                            Alunos
-                        </h2>
-
-
-
-
-                        <table
-                            className="
+            <table
+              className="
                                 w-full
                                 border-collapse
                             "
-                        >
-
-
-                            <thead>
-
-                                <tr
-                                    className="
+            >
+              <thead>
+                <tr
+                  className="
                                         bg-gray-50
                                         text-gray-600
                                     "
-                                >
+                >
+                  <th className="text-left px-5 py-4 rounded-l-lg">Aluno</th>
 
-                                    <th className="text-left px-5 py-4 rounded-l-lg">
-                                        Aluno
-                                    </th>
+                  <th className="px-5 py-4">Status</th>
 
-                                    <th className="px-5 py-4">
-                                        Status
-                                    </th>
+                  <th className="px-5 py-4">Progresso</th>
 
-                                    <th className="px-5 py-4">
-                                        Progresso
-                                    </th>
+                  <th className="px-5 py-4">Nota</th>
 
-                                    <th className="px-5 py-4">
-                                        Nota
-                                    </th>
+                  <th className="px-5 py-4 rounded-r-lg">Ação</th>
+                </tr>
+              </thead>
 
-                                    <th className="px-5 py-4 rounded-r-lg">
-                                        Ação
-                                    </th>
-
-                                </tr>
-
-                            </thead>
-
-
-
-                            <tbody>
-
-
-                                {
-                                    alunos.map((aluno,index)=>(
-
-                                        <tr
-                                            key={index}
-                                            className="
+              <tbody>
+                {alunos.map((aluno, index) => (
+                  <tr
+                    key={index}
+                    className="
                                                 border-b
                                                 border-gray-100
                                                 hover:bg-gray-50
                                             "
-                                        >
+                  >
+                    <td className="px-5 py-5 font-semibold">{aluno.nome}</td>
 
-                                            <td className="px-5 py-5 font-semibold">
-                                                {aluno.nome}
-                                            </td>
-
-
-
-                                            <td className="px-5 py-5 text-center">
-
-                                                <span
-                                                    className={`
+                    <td className="px-5 py-5 text-center">
+                      <span
+                        className={`
                                                         inline-flex
                                                         items-center
                                                         gap-2
@@ -391,46 +264,35 @@ export const ManagementEvaluationClassDetails = () => {
                                                         rounded-full
                                                         text-sm
                                                         font-semibold
-                                                        ${statusClasses[aluno.status]}
+                                                        ${
+                                                          statusClasses[
+                                                            aluno.status
+                                                          ]
+                                                        }
                                                     `}
-                                                >
+                      >
+                        {statusIcons[aluno.status]}
 
-                                                    {statusIcons[aluno.status]}
+                        {aluno.status}
+                      </span>
+                    </td>
 
-                                                    {aluno.status}
+                    <td className="px-5 py-5 text-center">
+                      {aluno.progresso}%
+                    </td>
 
-                                                </span>
+                    <td className="px-5 py-5 text-center font-bold">
+                      {aluno.nota}
+                    </td>
 
-                                            </td>
-
-
-
-
-                                            <td className="px-5 py-5 text-center">
-
-                                                {aluno.progresso}%
-
-                                            </td>
-
-
-
-
-                                            <td className="px-5 py-5 text-center font-bold">
-
-                                                {aluno.nota}
-
-                                            </td>
-
-
-
-
-                                            <td className="px-5 py-5 text-center">
-
-                                                <button
-
-                                                    onClick={() => navigate('/management-perform-evaluation/:turma/:aluno/:id')}
-
-                                                    className="
+                    <td className="px-5 py-5 text-center">
+                      <button
+                        onClick={() =>
+                          navigate(
+                            "/management-perform-evaluation/:turma/:aluno/:id"
+                          )
+                        }
+                        className="
                                                         flex
                                                         items-center
                                                         justify-center
@@ -440,55 +302,31 @@ export const ManagementEvaluationClassDetails = () => {
                                                         font-semibold
                                                         hover:underline
                                                     "
-                                                >
+                      >
+                        <Eye size={18} />
 
-                                                    <Eye size={18}/>
+                        {aluno.status === "Finalizada"
+                          ? "Visualizar"
+                          : aluno.status === "Em andamento"
+                          ? "Continuar"
+                          : "Responder"}
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </section>
 
-                                                    {
-                                                        aluno.status === "Finalizada"
-                                                            ? "Visualizar"
-                                                            : aluno.status === "Em andamento"
-                                                                ? "Continuar"
-                                                                : "Responder"
-                                                    }
-
-
-                                                </button>
-
-                                            </td>
-
-
-                                        </tr>
-
-
-                                    ))
-                                }
-
-
-                            </tbody>
-
-
-
-                        </table>
-
-
-
-                    </section>
-
-
-
-
-
-                    <div
-                        className="
+          <div
+            className="
                             flex
                             justify-center
                             mt-8
                         "
-                    >
-
-                        <div
-                            className="
+          >
+            <div
+              className="
                                 flex
                                 items-center
                                 gap-2
@@ -499,34 +337,16 @@ export const ManagementEvaluationClassDetails = () => {
                                 px-6
                                 py-3
                             "
-                        >
+            >
+              <Info size={18} className="text-[#0291F7]" />
 
-                            <Info
-                                size={18}
-                                className="text-[#0291F7]"
-                            />
-
-                            <span className="text-sm text-gray-600">
-                                Acompanhe o progresso individual dos alunos nesta avaliação.
-                            </span>
-
-
-                        </div>
-
-
-                    </div>
-
-
-
-
-                </div>
-
-
-            </main>
-
-
-        </>
-
-    );
-
+              <span className="text-sm text-gray-600">
+                Acompanhe o progresso individual dos alunos nesta avaliação.
+              </span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </>
+  );
 };

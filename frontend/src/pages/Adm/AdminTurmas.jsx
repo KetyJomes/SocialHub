@@ -17,7 +17,6 @@ import { Header } from "../../components/Header";
 import { SidebarAdmin } from "../../components/SidebarAdmin";
 
 export const AdminTurmas = () => {
-
   const confirmarAlteracaoStatus = (turma) => {
     const vaiArquivar = turma.status === "Ativa";
 
@@ -75,10 +74,8 @@ export const AdminTurmas = () => {
       confirmButtonColor: "#DC2626",
 
       cancelButtonColor: "#9CA3AF",
-    
     }).then((result) => {
-      
-        if (result.isConfirmed) {
+      if (result.isConfirmed) {
         excluirTurma(turma.id);
 
         Swal.fire({
@@ -113,11 +110,9 @@ export const AdminTurmas = () => {
   const [editando, setEditando] = useState(false);
 
   const abrirAdicionarAluno = () => {
-    
     setPesquisaAluno("");
 
     setModalAdicionar(true);
-    
   };
 
   const [novaTurma, setNovaTurma] = useState({

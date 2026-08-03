@@ -3,45 +3,22 @@
 import { Download, Info } from "lucide-react";
 import { exportarAvaliacaoPDF } from "../export/exportarAvaliacaoPDF.js";
 
-
 export const DashboardHeader = ({ children }) => {
-
   return (
-
     <div className="flex items-start justify-between mb-8">
-
-
       <div>
-
-
         <h1 className="text-4xl font-bold text-gray-900">
-
           Comparativo de Resultados
-
         </h1>
 
-
-
         <p className="text-gray-500 mt-2 text-[15px]">
-
           Acompanhe o desempenho das avaliações e identifique oportunidades de
           melhoria.
-
         </p>
-
-
       </div>
 
-
-
-
-
       <div className="flex items-center gap-4">
-
-
-
         <button
-
           className="
             w-9
             h-9
@@ -54,33 +31,15 @@ export const DashboardHeader = ({ children }) => {
             hover:bg-gray-100
             transition
           "
-
         >
-
-          <Info
-            size={18}
-            className="text-gray-500"
-          />
-
+          <Info size={18} className="text-gray-500" />
         </button>
 
-
-
-
-
-
-
-
         <button
-
-    onClick={() => 
-        exportarAvaliacaoPDF(
-            selfEvaluation,
-            managerEvaluation
-        )
-    }
-
-    className="
+          onClick={() =>
+            exportarAvaliacaoPDF(selfEvaluation, managerEvaluation)
+          }
+          className="
         flex
         items-center
         gap-3
@@ -96,30 +55,13 @@ export const DashboardHeader = ({ children }) => {
         transition
         shadow-sm
     "
-
->
-
-    <Download size={18}/>
-
-    Exportar relatório
-
-</button>
-
-
-
-
-
-
+        >
+          <Download size={18} />
+          Exportar relatório
+        </button>
 
         {children}
-
-
-
       </div>
-
-
     </div>
-
   );
-
 };

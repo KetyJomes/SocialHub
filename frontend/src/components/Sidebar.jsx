@@ -1,22 +1,21 @@
 import {
-    House,
-    ClipboardList,
-    ChartColumn,
-    MessageSquareQuote,
-    LogOut
+  House,
+  ClipboardList,
+  ChartColumn,
+  MessageSquareQuote,
+  LogOut,
 } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 
 export const Sidebar = ({ isOpen, setIsOpen }) => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-
-    return (
-        <>
-            {isOpen && (
-                <div
-                    className="
+  return (
+    <>
+      {isOpen && (
+        <div
+          className="
                         fixed
                         inset-0
                         bg-black/40
@@ -24,12 +23,12 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                         top-[72px]
                         left-0
                     "
-                    onClick={() => setIsOpen(false)}
-                />
-            )}
+          onClick={() => setIsOpen(false)}
+        />
+      )}
 
-            <aside
-                className={`
+      <aside
+        className={`
                     fixed
                     top-[72px]
                     left-0
@@ -46,19 +45,18 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                     flex-col
                     ${isOpen ? "translate-x-0" : "-translate-x-full"}
                 `}
-            >
-                <nav className="mt-6 px-4 flex-1">
+      >
+        <nav className="mt-6 px-4 flex-1">
+          {isOpen && (
+            <h2 className="text-xl font-bold text-gray-800 text-center mb-2">
+              Menu
+            </h2>
+          )}
 
-                    {isOpen && (
-                        <h2 className="text-xl font-bold text-gray-800 text-center mb-2">
-                            Menu
-                        </h2>
-                    )}
-
-                    {/* HOME */}
-                    <button
-                        onClick={() => navigate("/user-main")}
-                        className="
+          {/* HOME */}
+          <button
+            onClick={() => navigate("/user-main")}
+            className="
                             flex
                             items-center
                             gap-3
@@ -68,16 +66,16 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                             hover:bg-gray-100
                             transition
                         "
-                    >
-                        <House size={20} />
+          >
+            <House size={20} />
 
-                        {isOpen && <span>Início</span>}
-                    </button>
+            {isOpen && <span>Início</span>}
+          </button>
 
-                    {/* AVALIAÇÕES */}
-                    <button
-                        onClick={() => navigate("/user-avaliacoes")}
-                        className="
+          {/* AVALIAÇÕES */}
+          <button
+            onClick={() => navigate("/user-avaliacoes")}
+            className="
                             flex
                             items-center
                             gap-3
@@ -87,16 +85,16 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                             hover:bg-gray-100
                             transition
                         "
-                    >
-                        <ClipboardList size={20} />
+          >
+            <ClipboardList size={20} />
 
-                        {isOpen && <span>Avaliações</span>}
-                    </button>
+            {isOpen && <span>Avaliações</span>}
+          </button>
 
-                    {/* FEEDBACK 360 */}
-                    <button
-                        onClick={() => navigate("/360")}
-                        className="
+          {/* FEEDBACK 360 */}
+          <button
+            onClick={() => navigate("/360")}
+            className="
                             flex
                             items-center
                             gap-3
@@ -106,16 +104,16 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                             hover:bg-gray-100
                             transition
                         "
-                    >
-                        <MessageSquareQuote size={20} />
+          >
+            <MessageSquareQuote size={20} />
 
-                        {isOpen && <span>Avaliação 360</span>}
-                    </button>
+            {isOpen && <span>Avaliação 360</span>}
+          </button>
 
-                    {/* RESULTADOS */}
-                    <button
-                        onClick={() => navigate("/resultados")}
-                        className="
+          {/* RESULTADOS */}
+          <button
+            onClick={() => navigate("/resultados")}
+            className="
                             flex
                             items-center
                             gap-3
@@ -125,21 +123,18 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                             hover:bg-gray-100
                             transition
                         "
-                    >
-                        <ChartColumn size={20} />
+          >
+            <ChartColumn size={20} />
 
-                        {isOpen && <span>Resultados</span>}
-                    </button>
+            {isOpen && <span>Resultados</span>}
+          </button>
+        </nav>
 
-
-                </nav>
-
-                {/* SAIR */}
-                <div className="px-4 pb-6">
-
-                    <button
-                        onClick={() => navigate("/")}
-                        className="
+        {/* SAIR */}
+        <div className="px-4 pb-6">
+          <button
+            onClick={() => navigate("/")}
+            className="
                             flex
                             items-center
                             justify-center
@@ -151,14 +146,13 @@ export const Sidebar = ({ isOpen, setIsOpen }) => {
                             hover:bg-gray-100
                             transition
                         "
-                    >
-                        <LogOut size={20} />
+          >
+            <LogOut size={20} />
 
-                        {isOpen && <span>Sair</span>}
-                    </button>
-
-                </div>
-            </aside>
-        </>
-    );
+            {isOpen && <span>Sair</span>}
+          </button>
+        </div>
+      </aside>
+    </>
+  );
 };

@@ -1,31 +1,15 @@
-import {
-    House,
-    GraduationCap,
-    Users,
-    ShieldCheck,
-    LogOut
-} from "lucide-react";
+import { House, GraduationCap, Users, ShieldCheck, LogOut } from "lucide-react";
 
 import { useNavigate } from "react-router-dom";
 
-
 export const SidebarAdmin = ({ isOpen, setIsOpen }) => {
+  const navigate = useNavigate();
 
-
-    const navigate = useNavigate();
-
-
-
-    return (
-
-        <>
-
-            {
-                isOpen && (
-
-                    <div
-
-                        className="
+  return (
+    <>
+      {isOpen && (
+        <div
+          className="
                             fixed
                             inset-0
                             bg-black/40
@@ -33,22 +17,12 @@ export const SidebarAdmin = ({ isOpen, setIsOpen }) => {
                             top-[72px]
                             left-0
                         "
+          onClick={() => setIsOpen(false)}
+        />
+      )}
 
-                        onClick={() => setIsOpen(false)}
-
-                    />
-
-                )
-
-            }
-
-
-
-
-
-            <aside
-
-                className={`
+      <aside
+        className={`
                     fixed
                     top-[72px]
                     left-0
@@ -67,44 +41,25 @@ export const SidebarAdmin = ({ isOpen, setIsOpen }) => {
                     ${isOpen ? "translate-x-0" : "-translate-x-full"}
 
                 `}
-
-            >
-
-
-
-
-                <nav className="mt-6 px-4 flex-1">
-
-
-
-                    {
-                        isOpen && (
-
-                            <h2 className="
+      >
+        <nav className="mt-6 px-4 flex-1">
+          {isOpen && (
+            <h2
+              className="
                                 text-xl
                                 font-bold
                                 text-gray-800
                                 text-center
                                 mb-5
-                            ">
+                            "
+            >
+              Administração
+            </h2>
+          )}
 
-                                Administração
-
-                            </h2>
-
-                        )
-                    }
-
-
-
-
-
-
-                    <button
-
-                        onClick={() => navigate("/adm-main")}
-
-                        className="
+          <button
+            onClick={() => navigate("/adm-main")}
+            className="
                             flex
                             items-center
                             gap-3
@@ -114,38 +69,15 @@ export const SidebarAdmin = ({ isOpen, setIsOpen }) => {
                             hover:bg-gray-100
                             transition
                         "
+          >
+            <House size={20} />
 
-                    >
+            {isOpen && <span>Início</span>}
+          </button>
 
-                        <House size={20}/>
-
-
-                        {
-                            isOpen && (
-
-                                <span>
-
-                                    Início
-
-                                </span>
-
-                            )
-                        }
-
-
-                    </button>
-
-
-
-
-
-
-
-                    <button
-
-                        onClick={() => navigate("/admin/turmas")}
-
-                        className="
+          <button
+            onClick={() => navigate("/admin/turmas")}
+            className="
                             flex
                             items-center
                             gap-3
@@ -155,39 +87,15 @@ export const SidebarAdmin = ({ isOpen, setIsOpen }) => {
                             hover:bg-gray-100
                             transition
                         "
+          >
+            <GraduationCap size={20} />
 
-                    >
+            {isOpen && <span>Turmas</span>}
+          </button>
 
-                        <GraduationCap size={20}/>
-
-
-                        {
-                            isOpen && (
-
-                                <span>
-
-                                    Turmas
-
-                                </span>
-
-                            )
-                        }
-
-
-                    </button>
-
-
-
-
-
-
-
-
-                    <button
-
-                        onClick={() => navigate("/adm-control-user")}
-
-                        className="
+          <button
+            onClick={() => navigate("/adm-control-user")}
+            className="
                             flex
                             items-center
                             gap-3
@@ -197,48 +105,17 @@ export const SidebarAdmin = ({ isOpen, setIsOpen }) => {
                             hover:bg-gray-100
                             transition
                         "
+          >
+            <Users size={20} />
 
-                    >
+            {isOpen && <span>Usuários</span>}
+          </button>
+        </nav>
 
-                        <Users size={20}/>
-
-
-                        {
-                            isOpen && (
-
-                                <span>
-
-                                    Usuários
-
-                                </span>
-
-                            )
-                        }
-
-
-                    </button>
-
-
-
-
-
-
-                </nav>
-
-
-
-
-
-
-
-                <div className="px-4 pb-6">
-
-
-                    <button
-
-                        onClick={() => navigate("/")}
-
-                        className="
+        <div className="px-4 pb-6">
+          <button
+            onClick={() => navigate("/")}
+            className="
                             flex
                             items-center
                             justify-center
@@ -250,41 +127,13 @@ export const SidebarAdmin = ({ isOpen, setIsOpen }) => {
                             hover:bg-gray-100
                             transition
                         "
+          >
+            <LogOut size={20} />
 
-                    >
-
-                        <LogOut size={20}/>
-
-
-
-                        {
-                            isOpen && (
-
-                                <span>
-
-                                    Sair
-
-                                </span>
-
-                            )
-                        }
-
-
-                    </button>
-
-
-                </div>
-
-
-
-
-
-            </aside>
-
-
-
-        </>
-
-    );
-
+            {isOpen && <span>Sair</span>}
+          </button>
+        </div>
+      </aside>
+    </>
+  );
 };

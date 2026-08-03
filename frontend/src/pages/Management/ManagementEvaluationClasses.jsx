@@ -1,120 +1,84 @@
 import { useState } from "react";
-import {
-    GraduationCap,
-    Info,
-    Eye
-} from "lucide-react";
+import { GraduationCap, Info, Eye } from "lucide-react";
 
 import { Header } from "../../components/Header";
 import { SidebarManagement } from "../../components/SidebarManagement";
 import { useNavigate } from "react-router-dom";
 
-
 export const ManagementEvaluationClasses = () => {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
+  const turmas = [
+    {
+      nome: "Turma 1EM",
+      alunos: 32,
+      respondidas: 28,
+      pendentes: 4,
+      adesao: 87,
+      nota: 98,
+    },
 
-    const [isOpen, setIsOpen] = useState(false);
+    {
+      nome: "Turma 9A",
+      alunos: 30,
+      respondidas: 30,
+      pendentes: 0,
+      adesao: 100,
+      nota: 96,
+    },
 
+    {
+      nome: "Turma 2EM",
+      alunos: 35,
+      respondidas: 22,
+      pendentes: 13,
+      adesao: 63,
+      nota: 59,
+    },
 
+    {
+      nome: "Turma 3EM",
+      alunos: 28,
+      respondidas: 25,
+      pendentes: 3,
+      adesao: 89,
+      nota: 70,
+    },
 
-    const turmas = [
+    {
+      nome: "Turma 9B",
+      alunos: 31,
+      respondidas: 31,
+      pendentes: 0,
+      adesao: 100,
+      nota: 90,
+    },
+  ];
 
-        {
-            nome: "Turma 1EM",
-            alunos: 32,
-            respondidas: 28,
-            pendentes: 4,
-            adesao: 87,
-            nota: 98
-        },
+  return (
+    <>
+      <SidebarManagement isOpen={isOpen} setIsOpen={setIsOpen} />
 
-        {
-            nome: "Turma 9A",
-            alunos: 30,
-            respondidas: 30,
-            pendentes: 0,
-            adesao: 100,
-            nota: 96
-        },
+      <main>
+        <Header isOpen={isOpen} setIsOpen={setIsOpen} />
 
-        {
-            nome: "Turma 2EM",
-            alunos: 35,
-            respondidas: 22,
-            pendentes: 13,
-            adesao: 63,
-            nota: 59
-        },
-
-        {
-            nome: "Turma 3EM",
-            alunos: 28,
-            respondidas: 25,
-            pendentes: 3,
-            adesao: 89,
-            nota: 70
-        },
-
-        {
-            nome: "Turma 9B",
-            alunos: 31,
-            respondidas: 31,
-            pendentes: 0,
-            adesao: 100,
-            nota: 90
-        }
-
-    ];
-
-
-
-    return (
-
-        <>
-
-
-            <SidebarManagement
-                isOpen={isOpen}
-                setIsOpen={setIsOpen}
-            />
-
-
-
-            <main>
-
-
-                <Header
-                    isOpen={isOpen}
-                    setIsOpen={setIsOpen}
-                />
-
-
-
-                <div
-                    className="
+        <div
+          className="
                         pt-28
                         px-10
                         pb-10
                     "
-                >
+        >
+          <h1 className="text-3xl font-bold">Turmas</h1>
 
+          <p className="text-gray-500">
+            Visualize o desempenho geral de todas as turmas.
+          </p>
 
-                    <h1 className="text-3xl font-bold">
-                        Turmas
-                    </h1>
-
-
-                    <p className="text-gray-500">
-                        Visualize o desempenho geral de todas as turmas.
-                    </p>
-
-
-
-
-                    <section
-                        className="
+          <section
+            className="
                             mt-8
                             bg-white
                             rounded-xl
@@ -123,20 +87,17 @@ export const ManagementEvaluationClasses = () => {
                             shadow-sm
                             p-6
                         "
-                    >
-
-
-                        <div
-                            className="
+          >
+            <div
+              className="
                                 flex
                                 items-center
                                 gap-3
                                 mb-6
                             "
-                        >
-
-                            <div
-                                className="
+            >
+              <div
+                className="
                                     w-10
                                     h-10
                                     rounded-full
@@ -145,309 +106,206 @@ export const ManagementEvaluationClasses = () => {
                                     items-center
                                     justify-center
                                 "
-                            >
+              >
+                <GraduationCap size={20} className="text-[#0291F7]" />
+              </div>
 
-                                <GraduationCap
-                                    size={20}
-                                    className="text-[#0291F7]"
-                                />
+              <h2 className="text-xl font-bold">Desempenho das Turmas</h2>
+            </div>
 
-                            </div>
-
-
-
-                            <h2 className="text-xl font-bold">
-                                Desempenho das Turmas
-                            </h2>
-
-
-                        </div>
-
-
-
-
-
-                        <div
-                            className="
+            <div
+              className="
                                 overflow-x-auto
                             "
-                        >
-
-
-                            <table
-                                className="
+            >
+              <table
+                className="
                                     w-full
                                     border-collapse
                                 "
-                            >
-
-
-                                <thead>
-
-
-                                    <tr
-                                        className="
+              >
+                <thead>
+                  <tr
+                    className="
                                             bg-gray-50
                                             text-gray-600
                                             text-sm
                                         "
-                                    >
-
-                                        <th
-                                            className="
+                  >
+                    <th
+                      className="
                                                 text-left
                                                 px-5
                                                 py-4
                                                 rounded-l-lg
                                             "
-                                        >
-                                            Turma
-                                        </th>
+                    >
+                      Turma
+                    </th>
 
+                    <th className="px-5 py-4">Alunos</th>
 
-                                        <th className="px-5 py-4">
-                                            Alunos
-                                        </th>
+                    <th className="px-5 py-4">Respondidas</th>
 
+                    <th className="px-5 py-4">Pendentes</th>
 
-                                        <th className="px-5 py-4">
-                                            Respondidas
-                                        </th>
+                    <th className="px-5 py-4">Adesão</th>
 
+                    <th className="px-5 py-4">Nota média</th>
 
-                                        <th className="px-5 py-4">
-                                            Pendentes
-                                        </th>
-
-
-                                        <th className="px-5 py-4">
-                                            Adesão
-                                        </th>
-
-
-                                        <th className="px-5 py-4">
-                                            Nota média
-                                        </th>
-
-
-                                        <th
-                                            className="
+                    <th
+                      className="
                                                 px-5
                                                 py-4
                                                 rounded-r-lg
                                             "
-                                        >
-                                            Ação
-                                        </th>
+                    >
+                      Ação
+                    </th>
+                  </tr>
+                </thead>
 
-
-                                    </tr>
-
-
-                                </thead>
-
-
-
-
-
-                                <tbody>
-
-
-                                    {
-                                        turmas.map((turma, index) => (
-
-                                            <tr
-                                                key={index}
-                                                className="
+                <tbody>
+                  {turmas.map((turma, index) => (
+                    <tr
+                      key={index}
+                      className="
                                                     border-b
                                                     border-gray-100
                                                     hover:bg-gray-50
                                                     transition
                                                 "
-                                            >
-
-
-                                                <td
-                                                    className="
+                    >
+                      <td
+                        className="
                                                         px-5
                                                         py-5
                                                         font-semibold
                                                     "
-                                                >
+                      >
+                        {turma.nome}
+                      </td>
 
-                                                    {turma.nome}
-
-                                                </td>
-
-
-
-
-
-                                                <td
-                                                    className="
+                      <td
+                        className="
                                                         px-5
                                                         py-5
                                                         text-center
                                                     "
-                                                >
+                      >
+                        {turma.alunos}
+                      </td>
 
-                                                    {turma.alunos}
-
-                                                </td>
-
-
-
-
-
-                                                <td
-                                                    className="
+                      <td
+                        className="
                                                         px-5
                                                         py-5
                                                         text-center
                                                     "
-                                                >
-
-                                                    <span
-                                                        className="
+                      >
+                        <span
+                          className="
                                                             text-green-600
                                                             font-semibold
                                                         "
-                                                    >
-                                                        {turma.respondidas}
-                                                    </span>
+                        >
+                          {turma.respondidas}
+                        </span>
+                      </td>
 
-                                                </td>
-
-
-
-
-
-                                                <td
-                                                    className="
+                      <td
+                        className="
                                                         px-5
                                                         py-5
                                                         text-center
                                                     "
-                                                >
-
-                                                    <span
-                                                        className="
+                      >
+                        <span
+                          className="
                                                             text-yellow-600
                                                             font-semibold
                                                         "
-                                                    >
-                                                        {turma.pendentes}
-                                                    </span>
+                        >
+                          {turma.pendentes}
+                        </span>
+                      </td>
 
-                                                </td>
-
-
-
-
-
-                                                <td
-                                                    className="
+                      <td
+                        className="
                                                         px-5
                                                         py-5
                                                         text-center
                                                     "
-                                                >
-
-                                                    <div
-                                                        className="
+                      >
+                        <div
+                          className="
                                                             flex
                                                             items-center
                                                             justify-center
                                                             gap-3
                                                         "
-                                                    >
-
-
-                                                        <div
-                                                            className="
+                        >
+                          <div
+                            className="
                                                                 w-24
                                                                 h-2
                                                                 bg-gray-200
                                                                 rounded-full
                                                                 overflow-hidden
                                                             "
-                                                        >
-
-                                                            <div
-                                                                className="
+                          >
+                            <div
+                              className="
                                                                     h-full
                                                                     bg-[#0291F7]
                                                                     rounded-full
                                                                 "
-                                                                style={{
-                                                                    width: `${turma.adesao}%`
-                                                                }}
-                                                            />
+                              style={{
+                                width: `${turma.adesao}%`,
+                              }}
+                            />
+                          </div>
 
-                                                        </div>
-
-
-
-                                                        <span
-                                                            className="
+                          <span
+                            className="
                                                                 text-sm
                                                                 font-semibold
                                                             "
-                                                        >
+                          >
+                            {turma.adesao}%
+                          </span>
+                        </div>
+                      </td>
 
-                                                            {turma.adesao}%
-
-                                                        </span>
-
-
-
-                                                    </div>
-
-
-                                                </td>
-
-
-
-
-
-                                                <td
-                                                    className="
+                      <td
+                        className="
                                                         px-5
                                                         py-5
                                                         text-center
                                                     "
-                                                >
-
-                                                    <span
-                                                        className="
+                      >
+                        <span
+                          className="
                                                             font-bold
                                                             text-lg
                                                         "
-                                                    >
+                        >
+                          {turma.nota}
+                        </span>
+                      </td>
 
-                                                        {turma.nota}
-
-                                                    </span>
-
-
-                                                </td>
-
-
-
-
-
-                                                <td
-                                                    className="
+                      <td
+                        className="
                                                         px-5
                                                         py-5
                                                         text-center
                                                     "
-                                                >
-
-                                                    <button
-                                                        onClick={() => navigate('/management-avaliacoes-turmas-alunos')}
-
-                                                        className="
+                      >
+                        <button
+                          onClick={() =>
+                            navigate("/management-avaliacoes-turmas-alunos")
+                          }
+                          className="
                                                             flex
                                                             items-center
                                                             justify-center
@@ -457,60 +315,27 @@ export const ManagementEvaluationClasses = () => {
                                                             mx-auto
                                                             hover:underline
                                                         "
-                                                    >
+                        >
+                          <Eye size={18} />
+                          Visualizar
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
 
-                                                        <Eye
-                                                            size={18}
-                                                        />
-
-                                                        Visualizar
-
-                                                    </button>
-
-
-                                                </td>
-
-
-
-
-                                            </tr>
-
-
-                                        ))
-                                    }
-
-
-
-                                </tbody>
-
-
-
-                            </table>
-
-
-
-                        </div>
-
-
-
-
-                    </section>
-
-
-
-
-
-                    <div
-                        className="
+          <div
+            className="
                             flex
                             justify-center
                             mt-8
                         "
-                    >
-
-
-                        <div
-                            className="
+          >
+            <div
+              className="
                                 flex
                                 items-center
                                 gap-2
@@ -521,33 +346,16 @@ export const ManagementEvaluationClasses = () => {
                                 px-6
                                 py-3
                             "
-                        >
+            >
+              <Info size={18} className="text-[#0291F7]" />
 
-                            <Info
-                                size={18}
-                                className="text-[#0291F7]"
-                            />
-
-                            <span className="text-sm text-gray-600">
-                                Clique em uma turma para visualizar seu desempenho detalhado.
-                            </span>
-
-
-                        </div>
-
-
-                    </div>
-
-
-
-                </div>
-
-
-            </main>
-
-
-        </>
-
-    );
-
+              <span className="text-sm text-gray-600">
+                Clique em uma turma para visualizar seu desempenho detalhado.
+              </span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </>
+  );
 };
